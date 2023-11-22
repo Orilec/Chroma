@@ -6,25 +6,22 @@ using UnityEngine;
 public class CharaParameters : ScriptableObject
 {
     [Header("Movement Parameters")] 
-    [SerializeField] private float _maxMoveSpeed = 6f;
-    [SerializeField] private float _baseMoveSpeed = 3f;
-    [SerializeField] private float _speedIncrement = 0.5f;
-    [SerializeField] private float _currentMoveSpeed = 0f;
-    [SerializeField] private float _rotationSpeed = 15f;
-    private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement ;
+    public float maxMoveSpeed = 100f;
+    public float baseMoveSpeed = 50f;
+    public float speedIncrement = 2f;
+    public float rotationSpeed = 15f;
     
     [Header("Gravity")]
-    [SerializeField] private float _gravityFallCurrent = -100.0f;
-    [SerializeField] private float _gravityFallMin = -100.0f;
-    [SerializeField] private float _gravityFallMax = -500.0f;
-    [SerializeField] [Range(-5f, -35f)] private float _gravityFallIncrementAmount = -20.0f;
-    [SerializeField] private float _gravityFallIncrementTime = 0.05f;
-    [SerializeField] private float _playerFallTimeMax = 0.3f;
+    public float gravityFallMin = -10f;
+    public float gravityFallMax = -150f;
+    public float gravityFallIncrementAmount = -20.0f;
+    public float gravityFallIncrementTime = 0.05f;
+    public float playerFallTimeMax = 0.3f;
 
     [Header("Jump Parameters")] 
-    [SerializeField] float _initialJumpForce = 750.0f;
-    [SerializeField] float _continualJumpForceMultiplier = 0.1f;
-    [SerializeField] float _jumpTime = 0.175f;
-    [SerializeField] float _coyoteTime = 0.15f;
-    [SerializeField] float _jumpBufferTime = 0.2f;
+    public float initialJumpForce = 1500f;
+    public float continualJumpForceMultiplier = 0.1f;
+    public float jumpTime = 0.3f;
+    public float coyoteTime = 0.15f;
+    public float jumpBufferTime = 0.3f;
 }

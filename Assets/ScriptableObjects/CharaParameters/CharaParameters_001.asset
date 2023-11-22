@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5734ee82f16c84c83e7fc9372df5f8, type: 3}
+  m_Name: CharaParameters_001
+  m_EditorClassIdentifier: 
+  maxMoveSpeed: 100
+  baseMoveSpeed: 50
+  speedIncrement: 2
+  rotationSpeed: 15
+  gravityFallMin: -10
+  gravityFallMax: -150
+  gravityFallIncrementAmount: -20
+  gravityFallIncrementTime: 0.05
+  playerFallTimeMax: 0.3
+  initialJumpForce: 1500
+  continualJumpForceMultiplier: 0.1
+  jumpTime: 0.3
+  coyoteTime: 0.15
+  jumpBufferTime: 0.3
