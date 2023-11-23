@@ -20,6 +20,7 @@ public class CameraBehaviour : MonoBehaviour
     private void OnEnable()
     {
         _playerController.LeavingGround += OnLeavingGround;
+        
     }
 
     void Start()
@@ -27,12 +28,14 @@ public class CameraBehaviour : MonoBehaviour
         _mainCam = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        _targetTransform.position = new Vector3(_playerTransform.position.x,_playerTransform.position.y + _targetYOffset, _playerTransform.position.z);
     }
 
     private void OnLeavingGround()
     {
         _targetY = _playerTransform.position.y;
     }
+    
     
     void LateUpdate()
     {
