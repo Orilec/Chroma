@@ -128,13 +128,11 @@ public class PlayerController : MonoBehaviour
         _playerMoveInput = new Vector3(_input.MoveInput.x, 0f, _input.MoveInput.y);
  
         _stateMachine.FixedUpdate();
-
-        _appliedMovement = _playerMoveInput;
-
-        _cameraRelativeMovement = ConvertToCameraSpace(_appliedMovement);
         
-        _rigidbody.AddForce(_cameraRelativeMovement, ForceMode.Force);
-        Debug.DrawRay(_rigidbody.position, _appliedMovement, Color.green );
+        _appliedMovement = _cameraRelativeMovement;
+        
+        _rigidbody.AddForce(_appliedMovement, ForceMode.Force);
+
     }
 
     private void HandleTimers()
@@ -195,25 +193,25 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentMoveSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
-        
+        _cameraRelativeMovement = ConvertToCameraSpace(_playerMoveInput);
         PlayerSlope();
     }
 
     public void PlayerSlope()
     {
-        Vector3 calculatedPlayerMovement = _playerMoveInput;
+        Vector3 calculatedPlayerMovement = _cameraRelativeMovement;
 
         if (_groundCheck.IsGrounded)
         {
-            Vector3 localGroundCheckHitNormal = _rigidbody.transform.InverseTransformDirection(_groundCheck.GroundCheckHit.normal);
+            Vector3 localGroundCheckHitNormal = _groundCheck.GroundCheckHit.normal;
             float groundSlopeAngle = Vector3.Angle(localGroundCheckHitNormal, _rigidbody.transform.up);
             if (groundSlopeAngle != 0f)
             {
                 Quaternion slopeAngleRotation = Quaternion.FromToRotation(_rigidbody.transform.up, localGroundCheckHitNormal);
-                calculatedPlayerMovement = slopeAngleRotation * calculatedPlayerMovement;
+                calculatedPlayerMovement = slopeAngleRotation *  calculatedPlayerMovement;
             }
         }
-        _playerMoveInput = calculatedPlayerMovement;
+        _cameraRelativeMovement = calculatedPlayerMovement;
         
     }
     
