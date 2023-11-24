@@ -37,21 +37,6 @@ public class PlayerBasePlacer : MonoBehaviour
 
             e.Use(); // Empêche la sélection d'autres objets dans la scène
         }
-
-        // Vérifie la combinaison touche + clic droit pour la rotation
-        if (e.type == EventType.MouseDown && e.button == 1 && e.modifiers == EventModifiers.Shift)
-        {
-            Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Modifie la rotation du PlayerBase pour faire face à l'endroit du clic
-                RotatePlayerBase(hit);
-            }
-
-            e.Use(); // Empêche la sélection d'autres objets dans la scène
-        }
     }
 
     static void PlacePlayerBase(Vector3 position)
@@ -87,26 +72,6 @@ public class PlayerBasePlacer : MonoBehaviour
         HandleUtility.AddDefaultControl(0); // Empêche de cliquer sur le mesh après placement
 
         Debug.Log("GG y a un nouveau PlayerBase");
-    }
-
-    static void RotatePlayerBase(RaycastHit hit)
-    {
-        PlayerBasePlacer playerBasePlacer = FindObjectOfType<PlayerBasePlacer>();
-
-        if (playerBasePlacer.playerBasePrefab == null)
-        {
-            Debug.LogError("Prefab manquant");
-            return;
-        }
-
-        GameObject existingPlayerBase = GameObject.Find("PlayerBase");
-        if (existingPlayerBase != null)
-        {
-            Vector3 lookAtPosition = hit.point;
-            lookAtPosition.y = existingPlayerBase.transform.position.y;
-            existingPlayerBase.transform.LookAt(lookAtPosition);
-            Debug.Log("TOURNE");
-        }
     }
 
 #endif
