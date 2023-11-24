@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader _input;
 
     [SerializeField] private CharaParameters _parameters;
-
     
     public event UnityAction LeavingGround = delegate {  };
     public event UnityAction EnteringGround = delegate {  };
@@ -130,9 +129,12 @@ public class PlayerController : MonoBehaviour
  
         _stateMachine.FixedUpdate();
 
+        _appliedMovement = _playerMoveInput;
+
         _cameraRelativeMovement = ConvertToCameraSpace(_appliedMovement);
         
         _rigidbody.AddForce(_cameraRelativeMovement, ForceMode.Force);
+        Debug.DrawRay(_rigidbody.position, _appliedMovement, Color.green );
     }
 
     private void HandleTimers()
@@ -192,7 +194,27 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.y * _rigidbody.mass,
             _playerMoveInput.z * _currentMoveSpeed * _rigidbody.mass));
         
-        _appliedMovement = calculatedPlayerMovement;
+        _playerMoveInput = calculatedPlayerMovement;
+        
+        PlayerSlope();
+    }
+
+    public void PlayerSlope()
+    {
+        Vector3 calculatedPlayerMovement = _playerMoveInput;
+
+        if (_groundCheck.IsGrounded)
+        {
+            Vector3 localGroundCheckHitNormal = _rigidbody.transform.InverseTransformDirection(_groundCheck.GroundCheckHit.normal);
+            float groundSlopeAngle = Vector3.Angle(localGroundCheckHitNormal, _rigidbody.transform.up);
+            if (groundSlopeAngle != 0f)
+            {
+                Quaternion slopeAngleRotation = Quaternion.FromToRotation(_rigidbody.transform.up, localGroundCheckHitNormal);
+                calculatedPlayerMovement = slopeAngleRotation * calculatedPlayerMovement;
+            }
+        }
+        _playerMoveInput = calculatedPlayerMovement;
+        
     }
     
     public void HandleRotation()

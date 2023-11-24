@@ -15,9 +15,11 @@ public class GroundCheck : MonoBehaviour
     private bool previousState;
     public bool IsGrounded { get; private set; }
 
+    public RaycastHit GroundCheckHit;
+
     private void Update()
     {
-        IsGrounded = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out _, _groundDistance, _groundLayers);
+        IsGrounded = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out GroundCheckHit, _groundDistance, _groundLayers);
         if (IsGrounded == false && IsGrounded != previousState)
         {
             LeavingGround.Invoke();
