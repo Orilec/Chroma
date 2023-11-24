@@ -53,13 +53,22 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Slide"",
+                    ""type"": ""Button"",
+                    ""id"": ""8253607b-ae7e-431b-b737-7f293306c59a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""0c4e13e8-7deb-473d-9024-26933acacaaf"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -125,7 +134,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""1448247a-343d-428d-90d7-c99c5a91a8c7"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -165,6 +174,28 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""262ec8bd-5ca8-4df0-b841-053b303799c8"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5fa2a0b4-9009-4c5f-963f-f45e96c971b8"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +218,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
         m_CharacterControls_Look = m_CharacterControls.FindAction("Look", throwIfNotFound: true);
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
+        m_CharacterControls_Slide = m_CharacterControls.FindAction("Slide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +283,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private readonly InputAction m_CharacterControls_Move;
     private readonly InputAction m_CharacterControls_Look;
     private readonly InputAction m_CharacterControls_Jump;
+    private readonly InputAction m_CharacterControls_Slide;
     public struct CharacterControlsActions
     {
         private @CharacterInputActions m_Wrapper;
@@ -258,6 +291,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
         public InputAction @Look => m_Wrapper.m_CharacterControls_Look;
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
+        public InputAction @Slide => m_Wrapper.m_CharacterControls_Slide;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -276,6 +310,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Slide.started += instance.OnSlide;
+            @Slide.performed += instance.OnSlide;
+            @Slide.canceled += instance.OnSlide;
         }
 
         private void UnregisterCallbacks(ICharacterControlsActions instance)
@@ -289,6 +326,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Slide.started -= instance.OnSlide;
+            @Slide.performed -= instance.OnSlide;
+            @Slide.canceled -= instance.OnSlide;
         }
 
         public void RemoveCallbacks(ICharacterControlsActions instance)
@@ -329,5 +369,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnSlide(InputAction.CallbackContext context);
     }
 }

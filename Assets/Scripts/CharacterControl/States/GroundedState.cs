@@ -47,7 +47,7 @@ public class GroundedState : BaseCharacterState
         {
             _playerController.JumpTimer.Start();
         }
-        
+        //if slidingJumpBuffer counter is running, start slidingJump Timer
         _playerController.JumpWasPressedLastFrame = _input.JumpIsPressed;
     }
 }

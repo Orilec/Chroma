@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private List<Timer> _timers;
     private CountdownTimer _jumpTimer;
-    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter;
+    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer;
 
     private StateMachine _stateMachine;
     
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
     public CountdownTimer CoyoteTimeCounter { get { return _coyoteTimeCounter; } }
     public CountdownTimer JumpBufferTimeCounter { get { return _jumpBufferTimeCounter; } }
+    public CountdownTimer SlideTimer { get { return _slideTimer; } }
     public GroundCheck GroundCheck{ get { return _groundCheck; } }
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
     public float GravityFallMin { get { return _parameters.gravityFallMin; } }
@@ -64,10 +65,10 @@ public class PlayerController : MonoBehaviour
         
         //Timers setup
         _jumpTimer = new CountdownTimer(_parameters.jumpTime);
-
         _playerFallTimer = new CountdownTimer(_parameters.playerFallTimeMax);
         _coyoteTimeCounter = new CountdownTimer(_parameters.coyoteTime);
         _jumpBufferTimeCounter = new CountdownTimer(_parameters.jumpBufferTime);
+        _slideTimer = new CountdownTimer(_parameters.slideTime);
         
         _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter };
         
@@ -80,15 +81,19 @@ public class PlayerController : MonoBehaviour
         var groundedState = new GroundedState(this, _input);
         var jumpState = new JumpState(this, _input);
         var fallState = new FallState(this, _input);
+        var slideState = new SlideState(this, _input);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         At(groundedState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_groundCheck.IsGrounded));
+        At(groundedState, slideState, new FuncPredicate(()=> _slideTimer.IsRunning));
         
         At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning));
         
         At(fallState, groundedState, new FuncPredicate(()=> _groundCheck.IsGrounded));
         At(fallState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
+        
+        At(slideState, groundedState, new FuncPredicate(()=> !_slideTimer.IsRunning && _groundCheck.IsGrounded));
         
         
         // Set Initial State
