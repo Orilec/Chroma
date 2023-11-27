@@ -256,6 +256,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private class SpeedCoroutine
+    {
+        private IEnumerator _coroutine;
+        private float _desiredSpeed, _amount;
+        public SpeedCoroutine(IEnumerator coroutine, float desiredSpeed, float amount) { _coroutine = coroutine; _desiredSpeed = desiredSpeed; _amount = amount; }
+        
+    }
+
     public IEnumerator Decelerate(float desiredSpeed, float decrementAmount)
     {
         while (_currentSpeed > desiredSpeed)
