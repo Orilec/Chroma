@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5734ee82f16c84c83e7fc9372df5f8, type: 3}
   m_Name: CharaParameters_001
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 100
+  maxMoveSpeed: 80
   baseMoveSpeed: 50
   speedIncrement: 2
   rotationSpeed: 15
@@ -27,3 +27,8 @@ MonoBehaviour:
   jumpTime: 0.3
   coyoteTime: 0.15
   jumpBufferTime: 0.3
+  slideSpeed: 250
+  slideTime: 1.2
+  slideSpeedDecrementAmount: 2
+  slopeSlideMaxSpeed: 320
+  slopeSlideIncrementAmount: 2

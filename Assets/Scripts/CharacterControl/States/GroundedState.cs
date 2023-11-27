@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GroundedState : BaseCharacterState
@@ -17,6 +18,7 @@ public class GroundedState : BaseCharacterState
     
     public override void Update()
     {
+        OnSlide();
         OnJump();
     }
 
@@ -39,6 +41,15 @@ public class GroundedState : BaseCharacterState
     {
         _playerController.CoyoteTimeCounter.Start();
         
+    }
+
+    void OnSlide()
+    {
+        if (_input.SlideIsPressed && !_playerController.SlideWasPressedLastFrame)
+        {
+            _playerController.SlideTimer.Start();
+        }
+        _playerController.SlideWasPressedLastFrame = _input.SlideIsPressed;
     }
     
     void OnJump()

@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class SlideState : BaseCharacterState
 {
+    private bool _slopeCoroutineStarted = false;
+    public SlideState(PlayerController player, InputReader input) : base(player, input)
+    { }
+
+    public override void OnEnter()
+    {
+        BasicSlide();
+    }
     
-    public SlideState(PlayerController player, InputReader input) : base(player, input) {}
-    
+
     public override void Update()
     {
         OnSlide();
@@ -16,23 +23,35 @@ public class SlideState : BaseCharacterState
 
     public override void FixedUpdate()
     {
-        Slide();
+        _playerController.HandleRotation();
         _playerController.PlayerMove();
+        if (_playerController.IsDownSlope && !_slopeCoroutineStarted)
+        {
+            _playerController.AccelerationCoroutine = _playerController.Accelerate(_playerController.SlopeSlideMaxSpeed, _playerController.SlopeSlideSpeedIncrementAmount);
+            _playerController.StartCoroutine(_playerController.AccelerationCoroutine);
+            _slopeCoroutineStarted = true;
+        }
     }
 
     public override void OnExit()
     {
-        //start coroutine for deceleration
+        _playerController.StopCoroutine(_playerController.AccelerationCoroutine);
+         _slopeCoroutineStarted = false;
+        _playerController.StartCoroutine(_playerController.Decelerate(_playerController.MaxMoveSpeed, _playerController.SlideSpeedDecrementAmount));
     }
 
-    private void Slide()
+    private void BasicSlide()
     {
-        //acceleration function, less control on move
+        _playerController.CurrentSpeed = _playerController.SlideSpeed;
     }
     
     void OnSlide()
     {
-        //check if slide button is released, stop Slide Timer
+        if (!_input.SlideIsPressed)
+        {
+            _playerController.SlideTimer.Stop();
+        }
+        _playerController.SlideWasPressedLastFrame = _input.SlideIsPressed;
     }
 
     void OnJump()

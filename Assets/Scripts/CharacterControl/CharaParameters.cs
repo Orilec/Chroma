@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu]
 public class CharaParameters : ScriptableObject
@@ -27,8 +28,9 @@ public class CharaParameters : ScriptableObject
     public float jumpBufferTime = 0.3f;
     
     [Header("Slide Parameters")] 
-    public float maxSlideSpeed = 100f;
+    public float slideSpeed = 200f;
     public float slideTime = 1f;
     public float slideSpeedDecrementAmount = 2f;
-    public float slideSpeedDecrementTime = 2f;
+    public float slopeSlideMaxSpeed = 200f;
+    public float slopeSlideIncrementAmount = 2f;
 }
