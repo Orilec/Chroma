@@ -16,14 +16,27 @@ MonoBehaviour:
   baseMoveSpeed: 110
   speedIncrement: 2
   rotationSpeed: 60
+  maxSlopeAngle: 48
   gravityFallMin: -10
   gravityFallMax: -150
   gravityFallIncrementAmount: -20
   gravityFallIncrementTime: 0.05
   playerFallTimeMax: 0.3
-  maxSlopeAngle: 48
   initialJumpForce: 1800
   continualJumpForceMultiplier: 0.05
   jumpTime: 0.2
   coyoteTime: 100
   jumpBufferTime: 0.3
+  slideNormalSpeed: 200
+  slideTime: 1
+  slideSpeedDecrementAmount: 2
+  slopeSlideMaxSpeed: 200
+  slopeSlideIncrementAmount: 2
+  slidingJumpVerticalForce: 500
+  slidingJumpHorizontalForce: 400
+  slidingJumpContinualMultiplier: 0.6
+  slidingJumpBaseFallGravity: -0.01
+  slidingJumpFallMultiplier: 1.1
+  slidingJumpTime: 0.5
+  slidingJumpHalfPointTime: 0.5
+  slidingJumpBufferTime: 0.8
