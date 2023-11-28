@@ -27,13 +27,19 @@ MonoBehaviour:
   jumpTime: 0.3
   coyoteTime: 0.15
   jumpBufferTime: 0.3
-  slideSpeed: 250
+  slideNormalSpeed: 200
   slideTime: 1.2
   slideSpeedDecrementAmount: 2
   slopeSlideMaxSpeed: 320
   slopeSlideIncrementAmount: 2
-  slidingJumpVerticalForce: 300
-  slidingJumpHorizontalForce: 700
-  continualSlidingJumpForceMultiplier: 0.1
+  slidingJumpVerticalForce: 400
+  slidingJumpHorizontalForce: 200
+  slidingJumpContinualMultiplier: 0.8
+  slidingJumpBaseFallGravity: -0.01
+  slidingJumpFallMultiplier: 1.1
   slidingJumpTime: 0.5
+  slidingJumpHalfPointTime: 0.5
   slidingJumpBufferTime: 0.8
+  airSlideTime: 0.2
+  airSlideBaseForce: 1000
+  airSlideForceMultiplier: 0.8

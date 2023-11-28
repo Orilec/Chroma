@@ -43,6 +43,7 @@ public class SlideState : BaseCharacterState
         _playerController.CoyoteTimeCounter.Start();
         _playerController.SlidingJumpBufferCounter.Start();
     }
+    
 
     private void BasicSlide()
     {

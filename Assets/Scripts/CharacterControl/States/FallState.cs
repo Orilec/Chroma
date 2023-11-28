@@ -14,6 +14,7 @@ public class FallState : BaseCharacterState
     public override void Update()
     {
         OnJump();
+        OnSlide();
     }
 
     
@@ -62,5 +63,12 @@ public class FallState : BaseCharacterState
             _playerController.JumpBufferTimeCounter.Start();
         }
         _playerController.JumpWasPressedLastFrame = _input.JumpIsPressed;
+    }
+    void OnSlide()
+    {
+        if (_input.SlideIsPressed)
+        {
+            _playerController.AirSlideTimer.Start();
+        }
     }
 }
