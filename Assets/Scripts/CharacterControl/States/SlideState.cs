@@ -37,10 +37,11 @@ public class SlideState : BaseCharacterState
     public override void OnExit()
     {
         _playerController.StopCoroutine(_playerController.AccelerationCoroutine);
-         _slopeCoroutineStarted = false;
+        _slopeCoroutineStarted = false;
         _playerController.StartCoroutine(_playerController.Decelerate(_playerController.MaxMoveSpeed, _playerController.SlideSpeedDecrementAmount));
         _playerController.Trail.DisableTrail();
-        //start slidingJumpBuffer timer
+        _playerController.CoyoteTimeCounter.Start();
+        _playerController.SlidingJumpBufferCounter.Start();
     }
 
     private void BasicSlide()
@@ -59,6 +60,10 @@ public class SlideState : BaseCharacterState
 
     void OnJump()
     {
-        //start SlidingJump Timer
+        if (_input.JumpIsPressed && !_playerController.JumpWasPressedLastFrame)
+        {
+            _playerController.SlidingJumpTimer.Start();
+        }
+        _playerController.JumpWasPressedLastFrame = _input.JumpIsPressed;
     }
 }

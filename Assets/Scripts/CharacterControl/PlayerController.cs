@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private List<Timer> _timers;
     private CountdownTimer _jumpTimer;
-    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer;
+    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter;
 
     private StateMachine _stateMachine;
     
@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer CoyoteTimeCounter { get { return _coyoteTimeCounter; } }
     public CountdownTimer JumpBufferTimeCounter { get { return _jumpBufferTimeCounter; } }
     public CountdownTimer SlideTimer { get { return _slideTimer; } }
+    public CountdownTimer SlidingJumpTimer { get { return _slidingJumpTimer; } }
+    public CountdownTimer SlidingJumpBufferCounter { get { return _slidingJumpBufferCounter; } }
     public GroundCheck GroundCheck{ get { return _groundCheck; } }
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
     public PlayerTrailScript Trail{ get { return _trail; } }
@@ -54,12 +56,15 @@ public class PlayerController : MonoBehaviour
     public float SlideSpeedDecrementAmount { get { return _parameters.slideSpeedDecrementAmount; } }
     public float SlopeSlideMaxSpeed { get { return _parameters.slopeSlideMaxSpeed; } }
     public float SlopeSlideSpeedIncrementAmount { get { return _parameters.slopeSlideIncrementAmount; } }
+    public float SlidingJumpVerticalForce { get { return _parameters.slidingJumpVerticalForce; } }
+    public float SlidingJumpHorizontalForce { get { return _parameters.slidingJumpHorizontalForce; } }
     public bool IsDownSlope { get { return _isDownSlope; } }
     
     
     
     //GETTERS + SETTERS
     public float PlayerMoveInputY { get { return _playerMoveInput.y; } set { _playerMoveInput.y = value; } }
+    public Vector3 PlayerMoveInput { get { return _playerMoveInput; } set { _playerMoveInput = value; } }
     public float CurrentSpeed { get { return _currentSpeed; } set { _currentSpeed = value; } }
     public float InitialJumpForce { get { return _parameters.initialJumpForce; }set { _parameters.initialJumpForce = value; } }
     public float ContinualJumpForceMultiplier { get { return _parameters.continualJumpForceMultiplier; }set { _parameters.continualJumpForceMultiplier = value; } }
@@ -81,8 +86,10 @@ public class PlayerController : MonoBehaviour
         _coyoteTimeCounter = new CountdownTimer(_parameters.coyoteTime);
         _jumpBufferTimeCounter = new CountdownTimer(_parameters.jumpBufferTime);
         _slideTimer = new CountdownTimer(_parameters.slideTime);
+        _slidingJumpTimer = new CountdownTimer(_parameters.slidingJumpTime);
+        _slidingJumpBufferCounter = new CountdownTimer(_parameters.slidingJumpBufferTime);
         
-        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer };
+        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter };
         
         //_jumpTimer.OnTimerStop += () => ;
         
@@ -94,11 +101,13 @@ public class PlayerController : MonoBehaviour
         var jumpState = new JumpState(this, _input);
         var fallState = new FallState(this, _input);
         var slideState = new SlideState(this, _input);
+        var slidingJumpState = new SlidingJumpState(this, _input);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         At(groundedState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_groundCheck.IsGrounded));
         At(groundedState, slideState, new FuncPredicate(()=> _slideTimer.IsRunning));
+        At(groundedState,slidingJumpState, new FuncPredicate(()=> _slidingJumpTimer.IsRunning));
         
         At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning));
         
@@ -107,7 +116,10 @@ public class PlayerController : MonoBehaviour
         
         At(slideState, groundedState, new FuncPredicate(()=> !_slideTimer.IsRunning && _groundCheck.IsGrounded && !_isDownSlope));
         At(slideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded));
+        At(slideState, slidingJumpState, new FuncPredicate(()=>  _slidingJumpTimer.IsRunning));
         
+        At(slidingJumpState, groundedState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && _groundCheck.IsGrounded));
+        At(slidingJumpState, fallState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && !_groundCheck.IsGrounded));
         
         // Set Initial State
         _stateMachine.SetState(groundedState);
@@ -122,21 +134,7 @@ public class PlayerController : MonoBehaviour
 
     void At(IState from, IState to, IPredicate condition) => _stateMachine.AddTransition(from, to, condition);
     void Any(IState to, IPredicate condition) => _stateMachine.AddAnyTransition(to, condition);
-
-    private void Start()
-    {
-
-    }
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-    }
+    
     
     private void Update()
     {
@@ -150,9 +148,11 @@ public class PlayerController : MonoBehaviour
  
         _stateMachine.FixedUpdate();
         
-        _appliedMovement = _cameraRelativeMovement;
+        _cameraRelativeMovement = ConvertToCameraSpace(_playerMoveInput); 
         
-        _rigidbody.AddForce(_appliedMovement, ForceMode.Force);
+        PlayerSlope();
+        
+        _rigidbody.AddForce(_cameraRelativeMovement, ForceMode.Force);
 
     }
 
@@ -214,8 +214,6 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
-        _cameraRelativeMovement = ConvertToCameraSpace(_playerMoveInput);
-        PlayerSlope();
     }
 
     private void PlayerSlope()
