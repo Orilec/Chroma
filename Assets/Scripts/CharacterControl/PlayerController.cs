@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GroundCheck _groundCheck;
     [SerializeField] private CinemachineFreeLook _freeLookCam;
     [SerializeField] private InputReader _input;
+    [SerializeField] private PlayerTrailScript _trail;
 
     [SerializeField] private CharaParameters _parameters;
     
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer SlideTimer { get { return _slideTimer; } }
     public GroundCheck GroundCheck{ get { return _groundCheck; } }
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
+    public PlayerTrailScript Trail{ get { return _trail; } }
     public float GravityFallMin { get { return _parameters.gravityFallMin; } }
     public float GravityFallMax { get { return _parameters.gravityFallMax; } }
     public float GravityFallIncrementAmount { get { return _parameters.gravityFallIncrementAmount; } }
@@ -216,7 +218,7 @@ public class PlayerController : MonoBehaviour
         PlayerSlope();
     }
 
-    public void PlayerSlope()
+    private void PlayerSlope()
     {
         Vector3 calculatedPlayerMovement = _cameraRelativeMovement;
 
@@ -255,15 +257,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _parameters.rotationSpeed * Time.deltaTime);
         }
     }
-
-    private class SpeedCoroutine
-    {
-        private IEnumerator _coroutine;
-        private float _desiredSpeed, _amount;
-        public SpeedCoroutine(IEnumerator coroutine, float desiredSpeed, float amount) { _coroutine = coroutine; _desiredSpeed = desiredSpeed; _amount = amount; }
-        
-    }
-
+    
     public IEnumerator Decelerate(float desiredSpeed, float decrementAmount)
     {
         while (_currentSpeed > desiredSpeed)
@@ -281,9 +275,5 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-
-    public void ResetSpeedCoroutine(IEnumerator coroutine, float desiredSpeed, float amount)
-    {
-        
-    }
+    
 }

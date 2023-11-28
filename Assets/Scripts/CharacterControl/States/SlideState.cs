@@ -12,6 +12,7 @@ public class SlideState : BaseCharacterState
     public override void OnEnter()
     {
         BasicSlide();
+        _playerController.Trail.EnableTrail();
     }
     
 
@@ -38,6 +39,8 @@ public class SlideState : BaseCharacterState
         _playerController.StopCoroutine(_playerController.AccelerationCoroutine);
          _slopeCoroutineStarted = false;
         _playerController.StartCoroutine(_playerController.Decelerate(_playerController.MaxMoveSpeed, _playerController.SlideSpeedDecrementAmount));
+        _playerController.Trail.DisableTrail();
+        //start slidingJumpBuffer timer
     }
 
     private void BasicSlide()
