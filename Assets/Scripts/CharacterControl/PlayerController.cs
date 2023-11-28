@@ -51,13 +51,17 @@ public class PlayerController : MonoBehaviour
     public float GravityFallIncrementAmount { get { return _parameters.gravityFallIncrementAmount; } }
     public float GravityFallIncrementTime { get { return _parameters.gravityFallIncrementTime; } }
     public float PlayerFallTimeMax { get { return _parameters.playerFallTimeMax; } }
-    public float SlideSpeed { get { return _parameters.slideSpeed; } }
+    public float SlideNormalSpeed { get { return _parameters.slideNormalSpeed; } }
     public float MaxMoveSpeed { get { return _parameters.maxMoveSpeed; } }
     public float SlideSpeedDecrementAmount { get { return _parameters.slideSpeedDecrementAmount; } }
     public float SlopeSlideMaxSpeed { get { return _parameters.slopeSlideMaxSpeed; } }
     public float SlopeSlideSpeedIncrementAmount { get { return _parameters.slopeSlideIncrementAmount; } }
     public float SlidingJumpVerticalForce { get { return _parameters.slidingJumpVerticalForce; } }
     public float SlidingJumpHorizontalForce { get { return _parameters.slidingJumpHorizontalForce; } }
+    public float SlidingJumpContinualMultiplier { get { return _parameters.slidingJumpContinualMultiplier; } }
+    public float SlidingJumpFallMultiplier { get { return _parameters.slidingJumpFallMultiplier; } }
+    public float SlidingJumpHalfPointTime { get { return _parameters.slidingJumpHalfPointTime; } }
+    public float SlidingJumpBaseFallGravity { get { return _parameters.slidingJumpBaseFallGravity; } }
     public bool IsDownSlope { get { return _isDownSlope; } }
     
     
@@ -72,6 +76,7 @@ public class PlayerController : MonoBehaviour
     public bool InitialJump { get { return _initialJump;} set { _initialJump = value; } }
     public bool JumpWasPressedLastFrame { get { return _jumpWasPressedLastFrame;} set { _jumpWasPressedLastFrame = value; } }
     public bool SlideWasPressedLastFrame { get { return _slideWasPressedLastFrame;} set { _slideWasPressedLastFrame = value; } }
+    
 
 
     private void Awake()
@@ -148,11 +153,9 @@ public class PlayerController : MonoBehaviour
  
         _stateMachine.FixedUpdate();
         
-        _cameraRelativeMovement = ConvertToCameraSpace(_playerMoveInput); 
-        
         PlayerSlope();
         
-        _rigidbody.AddForce(_cameraRelativeMovement, ForceMode.Force);
+        _rigidbody.AddForce(_playerMoveInput, ForceMode.Force);
 
     }
 
@@ -214,11 +217,13 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
+        
+        _playerMoveInput = ConvertToCameraSpace(_playerMoveInput);
     }
 
     private void PlayerSlope()
     {
-        Vector3 calculatedPlayerMovement = _cameraRelativeMovement;
+        Vector3 calculatedPlayerMovement = _playerMoveInput;
 
         if (_groundCheck.IsGrounded)
         {
@@ -237,16 +242,16 @@ public class PlayerController : MonoBehaviour
                 _isDownSlope = false;
             }
         }
-        _cameraRelativeMovement = calculatedPlayerMovement;
+        _playerMoveInput = calculatedPlayerMovement;
     }
     
     public void HandleRotation()
     {
         Vector3 positionToLookAt;
 
-        positionToLookAt.x = _cameraRelativeMovement.x;
+        positionToLookAt.x = _playerMoveInput.x;
         positionToLookAt.y = 0f;
-        positionToLookAt.z = _cameraRelativeMovement.z;
+        positionToLookAt.z = _playerMoveInput.z;
 
         Quaternion currentRotation = transform.rotation;
         if (_input.MoveInput.magnitude > ZeroF && positionToLookAt != Vector3.zero)

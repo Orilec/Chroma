@@ -24,7 +24,6 @@ public class SlideState : BaseCharacterState
 
     public override void FixedUpdate()
     {
-        _playerController.HandleRotation();
         _playerController.PlayerMove();
         if (_playerController.IsDownSlope && !_slopeCoroutineStarted)
         {
@@ -32,6 +31,7 @@ public class SlideState : BaseCharacterState
             _playerController.StartCoroutine(_playerController.AccelerationCoroutine);
             _slopeCoroutineStarted = true;
         }
+        _playerController.HandleRotation();
     }
 
     public override void OnExit()
@@ -46,7 +46,7 @@ public class SlideState : BaseCharacterState
 
     private void BasicSlide()
     {
-        _playerController.CurrentSpeed = _playerController.SlideSpeed;
+        _playerController.CurrentSpeed = _playerController.SlideNormalSpeed;
     }
     
     void OnSlide()

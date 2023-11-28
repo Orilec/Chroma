@@ -28,7 +28,7 @@ public class CharaParameters : ScriptableObject
     public float jumpBufferTime = 0.3f;
     
     [Header("Slide Parameters")] 
-    public float slideSpeed = 200f;
+    public float slideNormalSpeed = 200f;
     public float slideTime = 1f;
     public float slideSpeedDecrementAmount = 2f;
     public float slopeSlideMaxSpeed = 200f;
@@ -37,7 +37,10 @@ public class CharaParameters : ScriptableObject
     [Header("Sliding Jump Parameters")] 
     public float slidingJumpVerticalForce = 1500f;
     public float slidingJumpHorizontalForce = 1500f;
-    public float continualSlidingJumpForceMultiplier = 0.8f;
+    public float slidingJumpContinualMultiplier = 0.8f;
+    public float slidingJumpBaseFallGravity = -0.01f;
+    public float slidingJumpFallMultiplier = 8f;
     public float slidingJumpTime = 0.4f;
+    [Range(0.0f, 1.0f)]public float slidingJumpHalfPointTime = 0.5f;
     public float slidingJumpBufferTime = 0.8f;
 }
