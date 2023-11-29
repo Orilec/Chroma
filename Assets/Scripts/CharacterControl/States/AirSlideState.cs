@@ -7,6 +7,12 @@ public class AirSlideState : BaseCharacterState
     private float _forceMultiplier = 1f;
     public AirSlideState(PlayerController player, InputReader input) : base(player, input) { }
     
+    public override void OnEnter()
+    {
+        _playerController.CanAirSlide = false;
+        _playerController.Trail.EnableAirSlideTrail();
+    }
+    
     public override void FixedUpdate()
     {
         AirSlide();
@@ -20,6 +26,7 @@ public class AirSlideState : BaseCharacterState
 
     public override void OnExit()
     {
+        _playerController.Trail.DisableAirSlideTrail();
         _forceMultiplier = 1f;
     }
 }

@@ -12,6 +12,8 @@ public class CharaParameters : ScriptableObject
     public float speedIncrement = 2f;
     public float rotationSpeed = 15f;
     public float maxSlopeAngle = 48f;
+    public float distanceFromWall = 1.5f;
+    [Range(0.0f, 1.0f)]public float facingWallSpeedMultiplier = 0.1f;
     
     [Header("Gravity")]
     public float gravityFallMin = -10f;

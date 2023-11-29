@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent;
-    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope;
+    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide;
 
     private Vector3 _movement;
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement;
@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
     public bool InitialJump { get { return _initialJump;} set { _initialJump = value; } }
     public bool JumpWasPressedLastFrame { get { return _jumpWasPressedLastFrame;} set { _jumpWasPressedLastFrame = value; } }
     public bool SlideWasPressedLastFrame { get { return _slideWasPressedLastFrame;} set { _slideWasPressedLastFrame = value; } }
+    public bool CanAirSlide { get { return _canAirSlide;} set { _canAirSlide = value; } }
     
 
 
@@ -226,8 +227,21 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
-        
+        _playerMoveInput = PlayerFacingWall();
         _playerMoveInput = ConvertToCameraSpace(_playerMoveInput);
+    }
+
+    private Vector3 PlayerFacingWall()
+    {
+        var calculatedPlayerMovement = _playerMoveInput;
+        
+        _isFacingWall = Physics.Raycast(transform.position, transform.forward, _parameters.distanceFromWall);
+        if (_isFacingWall)
+        {
+            calculatedPlayerMovement = new Vector3(_playerMoveInput.x * _parameters.facingWallSpeedMultiplier, _playerMoveInput.y, _playerMoveInput.z * _parameters.facingWallSpeedMultiplier);
+        }
+        return calculatedPlayerMovement;
+
     }
 
     private void PlayerSlope()

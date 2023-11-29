@@ -66,9 +66,11 @@ public class FallState : BaseCharacterState
     }
     void OnSlide()
     {
-        if (_input.SlideIsPressed)
+        if (_input.SlideIsPressed && _playerController.CanAirSlide && !_playerController.SlideWasPressedLastFrame)
         {
             _playerController.AirSlideTimer.Start();
         }
+
+        _playerController.SlideWasPressedLastFrame = _input.SlideIsPressed;
     }
 }

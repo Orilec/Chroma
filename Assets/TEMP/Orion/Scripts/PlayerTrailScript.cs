@@ -5,21 +5,31 @@ using UnityEngine;
 
 public class PlayerTrailScript : MonoBehaviour
 {
-    private TrailRenderer _trail;
+    [SerializeField] private TrailRenderer _slideTrail;
+    [SerializeField]private TrailRenderer _airSlideTrail;
 
     private void Awake()
     {
-        _trail = GetComponent<TrailRenderer>();
-        DisableTrail();
+        DisableSlideTrail();
+        DisableAirSlideTrail();
     }
 
-    public void EnableTrail()
+    public void EnableSlideTrail()
     {
-        _trail.emitting = true;
+        _slideTrail.emitting = true;
     }
     
-    public void DisableTrail()
+    public void DisableSlideTrail()
     {
-        _trail.emitting = false;
+        _slideTrail.emitting = false;
+    }
+    public void EnableAirSlideTrail()
+    {
+        _airSlideTrail.emitting = true;
+    }
+    
+    public void DisableAirSlideTrail()
+    {
+        _airSlideTrail.emitting = false;
     }
 }
