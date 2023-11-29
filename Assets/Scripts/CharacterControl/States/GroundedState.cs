@@ -40,7 +40,8 @@ public class GroundedState : BaseCharacterState
     public override void OnExit()
     {
         _playerController.CoyoteTimeCounter.Start();
-        
+        _playerController.CanAirSlide = true;
+
     }
 
     void OnSlide()

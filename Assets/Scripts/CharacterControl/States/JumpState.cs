@@ -13,19 +13,20 @@ public class JumpState : BaseCharacterState
     
     public override void OnEnter()
     {
-        
+
     }
 
     public override void Update()
     {
         OnJump();
+        OnSlide();
     }
     
     public override void FixedUpdate()
     {
-        _playerController.HandleRotation();
         HandleJump();
         _playerController.PlayerMove();
+        _playerController.HandleRotation();
     }
     
     public override void OnExit()
@@ -56,5 +57,14 @@ public class JumpState : BaseCharacterState
         {
             _playerController.JumpTimer.Stop();
         }
+    }
+    
+    void OnSlide()
+    {
+        if (_input.SlideIsPressed && _playerController.CanAirSlide && !_playerController.SlideWasPressedLastFrame)
+        {
+            _playerController.AirSlideTimer.Start();
+        }
+        _playerController.SlideWasPressedLastFrame = _input.SlideIsPressed;
     }
 }

@@ -12,7 +12,7 @@ public class SlideState : BaseCharacterState
     public override void OnEnter()
     {
         BasicSlide();
-        _playerController.Trail.EnableTrail();
+        _playerController.Trail.EnableSlideTrail();
     }
     
 
@@ -39,10 +39,12 @@ public class SlideState : BaseCharacterState
         _playerController.StopCoroutine(_playerController.AccelerationCoroutine);
         _slopeCoroutineStarted = false;
         _playerController.StartCoroutine(_playerController.Decelerate(_playerController.MaxMoveSpeed, _playerController.SlideSpeedDecrementAmount));
-        _playerController.Trail.DisableTrail();
+        _playerController.Trail.DisableSlideTrail();
         _playerController.CoyoteTimeCounter.Start();
         _playerController.SlidingJumpBufferCounter.Start();
+        _playerController.CanAirSlide = true;
     }
+    
 
     private void BasicSlide()
     {
