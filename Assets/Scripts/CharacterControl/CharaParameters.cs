@@ -12,6 +12,8 @@ public class CharaParameters : ScriptableObject
     public float speedIncrement = 2f;
     public float rotationSpeed = 15f;
     public float maxSlopeAngle = 48f;
+    public float distanceFromWall = 1.5f;
+    [Range(0.0f, 1.0f)]public float facingWallSpeedMultiplier = 0.1f;
     
     [Header("Gravity")]
     public float gravityFallMin = -10f;
@@ -43,4 +45,9 @@ public class CharaParameters : ScriptableObject
     public float slidingJumpTime = 0.4f;
     [Range(0.0f, 1.0f)]public float slidingJumpHalfPointTime = 0.5f;
     public float slidingJumpBufferTime = 0.8f;
+
+    [Header("Sliding Jump Parameters")] 
+    public float airSlideTime = 0.2f;
+    public float airSlideBaseForce = 1000f;
+    public float airSlideForceMultiplier = 0.9f;
 }

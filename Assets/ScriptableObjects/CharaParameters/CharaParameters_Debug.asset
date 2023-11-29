@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a5734ee82f16c84c83e7fc9372df5f8, type: 3}
-  m_Name: CharaParameters_001
+  m_Name: CharaParameters_Debug
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 80
-  baseMoveSpeed: 50
+  maxMoveSpeed: 150
+  baseMoveSpeed: 110
   speedIncrement: 2
-  rotationSpeed: 15
-  maxSlopeAngle: 47
+  rotationSpeed: 60
+  maxSlopeAngle: 48
   gravityFallMin: -10
   gravityFallMax: -150
   gravityFallIncrementAmount: -20
   gravityFallIncrementTime: 0.05
   playerFallTimeMax: 0.3
-  initialJumpForce: 1500
-  continualJumpForceMultiplier: 0.1
-  jumpTime: 0.3
+  initialJumpForce: 1800
+  continualJumpForceMultiplier: 0.05
+  jumpTime: 0.2
   coyoteTime: 100
   jumpBufferTime: 0.3
   slideNormalSpeed: 200
-  slideTime: 1.2
+  slideTime: 1
   slideSpeedDecrementAmount: 2
-  slopeSlideMaxSpeed: 320
+  slopeSlideMaxSpeed: 200
   slopeSlideIncrementAmount: 2
-  slidingJumpVerticalForce: 400
-  slidingJumpHorizontalForce: 200
-  slidingJumpContinualMultiplier: 0.8
+  slidingJumpVerticalForce: 500
+  slidingJumpHorizontalForce: 400
+  slidingJumpContinualMultiplier: 0.6
   slidingJumpBaseFallGravity: -0.01
   slidingJumpFallMultiplier: 1.1
   slidingJumpTime: 0.5
@@ -42,4 +42,4 @@ MonoBehaviour:
   slidingJumpBufferTime: 0.8
   airSlideTime: 0.2
   airSlideBaseForce: 1000
-  airSlideForceMultiplier: 0.8
+  airSlideForceMultiplier: 0.9

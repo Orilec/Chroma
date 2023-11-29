@@ -10,7 +10,9 @@ public class SlidingJumpState : BaseCharacterState
 
     public override void OnEnter()
     {
+        _playerController.CanAirSlide = false;
         _fallMultiplier = _playerController.SlidingJumpBaseFallGravity;
+        _playerController.CoyoteTimeCounter.Stop();
     }
 
     public override void FixedUpdate()
