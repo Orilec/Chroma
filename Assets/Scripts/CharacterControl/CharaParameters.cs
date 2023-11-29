@@ -29,6 +29,8 @@ public class CharaParameters : ScriptableObject
     public float coyoteTime = 0.15f;
     public float jumpBufferTime = 0.3f;
     
+
+    
     [Header("Slide Parameters")] 
     public float slideNormalSpeed = 200f;
     public float slideTime = 1f;
