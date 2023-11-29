@@ -12,6 +12,8 @@ public class InputReader : MonoBehaviour
     
     public bool JumpIsPressed { get; private set; } = false; 
     
+    public bool SlideIsPressed { get; private set; } = false; 
+    
     
     CharacterInputActions _input;
     
@@ -30,6 +32,9 @@ public class InputReader : MonoBehaviour
 
         _input.CharacterControls.Jump.started += SetJump;
         _input.CharacterControls.Jump.canceled += SetJump;
+
+        _input.CharacterControls.Slide.started += SetSlide;
+        _input.CharacterControls.Slide.canceled += SetSlide;
     }
     private void OnDisable()
     {
@@ -44,6 +49,9 @@ public class InputReader : MonoBehaviour
 
         _input.CharacterControls.Jump.started -= SetJump;
         _input.CharacterControls.Jump.canceled -= SetJump;
+        
+        _input.CharacterControls.Slide.started -= SetSlide;
+        _input.CharacterControls.Slide.canceled -= SetSlide;
     }
     
     private void SetMove(InputAction.CallbackContext ctx)
@@ -60,5 +68,9 @@ public class InputReader : MonoBehaviour
     private void SetJump(InputAction.CallbackContext ctx)
     {
         JumpIsPressed = ctx.started;
+    } 
+    private void SetSlide(InputAction.CallbackContext ctx)
+    {
+        SlideIsPressed = ctx.started;
     }
 }

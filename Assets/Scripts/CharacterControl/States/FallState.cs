@@ -19,9 +19,9 @@ public class FallState : BaseCharacterState
     
     public override void FixedUpdate()
     {
-        _playerController.HandleRotation();
         HandleFallGravity();
         _playerController.PlayerMove();
+        _playerController.HandleRotation();
     }
 
     public override void OnExit()

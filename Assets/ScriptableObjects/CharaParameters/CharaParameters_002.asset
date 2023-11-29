@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5734ee82f16c84c83e7fc9372df5f8, type: 3}
+  m_Name: CharaParameters_002
+  m_EditorClassIdentifier: 
+  maxMoveSpeed: 150
+  baseMoveSpeed: 110
+  speedIncrement: 2
+  rotationSpeed: 60
+  maxSlopeAngle: 48
+  gravityFallMin: -10
+  gravityFallMax: -150
+  gravityFallIncrementAmount: -20
+  gravityFallIncrementTime: 0.05
+  playerFallTimeMax: 0.3
+  initialJumpForce: 1800
+  continualJumpForceMultiplier: 0.05
+  jumpTime: 0.2
+  coyoteTime: 100
+  jumpBufferTime: 0.3
+  slideNormalSpeed: 200
+  slideTime: 1
+  slideSpeedDecrementAmount: 2
+  slopeSlideMaxSpeed: 200
+  slopeSlideIncrementAmount: 2
+  slidingJumpVerticalForce: 500
+  slidingJumpHorizontalForce: 400
+  slidingJumpContinualMultiplier: 0.6
+  slidingJumpBaseFallGravity: -0.01
+  slidingJumpFallMultiplier: 1.1
+  slidingJumpTime: 0.5
+  slidingJumpHalfPointTime: 0.5
+  slidingJumpBufferTime: 0.8

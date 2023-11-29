@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GroundedState : BaseCharacterState
@@ -17,15 +18,16 @@ public class GroundedState : BaseCharacterState
     
     public override void Update()
     {
+        OnSlide();
         OnJump();
     }
 
 
     public override void FixedUpdate()
     {
-        _playerController.HandleRotation();
         HandleGravity();
         _playerController.PlayerMove();
+        _playerController.HandleRotation();
     }
     
     private void HandleGravity()
@@ -40,14 +42,29 @@ public class GroundedState : BaseCharacterState
         _playerController.CoyoteTimeCounter.Start();
         
     }
+
+    void OnSlide()
+    {
+        if (_input.SlideIsPressed && !_playerController.SlideWasPressedLastFrame)
+        {
+            _playerController.SlideTimer.Start();
+        }
+        _playerController.SlideWasPressedLastFrame = _input.SlideIsPressed;
+    }
     
     void OnJump()
     {
         if (_input.JumpIsPressed && !_playerController.JumpWasPressedLastFrame || _playerController.JumpBufferTimeCounter.IsRunning)
         {
-            _playerController.JumpTimer.Start();
+            if (_playerController.SlidingJumpBufferCounter.IsRunning)
+            {
+                _playerController.SlidingJumpTimer.Start();
+            }
+            else
+            {
+                _playerController.JumpTimer.Start();
+            }
         }
-        
         _playerController.JumpWasPressedLastFrame = _input.JumpIsPressed;
     }
 }

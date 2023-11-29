@@ -11,24 +11,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GroundCheck _groundCheck;
     [SerializeField] private CinemachineFreeLook _freeLookCam;
     [SerializeField] private InputReader _input;
+    [SerializeField] private PlayerTrailScript _trail;
 
     [SerializeField] private CharaParameters _parameters;
     
     public event UnityAction LeavingGround = delegate {  };
     public event UnityAction EnteringGround = delegate {  };
+
+    public IEnumerator AccelerationCoroutine;
     
     private Transform mainCam;
 
     private const float ZeroF = 0f;
-    private float _velocity, _jumpVelocity, _currentMoveSpeed, _gravityFallCurrent;
-    private bool _initialJump, _jumpWasPressedLastFrame;
+    private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent;
+    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope;
 
     private Vector3 _movement;
-    private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement ;
+    private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement;
 
     private List<Timer> _timers;
     private CountdownTimer _jumpTimer;
-    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter;
+    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter;
 
     private StateMachine _stateMachine;
     
@@ -37,23 +40,43 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
     public CountdownTimer CoyoteTimeCounter { get { return _coyoteTimeCounter; } }
     public CountdownTimer JumpBufferTimeCounter { get { return _jumpBufferTimeCounter; } }
+    public CountdownTimer SlideTimer { get { return _slideTimer; } }
+    public CountdownTimer SlidingJumpTimer { get { return _slidingJumpTimer; } }
+    public CountdownTimer SlidingJumpBufferCounter { get { return _slidingJumpBufferCounter; } }
     public GroundCheck GroundCheck{ get { return _groundCheck; } }
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
+    public PlayerTrailScript Trail{ get { return _trail; } }
     public float GravityFallMin { get { return _parameters.gravityFallMin; } }
     public float GravityFallMax { get { return _parameters.gravityFallMax; } }
     public float GravityFallIncrementAmount { get { return _parameters.gravityFallIncrementAmount; } }
     public float GravityFallIncrementTime { get { return _parameters.gravityFallIncrementTime; } }
     public float PlayerFallTimeMax { get { return _parameters.playerFallTimeMax; } }
+    public float SlideNormalSpeed { get { return _parameters.slideNormalSpeed; } }
+    public float MaxMoveSpeed { get { return _parameters.maxMoveSpeed; } }
+    public float SlideSpeedDecrementAmount { get { return _parameters.slideSpeedDecrementAmount; } }
+    public float SlopeSlideMaxSpeed { get { return _parameters.slopeSlideMaxSpeed; } }
+    public float SlopeSlideSpeedIncrementAmount { get { return _parameters.slopeSlideIncrementAmount; } }
+    public float SlidingJumpVerticalForce { get { return _parameters.slidingJumpVerticalForce; } }
+    public float SlidingJumpHorizontalForce { get { return _parameters.slidingJumpHorizontalForce; } }
+    public float SlidingJumpContinualMultiplier { get { return _parameters.slidingJumpContinualMultiplier; } }
+    public float SlidingJumpFallMultiplier { get { return _parameters.slidingJumpFallMultiplier; } }
+    public float SlidingJumpHalfPointTime { get { return _parameters.slidingJumpHalfPointTime; } }
+    public float SlidingJumpBaseFallGravity { get { return _parameters.slidingJumpBaseFallGravity; } }
+    public bool IsDownSlope { get { return _isDownSlope; } }
     
     
     
     //GETTERS + SETTERS
     public float PlayerMoveInputY { get { return _playerMoveInput.y; } set { _playerMoveInput.y = value; } }
+    public Vector3 PlayerMoveInput { get { return _playerMoveInput; } set { _playerMoveInput = value; } }
+    public float CurrentSpeed { get { return _currentSpeed; } set { _currentSpeed = value; } }
     public float InitialJumpForce { get { return _parameters.initialJumpForce; }set { _parameters.initialJumpForce = value; } }
     public float ContinualJumpForceMultiplier { get { return _parameters.continualJumpForceMultiplier; }set { _parameters.continualJumpForceMultiplier = value; } }
     public float GravityFallCurrent { get { return _gravityFallCurrent; }set { _gravityFallCurrent = value; } }
     public bool InitialJump { get { return _initialJump;} set { _initialJump = value; } }
     public bool JumpWasPressedLastFrame { get { return _jumpWasPressedLastFrame;} set { _jumpWasPressedLastFrame = value; } }
+    public bool SlideWasPressedLastFrame { get { return _slideWasPressedLastFrame;} set { _slideWasPressedLastFrame = value; } }
+    
 
 
     private void Awake()
@@ -64,12 +87,14 @@ public class PlayerController : MonoBehaviour
         
         //Timers setup
         _jumpTimer = new CountdownTimer(_parameters.jumpTime);
-
         _playerFallTimer = new CountdownTimer(_parameters.playerFallTimeMax);
         _coyoteTimeCounter = new CountdownTimer(_parameters.coyoteTime);
         _jumpBufferTimeCounter = new CountdownTimer(_parameters.jumpBufferTime);
+        _slideTimer = new CountdownTimer(_parameters.slideTime);
+        _slidingJumpTimer = new CountdownTimer(_parameters.slidingJumpTime);
+        _slidingJumpBufferCounter = new CountdownTimer(_parameters.slidingJumpBufferTime);
         
-        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter };
+        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter };
         
         //_jumpTimer.OnTimerStop += () => ;
         
@@ -80,16 +105,26 @@ public class PlayerController : MonoBehaviour
         var groundedState = new GroundedState(this, _input);
         var jumpState = new JumpState(this, _input);
         var fallState = new FallState(this, _input);
+        var slideState = new SlideState(this, _input);
+        var slidingJumpState = new SlidingJumpState(this, _input);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         At(groundedState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_groundCheck.IsGrounded));
+        At(groundedState, slideState, new FuncPredicate(()=> _slideTimer.IsRunning));
+        At(groundedState,slidingJumpState, new FuncPredicate(()=> _slidingJumpTimer.IsRunning));
         
         At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning));
         
         At(fallState, groundedState, new FuncPredicate(()=> _groundCheck.IsGrounded));
         At(fallState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         
+        At(slideState, groundedState, new FuncPredicate(()=> !_slideTimer.IsRunning && _groundCheck.IsGrounded && !_isDownSlope));
+        At(slideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded));
+        At(slideState, slidingJumpState, new FuncPredicate(()=>  _slidingJumpTimer.IsRunning));
+        
+        At(slidingJumpState, groundedState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && _groundCheck.IsGrounded));
+        At(slidingJumpState, fallState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && !_groundCheck.IsGrounded));
         
         // Set Initial State
         _stateMachine.SetState(groundedState);
@@ -97,25 +132,14 @@ public class PlayerController : MonoBehaviour
         //Set events
         _groundCheck.LeavingGround += OnLeavingGround;
         _groundCheck.EnteringGround += OnEnteringGround;
+        
+        //Set coroutines
+        AccelerationCoroutine = Accelerate(0f, 0f);
     }
 
     void At(IState from, IState to, IPredicate condition) => _stateMachine.AddTransition(from, to, condition);
     void Any(IState to, IPredicate condition) => _stateMachine.AddAnyTransition(to, condition);
-
-    private void Start()
-    {
-
-    }
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-    }
+    
     
     private void Update()
     {
@@ -129,9 +153,9 @@ public class PlayerController : MonoBehaviour
  
         _stateMachine.FixedUpdate();
         
-        _appliedMovement = _cameraRelativeMovement;
+        PlayerSlope();
         
-        _rigidbody.AddForce(_appliedMovement, ForceMode.Force);
+        _rigidbody.AddForce(_playerMoveInput, ForceMode.Force);
 
     }
 
@@ -178,28 +202,28 @@ public class PlayerController : MonoBehaviour
     {
         if (_input.MoveInput.magnitude > ZeroF )
         {
-            if (_currentMoveSpeed < _parameters.maxMoveSpeed)
+            if (_currentSpeed < _parameters.maxMoveSpeed)
             {
-                _currentMoveSpeed += _parameters.speedIncrement;
+                _currentSpeed += _parameters.speedIncrement;
             }
         }
         else
         {
-            _currentMoveSpeed = _parameters.baseMoveSpeed;
+            _currentSpeed = _parameters.baseMoveSpeed;
         }
         
-        Vector3 calculatedPlayerMovement = (new Vector3(_playerMoveInput.x * _currentMoveSpeed * _rigidbody.mass,
+        Vector3 calculatedPlayerMovement = (new Vector3(_playerMoveInput.x * _currentSpeed * _rigidbody.mass,
             _playerMoveInput.y * _rigidbody.mass,
-            _playerMoveInput.z * _currentMoveSpeed * _rigidbody.mass));
+            _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
-        _cameraRelativeMovement = ConvertToCameraSpace(_playerMoveInput);
-        PlayerSlope();
+        
+        _playerMoveInput = ConvertToCameraSpace(_playerMoveInput);
     }
 
-    public void PlayerSlope()
+    private void PlayerSlope()
     {
-        Vector3 calculatedPlayerMovement = _cameraRelativeMovement;
+        Vector3 calculatedPlayerMovement = _playerMoveInput;
 
         if (_groundCheck.IsGrounded)
         {
@@ -209,19 +233,25 @@ public class PlayerController : MonoBehaviour
             {
                 Quaternion slopeAngleRotation = Quaternion.FromToRotation(_rigidbody.transform.up, localGroundCheckHitNormal);
                 calculatedPlayerMovement = slopeAngleRotation *  calculatedPlayerMovement;
+
+                float relativeSlopeAngle = Vector3.Angle(calculatedPlayerMovement, _rigidbody.transform.up) - 90f;
+                _isDownSlope = relativeSlopeAngle > 0;
+            }
+            else
+            {
+                _isDownSlope = false;
             }
         }
-        _cameraRelativeMovement = calculatedPlayerMovement;
-        
+        _playerMoveInput = calculatedPlayerMovement;
     }
     
     public void HandleRotation()
     {
         Vector3 positionToLookAt;
 
-        positionToLookAt.x = _cameraRelativeMovement.x;
+        positionToLookAt.x = _playerMoveInput.x;
         positionToLookAt.y = 0f;
-        positionToLookAt.z = _cameraRelativeMovement.z;
+        positionToLookAt.z = _playerMoveInput.z;
 
         Quaternion currentRotation = transform.rotation;
         if (_input.MoveInput.magnitude > ZeroF && positionToLookAt != Vector3.zero)
@@ -229,6 +259,24 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(positionToLookAt);
             transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _parameters.rotationSpeed * Time.deltaTime);
         }
-
     }
+    
+    public IEnumerator Decelerate(float desiredSpeed, float decrementAmount)
+    {
+        while (_currentSpeed > desiredSpeed)
+        {
+            _currentSpeed -= decrementAmount;
+            yield return new WaitForEndOfFrame();
+        }
+    }   
+    
+    public IEnumerator Accelerate(float desiredSpeed, float incrementAmount)
+    {
+        while (_currentSpeed < desiredSpeed)
+        {
+            _currentSpeed += incrementAmount;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    
 }
