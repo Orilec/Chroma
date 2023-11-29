@@ -17,6 +17,8 @@ MonoBehaviour:
   speedIncrement: 2
   rotationSpeed: 60
   maxSlopeAngle: 48
+  distanceFromWall: 1.5
+  facingWallSpeedMultiplier: 0.1
   gravityFallMin: -5
   gravityFallMax: -150
   gravityFallIncrementAmount: -20
@@ -32,11 +34,14 @@ MonoBehaviour:
   slideSpeedDecrementAmount: 2
   slopeSlideMaxSpeed: 200
   slopeSlideIncrementAmount: 2
-  slidingJumpVerticalForce: 350
-  slidingJumpHorizontalForce: 200
+  slidingJumpVerticalForce: 1300
+  slidingJumpHorizontalForce: 400
   slidingJumpContinualMultiplier: 0.6
   slidingJumpBaseFallGravity: -0.01
   slidingJumpFallMultiplier: 1.2
   slidingJumpTime: 0.1
   slidingJumpHalfPointTime: 0.5
   slidingJumpBufferTime: 0.8
+  airSlideTime: 0.2
+  airSlideBaseForce: 1000
+  airSlideForceMultiplier: 0.9
