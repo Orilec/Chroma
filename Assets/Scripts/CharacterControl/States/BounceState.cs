@@ -13,7 +13,7 @@ public class BounceState : BaseCharacterState
     
     public override void OnEnter()
     {
-
+        _playerController.CanAirSlide = true;
     }
 
     public override void Update()
