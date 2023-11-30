@@ -62,6 +62,15 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThrowSidekick"",
+                    ""type"": ""Button"",
+                    ""id"": ""5949ca71-120a-4a26-bc8d-c625701ce99e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -196,6 +205,28 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""action"": ""Slide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""515b564d-4906-45f9-888c-a275e1b54bfe"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""ThrowSidekick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4e88303-8b1b-4d17-9178-04c106d09b16"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ThrowSidekick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -219,6 +250,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_CharacterControls_Look = m_CharacterControls.FindAction("Look", throwIfNotFound: true);
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControls_Slide = m_CharacterControls.FindAction("Slide", throwIfNotFound: true);
+        m_CharacterControls_ThrowSidekick = m_CharacterControls.FindAction("ThrowSidekick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +316,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private readonly InputAction m_CharacterControls_Look;
     private readonly InputAction m_CharacterControls_Jump;
     private readonly InputAction m_CharacterControls_Slide;
+    private readonly InputAction m_CharacterControls_ThrowSidekick;
     public struct CharacterControlsActions
     {
         private @CharacterInputActions m_Wrapper;
@@ -292,6 +325,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         public InputAction @Look => m_Wrapper.m_CharacterControls_Look;
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
         public InputAction @Slide => m_Wrapper.m_CharacterControls_Slide;
+        public InputAction @ThrowSidekick => m_Wrapper.m_CharacterControls_ThrowSidekick;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -313,6 +347,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @Slide.started += instance.OnSlide;
             @Slide.performed += instance.OnSlide;
             @Slide.canceled += instance.OnSlide;
+            @ThrowSidekick.started += instance.OnThrowSidekick;
+            @ThrowSidekick.performed += instance.OnThrowSidekick;
+            @ThrowSidekick.canceled += instance.OnThrowSidekick;
         }
 
         private void UnregisterCallbacks(ICharacterControlsActions instance)
@@ -329,6 +366,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @Slide.started -= instance.OnSlide;
             @Slide.performed -= instance.OnSlide;
             @Slide.canceled -= instance.OnSlide;
+            @ThrowSidekick.started -= instance.OnThrowSidekick;
+            @ThrowSidekick.performed -= instance.OnThrowSidekick;
+            @ThrowSidekick.canceled -= instance.OnThrowSidekick;
         }
 
         public void RemoveCallbacks(ICharacterControlsActions instance)
@@ -370,5 +410,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+        void OnThrowSidekick(InputAction.CallbackContext context);
     }
 }
