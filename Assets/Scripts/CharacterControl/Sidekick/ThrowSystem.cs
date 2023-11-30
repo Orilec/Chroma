@@ -10,6 +10,7 @@ public class ThrowSystem : MonoBehaviour
     [SerializeField] private Transform _sidekickThrowOrigin;
     [SerializeField] private InputReader _input;
     
+
     private Target _lockedTarget, _lastActivatedTarget;
     private bool _sidekickIsAvailable = true, _throwWasPressedLastFrame, _isRetrieving;
 

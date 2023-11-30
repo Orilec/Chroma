@@ -12,6 +12,10 @@ public class TargetSystem : MonoBehaviour
     public Target storedTarget;
     private Transform _cachedTarget;
     
+   [Range(0.0f, 0.5f)] public float VerticalAimTreshold;
+   [Range(0.0f, 0.5f)] public float HorizontalAimTreshold;
+
+    
     [SerializeField] float _screenDistanceWeight = 1;
     [SerializeField] float _positionDistanceWeight = 8;
 
