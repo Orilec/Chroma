@@ -10177,6 +10177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a129e3d3ea324408ca58b87560971c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _throwSystem: {fileID: 5758006215298041094}
+  _timeBeforeRetrieve: 0.2
 --- !u!1 &8876452766727804059
 GameObject:
   m_ObjectHideFlags: 0
@@ -10226,6 +10228,8 @@ MonoBehaviour:
   minReachDistance: 70
   currentTarget: {fileID: 0}
   storedTarget: {fileID: 0}
+  VerticalAimTreshold: 0.1
+  HorizontalAimTreshold: 0.25
   _screenDistanceWeight: 1
   _positionDistanceWeight: 8
 --- !u!1001 &143167066932474809
