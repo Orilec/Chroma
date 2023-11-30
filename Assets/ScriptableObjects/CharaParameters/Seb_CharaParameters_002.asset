@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5734ee82f16c84c83e7fc9372df5f8, type: 3}
   m_Name: Seb_CharaParameters_002
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 140
+  maxMoveSpeed: 130
   baseMoveSpeed: 100
   speedIncrement: 2
   rotationSpeed: 60
@@ -23,7 +23,7 @@ MonoBehaviour:
   gravityFallMax: -200
   gravityFallIncrementAmount: -5
   gravityFallIncrementTime: 0.5
-  playerFallTimeMax: 0.3
+  playerFallTimeMax: 0.2
   initialJumpForce: 1400
   continualJumpForceMultiplier: 0.05
   jumpTime: 0.2
@@ -42,6 +42,6 @@ MonoBehaviour:
   slidingJumpTime: 0.3
   slidingJumpHalfPointTime: 0.5
   slidingJumpBufferTime: 0.8
-  airSlideTime: 0.1
-  airSlideBaseForce: 650
+  airSlideTime: 0.12
+  airSlideBaseForce: 700
   airSlideForceMultiplier: 0.9
