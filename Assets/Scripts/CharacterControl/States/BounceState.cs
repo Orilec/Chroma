@@ -30,7 +30,8 @@ public class BounceState : BaseCharacterState
     
     public override void OnExit()
     {
-        _playerController.PlayerFallTimer.Start();
+        _playerController.BounceFallTimer.Reset(_playerController.CurrentBouncePlatform.BounceMomentum); 
+        _playerController.BounceFallTimer.Start();
         _playerController.CoyoteTimeCounter.Stop();
         _playerController.InitialJump = false;
     }
