@@ -9,6 +9,11 @@ public class BouncePlatform : MonoBehaviour
     public float BounceTime { get { return _parameters.bounceTime; } }
     public float BounceInitialForce { get { return _parameters.bounceInitialForce; } }
     public float BounceContinualForceMultiplier { get { return _parameters.bounceContinualForceMultiplier; } }
+    public float BounceMomentum { get { return _parameters.bounceMomentum; } }
+    public float BounceGravityFallMin { get { return _parameters.bounceGravityFallMin; } }
+    public float BounceGravityFallMax { get { return _parameters.bounceGravityFallMax; } }
+    public float BounceGravityFallIncrementAmount { get { return _parameters.bounceGravityFallIncrementAmount; } }
+    public float BounceGravityFallIncrementTime { get { return _parameters.bounceGravityFallIncrementTime; } }
 
     private void OnCollisionEnter(Collision other)
     {
