@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     
     private Transform mainCam;
 
+    private BouncePlatform _bouncePlatform;
+
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent;
     private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide;
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private List<Timer> _timers;
     private CountdownTimer _jumpTimer;
-    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer;
+    private CountdownTimer _playerFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer;
 
     private StateMachine _stateMachine;
     
@@ -44,9 +46,11 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer SlidingJumpTimer { get { return _slidingJumpTimer; } }
     public CountdownTimer SlidingJumpBufferCounter { get { return _slidingJumpBufferCounter; } }
     public CountdownTimer AirSlideTimer { get { return _airSlideTimer; } }
+    public CountdownTimer BounceTimer { get { return _bounceTimer; } }
     public GroundCheck GroundCheck{ get { return _groundCheck; } }
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
     public PlayerTrailScript Trail{ get { return _trail; } }
+    public BouncePlatform CurrentBouncePlatform{ get { return _bouncePlatform; } }
     public float GravityFallMin { get { return _parameters.gravityFallMin; } }
     public float GravityFallMax { get { return _parameters.gravityFallMax; } }
     public float GravityFallIncrementAmount { get { return _parameters.gravityFallIncrementAmount; } }
@@ -98,8 +102,9 @@ public class PlayerController : MonoBehaviour
         _slidingJumpTimer = new CountdownTimer(_parameters.slidingJumpTime);
         _slidingJumpBufferCounter = new CountdownTimer(_parameters.slidingJumpBufferTime);
         _airSlideTimer = new CountdownTimer(_parameters.airSlideTime);
+        _bounceTimer = new CountdownTimer(_parameters.jumpTime);
         
-        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer };
+        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer };
         
         //_jumpTimer.OnTimerStop += () => ;
         
@@ -113,6 +118,7 @@ public class PlayerController : MonoBehaviour
         var slideState = new SlideState(this, _input);
         var slidingJumpState = new SlidingJumpState(this, _input);
         var airSlideState = new AirSlideState(this, _input);
+        var bounceState = new BounceState(this, _input);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
@@ -126,6 +132,7 @@ public class PlayerController : MonoBehaviour
         At(fallState, groundedState, new FuncPredicate(()=> _groundCheck.IsGrounded));
         At(fallState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         At(fallState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
+        At(fallState, bounceState, new FuncPredicate(()=> _bounceTimer.IsRunning));
         
         At(slideState, groundedState, new FuncPredicate(()=> !_slideTimer.IsRunning && _groundCheck.IsGrounded && !_isDownSlope));
         At(slideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded));
@@ -135,6 +142,8 @@ public class PlayerController : MonoBehaviour
         At(slidingJumpState, fallState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && !_groundCheck.IsGrounded));
         
         At(airSlideState, fallState, new FuncPredicate(()=> !_airSlideTimer.IsRunning));
+        
+        At(bounceState, fallState, new FuncPredicate(()=> !_bounceTimer.IsRunning));
         
         // Set Initial State
         _stateMachine.SetState(groundedState);
@@ -236,7 +245,7 @@ public class PlayerController : MonoBehaviour
         var calculatedPlayerMovement = _playerMoveInput;
         
         _isFacingWall = Physics.Raycast(transform.position, transform.forward, _parameters.distanceFromWall);
-        if (_isFacingWall)
+        if (_isFacingWall && !_groundCheck.IsGrounded)
         {
             calculatedPlayerMovement = new Vector3(_playerMoveInput.x * _parameters.facingWallSpeedMultiplier, _playerMoveInput.y, _playerMoveInput.z * _parameters.facingWallSpeedMultiplier);
         }
@@ -301,5 +310,11 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-    
+
+    public void UpdateBouncePlatform(BouncePlatform newPlatform)
+    {
+        _bounceTimer.Reset(newPlatform.BounceTime);
+        _bouncePlatform = newPlatform;
+        _bounceTimer.Start();
+    }
 }
