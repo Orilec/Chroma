@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-[SerializeField] private TargetSystem _targetSystem;
+    [SerializeField] private TargetSystem _targetSystem;
     [SerializeField] private Transform _playerTransform;
     // [SerializeField] private ColorableObject _colorable;
     private MeshRenderer _renderer;
@@ -25,10 +25,17 @@ public class Target : MonoBehaviour
 
     private void Update()
     {
+        transform.LookAt(Camera.main.transform.position, Camera.main.transform.right);
+        transform.rotation *= Quaternion.Euler(90,0,0);
+        
         Vector3 playerToObject = transform.position - _playerTransform.position;
         bool isBehindPlayer = Vector3.Dot(_mainCam.transform.forward, playerToObject) < 0;
+        
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
+        bool onScreen = screenPoint.x > 0 + _targetSystem.HorizontalAimTreshold && screenPoint.x < 1 - _targetSystem.HorizontalAimTreshold && screenPoint.y > 0 + _targetSystem.VerticalAimTreshold && screenPoint.y < 1 -_targetSystem.VerticalAimTreshold ;
+        
 
-        if (Vector3.Distance(transform.position, _playerTransform.position) < _targetSystem.minReachDistance && !isBehindPlayer && !isReachable && !isActivated)
+        if (Vector3.Distance(transform.position, _playerTransform.position) < _targetSystem.minReachDistance && !isBehindPlayer && !isReachable && !isActivated && onScreen)
         {
             isReachable = true;
             if (_targetSystem.visibleTargets.Contains(this))
@@ -37,7 +44,7 @@ public class Target : MonoBehaviour
             }
         }
 
-        if ((Vector3.Distance(transform.position, _playerTransform.position) > _targetSystem.minReachDistance || isBehindPlayer) && isReachable)
+        if ((Vector3.Distance(transform.position, _playerTransform.position) > _targetSystem.minReachDistance || isBehindPlayer || !onScreen) && isReachable )
         {
             isReachable = false;
             if (_targetSystem.reachableTargets.Contains(this))
