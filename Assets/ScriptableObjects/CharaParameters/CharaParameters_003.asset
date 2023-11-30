@@ -23,7 +23,7 @@ MonoBehaviour:
   gravityFallMax: -200
   gravityFallIncrementAmount: -5
   gravityFallIncrementTime: 0.5
-  playerFallTimeMax: 0.3
+  playerFallTimeMax: 0.2
   initialJumpForce: 1450
   continualJumpForceMultiplier: 0.05
   jumpTime: 0.2
@@ -42,6 +42,6 @@ MonoBehaviour:
   slidingJumpTime: 0.2
   slidingJumpHalfPointTime: 0.5
   slidingJumpBufferTime: 0.8
-  airSlideTime: 0.1
-  airSlideBaseForce: 600
+  airSlideTime: 0.12
+  airSlideBaseForce: 700
   airSlideForceMultiplier: 0.9
