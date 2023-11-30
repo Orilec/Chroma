@@ -9,11 +9,13 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField] private Transform _targetTransform;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private PlayerController _playerController;
-    [SerializeField] private float  _desiredSmoothTime;
-    [SerializeField] private float _followSpeed;
+    [SerializeField] private float  _movementSmoothTime = 0.1f;
+    [SerializeField] private float  _verticalSmoothTime = 0.25f;
+    private float _followSpeed = 1000;
     [SerializeField] private float _targetYOffset;
 
     private float _targetY;
+    private float _currentSmoothTime;
     private Vector3 _vel;
     private Camera _mainCam;
 
@@ -34,25 +36,27 @@ public class CameraBehaviour : MonoBehaviour
     private void OnLeavingGround()
     {
         _targetY = _playerTransform.position.y;
+        _currentSmoothTime = _verticalSmoothTime;
     }
     
     
     void LateUpdate()
     {
         Vector3 viewPos = _mainCam.WorldToViewportPoint(_playerTransform.position + _playerController.Rigidbody.velocity * Time.deltaTime);
-    
-        // behavior 2
+        
         if (viewPos.y > 0.95f || viewPos.y < 0.3f)
         {
             _targetY = _playerTransform.position.y;
+            _currentSmoothTime = _movementSmoothTime;
         }
         if(_playerController.GroundCheck.IsGrounded)
         {
             _targetY = _playerTransform.position.y;
+            _currentSmoothTime = _movementSmoothTime;
         }
 
         _targetTransform.rotation = _playerTransform.rotation;
         var desiredPosition = new Vector3(_playerTransform.position.x, _targetY + _targetYOffset, _playerTransform.position.z);
-        _targetTransform.position = Vector3.SmoothDamp(_targetTransform.position, desiredPosition, ref _vel, _desiredSmoothTime, _followSpeed);
+        _targetTransform.position = Vector3.SmoothDamp(_targetTransform.position, desiredPosition, ref _vel, _currentSmoothTime, _followSpeed);
     }
 }
