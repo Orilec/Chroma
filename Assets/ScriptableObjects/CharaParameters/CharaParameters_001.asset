@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5734ee82f16c84c83e7fc9372df5f8, type: 3}
   m_Name: CharaParameters_001
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 80
-  baseMoveSpeed: 50
+  maxMoveSpeed: 200
+  baseMoveSpeed: 150
   speedIncrement: 2
   rotationSpeed: 15
   maxSlopeAngle: 47
@@ -24,6 +24,8 @@ MonoBehaviour:
   gravityFallIncrementAmount: -20
   gravityFallIncrementTime: 0.05
   playerFallTimeMax: 0.3
+  miasmaTimeBeforeDeath: 5
+  miasmaSpeed: 20
   initialJumpForce: 1500
   continualJumpForceMultiplier: 0.1
   jumpTime: 0.3
