@@ -71,6 +71,15 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RecenterCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""903919ce-911e-46cd-89a8-aecce1f5d80a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -220,11 +229,33 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""d4e88303-8b1b-4d17-9178-04c106d09b16"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""ThrowSidekick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a95dd0a-414d-4840-969b-35aad16f1e63"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""RecenterCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcabdb86-8513-4a3d-bec7-349430bd59d3"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RecenterCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -251,6 +282,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControls_Slide = m_CharacterControls.FindAction("Slide", throwIfNotFound: true);
         m_CharacterControls_ThrowSidekick = m_CharacterControls.FindAction("ThrowSidekick", throwIfNotFound: true);
+        m_CharacterControls_RecenterCamera = m_CharacterControls.FindAction("RecenterCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +349,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private readonly InputAction m_CharacterControls_Jump;
     private readonly InputAction m_CharacterControls_Slide;
     private readonly InputAction m_CharacterControls_ThrowSidekick;
+    private readonly InputAction m_CharacterControls_RecenterCamera;
     public struct CharacterControlsActions
     {
         private @CharacterInputActions m_Wrapper;
@@ -326,6 +359,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
         public InputAction @Slide => m_Wrapper.m_CharacterControls_Slide;
         public InputAction @ThrowSidekick => m_Wrapper.m_CharacterControls_ThrowSidekick;
+        public InputAction @RecenterCamera => m_Wrapper.m_CharacterControls_RecenterCamera;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +384,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @ThrowSidekick.started += instance.OnThrowSidekick;
             @ThrowSidekick.performed += instance.OnThrowSidekick;
             @ThrowSidekick.canceled += instance.OnThrowSidekick;
+            @RecenterCamera.started += instance.OnRecenterCamera;
+            @RecenterCamera.performed += instance.OnRecenterCamera;
+            @RecenterCamera.canceled += instance.OnRecenterCamera;
         }
 
         private void UnregisterCallbacks(ICharacterControlsActions instance)
@@ -369,6 +406,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @ThrowSidekick.started -= instance.OnThrowSidekick;
             @ThrowSidekick.performed -= instance.OnThrowSidekick;
             @ThrowSidekick.canceled -= instance.OnThrowSidekick;
+            @RecenterCamera.started -= instance.OnRecenterCamera;
+            @RecenterCamera.performed -= instance.OnRecenterCamera;
+            @RecenterCamera.canceled -= instance.OnRecenterCamera;
         }
 
         public void RemoveCallbacks(ICharacterControlsActions instance)
@@ -411,5 +451,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         void OnJump(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
         void OnThrowSidekick(InputAction.CallbackContext context);
+        void OnRecenterCamera(InputAction.CallbackContext context);
     }
 }
