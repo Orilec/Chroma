@@ -25,23 +25,34 @@ public class GroundedState : BaseCharacterState
 
     public override void FixedUpdate()
     {
-        HandleGravity();
+        HandleMovement();
         _playerController.PlayerMove();
         _playerController.HandleRotation();
     }
     
-    private void HandleGravity()
+    private void HandleMovement()
     {
          var gravity = 0f;
         _playerController.GravityFallCurrent = _playerController.GravityFallMin;
         _playerController.PlayerMoveInputY = gravity;
+        
+        if (_input.MoveInput.magnitude > 0f )
+        {
+            if (_playerController.CurrentSpeed < _playerController.MaxMoveSpeed)
+            {
+                _playerController.CurrentSpeed += _playerController.MoveSpeedIncrement;
+            }
+        }
+        else
+        {
+            _playerController.CurrentSpeed = _playerController.BaseMoveSpeed;
+        }
     }
 
     public override void OnExit()
     {
         _playerController.CoyoteTimeCounter.Start();
         _playerController.CanAirSlide = true;
-
     }
 
     void OnSlide()

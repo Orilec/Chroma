@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private List<Timer> _timers;
     private CountdownTimer _jumpTimer;
-    private CountdownTimer _playerFallTimer, _bounceFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer;
+    private CountdownTimer _playerFallTimer, _bounceFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _miasmaTimer;
 
     private StateMachine _stateMachine;
     
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer AirSlideTimer { get { return _airSlideTimer; } }
     public CountdownTimer BounceTimer { get { return _bounceTimer; } }
     public CountdownTimer BounceFallTimer { get { return _bounceFallTimer; } }
+    public CountdownTimer MiasmaTimer { get { return _miasmaTimer; } }
     public GroundCheck GroundCheck{ get { return _groundCheck; } }
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
     public PlayerTrailScript Trail{ get { return _trail; } }
@@ -59,6 +60,9 @@ public class PlayerController : MonoBehaviour
     public float PlayerFallTimeMax { get { return _parameters.playerFallTimeMax; } }
     public float SlideNormalSpeed { get { return _parameters.slideNormalSpeed; } }
     public float MaxMoveSpeed { get { return _parameters.maxMoveSpeed; } }
+    public float BaseMoveSpeed { get { return _parameters.baseMoveSpeed; } }
+    public float MoveSpeedIncrement { get { return _parameters.speedIncrement; } }
+    public float MiasmaSpeed { get { return _parameters.miasmaSpeed; } }
     public float SlideSpeedDecrementAmount { get { return _parameters.slideSpeedDecrementAmount; } }
     public float SlopeSlideMaxSpeed { get { return _parameters.slopeSlideMaxSpeed; } }
     public float SlopeSlideSpeedIncrementAmount { get { return _parameters.slopeSlideIncrementAmount; } }
@@ -105,8 +109,9 @@ public class PlayerController : MonoBehaviour
         _airSlideTimer = new CountdownTimer(_parameters.airSlideTime);
         _bounceTimer = new CountdownTimer(_parameters.jumpTime);
         _bounceFallTimer = new CountdownTimer(0f);
+        _miasmaTimer = new CountdownTimer(_parameters.miasmaTimeBeforeDeath);
         
-        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _bounceFallTimer };
+        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _bounceFallTimer, _miasmaTimer };
         
         //_jumpTimer.OnTimerStop += () => ;
         
@@ -122,6 +127,7 @@ public class PlayerController : MonoBehaviour
         var airSlideState = new AirSlideState(this, _input);
         var bounceState = new BounceState(this, _input);
         var bounceFallState = new BounceFallState(this, _input);
+        var miasmaState = new MiasmaState(this, _input);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
@@ -150,8 +156,11 @@ public class PlayerController : MonoBehaviour
         At(slidingJumpState, fallState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && !_groundCheck.IsGrounded));
         
         At(airSlideState, fallState, new FuncPredicate(()=> !_airSlideTimer.IsRunning));
-        
+
         At(bounceState, bounceFallState, new FuncPredicate(()=> !_bounceTimer.IsRunning));
+        
+        Any(miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
+        At(miasmaState, groundedState, new FuncPredicate(()=> !_miasmaTimer.IsRunning));
         
         // Set Initial State
         _stateMachine.SetState(groundedState);
@@ -227,17 +236,7 @@ public class PlayerController : MonoBehaviour
     
     public void PlayerMove()
     {
-        if (_input.MoveInput.magnitude > ZeroF )
-        {
-            if (_currentSpeed < _parameters.maxMoveSpeed)
-            {
-                _currentSpeed += _parameters.speedIncrement;
-            }
-        }
-        else
-        {
-            _currentSpeed = _parameters.baseMoveSpeed;
-        }
+
         
         Vector3 calculatedPlayerMovement = (new Vector3(_playerMoveInput.x * _currentSpeed * _rigidbody.mass,
             _playerMoveInput.y * _rigidbody.mass,
