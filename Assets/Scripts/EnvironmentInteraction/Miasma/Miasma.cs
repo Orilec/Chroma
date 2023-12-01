@@ -10,6 +10,7 @@ public class Miasma : MonoBehaviour
         var player = other.GetComponent<PlayerController>();
         if (player != null)
         {
+            player.IsInMiasma = true;
             player.MiasmaTimer.Start();
         }
     }
@@ -18,7 +19,10 @@ public class Miasma : MonoBehaviour
         var player = other.GetComponent<PlayerController>();
         if (player != null)
         {
+            player.IsInMiasma = false;
             player.MiasmaTimer.Stop();
         }
     }
+
+
 }
