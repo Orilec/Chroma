@@ -21,8 +21,11 @@ public class CharaParameters : ScriptableObject
     public float gravityFallIncrementAmount = -20.0f;
     public float gravityFallIncrementTime = 0.05f;
     public float playerFallTimeMax = 0.3f;
-    
 
+    [Header("Miasma Parameters")] 
+    public float miasmaTimeBeforeDeath = 5f;
+    public float miasmaSpeed = 20f;
+    
     [Header("Jump Parameters")] 
     public float initialJumpForce = 1500f;
     public float continualJumpForceMultiplier = 0.1f;

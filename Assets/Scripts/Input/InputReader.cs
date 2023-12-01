@@ -14,6 +14,7 @@ public class InputReader : MonoBehaviour
     
     public bool SlideIsPressed { get; private set; } = false; 
     public bool ThrowIsPressed { get; private set; } = false; 
+    public bool RecenterCameraIsPressed { get; private set; } = false; 
     
     
     CharacterInputActions _input;
@@ -39,6 +40,9 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.ThrowSidekick.started += SetThrow;
         _input.CharacterControls.ThrowSidekick.canceled += SetThrow;
+
+        _input.CharacterControls.RecenterCamera.started += SetRecenter;
+        _input.CharacterControls.RecenterCamera.canceled += SetRecenter;
     }
     private void OnDisable()
     {
@@ -59,6 +63,9 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.ThrowSidekick.started -= SetThrow;
         _input.CharacterControls.ThrowSidekick.canceled -= SetThrow;
+        
+        _input.CharacterControls.RecenterCamera.started -= SetRecenter;
+        _input.CharacterControls.RecenterCamera.canceled -= SetRecenter;
     }
     
     private void SetMove(InputAction.CallbackContext ctx)
@@ -83,5 +90,10 @@ public class InputReader : MonoBehaviour
     private void SetThrow(InputAction.CallbackContext ctx)
     {
         ThrowIsPressed = ctx.started;
+    }
+    
+    private void SetRecenter(InputAction.CallbackContext ctx)
+    {
+        RecenterCameraIsPressed = ctx.started;
     }
 }

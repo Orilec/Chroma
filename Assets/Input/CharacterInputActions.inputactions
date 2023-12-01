@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RecenterCamera",
+                    "type": "Button",
+                    "id": "903919ce-911e-46cd-89a8-aecce1f5d80a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -198,11 +207,33 @@
                 {
                     "name": "",
                     "id": "d4e88303-8b1b-4d17-9178-04c106d09b16",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ThrowSidekick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a95dd0a-414d-4840-969b-35aad16f1e63",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "RecenterCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcabdb86-8513-4a3d-bec7-349430bd59d3",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "RecenterCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
