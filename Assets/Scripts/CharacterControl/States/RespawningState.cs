@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.PlayerLoop;
+
+public class RespawningState : BaseCharacterState
+{
+    public RespawningState(PlayerController player, InputReader input) : base(player, input) { }
+
+    public override void OnEnter()
+    {
+        _playerController.IsRespawning = true;
+        _playerController.PlayerEventsPublisher.Respawn.Invoke();
+    }
+
+    public override void FixedUpdate()
+    {
+        if (_playerController.IsFadingToBlack)
+        {
+            _playerController.Rigidbody.position = _playerController.CurrentRespawnPoint.transform.position;
+        }
+    }
+}

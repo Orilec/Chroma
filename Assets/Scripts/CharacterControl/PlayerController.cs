@@ -12,8 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CinemachineFreeLook _freeLookCam;
     [SerializeField] private InputReader _input;
     [SerializeField] private PlayerTrailScript _trail;
+    [SerializeField] private RespawnPoint _respawnPoint;
 
     [SerializeField] private CharaParameters _parameters;
+    [SerializeField] private UIEventsPublisher _uiEventsPublisher;
+    [SerializeField] private PlayerStateEventsPublisher _playerEventsPublisher;
     
     public event UnityAction LeavingGround = delegate {  };
     public event UnityAction EnteringGround = delegate {  };
@@ -26,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent;
-    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide;
+    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma;
 
     private Vector3 _movement;
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement;
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
     private StateMachine _stateMachine;
     
     //SIMPLE GETTERS
+    public UIEventsPublisher UIEventsPublisher { get { return _uiEventsPublisher; } }
+    public PlayerStateEventsPublisher PlayerEventsPublisher { get { return _playerEventsPublisher; } }
     public CountdownTimer JumpTimer { get { return _jumpTimer; } }
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
     public CountdownTimer CoyoteTimeCounter { get { return _coyoteTimeCounter; } }
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
     public PlayerTrailScript Trail{ get { return _trail; } }
     public BouncePlatform CurrentBouncePlatform{ get { return _bouncePlatform; } }
+    public RespawnPoint CurrentRespawnPoint{ get { return _respawnPoint; } }
     public float GravityFallMin { get { return _parameters.gravityFallMin; } }
     public float GravityFallMax { get { return _parameters.gravityFallMax; } }
     public float GravityFallIncrementAmount { get { return _parameters.gravityFallIncrementAmount; } }
@@ -89,6 +95,9 @@ public class PlayerController : MonoBehaviour
     public bool JumpWasPressedLastFrame { get { return _jumpWasPressedLastFrame;} set { _jumpWasPressedLastFrame = value; } }
     public bool SlideWasPressedLastFrame { get { return _slideWasPressedLastFrame;} set { _slideWasPressedLastFrame = value; } }
     public bool CanAirSlide { get { return _canAirSlide;} set { _canAirSlide = value; } }
+    public bool IsRespawning { get { return _isRespawning;} set { _isRespawning = value; } }
+    public bool IsFadingToBlack { get { return _isFadingToBlack;} set { _isFadingToBlack = value; } }
+    public bool IsInMiasma { get { return _isInMiasma;} set { _isInMiasma = value; } }
     
 
 
@@ -128,12 +137,14 @@ public class PlayerController : MonoBehaviour
         var bounceState = new BounceState(this, _input);
         var bounceFallState = new BounceFallState(this, _input);
         var miasmaState = new MiasmaState(this, _input);
+        var respawningState = new RespawningState(this, _input);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         At(groundedState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_groundCheck.IsGrounded));
         At(groundedState, slideState, new FuncPredicate(()=> _slideTimer.IsRunning));
         At(groundedState,slidingJumpState, new FuncPredicate(()=> _slidingJumpTimer.IsRunning));
+        At(groundedState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning));
         At(jumpState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
@@ -142,15 +153,18 @@ public class PlayerController : MonoBehaviour
         At(fallState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         At(fallState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
         At(fallState, bounceState, new FuncPredicate(()=> _bounceTimer.IsRunning));
+        At(fallState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         At(bounceFallState, groundedState, new FuncPredicate(()=> _groundCheck.IsGrounded));
         At(bounceFallState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
         At(bounceFallState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
         At(bounceFallState, bounceState, new FuncPredicate(()=> _bounceTimer.IsRunning));
+        At(bounceFallState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         At(slideState, groundedState, new FuncPredicate(()=> !_slideTimer.IsRunning && _groundCheck.IsGrounded && !_isDownSlope));
         At(slideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded));
         At(slideState, slidingJumpState, new FuncPredicate(()=>  _slidingJumpTimer.IsRunning));
+        At(slideState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         At(slidingJumpState, groundedState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && _groundCheck.IsGrounded));
         At(slidingJumpState, fallState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && !_groundCheck.IsGrounded));
@@ -159,8 +173,10 @@ public class PlayerController : MonoBehaviour
 
         At(bounceState, bounceFallState, new FuncPredicate(()=> !_bounceTimer.IsRunning));
         
-        Any(miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
-        At(miasmaState, groundedState, new FuncPredicate(()=> !_miasmaTimer.IsRunning));
+        At(miasmaState, groundedState, new FuncPredicate(()=> !_miasmaTimer.IsRunning && !_isInMiasma));
+        At(miasmaState, respawningState, new FuncPredicate(()=> !_miasmaTimer.IsRunning && _isInMiasma ));
+        
+        At(respawningState, fallState, new FuncPredicate(()=> !_isRespawning));
         
         // Set Initial State
         _stateMachine.SetState(groundedState);
@@ -168,6 +184,9 @@ public class PlayerController : MonoBehaviour
         //Set events
         _groundCheck.LeavingGround += OnLeavingGround;
         _groundCheck.EnteringGround += OnEnteringGround;
+        
+        _uiEventsPublisher.FadeToBlackFinished.AddListener(StopRespawning);
+        _uiEventsPublisher.FirstFadeFinished.AddListener(Fading);
         
         //Set coroutines
         AccelerationCoroutine = Accelerate(0f, 0f);
@@ -211,6 +230,16 @@ public class PlayerController : MonoBehaviour
     private void OnEnteringGround()
     {
         EnteringGround.Invoke();
+    }
+
+    private void StopRespawning()
+    {
+        IsRespawning = false;
+        _isFadingToBlack = false;
+    }
+    private void Fading()
+    {
+        _isFadingToBlack = true;
     }
     
     private Vector3 ConvertToCameraSpace(Vector3 vectorToRotate)

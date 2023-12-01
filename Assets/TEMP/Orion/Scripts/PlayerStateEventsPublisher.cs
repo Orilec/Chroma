@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 [CreateAssetMenu]
-public class EventPublisher : ScriptableObject
+public class PlayerStateEventsPublisher : ScriptableObject
 {
-    public UnityEvent Event;
+    public UnityEvent Respawn;
 }
