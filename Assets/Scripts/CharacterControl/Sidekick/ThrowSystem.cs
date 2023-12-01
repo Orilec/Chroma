@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,16 +14,12 @@ public class ThrowSystem : MonoBehaviour
 
     private Target _lockedTarget, _lastActivatedTarget;
     private bool _sidekickIsAvailable = true, _throwWasPressedLastFrame, _isRetrieving;
-
+    
     private void Update()
     {
         if (_input.ThrowIsPressed && _sidekickIsAvailable && _targetSystem.currentTarget != null && !_throwWasPressedLastFrame)
         {
             ThrowSidekick();
-        }
-        else if (_input.ThrowIsPressed && !_throwWasPressedLastFrame && !_isRetrieving && !_sidekickIsAvailable)
-        {
-            RetrieveSidekick();
         }
     }
 
@@ -42,7 +39,7 @@ public class ThrowSystem : MonoBehaviour
         _sidekickIsAvailable = false;
     }
 
-    private void RetrieveSidekick()
+    public void RetrieveSidekick()
     {
         if (_lastActivatedTarget != null)
         {
