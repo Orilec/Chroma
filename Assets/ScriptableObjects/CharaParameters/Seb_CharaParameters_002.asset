@@ -24,6 +24,8 @@ MonoBehaviour:
   gravityFallIncrementAmount: -5
   gravityFallIncrementTime: 0.5
   playerFallTimeMax: 0.2
+  miasmaTimeBeforeDeath: 5
+  miasmaSpeed: 20
   initialJumpForce: 1400
   continualJumpForceMultiplier: 0.05
   jumpTime: 0.2
@@ -43,5 +45,5 @@ MonoBehaviour:
   slidingJumpHalfPointTime: 0.5
   slidingJumpBufferTime: 0.8
   airSlideTime: 0.12
-  airSlideBaseForce: 700
+  airSlideBaseForce: 650
   airSlideForceMultiplier: 0.9
