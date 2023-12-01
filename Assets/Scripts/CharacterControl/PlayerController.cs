@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private RespawnPoint _respawnPoint;
 
     [SerializeField] private CharaParameters _parameters;
+    [SerializeField] private UIEventsPublisher _uiEventsPublisher;
+    [SerializeField] private PlayerStateEventsPublisher _playerEventsPublisher;
     
     public event UnityAction LeavingGround = delegate {  };
     public event UnityAction EnteringGround = delegate {  };
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent;
-    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isInMiasma;
+    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma;
 
     private Vector3 _movement;
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement;
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
     private StateMachine _stateMachine;
     
     //SIMPLE GETTERS
+    public UIEventsPublisher UIEventsPublisher { get { return _uiEventsPublisher; } }
+    public PlayerStateEventsPublisher PlayerEventsPublisher { get { return _playerEventsPublisher; } }
     public CountdownTimer JumpTimer { get { return _jumpTimer; } }
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
     public CountdownTimer CoyoteTimeCounter { get { return _coyoteTimeCounter; } }
@@ -92,6 +96,7 @@ public class PlayerController : MonoBehaviour
     public bool SlideWasPressedLastFrame { get { return _slideWasPressedLastFrame;} set { _slideWasPressedLastFrame = value; } }
     public bool CanAirSlide { get { return _canAirSlide;} set { _canAirSlide = value; } }
     public bool IsRespawning { get { return _isRespawning;} set { _isRespawning = value; } }
+    public bool IsFadingToBlack { get { return _isFadingToBlack;} set { _isFadingToBlack = value; } }
     public bool IsInMiasma { get { return _isInMiasma;} set { _isInMiasma = value; } }
     
 
@@ -180,6 +185,9 @@ public class PlayerController : MonoBehaviour
         _groundCheck.LeavingGround += OnLeavingGround;
         _groundCheck.EnteringGround += OnEnteringGround;
         
+        _uiEventsPublisher.FadeToBlackFinished.AddListener(StopRespawning);
+        _uiEventsPublisher.FirstFadeFinished.AddListener(Fading);
+        
         //Set coroutines
         AccelerationCoroutine = Accelerate(0f, 0f);
     }
@@ -222,6 +230,16 @@ public class PlayerController : MonoBehaviour
     private void OnEnteringGround()
     {
         EnteringGround.Invoke();
+    }
+
+    private void StopRespawning()
+    {
+        IsRespawning = false;
+        _isFadingToBlack = false;
+    }
+    private void Fading()
+    {
+        _isFadingToBlack = true;
     }
     
     private Vector3 ConvertToCameraSpace(Vector3 vectorToRotate)

@@ -10,14 +10,14 @@ public class RespawningState : BaseCharacterState
     public override void OnEnter()
     {
         _playerController.IsRespawning = true;
-        _playerController.Rigidbody.position = _playerController.CurrentRespawnPoint.transform.position;
+        _playerController.PlayerEventsPublisher.Respawn.Invoke();
     }
 
     public override void FixedUpdate()
     {
-        if (_playerController.Rigidbody.position == _playerController.CurrentRespawnPoint.transform.position)
+        if (_playerController.IsFadingToBlack)
         {
-            _playerController.IsRespawning = false;
+            _playerController.Rigidbody.position = _playerController.CurrentRespawnPoint.transform.position;
         }
     }
 }
