@@ -14,7 +14,7 @@ public class ColorableGrowingObject : ColorableObject
     private List<Material> growMaterials = new List<Material>();
     private bool fullyGrown;
 
-    public InteractorEvent interactorEvent;
+
 
 
     private void Awake()

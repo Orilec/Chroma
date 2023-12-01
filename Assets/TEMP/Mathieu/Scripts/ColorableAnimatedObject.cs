@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColorableAnimatedObject : ColorableObject
 {
 
-    public InteractorEvent interactorEvent;
+    
     public bool shouldAnimateAfterColoration;
 
 

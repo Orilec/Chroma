@@ -36,9 +36,9 @@ public class InteractorScript : MonoBehaviour
         {
             swapFinished = true;
 
-            if (parent.GetComponent<ColorableGrowingObject>() != null)
+            if (parent.GetComponent<ColorableObject>() != null)
             {
-                parent.GetComponent<ColorableGrowingObject>().interactorEvent.CallInteractor();
+                parent.GetComponent<ColorableObject>().interactorEvent.CallInteractor();
             }
 
 

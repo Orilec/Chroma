@@ -5,6 +5,7 @@ using UnityEngine;
 public class ColorableObject : MonoBehaviour
 {
 
+    public InteractorEvent interactorEvent;
     // Start is called before the first frame update
     void Start()
     {
