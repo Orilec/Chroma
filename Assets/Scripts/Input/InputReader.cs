@@ -15,6 +15,7 @@ public class InputReader : MonoBehaviour
     public bool SlideIsPressed { get; private set; } = false; 
     public bool ThrowIsPressed { get; private set; } = false; 
     public bool RecenterCameraIsPressed { get; private set; } = false; 
+    public bool DisplayNotebook { get; private set; } = false; 
     
     
     CharacterInputActions _input;
@@ -43,6 +44,9 @@ public class InputReader : MonoBehaviour
 
         _input.CharacterControls.RecenterCamera.started += SetRecenter;
         _input.CharacterControls.RecenterCamera.canceled += SetRecenter;
+        
+        _input.CharacterControls.DisplayNotebook.started += SetNotebook;
+        _input.CharacterControls.DisplayNotebook.canceled += SetNotebook;
     }
     private void OnDisable()
     {
@@ -66,6 +70,9 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.RecenterCamera.started -= SetRecenter;
         _input.CharacterControls.RecenterCamera.canceled -= SetRecenter;
+        
+        _input.CharacterControls.DisplayNotebook.started -= SetNotebook;
+        _input.CharacterControls.DisplayNotebook.canceled -= SetNotebook;
     }
     
     private void SetMove(InputAction.CallbackContext ctx)
@@ -95,5 +102,10 @@ public class InputReader : MonoBehaviour
     private void SetRecenter(InputAction.CallbackContext ctx)
     {
         RecenterCameraIsPressed = ctx.started;
+    }
+    
+    private void SetNotebook(InputAction.CallbackContext ctx)
+    {
+        DisplayNotebook = ctx.started;
     }
 }
