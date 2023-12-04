@@ -6,4 +6,6 @@ using UnityEngine.Events;
 public class PlayerStateEventsPublisher : ScriptableObject
 {
     public UnityEvent Respawn;
+    public UnityEvent<int> CardCollected;
+    public UnityEvent<bool> PauseGame;
 }
