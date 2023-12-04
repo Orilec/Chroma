@@ -25,6 +25,7 @@ public class CharaParameters : ScriptableObject
     [Header("Miasma Parameters")] 
     public float miasmaTimeBeforeDeath = 5f;
     public float miasmaSpeed = 20f;
+    public float miasmaGravity = -20f;
     
     [Header("Jump Parameters")] 
     public float initialJumpForce = 1500f;
