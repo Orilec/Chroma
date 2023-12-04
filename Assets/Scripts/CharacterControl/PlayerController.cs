@@ -266,8 +266,6 @@ public class PlayerController : MonoBehaviour
     
     public void PlayerMove()
     {
-
-        
         Vector3 calculatedPlayerMovement = (new Vector3(_playerMoveInput.x * _currentSpeed * _rigidbody.mass,
             _playerMoveInput.y * _rigidbody.mass,
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
@@ -353,5 +351,10 @@ public class PlayerController : MonoBehaviour
         _bounceTimer.Reset(newPlatform.BounceTime);
         _bouncePlatform = newPlatform;
         _bounceTimer.Start();
+    }
+
+    public void GetCollectible(int index)
+    {
+        _playerEventsPublisher.CardCollected.Invoke(index);
     }
 }
