@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     public float SlidingJumpBaseFallGravity { get { return _parameters.slidingJumpBaseFallGravity; } }
     public float AirSlideBaseForce { get { return _parameters.airSlideBaseForce; } }
     public float AirSlideForceMultiplier { get { return _parameters.airSlideForceMultiplier; } }
+    public float MiasmaGravity { get { return _parameters.miasmaGravity; } }
     public bool IsDownSlope { get { return _isDownSlope; } }
     
     
