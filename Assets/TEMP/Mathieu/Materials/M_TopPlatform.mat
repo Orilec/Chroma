@@ -38,15 +38,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoTexture1:
-        m_Texture: {fileID: 2800000, guid: 153fc3fedbdd9c14f9afdc4a8d2ecd4b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 23de85f2e54a42b45b4ae0c053a529a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture2:
-        m_Texture: {fileID: 2800000, guid: 3e1af16776188e94ca5e4c093b295ee4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1b6061aa48e90b1479c7f8c6f81cc087, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture3:
-        m_Texture: {fileID: 2800000, guid: 71c1e138c2a3dc5409578c12760ffbed, type: 3}
+        m_Texture: {fileID: 2800000, guid: 80a4105745aff4f42bf477144195a9ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture4:
@@ -75,7 +75,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blend: 0
+    - _Blend: 1
     - _BlendSlider: 1
     - _Debug: 1
     - _Gloss: 0.5
@@ -88,7 +88,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.21
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     m_Colors:
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 1, g: 1, b: 0, a: 0}
