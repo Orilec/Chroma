@@ -14,11 +14,16 @@ public class RecenterCamera : MonoBehaviour
         _camera = GetComponentInChildren<CinemachineFreeLook>();
     }
 
+    private void Start()
+    {
+        StartCoroutine(Recenter());
+    }
+
     private void Update()
     {
         if (_input.RecenterCameraIsPressed && !_isRecentering)
         {
-            StartCoroutine(Recenter());
+            
         }
     }
 
