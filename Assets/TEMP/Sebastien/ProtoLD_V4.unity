@@ -27786,6 +27786,7 @@ MonoBehaviour:
   _retrieveTrajectoryEmission: {fileID: 2132081223}
   _sidekickThrowOrigin: {fileID: 1724646870}
   _input: {fileID: 988156164}
+  _sidekickGameObject: {fileID: 0}
 --- !u!114 &1724646866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27802,6 +27803,7 @@ MonoBehaviour:
   _groundLayers:
     serializedVersion: 2
     m_Bits: 192
+  _playerEvents: {fileID: 0}
 --- !u!114 &1724646867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27816,10 +27818,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1724646868}
   _groundCheck: {fileID: 1724646866}
-  _freeLookCam: {fileID: 1304871823}
   _input: {fileID: 988156164}
   _trail: {fileID: 1915893378}
-  _respawnPoint: {fileID: 968339702}
+  _respawnSystem: {fileID: 0}
   _parameters: {fileID: 11400000, guid: 2e0e5a38e5edbf14d85d407426489840, type: 2}
   _uiEventsPublisher: {fileID: 11400000, guid: 2596671c86cc5074e8ae4cd6fe276d5b, type: 2}
   _playerEventsPublisher: {fileID: 11400000, guid: 0b1c965cec2032a44a0f011072a4805e,
@@ -34208,6 +34209,7 @@ MonoBehaviour:
   _targetTransform: {fileID: 2043715596}
   _playerTransform: {fileID: 1724646870}
   _playerController: {fileID: 1724646867}
+  _playerEvents: {fileID: 0}
   _movementSmoothTime: 0.1
   _verticalSmoothTime: 0.3
   _targetYOffset: 0.8
