@@ -7,14 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Rock002
+  m_Name: M_RailsModular001
   m_Shader: {fileID: -6465566751694194690, guid: b596cdf599f4b414ca473271917b6cbf,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_InvalidKeywords:
+  - _NORMALMAP
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -25,27 +26,27 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _EmissiveMap:
-        m_Texture: {fileID: 2800000, guid: 74d94a68a1840564ebbc3b6d5ee0b6ba, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HatchingTex:
-        m_Texture: {fileID: 2800000, guid: ae9bb195e0cc82447bf079d26aaa8ec0, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 18560dfcf6d5f3649a34624ec3670210, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0a60ddb31ddb63543962d3f130f95ce6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 20a904cecc827f94fa8168bf45dc0376, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9056aeaf2cbb0c342a140bcec42837d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SmoothnessMap:
-        m_Texture: {fileID: 2800000, guid: b6ef3e49f771c8a4dbd2da3eba596c61, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -62,7 +63,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Blend: 0
+    - _Debug: 0
     - _HasEmissive: 0
+    - _HasEmissiveMap: 0
+    - _HasSmoothnessMap: 0
     - _HatchingSpeed: 3
     - _HatchingStrenght: 0.2
     - _MoveSpeed: 0
@@ -71,11 +76,12 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.21
+    - _SmoothnessSlider: 0
     m_Colors:
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1493085053962996794
+--- !u!114 &1150941612947817534
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
