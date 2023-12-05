@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NotebookManager : MonoBehaviour
 {
-    [SerializeField] private PlayerStateEventsPublisher _playerEvents;
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
     [SerializeField] private InputReader _input;
     private Transform _notebookTransform;
     private bool _isDisplayed, _displayedWasPressedLastFrame;
