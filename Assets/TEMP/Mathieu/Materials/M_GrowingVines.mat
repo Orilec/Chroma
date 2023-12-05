@@ -37,6 +37,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _EmissiveMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _HatchingTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -47,6 +51,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -63,8 +75,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Blend: 0
     - _Clip: 0.958
+    - _Debug: 0
     - _Grow: 0.946
+    - _HasEmissive: 0
+    - _HasSmoothnessMap: 0
     - _HatchingSpeed: 3
     - _HatchingStrength: 0.2
     - _Metallic: 0
@@ -76,6 +92,7 @@ Material:
     - _RadiusCutoff: 0.21
     - _Scale: -0.02
     - _Smoothness: 0
+    - _SmoothnessSlider: 0
     m_Colors:
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
