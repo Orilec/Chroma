@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PauseControl : MonoBehaviour
 {
-    [SerializeField] private PlayerStateEventsPublisher _playerEvents;
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
 
     private void Awake()
     {

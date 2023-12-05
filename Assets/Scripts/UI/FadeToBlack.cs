@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FadeToBlack : MonoBehaviour
 {
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
-    [SerializeField] private PlayerStateEventsPublisher _playerEventsPublisher;
+    [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     [SerializeField] private float respawnFadeSpeed = 5f; 
     [SerializeField] private float respawnBlackScreenTime = 2f; 
     private Image _blackImage;
