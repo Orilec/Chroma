@@ -8,9 +8,7 @@ public class GroundCheck : MonoBehaviour
 {
     [SerializeField] private float _groundDistance = 0.08f;
     [SerializeField] private LayerMask _groundLayers;
-
-    public event UnityAction LeavingGround = delegate {  };
-    public event UnityAction EnteringGround = delegate {  };
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
     
     private bool previousState;
     public bool IsGrounded { get; private set; }
@@ -22,11 +20,11 @@ public class GroundCheck : MonoBehaviour
         IsGrounded = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out GroundCheckHit, _groundDistance, _groundLayers);
         if (IsGrounded == false && IsGrounded != previousState)
         {
-            LeavingGround.Invoke();
+            _playerEvents.LeavingGround.Invoke();
         }
         else if (IsGrounded == true && IsGrounded != previousState)
         {
-            EnteringGround.Invoke();
+            _playerEvents.EnteringGround.Invoke();
         }
     }
 

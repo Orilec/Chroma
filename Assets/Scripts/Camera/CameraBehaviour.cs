@@ -9,6 +9,7 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField] private Transform _targetTransform;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
     [SerializeField] private float  _movementSmoothTime = 0.1f;
     [SerializeField] private float  _verticalSmoothTime = 0.25f;
     private float _followSpeed = 1000;
@@ -21,8 +22,7 @@ public class CameraBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerController.LeavingGround += OnLeavingGround;
-        
+        _playerEvents.LeavingGround.AddListener(OnLeavingGround);
     }
 
     void Start()
