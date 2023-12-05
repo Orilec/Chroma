@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
 [Header("References")] 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private GroundCheck _groundCheck;
-    [SerializeField] private CinemachineFreeLook _freeLookCam;
     [SerializeField] private InputReader _input;
     [SerializeField] private PlayerTrailScript _trail;
-    [SerializeField] private RespawnPoint _respawnPoint;
+    [SerializeField] private RespawnSystem _respawnSystem;
 
     [SerializeField] private CharaParameters _parameters;
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     
-    public event UnityAction LeavingGround = delegate {  };
-
     public IEnumerator AccelerationCoroutine;
     
     private Transform mainCam;
@@ -34,13 +32,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement;
 
     private List<Timer> _timers;
-    private CountdownTimer _jumpTimer;
-    private CountdownTimer _playerFallTimer, _bounceFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _miasmaTimer;
+    private CountdownTimer _jumpTimer, _playerFallTimer, _bounceFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _miasmaTimer, _slideCooldownTimer;
 
     private StateMachine _stateMachine;
     
     //SIMPLE GETTERS
-    public UIEventsPublisher UIEventsPublisher { get { return _uiEventsPublisher; } }
+    public RespawnSystem RespawnSystem{ get { return _respawnSystem; } }
     public PlayerEventsPublisher PlayerEventsPublisher { get { return _playerEventsPublisher; } }
     public CountdownTimer JumpTimer { get { return _jumpTimer; } }
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
@@ -53,11 +50,11 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer BounceTimer { get { return _bounceTimer; } }
     public CountdownTimer BounceFallTimer { get { return _bounceFallTimer; } }
     public CountdownTimer MiasmaTimer { get { return _miasmaTimer; } }
+    public CountdownTimer SlideCooldownTimer { get { return _slideCooldownTimer; } }
     public GroundCheck GroundCheck{ get { return _groundCheck; } }
     public Rigidbody Rigidbody{ get { return _rigidbody; } }
     public PlayerTrailScript Trail{ get { return _trail; } }
     public BouncePlatform CurrentBouncePlatform{ get { return _bouncePlatform; } }
-    public RespawnPoint CurrentRespawnPoint{ get { return _respawnPoint; } }
     public float GravityFallMin { get { return _parameters.gravityFallMin; } }
     public float GravityFallMax { get { return _parameters.gravityFallMax; } }
     public float GravityFallIncrementAmount { get { return _parameters.gravityFallIncrementAmount; } }
@@ -98,6 +95,7 @@ public class PlayerController : MonoBehaviour
     public bool IsRespawning { get { return _isRespawning;} set { _isRespawning = value; } }
     public bool IsFadingToBlack { get { return _isFadingToBlack;} set { _isFadingToBlack = value; } }
     public bool IsInMiasma { get { return _isInMiasma;} set { _isInMiasma = value; } }
+
     
 
 
@@ -119,8 +117,9 @@ public class PlayerController : MonoBehaviour
         _bounceTimer = new CountdownTimer(_parameters.jumpTime);
         _bounceFallTimer = new CountdownTimer(0f);
         _miasmaTimer = new CountdownTimer(_parameters.miasmaTimeBeforeDeath);
+        _slideCooldownTimer = new CountdownTimer(_parameters.slideCooldownTime);
         
-        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _bounceFallTimer, _miasmaTimer };
+        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _bounceFallTimer, _miasmaTimer, _slideCooldownTimer };
         
         //_jumpTimer.OnTimerStop += () => ;
         
@@ -182,7 +181,7 @@ public class PlayerController : MonoBehaviour
         _stateMachine.SetState(groundedState);
         
         //Set events
-        _groundCheck.LeavingGround += OnLeavingGround;
+
         
         _uiEventsPublisher.FadeToBlackFinished.AddListener(StopRespawning);
         _uiEventsPublisher.FirstFadeFinished.AddListener(Fading);
@@ -219,11 +218,6 @@ public class PlayerController : MonoBehaviour
         {
             timer.Tick(Time.deltaTime);
         }
-    }
-
-    private void OnLeavingGround()
-    {
-        LeavingGround.Invoke();
     }
     
 
