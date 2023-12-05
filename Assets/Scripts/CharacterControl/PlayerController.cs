@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     
     public event UnityAction LeavingGround = delegate {  };
-    public event UnityAction EnteringGround = delegate {  };
 
     public IEnumerator AccelerationCoroutine;
     
@@ -184,7 +183,6 @@ public class PlayerController : MonoBehaviour
         
         //Set events
         _groundCheck.LeavingGround += OnLeavingGround;
-        _groundCheck.EnteringGround += OnEnteringGround;
         
         _uiEventsPublisher.FadeToBlackFinished.AddListener(StopRespawning);
         _uiEventsPublisher.FirstFadeFinished.AddListener(Fading);
@@ -228,10 +226,6 @@ public class PlayerController : MonoBehaviour
         LeavingGround.Invoke();
     }
     
-    private void OnEnteringGround()
-    {
-        EnteringGround.Invoke();
-    }
 
     private void StopRespawning()
     {

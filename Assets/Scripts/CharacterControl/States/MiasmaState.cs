@@ -15,10 +15,8 @@ public class MiasmaState : BaseCharacterState
     
     private void HandleMiasma()
     {
-        _playerController.GravityFallCurrent = _playerController.GravityFallMin;
         _playerController.PlayerMoveInputY = _playerController.MiasmaGravity;
         _playerController.CurrentSpeed = _playerController.MiasmaSpeed;
-        
     }
     
 }
