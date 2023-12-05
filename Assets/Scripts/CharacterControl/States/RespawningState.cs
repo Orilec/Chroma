@@ -17,7 +17,7 @@ public class RespawningState : BaseCharacterState
     {
         if (_playerController.IsFadingToBlack)
         {
-            _playerController.Rigidbody.position = _playerController.CurrentRespawnPoint.transform.position;
+            _playerController.Rigidbody.position = _playerController.RespawnSystem.CurrentRespawnPoint.transform.position;
         }
     }
 }

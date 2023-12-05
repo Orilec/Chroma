@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class PlayerEventsPublisher : ScriptableObject
 {
     public UnityEvent Respawn;
+    public UnityEvent LeavingGround;
+    public UnityEvent EnteringGround;
     public UnityEvent<int> CardCollected;
     public UnityEvent<bool> PauseGame;
 }
