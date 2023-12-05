@@ -16,10 +16,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CharaParameters _parameters;
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
-    [SerializeField] private PlayerStateEventsPublisher _playerEventsPublisher;
+    [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     
     public event UnityAction LeavingGround = delegate {  };
-    public event UnityAction EnteringGround = delegate {  };
 
     public IEnumerator AccelerationCoroutine;
     
@@ -42,7 +41,7 @@ public class PlayerController : MonoBehaviour
     
     //SIMPLE GETTERS
     public UIEventsPublisher UIEventsPublisher { get { return _uiEventsPublisher; } }
-    public PlayerStateEventsPublisher PlayerEventsPublisher { get { return _playerEventsPublisher; } }
+    public PlayerEventsPublisher PlayerEventsPublisher { get { return _playerEventsPublisher; } }
     public CountdownTimer JumpTimer { get { return _jumpTimer; } }
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
     public CountdownTimer CoyoteTimeCounter { get { return _coyoteTimeCounter; } }
@@ -174,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
         At(bounceState, bounceFallState, new FuncPredicate(()=> !_bounceTimer.IsRunning));
         
-        At(miasmaState, groundedState, new FuncPredicate(()=> !_miasmaTimer.IsRunning && !_isInMiasma));
+        At(miasmaState, groundedState, new FuncPredicate(()=> !_isInMiasma));
         At(miasmaState, respawningState, new FuncPredicate(()=> !_miasmaTimer.IsRunning && _isInMiasma ));
         
         At(respawningState, fallState, new FuncPredicate(()=> !_isRespawning));
@@ -184,7 +183,6 @@ public class PlayerController : MonoBehaviour
         
         //Set events
         _groundCheck.LeavingGround += OnLeavingGround;
-        _groundCheck.EnteringGround += OnEnteringGround;
         
         _uiEventsPublisher.FadeToBlackFinished.AddListener(StopRespawning);
         _uiEventsPublisher.FirstFadeFinished.AddListener(Fading);
@@ -228,10 +226,6 @@ public class PlayerController : MonoBehaviour
         LeavingGround.Invoke();
     }
     
-    private void OnEnteringGround()
-    {
-        EnteringGround.Invoke();
-    }
 
     private void StopRespawning()
     {

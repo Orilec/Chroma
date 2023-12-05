@@ -6,7 +6,7 @@ using UnityEngine;
 public class CollectibleDisplay : MonoBehaviour
 {
     [SerializeField] private List<CardSlot> _cardSlots;
-    [SerializeField] private PlayerStateEventsPublisher _playerEvents;
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
 
     private void Awake()
     {
