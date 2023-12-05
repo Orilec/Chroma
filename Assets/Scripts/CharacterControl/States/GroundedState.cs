@@ -57,7 +57,7 @@ public class GroundedState : BaseCharacterState
 
     void OnSlide()
     {
-        if (_input.SlideIsPressed && !_playerController.SlideWasPressedLastFrame)
+        if (_input.SlideIsPressed && !_playerController.SlideWasPressedLastFrame && !_playerController.SlideCooldownTimer.IsRunning)
         {
             _playerController.SlideTimer.Start();
         }
