@@ -13,6 +13,8 @@ public class DioramaCameraBehavior : MonoBehaviour
     [Header("Settings")] 
     [SerializeField] float _XspeedMultiplier = 1f;
     [SerializeField] float _YspeedMultiplier = 1f;
+    [SerializeField] private float _minXValue = 0f;
+    [SerializeField] private float _maxXValue = 180f;
            
     bool isRMBPressed;
     bool cameraMovementLock;
@@ -55,7 +57,12 @@ public class DioramaCameraBehavior : MonoBehaviour
         if (cameraMovementLock) return;
         if (isDeviceMouse && !isRMBPressed) return;
         float deviceMultiplier = isDeviceMouse ? Time.fixedDeltaTime : Time.deltaTime;
-        _freeLookCamera.m_XAxis.Value += cameraMovement.x * _XspeedMultiplier * deviceMultiplier;
+
+        
+        
+        var newXValue = _freeLookCamera.m_XAxis.Value + cameraMovement.x * _XspeedMultiplier * deviceMultiplier;
+        _freeLookCamera.m_XAxis.Value = newXValue;
+
         _freeLookCamera.m_YAxis.Value += cameraMovement.y * _YspeedMultiplier * deviceMultiplier;
     }
     
