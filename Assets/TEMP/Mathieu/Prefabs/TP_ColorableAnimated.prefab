@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactorEvent: {fileID: 8299262977116006242}
   shouldAnimateAfterColoration: 0
+  coloredRenderer: {fileID: 2081166315572740451}
 --- !u!1001 &1648211190154753582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,6 +316,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4779420670882112058}
   m_SourcePrefab: {fileID: 100100000, guid: 125be02f40c0aad45b31cbef5842d0c9, type: 3}
+--- !u!137 &2081166315572740451 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -809828480950454423, guid: 125be02f40c0aad45b31cbef5842d0c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7503877642006623754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7269453170412211035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 125be02f40c0aad45b31cbef5842d0c9,

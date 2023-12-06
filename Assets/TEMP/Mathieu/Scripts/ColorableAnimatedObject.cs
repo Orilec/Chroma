@@ -7,6 +7,8 @@ public class ColorableAnimatedObject : ColorableObject
 
     
     public bool shouldAnimateAfterColoration;
+    public bool fillColorAfterColoration;
+    [SerializeField] private Renderer coloredRenderer; 
 
 
     private void Awake()
@@ -37,6 +39,11 @@ public class ColorableAnimatedObject : ColorableObject
         {
             StartAnimation();
         }
+        if (fillColorAfterColoration)
+        {
+            SetMaterialToColored(); 
+        } 
+
     }
 
 
@@ -61,5 +68,16 @@ public class ColorableAnimatedObject : ColorableObject
             StartAnimation(); 
         }
 
+        if (!fillColorAfterColoration)
+        {
+            SetMaterialToColored(); 
+        }
+
+    }
+
+    private void SetMaterialToColored()
+    {
+        coloredRenderer.material.SetInt("_Debug", 1);
+        coloredRenderer.material.SetFloat("_Blend", 1);
     }
 }

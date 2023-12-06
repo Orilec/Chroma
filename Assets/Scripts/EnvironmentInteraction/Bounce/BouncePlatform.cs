@@ -6,6 +6,8 @@ using UnityEngine;
 public class BouncePlatform : MonoBehaviour
 {
     [SerializeField]private BounceParameters _parameters;
+
+    [SerializeField]private Animator _animator;
     public float BounceTime { get { return _parameters.bounceTime; } }
     public float BounceInitialForce { get { return _parameters.bounceInitialForce; } }
     public float BounceContinualForceMultiplier { get { return _parameters.bounceContinualForceMultiplier; } }
@@ -21,6 +23,12 @@ public class BouncePlatform : MonoBehaviour
         if (player != null)
         {
             player.UpdateBouncePlatform(this);
+
+            //Play bounce animation
+            _animator.SetTrigger("isUsed"); 
+            
+            
+            
         }
     }
 }

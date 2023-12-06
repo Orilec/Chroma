@@ -56,11 +56,14 @@ public class Target : MonoBehaviour
         //debug current target
         if (_targetSystem.currentTarget == this && !isActivated)
         {
-            _renderer.material.color = Color.red;
+
+            _renderer.material.SetFloat("_Alpha", 1f); 
+
         }
         else if (_targetSystem.currentTarget != this && !isActivated)
         {
-            _renderer.material.color = Color.gray;
+            _renderer.material.SetFloat("_Alpha", 0f); 
+
         }
     }
 
@@ -100,5 +103,7 @@ public class Target : MonoBehaviour
         {
             _targetSystem.reachableTargets.Remove(this);
         }
+
+        gameObject.SetActive(false);
     }
 }
