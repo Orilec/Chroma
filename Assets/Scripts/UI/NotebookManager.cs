@@ -12,7 +12,7 @@ public class NotebookManager : MonoBehaviour
 
     private void Awake()
     {
-        _notebookTransform = transform.GetChild(0); ;
+        _notebookTransform = transform.GetChild(0); 
     }
 
     private void Update()
