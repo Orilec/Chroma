@@ -9,6 +9,7 @@ public class InteractorScript : MonoBehaviour
     public float radius;
     public float maxRadius;
     public bool isActive = false;
+    public float colorationSpeed = 0.03f; 
 
     private bool swapFinished = false;
     private GameObject parent; 
@@ -29,7 +30,7 @@ public class InteractorScript : MonoBehaviour
     {
         if (radius < maxRadius && isActive && !swapFinished)
         {
-            radius = Mathf.Lerp(radius, maxRadius, 0.03f); 
+            radius = Mathf.Lerp(radius, maxRadius, colorationSpeed); 
         }
 
         if ((maxRadius - radius) <= 0.2f && !swapFinished)
