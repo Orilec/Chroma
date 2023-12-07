@@ -10,7 +10,7 @@ public class ThrowSystem : MonoBehaviour
     [SerializeField] private ParticleSystem _retrieveTrajectoryEmission;
     [SerializeField] private Transform _sidekickThrowOrigin;
     [SerializeField] private InputReader _input;
-    
+    [SerializeField] private GameObject _sidekickGameObject;
 
     private Target _lockedTarget, _lastActivatedTarget;
     private bool _sidekickIsAvailable = true, _throwWasPressedLastFrame, _isRetrieving;
@@ -30,6 +30,7 @@ public class ThrowSystem : MonoBehaviour
 
     private void ThrowSidekick()
     {
+        _sidekickGameObject.SetActive(false);
         _lockedTarget = _targetSystem.currentTarget;
         _lastActivatedTarget = _lockedTarget;
         _correctTrajectoryEmission.transform.position = _lockedTarget.transform.position;
@@ -55,6 +56,7 @@ public class ThrowSystem : MonoBehaviour
     {
         _isRetrieving = false;
         _sidekickIsAvailable = true;
+        _sidekickGameObject.SetActive(true);
     }
 
     private IEnumerator UpdateSidekickRetrievePoint()

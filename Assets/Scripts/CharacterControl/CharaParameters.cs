@@ -37,6 +37,7 @@ public class CharaParameters : ScriptableObject
     [Header("Slide Parameters")] 
     public float slideNormalSpeed = 200f;
     public float slideTime = 1f;
+    public float slideCooldownTime = 1f;
     public float slideSpeedDecrementAmount = 2f;
     public float slopeSlideMaxSpeed = 200f;
     public float slopeSlideIncrementAmount = 2f;

@@ -24,15 +24,17 @@ MonoBehaviour:
   gravityFallIncrementAmount: -5
   gravityFallIncrementTime: 0.5
   playerFallTimeMax: 0.2
-  miasmaTimeBeforeDeath: 3
-  miasmaSpeed: 40
-  initialJumpForce: 1400
+  miasmaTimeBeforeDeath: 2
+  miasmaSpeed: 50
+  miasmaGravity: -40
+  initialJumpForce: 1300
   continualJumpForceMultiplier: 0.05
   jumpTime: 0.2
-  coyoteTime: 100
+  coyoteTime: 0.1
   jumpBufferTime: 0.3
   slideNormalSpeed: 200
   slideTime: 0.5
+  slideCooldownTime: 1
   slideSpeedDecrementAmount: 1
   slopeSlideMaxSpeed: 200
   slopeSlideIncrementAmount: 2

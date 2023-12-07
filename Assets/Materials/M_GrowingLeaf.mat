@@ -62,7 +62,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Blend: 1
+    - _Debug: 0
     - _HasEmissive: 0
+    - _HasEmissiveMap: 0
+    - _HasSmoothnessMap: 0
     - _HatchingSpeed: 3
     - _HatchingStrenght: 0.2
     - _MoveSpeed: 0
@@ -71,6 +75,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.21
+    - _SmoothnessSlider: 0
     m_Colors:
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
