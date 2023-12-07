@@ -9,18 +9,19 @@ public class ColorableObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public virtual void SetObjectActive()
     {
         GetComponentInChildren<InteractorScript>().isActive = true;
+
 
         //if (GetComponent<ColorableGrowingObject>())
         //{
@@ -31,6 +32,19 @@ public class ColorableObject : MonoBehaviour
         //    GetComponentInChildren<Animator>().SetBool("isActive", true);
         //}
 
+    }
+
+    //Draw coloration interactor limits in scene
+    void OnDrawGizmosSelected()
+    {
+        Vector3 interactorPosition = GetComponentInChildren<InteractorScript>().transform.position;
+        float interactorRadius = GetComponentInChildren<InteractorScript>().maxRadius;
+
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = new Color(1,0,0,0.2f);
+        Gizmos.DrawSphere(interactorPosition, interactorRadius);
+        Gizmos.color = new Color(1,0,0,1);
+        Gizmos.DrawWireSphere(interactorPosition, interactorRadius);
     }
 
 }
