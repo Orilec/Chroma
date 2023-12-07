@@ -14,10 +14,15 @@ public class ValidateLevel : MonoBehaviour
     private PlayerController _player;
     private IEnumerator _coroutine;
     private bool _timerStarted, _validated;
+    private Miasma[] miasmaObstacles;
+
+    private ColorableObject _colorableObject;
+    private InteractorEvent _interactorEvent;
+     
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if (player != null && !_validated)
         {
             _player = player;
             _input.DisableCharacterControl();
@@ -27,6 +32,10 @@ public class ValidateLevel : MonoBehaviour
     private void Awake()
     {
         _timer = new CountdownTimer(_holdButtonTime);
+        miasmaObstacles = FindObjectsOfType<Miasma>();
+
+        _colorableObject = GetComponent<ColorableObject>(); 
+        _interactorEvent = GetComponent<InteractorEvent>(); 
     }
 
     private void Update()
@@ -59,12 +68,38 @@ public class ValidateLevel : MonoBehaviour
     {
         _validated = true;
         _newCam.Priority = 15;
+        
+        _colorableObject.SetObjectActive();
     }
 
     private void ReturnToPlayMode()
     {
         _newCam.Priority = 2;
         _input.EnableCharacterControl();
+    }
+
+    private void DestroyMiasma()
+    {
+        for (int i = 0; i < miasmaObstacles.Length; i++)
+        {
+            Destroy(miasmaObstacles[i]);
+        }
+    }
+    
+    private void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
+    {
+        DestroyMiasma();
+        ReturnToPlayMode();
+    }
+    
+    private void OnEnable()
+    {
+        _interactorEvent.OnColorationFinished += InteractorEvent_OnColorationFinished; 
+    }
+
+    private void OnDisable()
+    {
+        _interactorEvent.OnColorationFinished -= InteractorEvent_OnColorationFinished;
     }
 
 }

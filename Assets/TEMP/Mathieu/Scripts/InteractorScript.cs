@@ -33,7 +33,7 @@ public class InteractorScript : MonoBehaviour
             radius = Mathf.Lerp(radius, maxRadius, colorationSpeed); 
         }
 
-        if ((maxRadius - radius) <= 0.2f && !swapFinished)
+        if ((maxRadius - radius) <= (maxRadius/10) && !swapFinished)
         {
             swapFinished = true;
 
