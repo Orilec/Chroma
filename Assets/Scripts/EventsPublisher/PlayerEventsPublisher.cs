@@ -10,4 +10,5 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent EnteringGround;
     public UnityEvent<int> CardCollected;
     public UnityEvent<bool> PauseGame;
+    public UnityEvent<bool> EnterValidateLevel;
 }
