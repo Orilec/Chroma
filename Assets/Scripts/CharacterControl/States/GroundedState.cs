@@ -14,6 +14,7 @@ public class GroundedState : BaseCharacterState
         _playerController.InitialJump = false;
         _playerController.CoyoteTimeCounter.Stop();
         _playerController.JumpTimer.Reset();
+
     }
     
     public override void Update()
@@ -38,6 +39,8 @@ public class GroundedState : BaseCharacterState
         
         if (_input.MoveInput.magnitude > 0f )
         {
+            _playerController.Trail.EnableDustParticles(); 
+
             if (_playerController.CurrentSpeed < _playerController.MaxMoveSpeed)
             {
                 _playerController.CurrentSpeed += _playerController.MoveSpeedIncrement;
@@ -45,6 +48,7 @@ public class GroundedState : BaseCharacterState
         }
         else
         {
+            _playerController.Trail.DisableDustParticles();
             _playerController.CurrentSpeed = _playerController.BaseMoveSpeed;
         }
     }
@@ -53,6 +57,8 @@ public class GroundedState : BaseCharacterState
     {
         _playerController.CoyoteTimeCounter.Start();
         _playerController.CanAirSlide = true;
+
+        _playerController.Trail.DisableDustParticles();
     }
 
     void OnSlide()
