@@ -10,6 +10,7 @@ public class ValidateLevel : MonoBehaviour
     [SerializeField] private InputReader _input;
     [SerializeField] private float _holdButtonTime;
     [SerializeField] private CinemachineVirtualCamera _newCam;
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
     private CountdownTimer _timer;
     private PlayerController _player;
     private IEnumerator _coroutine;
@@ -25,7 +26,17 @@ public class ValidateLevel : MonoBehaviour
         if (player != null && !_validated)
         {
             _player = player;
-            _input.DisableCharacterControl();
+            _playerEvents.EnterValidateLevel.Invoke(true);
+        }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == _player.gameObject)
+        {
+            _playerEvents.EnterValidateLevel.Invoke(false);
+            _timerStarted = false;
+            _timer.Stop();
         }
     }
 
@@ -68,7 +79,7 @@ public class ValidateLevel : MonoBehaviour
     {
         _validated = true;
         _newCam.Priority = 15;
-        
+        _playerEvents.EnterValidateLevel.Invoke(false);
         _colorableObject.SetObjectActive();
     }
 

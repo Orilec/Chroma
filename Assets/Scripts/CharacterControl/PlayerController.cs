@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent;
-    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma;
+    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame;
 
     private Vector3 _movement;
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement;
@@ -177,6 +177,8 @@ public class PlayerController : MonoBehaviour
         
         At(respawningState, fallState, new FuncPredicate(()=> !_isRespawning));
         
+        Any(respawningState, new FuncPredicate(()=> _isRespawning));
+        
         // Set Initial State
         _stateMachine.SetState(groundedState);
         
@@ -198,6 +200,17 @@ public class PlayerController : MonoBehaviour
     {
         _stateMachine.Update();
         HandleTimers();
+        DebugRespawn();
+    }
+
+    private void DebugRespawn()
+    {
+        if (_input.DebugRespawn && ! _respawnWasPressedLastFrame)
+        {
+            _isRespawning = true;
+        }
+
+        _respawnWasPressedLastFrame = _input.DebugRespawn;
     }
 
     private void FixedUpdate()
