@@ -93,7 +93,7 @@ public class ValidateLevel : MonoBehaviour
     {
         for (int i = 0; i < miasmaObstacles.Length; i++)
         {
-            Destroy(miasmaObstacles[i]);
+            Destroy(miasmaObstacles[i].gameObject);
         }
     }
     
