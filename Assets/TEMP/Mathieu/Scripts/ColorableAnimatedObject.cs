@@ -8,7 +8,11 @@ public class ColorableAnimatedObject : ColorableObject
     
     public bool shouldAnimateAfterColoration;
     public bool fillColorAfterColoration;
-    [SerializeField] private Renderer coloredRenderer; 
+    [SerializeField] private Renderer coloredRenderer;
+
+
+    InteractorScript[] interactors;
+    private bool isColored = false;
 
 
     private void Awake()
@@ -19,13 +23,29 @@ public class ColorableAnimatedObject : ColorableObject
     // Start is called before the first frame update
     void Start()
     {
-
+        FindInteractors();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isColored)
+        {
+            for (int i = 0; i < interactors.Length; i++)
+            {
+                float interactorRadius = interactors[i].radius;
+                Vector3 interactorPosition = interactors[i].transform.position;
+                Vector3 objectPosition = transform.position;
+
+
+                bool isPointInRadiusRange = Mathf.Pow((objectPosition.x - interactorPosition.x), 2) + Mathf.Pow((objectPosition.y - interactorPosition.y), 2) + Mathf.Pow((objectPosition.z - interactorPosition.z), 2) < Mathf.Pow(interactorRadius, 2);
+
+                if (isPointInRadiusRange)
+                {
+                    SetObjectActive();
+                }
+            }
+        }
     }
 
     private void StartAnimation()
@@ -60,6 +80,7 @@ public class ColorableAnimatedObject : ColorableObject
     public override void SetObjectActive()
     {
         base.SetObjectActive();
+        isColored = true;
 
         //Animate object and color at the same time
 
@@ -79,5 +100,10 @@ public class ColorableAnimatedObject : ColorableObject
     {
         coloredRenderer.material.SetInt("_Debug", 1);
         coloredRenderer.material.SetFloat("_Blend", 1);
+    }
+
+    private void FindInteractors()
+    {
+        interactors = FindObjectsOfType<InteractorScript>();
     }
 }

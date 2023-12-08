@@ -291,6 +291,45 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interaction"",
+            ""id"": ""d1e2fe9f-eac3-49b6-a0d6-6c6c915d5228"",
+            ""actions"": [
+                {
+                    ""name"": ""ValidateLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""d86471e0-0964-49b5-9183-8761f308d390"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0308cbb1-e533-48e8-9da9-7d6f4f81f43d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""ValidateLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cb311a8-131b-43f5-9f45-ad0f6efe70ba"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ValidateLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -315,6 +354,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_CharacterControls_ThrowSidekick = m_CharacterControls.FindAction("ThrowSidekick", throwIfNotFound: true);
         m_CharacterControls_RecenterCamera = m_CharacterControls.FindAction("RecenterCamera", throwIfNotFound: true);
         m_CharacterControls_DisplayNotebook = m_CharacterControls.FindAction("DisplayNotebook", throwIfNotFound: true);
+        // Interaction
+        m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
+        m_Interaction_ValidateLevel = m_Interaction.FindAction("ValidateLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -466,6 +508,52 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         }
     }
     public CharacterControlsActions @CharacterControls => new CharacterControlsActions(this);
+
+    // Interaction
+    private readonly InputActionMap m_Interaction;
+    private List<IInteractionActions> m_InteractionActionsCallbackInterfaces = new List<IInteractionActions>();
+    private readonly InputAction m_Interaction_ValidateLevel;
+    public struct InteractionActions
+    {
+        private @CharacterInputActions m_Wrapper;
+        public InteractionActions(@CharacterInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ValidateLevel => m_Wrapper.m_Interaction_ValidateLevel;
+        public InputActionMap Get() { return m_Wrapper.m_Interaction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractionActions set) { return set.Get(); }
+        public void AddCallbacks(IInteractionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InteractionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InteractionActionsCallbackInterfaces.Add(instance);
+            @ValidateLevel.started += instance.OnValidateLevel;
+            @ValidateLevel.performed += instance.OnValidateLevel;
+            @ValidateLevel.canceled += instance.OnValidateLevel;
+        }
+
+        private void UnregisterCallbacks(IInteractionActions instance)
+        {
+            @ValidateLevel.started -= instance.OnValidateLevel;
+            @ValidateLevel.performed -= instance.OnValidateLevel;
+            @ValidateLevel.canceled -= instance.OnValidateLevel;
+        }
+
+        public void RemoveCallbacks(IInteractionActions instance)
+        {
+            if (m_Wrapper.m_InteractionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInteractionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InteractionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InteractionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InteractionActions @Interaction => new InteractionActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -493,5 +581,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         void OnThrowSidekick(InputAction.CallbackContext context);
         void OnRecenterCamera(InputAction.CallbackContext context);
         void OnDisplayNotebook(InputAction.CallbackContext context);
+    }
+    public interface IInteractionActions
+    {
+        void OnValidateLevel(InputAction.CallbackContext context);
     }
 }

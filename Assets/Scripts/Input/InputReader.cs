@@ -16,6 +16,7 @@ public class InputReader : MonoBehaviour
     public bool ThrowIsPressed { get; private set; } = false; 
     public bool RecenterCameraIsPressed { get; private set; } = false; 
     public bool DisplayNotebook { get; private set; } = false; 
+    public bool ValidateLevel { get; private set; } = false; 
     
     
     CharacterInputActions _input;
@@ -26,6 +27,7 @@ public class InputReader : MonoBehaviour
     {
         _input = new  CharacterInputActions();
         _input.CharacterControls.Enable();
+        _input.Interaction.Enable();
 
         _input.CharacterControls.Move.performed += SetMove;
         _input.CharacterControls.Move.canceled += SetMove;
@@ -47,10 +49,12 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.DisplayNotebook.started += SetNotebook;
         _input.CharacterControls.DisplayNotebook.canceled += SetNotebook;
+        
+        _input.Interaction.ValidateLevel.started += SetValidate;
+        _input.Interaction.ValidateLevel.canceled += SetValidate;
     }
     private void OnDisable()
     {
-        _input = new  CharacterInputActions();
         _input.CharacterControls.Disable();
 
         _input.CharacterControls.Move.performed -= SetMove;
@@ -73,6 +77,15 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.DisplayNotebook.started -= SetNotebook;
         _input.CharacterControls.DisplayNotebook.canceled -= SetNotebook;
+    }
+
+    public void DisableCharacterControl()
+    {
+        _input.CharacterControls.Disable();
+    }
+    public void EnableCharacterControl()
+    {
+        _input.CharacterControls.Enable();
     }
     
     private void SetMove(InputAction.CallbackContext ctx)
@@ -107,5 +120,9 @@ public class InputReader : MonoBehaviour
     private void SetNotebook(InputAction.CallbackContext ctx)
     {
         DisplayNotebook = ctx.started;
+    }
+    private void SetValidate(InputAction.CallbackContext ctx)
+    {
+        ValidateLevel = ctx.started;
     }
 }
