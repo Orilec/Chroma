@@ -89,6 +89,15 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugRespawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""96e741b0-d075-4809-8d79-737cd0a41e02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,7 +183,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""id"": ""d0cb0f21-bf53-40ce-98f1-9c6f7389ab6a"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=0.1,y=0.1)"",
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -249,7 +258,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""9a95dd0a-414d-4840-969b-35aad16f1e63"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -289,6 +298,28 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""action"": ""DisplayNotebook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4960ace4-b498-4a6f-99ed-cb064ab12d9a"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""DebugRespawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ec9f217-5ab8-4086-9004-5ea861a3d0aa"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DebugRespawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -310,7 +341,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""0308cbb1-e533-48e8-9da9-7d6f4f81f43d"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -321,7 +352,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""8cb311a8-131b-43f5-9f45-ad0f6efe70ba"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -354,6 +385,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_CharacterControls_ThrowSidekick = m_CharacterControls.FindAction("ThrowSidekick", throwIfNotFound: true);
         m_CharacterControls_RecenterCamera = m_CharacterControls.FindAction("RecenterCamera", throwIfNotFound: true);
         m_CharacterControls_DisplayNotebook = m_CharacterControls.FindAction("DisplayNotebook", throwIfNotFound: true);
+        m_CharacterControls_DebugRespawn = m_CharacterControls.FindAction("DebugRespawn", throwIfNotFound: true);
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_ValidateLevel = m_Interaction.FindAction("ValidateLevel", throwIfNotFound: true);
@@ -425,6 +457,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private readonly InputAction m_CharacterControls_ThrowSidekick;
     private readonly InputAction m_CharacterControls_RecenterCamera;
     private readonly InputAction m_CharacterControls_DisplayNotebook;
+    private readonly InputAction m_CharacterControls_DebugRespawn;
     public struct CharacterControlsActions
     {
         private @CharacterInputActions m_Wrapper;
@@ -436,6 +469,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         public InputAction @ThrowSidekick => m_Wrapper.m_CharacterControls_ThrowSidekick;
         public InputAction @RecenterCamera => m_Wrapper.m_CharacterControls_RecenterCamera;
         public InputAction @DisplayNotebook => m_Wrapper.m_CharacterControls_DisplayNotebook;
+        public InputAction @DebugRespawn => m_Wrapper.m_CharacterControls_DebugRespawn;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +500,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @DisplayNotebook.started += instance.OnDisplayNotebook;
             @DisplayNotebook.performed += instance.OnDisplayNotebook;
             @DisplayNotebook.canceled += instance.OnDisplayNotebook;
+            @DebugRespawn.started += instance.OnDebugRespawn;
+            @DebugRespawn.performed += instance.OnDebugRespawn;
+            @DebugRespawn.canceled += instance.OnDebugRespawn;
         }
 
         private void UnregisterCallbacks(ICharacterControlsActions instance)
@@ -491,6 +528,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @DisplayNotebook.started -= instance.OnDisplayNotebook;
             @DisplayNotebook.performed -= instance.OnDisplayNotebook;
             @DisplayNotebook.canceled -= instance.OnDisplayNotebook;
+            @DebugRespawn.started -= instance.OnDebugRespawn;
+            @DebugRespawn.performed -= instance.OnDebugRespawn;
+            @DebugRespawn.canceled -= instance.OnDebugRespawn;
         }
 
         public void RemoveCallbacks(ICharacterControlsActions instance)
@@ -581,6 +621,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         void OnThrowSidekick(InputAction.CallbackContext context);
         void OnRecenterCamera(InputAction.CallbackContext context);
         void OnDisplayNotebook(InputAction.CallbackContext context);
+        void OnDebugRespawn(InputAction.CallbackContext context);
     }
     public interface IInteractionActions
     {
