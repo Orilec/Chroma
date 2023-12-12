@@ -17,6 +17,7 @@ public class InputReader : MonoBehaviour
     public bool RecenterCameraIsPressed { get; private set; } = false; 
     public bool DisplayNotebook { get; private set; } = false; 
     public bool ValidateLevel { get; private set; } = false; 
+    public bool DebugRespawn { get; private set; } = false; 
     
     
     CharacterInputActions _input;
@@ -50,6 +51,9 @@ public class InputReader : MonoBehaviour
         _input.CharacterControls.DisplayNotebook.started += SetNotebook;
         _input.CharacterControls.DisplayNotebook.canceled += SetNotebook;
         
+        _input.CharacterControls.DebugRespawn.started += SetRespawn;
+        _input.CharacterControls.DebugRespawn.canceled += SetRespawn;
+        
         _input.Interaction.ValidateLevel.started += SetValidate;
         _input.Interaction.ValidateLevel.canceled += SetValidate;
     }
@@ -77,6 +81,9 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.DisplayNotebook.started -= SetNotebook;
         _input.CharacterControls.DisplayNotebook.canceled -= SetNotebook;
+        
+        _input.CharacterControls.DebugRespawn.started -= SetRespawn;
+        _input.CharacterControls.DebugRespawn.canceled -= SetRespawn;
     }
 
     public void DisableCharacterControl()
@@ -121,6 +128,11 @@ public class InputReader : MonoBehaviour
     {
         DisplayNotebook = ctx.started;
     }
+    private void SetRespawn(InputAction.CallbackContext ctx)
+    {
+        DebugRespawn = ctx.started;
+    }
+    
     private void SetValidate(InputAction.CallbackContext ctx)
     {
         ValidateLevel = ctx.started;
