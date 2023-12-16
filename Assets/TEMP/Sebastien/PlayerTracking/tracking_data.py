@@ -28,8 +28,8 @@ def generate_density_heatmap(all_positions, file_count):
 
     extent = [xedges[0], xedges[-1], zedges[0], zedges[-1]]
 
-    # Utilisation d'une colormap à contraste élevé
-    plt.figure(figsize=(1280/80, 720/80))  # Taille par défaut : 1280 par 720
+    # Colormap (o les jolies couleurs)
+    plt.figure(figsize=(1280/80, 720/80))  
     plt.imshow(heatmap.T, extent=[0, heatmap_size, 0, heatmap_size], cmap=plt.cm.plasma, origin='lower', aspect='auto', interpolation='gaussian', vmax=np.max(heatmap)*0.1)
     
     # Définir le format par défaut des axes x et y
