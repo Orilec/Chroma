@@ -309,6 +309,11 @@ public class PlayerController : MonoBehaviour
             {
                 _isDownSlope = false;
             }
+            
+            if (groundSlopeAngle >= _parameters.maxSlopeAngle && !_isDownSlope)
+            {
+                calculatedPlayerMovement *= 0f;
+            }
         }
         _playerMoveInput = calculatedPlayerMovement;
     }
