@@ -18,7 +18,7 @@ public class TrackingViewer : MonoBehaviour
     {
         if (!File.Exists(filePath))
         {
-            Debug.LogWarning("Le fichier n'existe pas : " + filePath);
+            //Debug.LogWarning("Le fichier n'existe pas : " + filePath);
             return;
         }
 
