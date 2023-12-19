@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueDisplay : MonoBehaviour
 {
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
+    [SerializeField] private MessageDisplay _messageDisplayPrefab;
 
     private Queue<Message> _messages;
 
@@ -41,6 +42,7 @@ public class DialogueDisplay : MonoBehaviour
     {
         
     }
+    
     
     
     
