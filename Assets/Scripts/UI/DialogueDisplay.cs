@@ -68,8 +68,8 @@ public class DialogueDisplay : MonoBehaviour
 
         if (_messagesOnScreen.Count > _maxMessagesOnScreen)
         {
-            var messageToDestroy = _messagesOnScreen.Dequeue();
-            Destroy(messageToDestroy.gameObject);
+            MessageDisplay messageToDestroy = _messagesOnScreen.Dequeue();
+            messageToDestroy.FadeOutMessage();
         }
         
         StartCoroutine(UpdateLayoutGroup());
@@ -85,7 +85,7 @@ public class DialogueDisplay : MonoBehaviour
     {
         foreach (var message in _messagesOnScreen)
         {
-            Destroy(message.gameObject);
+            message.FadeOutMessage();
         }
     }
     

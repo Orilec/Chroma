@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.41960785, g: 0.41960785, b: 0.41960785, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -473,6 +473,7 @@ GameObject:
   - component: {fileID: 6692191099882961282}
   - component: {fileID: 4668254377980081269}
   - component: {fileID: 5934860486777788158}
+  - component: {fileID: 3538647516884823962}
   m_Layer: 5
   m_Name: MessageFromSidekick
   m_TagString: Untagged
@@ -542,6 +543,7 @@ MonoBehaviour:
   _nameText: {fileID: 8378680390672346352}
   _contentText: {fileID: 5895884873399502691}
   _icon: {fileID: 5595962749850532630}
+  _animator: {fileID: 3538647516884823962}
 --- !u!114 &5934860486777788158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +558,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!95 &3538647516884823962
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470392716099070305}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03ed1858ca1631046a48d4be21386af6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6651963630601629527
 GameObject:
   m_ObjectHideFlags: 0
