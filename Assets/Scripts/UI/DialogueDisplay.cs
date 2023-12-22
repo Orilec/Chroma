@@ -10,7 +10,7 @@ public class DialogueDisplay : MonoBehaviour
     [SerializeField] private MessageDisplay _messagePrefab;
     [SerializeField] private MessageDisplay _messageFromSidekickPrefab;
     [SerializeField] private RectTransform _messagesContainer;
-    [SerializeField] private LayoutGroup _messagesLayout;
+    [SerializeField] private UIEventsPublisher _uiEvents;
     
     [SerializeField] private string _playerName;
     [SerializeField] private string _sidekickName;
@@ -19,17 +19,26 @@ public class DialogueDisplay : MonoBehaviour
 
     private Queue<Message> _messages;
     private Queue<MessageDisplay> _messagesOnScreen;
+    private Queue<MessageDisplay> _messagesSpawned;
+
+    private bool _dialogueEnded;
 
     private void Awake()
     {
+        _uiEvents.MessadeFadeOutFinished.AddListener(DestroySpawnedMessages);
         _messages = new Queue<Message>();
         _messagesOnScreen = new Queue<MessageDisplay>();
+        _messagesSpawned = new Queue<MessageDisplay>();
         _narrativeEvents.TriggerDialogue.AddListener(StartDialogue);
     }
 
     private void StartDialogue(Message[] messages)
     {
+        _dialogueEnded = false;
         _messages.Clear();
+        _messagesOnScreen.Clear();
+        _messagesSpawned.Clear();
+        
         foreach (Message message in messages)
         {
             _messages.Enqueue(message);
@@ -65,14 +74,13 @@ public class DialogueDisplay : MonoBehaviour
         }
         
         _messagesOnScreen.Enqueue(spawnedMessage);
+        _messagesSpawned.Enqueue(spawnedMessage);
 
         if (_messagesOnScreen.Count > _maxMessagesOnScreen)
         {
             MessageDisplay messageToDestroy = _messagesOnScreen.Dequeue();
             messageToDestroy.FadeOutMessage();
         }
-        
-        StartCoroutine(UpdateLayoutGroup());
     }
 
     private IEnumerator WaitBeforeNextMessage(Message sentMessage)
@@ -87,20 +95,19 @@ public class DialogueDisplay : MonoBehaviour
         {
             message.FadeOutMessage();
         }
+
+        _dialogueEnded = true;
     }
-    
-    IEnumerator UpdateLayoutGroup()
+
+    private void DestroySpawnedMessages()
     {
-        yield return new WaitForEndOfFrame();
-
-        _messagesLayout.enabled = false;
-
-        _messagesLayout.CalculateLayoutInputVertical();
-
-        LayoutRebuilder.ForceRebuildLayoutImmediate(_messagesContainer);
-
-        _messagesLayout.enabled = true;
+        if (_dialogueEnded)
+        {
+            foreach (var message in _messagesSpawned)
+            {
+                message.DestroyGameObject();
+            }
+        }
     }
-    
     
 }

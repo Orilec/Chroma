@@ -9,6 +9,7 @@ public class MessageDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _contentText;
     [SerializeField] private Image _icon;
+    [SerializeField] private UIEventsPublisher _uiEvents;
     [SerializeField] private Animator _animator;
     private int _disappearingHash = Animator.StringToHash("Disappearing");
 
@@ -17,7 +18,6 @@ public class MessageDisplay : MonoBehaviour
         _nameText.text = senderName;
         _contentText.text = messageInfo.Content;
         _icon.sprite = messageInfo.Icon;
-        RefreshLayout();
     }
 
     public void FadeOutMessage()
@@ -30,10 +30,10 @@ public class MessageDisplay : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    
-    private void RefreshLayout()
+
+    public void FadeOutDone()
     {
-        for (var i = 0; i < transform.childCount; i++)
-            LayoutRebuilder.ForceRebuildLayoutImmediate(transform.GetChild(i).GetComponent<RectTransform>());
+        _uiEvents.MessadeFadeOutFinished.Invoke();
     }
+    
 }

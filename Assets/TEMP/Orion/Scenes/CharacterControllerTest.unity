@@ -4073,13 +4073,19 @@ PrefabInstance:
     - target: {fileID: 3806301852977943714, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000059604645
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3806301852977943714, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000022351742
+      value: 0.000000007450581
       objectReference: {fileID: 0}
+    - target: {fileID: 3974666290930268189, guid: 941e388687dc2604f896e898abc4d8c2,
+        type: 3}
+      propertyPath: _uiEvents
+      value: 
+      objectReference: {fileID: 11400000, guid: 2596671c86cc5074e8ae4cd6fe276d5b,
+        type: 2}
     - target: {fileID: 6389258025765222668, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
       propertyPath: m_LocalPosition.x
