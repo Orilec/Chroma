@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
         var bounceFallState = new BounceFallState(this, _input);
         var miasmaState = new MiasmaState(this, _input);
         var respawningState = new RespawningState(this, _input);
+        var groundedEnvironmentState = new GroundedOnEnvironmentState(this, _input);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
@@ -176,8 +177,10 @@ public class PlayerController : MonoBehaviour
         At(miasmaState, respawningState, new FuncPredicate(()=> !_miasmaTimer.IsRunning && _isInMiasma ));
         
         At(respawningState, fallState, new FuncPredicate(()=> !_isRespawning));
-        
         Any(respawningState, new FuncPredicate(()=> _isRespawning));
+        
+        At(groundedEnvironmentState, fallState, new FuncPredicate(()=> !_groundCheck.IsOnEnvironment));
+        Any(groundedEnvironmentState, new FuncPredicate(()=> _groundCheck.IsOnEnvironment));
         
         // Set Initial State
         _stateMachine.SetState(groundedState);
@@ -308,6 +311,11 @@ public class PlayerController : MonoBehaviour
             else
             {
                 _isDownSlope = false;
+            }
+            
+            if (groundSlopeAngle >= _parameters.maxSlopeAngle && !_isDownSlope)
+            {
+                calculatedPlayerMovement *= 0f;
             }
         }
         _playerMoveInput = calculatedPlayerMovement;
