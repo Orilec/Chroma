@@ -179,8 +179,8 @@ public class PlayerController : MonoBehaviour
         At(respawningState, fallState, new FuncPredicate(()=> !_isRespawning));
         Any(respawningState, new FuncPredicate(()=> _isRespawning));
         
-        At(groundedEnvironmentState, fallState, new FuncPredicate(()=> !_groundCheck.IsOnEnvironment));
-        Any(groundedEnvironmentState, new FuncPredicate(()=> _groundCheck.IsOnEnvironment));
+        // At(groundedEnvironmentState, fallState, new FuncPredicate(()=> !_groundCheck.IsOnEnvironment));
+        // Any(groundedEnvironmentState, new FuncPredicate(()=> _groundCheck.IsOnEnvironment));
         
         // Set Initial State
         _stateMachine.SetState(groundedState);
@@ -304,7 +304,6 @@ public class PlayerController : MonoBehaviour
             {
                 Quaternion slopeAngleRotation = Quaternion.FromToRotation(_rigidbody.transform.up, localGroundCheckHitNormal);
                 calculatedPlayerMovement = slopeAngleRotation *  calculatedPlayerMovement;
-
                 float relativeSlopeAngle = Vector3.Angle(calculatedPlayerMovement, _rigidbody.transform.up) - 90f;
                 _isDownSlope = relativeSlopeAngle > 0;
             }
@@ -312,10 +311,11 @@ public class PlayerController : MonoBehaviour
             {
                 _isDownSlope = false;
             }
-            
-            if (groundSlopeAngle >= _parameters.maxSlopeAngle && !_isDownSlope)
+            if ((groundSlopeAngle >= _parameters.maxSlopeAngle && !_isDownSlope) || (_groundCheck.IsOnEnvironment && !_isDownSlope))
             {
-                calculatedPlayerMovement *= 0f;
+                calculatedPlayerMovement = new Vector3(localGroundCheckHitNormal.x, localGroundCheckHitNormal.y * 90f, localGroundCheckHitNormal.z).normalized * (-1 * _parameters.maxSlopeFallSpeed);
+                float relativeSlopeAngle = Vector3.Angle(calculatedPlayerMovement, _rigidbody.transform.up) - 90f;
+                _isDownSlope = relativeSlopeAngle > 0;
             }
         }
         _playerMoveInput = calculatedPlayerMovement;
