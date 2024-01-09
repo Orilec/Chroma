@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private BouncePlatform _bouncePlatform;
 
     private const float ZeroF = 0f;
-    private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent;
+    private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed;
     private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame;
 
     private Vector3 _movement;
@@ -127,17 +127,17 @@ public class PlayerController : MonoBehaviour
         _stateMachine = new StateMachine();
         
         // States creation
-        var groundedState = new GroundedState(this, _input);
-        var jumpState = new JumpState(this, _input);
-        var fallState = new FallState(this, _input);
-        var slideState = new SlideState(this, _input);
-        var slidingJumpState = new SlidingJumpState(this, _input);
-        var airSlideState = new AirSlideState(this, _input);
-        var bounceState = new BounceState(this, _input);
-        var bounceFallState = new BounceFallState(this, _input);
-        var miasmaState = new MiasmaState(this, _input);
-        var respawningState = new RespawningState(this, _input);
-        var groundedEnvironmentState = new GroundedOnEnvironmentState(this, _input);
+        var groundedState = new GroundedState(this, _input, _playerEventsPublisher);
+        var jumpState = new JumpState(this, _input, _playerEventsPublisher);
+        var fallState = new FallState(this, _input, _playerEventsPublisher);
+        var slideState = new SlideState(this, _input, _playerEventsPublisher);
+        var slidingJumpState = new SlidingJumpState(this, _input, _playerEventsPublisher);
+        var airSlideState = new AirSlideState(this, _input, _playerEventsPublisher);
+        var bounceState = new BounceState(this, _input, _playerEventsPublisher);
+        var bounceFallState = new BounceFallState(this, _input, _playerEventsPublisher);
+        var miasmaState = new MiasmaState(this, _input, _playerEventsPublisher);
+        var respawningState = new RespawningState(this, _input, _playerEventsPublisher);
+        var groundedEnvironmentState = new GroundedOnEnvironmentState(this, _input, _playerEventsPublisher);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
@@ -212,7 +212,6 @@ public class PlayerController : MonoBehaviour
         {
             _isRespawning = true;
         }
-
         _respawnWasPressedLastFrame = _input.DebugRespawn;
     }
 
@@ -277,6 +276,8 @@ public class PlayerController : MonoBehaviour
         _playerMoveInput = calculatedPlayerMovement;
         _playerMoveInput = PlayerFacingWall();
         _playerMoveInput = ConvertToCameraSpace(_playerMoveInput);
+        _relativeCurrentSpeed = (_currentSpeed - BaseMoveSpeed ) / (_parameters.maxMoveSpeed - BaseMoveSpeed);
+        _playerEventsPublisher.LocomotionSpeed.Invoke(_relativeCurrentSpeed);
     }
 
     private Vector3 PlayerFacingWall()

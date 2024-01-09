@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundedOnEnvironmentState : BaseCharacterState
 {
     
-    public GroundedOnEnvironmentState(PlayerController player, InputReader input) : base(player, input) { }
+    public GroundedOnEnvironmentState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
     
     
     public override void OnEnter()
