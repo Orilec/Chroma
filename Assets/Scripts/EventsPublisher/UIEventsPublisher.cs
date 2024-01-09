@@ -7,4 +7,5 @@ public class UIEventsPublisher : ScriptableObject
 {
     public UnityEvent FadeToBlackFinished;
     public UnityEvent FirstFadeFinished;
+    public UnityEvent MessadeFadeOutFinished;
 }
