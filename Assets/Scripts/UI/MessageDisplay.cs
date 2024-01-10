@@ -33,7 +33,7 @@ public class MessageDisplay : MonoBehaviour
 
     public void FadeOutDone()
     {
-        _uiEvents.MessadeFadeOutFinished.Invoke();
+        _uiEvents.MessageFadeOutFinished.Invoke();
     }
     
 }

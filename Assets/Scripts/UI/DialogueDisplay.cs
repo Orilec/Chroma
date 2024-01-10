@@ -17,16 +17,18 @@ public class DialogueDisplay : MonoBehaviour
     
     [SerializeField] private int _maxMessagesOnScreen;
 
-    private Queue<Message> _messages;
+    private Queue<Message> _messagesToSpawn;
     private Queue<MessageDisplay> _messagesOnScreen;
     private Queue<MessageDisplay> _messagesSpawned;
+    private IEnumerator _waitCoroutine;
 
     private bool _dialogueEnded;
 
     private void Awake()
     {
-        _uiEvents.MessadeFadeOutFinished.AddListener(DestroySpawnedMessages);
-        _messages = new Queue<Message>();
+        _waitCoroutine = WaitBeforeNextMessage(null);
+        _uiEvents.MessageFadeOutFinished.AddListener(DestroySpawnedMessages);
+        _messagesToSpawn = new Queue<Message>();
         _messagesOnScreen = new Queue<MessageDisplay>();
         _messagesSpawned = new Queue<MessageDisplay>();
         _narrativeEvents.TriggerDialogue.AddListener(StartDialogue);
@@ -34,14 +36,17 @@ public class DialogueDisplay : MonoBehaviour
 
     private void StartDialogue(Message[] messages)
     {
-        _dialogueEnded = false;
-        _messages.Clear();
+        if (_messagesToSpawn.Count > 0)
+        {
+            StopCoroutine(_waitCoroutine);
+            EndDialogue();
+        }
+        _messagesToSpawn.Clear();
         _messagesOnScreen.Clear();
-        _messagesSpawned.Clear();
         
         foreach (Message message in messages)
         {
-            _messages.Enqueue(message);
+            _messagesToSpawn.Enqueue(message);
         }
         
         SendNextMessage();
@@ -49,14 +54,19 @@ public class DialogueDisplay : MonoBehaviour
 
     private void SendNextMessage()
     {
-        if (_messages.Count == 0)
+        if (_messagesToSpawn.Count == 0)
         {
             EndDialogue();
             return;
         }
-        var currentMessage = _messages.Dequeue();
+        else
+        {
+            _dialogueEnded = false;
+        }
+        var currentMessage = _messagesToSpawn.Dequeue();
         SpawnMessage(currentMessage);
-        StartCoroutine(WaitBeforeNextMessage(currentMessage));
+        _waitCoroutine = WaitBeforeNextMessage(currentMessage);
+        StartCoroutine(_waitCoroutine);
     }
 
     private void SpawnMessage(Message messageToSpawn)

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class GroundCheck : MonoBehaviour
 {
+    [SerializeField] private Vector3 _offset;
     [SerializeField] private float _groundDistance = 0.08f;
     [SerializeField] private LayerMask _groundLayers;
     [SerializeField] private LayerMask _environmentLayers;
