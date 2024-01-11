@@ -6,18 +6,23 @@ using UnityEngine.Events;
 
 public class GroundCheck : MonoBehaviour
 {
+    [SerializeField] private Vector3 _offset;
     [SerializeField] private float _groundDistance = 0.08f;
     [SerializeField] private LayerMask _groundLayers;
+    [SerializeField] private LayerMask _environmentLayers;
     [SerializeField] private PlayerEventsPublisher _playerEvents;
     
     private bool previousState;
     public bool IsGrounded { get; private set; }
+    public bool IsOnEnvironment { get; private set; }
 
     public RaycastHit GroundCheckHit;
+    public RaycastHit EnvironmentCheckHit;
 
     private void Update()
     {
         IsGrounded = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out GroundCheckHit, _groundDistance, _groundLayers);
+        IsOnEnvironment = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out EnvironmentCheckHit, _groundDistance, _environmentLayers);
         if (IsGrounded == false && IsGrounded != previousState)
         {
             _playerEvents.LeavingGround.Invoke();
