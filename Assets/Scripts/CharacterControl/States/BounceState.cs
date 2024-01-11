@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class BounceState : BaseCharacterState
 {
-    public BounceState(PlayerController player, InputReader input) : base(player, input) { }
+    public BounceState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
 
     private bool _initialJump;
 

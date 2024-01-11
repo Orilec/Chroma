@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class FallState : BaseCharacterState
 {
-    public FallState(PlayerController player, InputReader input) : base(player, input) {}
+    public FallState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) {}
 
 
     public override void OnEnter()

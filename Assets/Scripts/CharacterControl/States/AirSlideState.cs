@@ -5,7 +5,7 @@ using UnityEngine;
 public class AirSlideState : BaseCharacterState
 {
     private float _forceMultiplier = 1f;
-    public AirSlideState(PlayerController player, InputReader input) : base(player, input) { }
+    public AirSlideState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
     
     public override void OnEnter()
     {

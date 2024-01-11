@@ -6,7 +6,7 @@ public class SlidingJumpState : BaseCharacterState
 {
     private float _jumpMultiplier = 1f;
     private float _fallMultiplier;
-    public SlidingJumpState(PlayerController player, InputReader input) : base(player, input) { }
+    public SlidingJumpState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
 
     public override void OnEnter()
     {

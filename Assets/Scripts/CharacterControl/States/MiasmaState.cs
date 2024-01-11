@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MiasmaState : BaseCharacterState
 {
-    public MiasmaState(PlayerController player, InputReader input) : base(player, input) { }
+    public MiasmaState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
     
     public override void FixedUpdate()
     {

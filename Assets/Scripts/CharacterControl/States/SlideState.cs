@@ -6,7 +6,7 @@ using UnityEngine;
 public class SlideState : BaseCharacterState
 {
     private bool _slopeCoroutineStarted = false;
-    public SlideState(PlayerController player, InputReader input) : base(player, input)
+    public SlideState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents)
     { }
 
     public override void OnEnter()

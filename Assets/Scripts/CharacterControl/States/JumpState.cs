@@ -6,14 +6,14 @@ using UnityEngine.Events;
 
 public class JumpState : BaseCharacterState
 {
-    public JumpState(PlayerController player, InputReader input) : base(player, input) { }
+    public JumpState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
 
     private bool _initialJump;
 
     
     public override void OnEnter()
     {
-
+        _playerEvents.Jumping.Invoke(true);
     }
 
     public override void Update()
@@ -34,6 +34,7 @@ public class JumpState : BaseCharacterState
         _playerController.PlayerFallTimer.Start();
         _playerController.CoyoteTimeCounter.Stop();
         _playerController.InitialJump = false;
+        _playerEvents.Jumping.Invoke(false);
     }
     
     private void HandleJump()
