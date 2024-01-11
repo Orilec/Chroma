@@ -40,7 +40,7 @@ public class ColorableObject : MonoBehaviour
         Vector3 interactorPosition = GetComponentInChildren<InteractorScript>().transform.position;
         float interactorRadius = GetComponentInChildren<InteractorScript>().maxRadius;
 
-        // Draw a yellow sphere at the transform's position
+        // Draw a sphere and wireframe at the transform's position
         Gizmos.color = new Color(1,0,0,0.2f);
         Gizmos.DrawSphere(interactorPosition, interactorRadius);
         Gizmos.color = new Color(1,0,0,1);
