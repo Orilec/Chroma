@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GroundedState : BaseCharacterState
 {
-    public GroundedState(PlayerController player, InputReader input) : base(player, input) { }
+    public GroundedState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
 
     public override void OnEnter()
     {
@@ -14,6 +14,7 @@ public class GroundedState : BaseCharacterState
         _playerController.InitialJump = false;
         _playerController.CoyoteTimeCounter.Stop();
         _playerController.JumpTimer.Reset();
+        _playerEvents.GroundedState.Invoke(true);
 
     }
     
@@ -57,7 +58,7 @@ public class GroundedState : BaseCharacterState
     {
         _playerController.CoyoteTimeCounter.Start();
         _playerController.CanAirSlide = true;
-
+        _playerEvents.GroundedState.Invoke(false);
         //_playerController.Trail.DisableDustParticles();
     }
 
