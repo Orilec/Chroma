@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class RespawningState : BaseCharacterState
 {
-    public RespawningState(PlayerController player, InputReader input) : base(player, input) { }
+    public RespawningState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
 
     public override void OnEnter()
     {
