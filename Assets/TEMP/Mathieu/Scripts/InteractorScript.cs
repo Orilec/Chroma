@@ -11,8 +11,9 @@ public class InteractorScript : MonoBehaviour
     public bool isActive = false;
     public float colorationSpeed = 0.03f;
 
+    public bool isCast;
     public bool isTemporary;
-    public float decolorationSpeed; 
+    public float decolorationSpeed;
 
     private bool swapFinished = false;
     private GameObject parent; 
@@ -26,7 +27,7 @@ public class InteractorScript : MonoBehaviour
     private void Start()
     {
         //maxRadius = Random.Range(3f, 5f); 
-        if (isTemporary) isActive = true; // activate temporary interactor as soon as it spawns
+        if (isCast) isActive = true; // activate temporary interactor as soon as it spawns
     }
 
     // Update is called once per frame
@@ -48,10 +49,10 @@ public class InteractorScript : MonoBehaviour
 
         }
 
-        if(swapFinished && isTemporary) //if temporary, swap back to uncolored and destroy interactor
+        if(swapFinished && isTemporary) //if temporary, swap back to uncolored 
         {
             radius = Mathf.Lerp(radius, 0, decolorationSpeed);
-            if(radius <= maxRadius / 10)
+            if(radius <= maxRadius / 10 && isCast) // if interactor is casted, destroy 
             {
                 Destroy(gameObject); 
             }

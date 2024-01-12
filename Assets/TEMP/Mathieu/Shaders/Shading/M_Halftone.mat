@@ -46,6 +46,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: b0c770c4895ecc248ae7c28fecc7967a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 79071d12df102a9409918af02f299ab1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_af9884a719184919b91fb9537cfb1f9f_Out_0_Texture2D:
         m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -64,12 +72,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Density: 10.1
+    - _Blend: 0
+    - _Debug: 0
+    - _Debug_1: 0
+    - _Debug_2: 0
+    - _Debug_3: 0
+    - _Density: 31.38
     - _FalloffThreshold: 3.39
     - _LitThreshold: 1
     - _MAIN_LIGHT_SHADOWS: 1
-    - _NEW_ShadowStep: 0.1
+    - _NEW_ShadowStep: -0.75
     - _NoiseScale: 0
+    - _NoiseStrenght: 0.57
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
@@ -83,21 +97,24 @@ Material:
     - _OutlineNormalThreshold: 1
     - _OutlineNormalTightening: 128
     - _OutlineRotation: 0.01
-    - _OutlineThickness: 0.0012
+    - _OutlineThickness: 0.0008
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RadiusCutoff: 0.21
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
-    - _Rotation: 43.01
+    - _Rotation: 45
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
-    - _ShadingMultiplyer: 0.08
+    - _ShadingMultiplyer: 0.16
+    - _Smoothness: 2.4
     - _Softness: 0.81
-    - _TextureBlend: 0.732
+    - _TextureBlend: 0.29
     - _USESCREENSPACE: 0
     m_Colors:
-    - _MainColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
+    - _MainColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
+    - _Specular: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
