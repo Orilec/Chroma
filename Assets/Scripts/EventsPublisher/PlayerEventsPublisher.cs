@@ -11,7 +11,7 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<bool> Jumping;
     public UnityEvent<bool> GroundedState;
     public UnityEvent<float> LocomotionSpeed;
-    public UnityEvent<int> CardCollected;
+    public UnityEvent<Sprite> CardCollected;
     public UnityEvent<bool> PauseGame;
     public UnityEvent<bool> EnterValidateLevel;
 }

@@ -10,7 +10,7 @@ public class CollectibleDisplay : MonoBehaviour
 
     private void Awake()
     {
-        _playerEvents.CardCollected.AddListener(DisplayCard);
+        //_playerEvents.CardCollected.AddListener(DisplayCard);
     }
 
     private void DisplayCard(int index)
