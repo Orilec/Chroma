@@ -34,7 +34,7 @@ public class InteractorScript : MonoBehaviour
     {
         if (radius < maxRadius && isActive && !swapFinished) //Process coloration for interactor object and temporary interactors
         {
-            radius = Mathf.Lerp(radius, maxRadius, colorationSpeed); 
+            radius = Mathf.Lerp(radius, maxRadius, colorationSpeed * Time.deltaTime); 
         }
 
         if ((maxRadius - radius) <= (maxRadius/10) && !swapFinished) //Coloration limit : finish swap for event
@@ -50,7 +50,7 @@ public class InteractorScript : MonoBehaviour
 
         if(swapFinished && isTemporary) //if temporary, swap back to uncolored and destroy interactor
         {
-            radius = Mathf.Lerp(radius, 0, decolorationSpeed);
+            radius = Mathf.Lerp(radius, 0, decolorationSpeed * Time.deltaTime);
             if(radius <= maxRadius / 10)
             {
                 Destroy(gameObject); 
