@@ -363,8 +363,8 @@ public class PlayerController : MonoBehaviour
         _bounceTimer.Start();
     }
 
-    public void GetCollectible(int index)
+    public void GetCollectible(Sprite sprite)
     {
-        _playerEventsPublisher.CardCollected.Invoke(index);
+        _playerEventsPublisher.CardCollected.Invoke(sprite);
     }
 }
