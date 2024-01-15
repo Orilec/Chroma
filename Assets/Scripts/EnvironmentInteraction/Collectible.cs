@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] private int _index;
+    [SerializeField] private Sprite _sprite ;
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
         if (player != null)
         {
-            player.GetCollectible(_index);
+            player.GetCollectible(_sprite);
             Destroy(this.gameObject);
         }
     }
