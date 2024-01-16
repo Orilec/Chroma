@@ -10,7 +10,7 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
 #else	
 
 
-		// grab the shadow coordinates
+		// shadow coordinates
 	#if SHADOWS_SCREEN
 		half4 clipPos = TransformWorldToHClip(WorldPos);
 		half4 shadowCoord = ComputeScreenPos(clipPos);
@@ -18,7 +18,7 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
 		half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
 	#endif 
 
-		// grab the main light
+		// main light
 	#if _MAIN_LIGHT_SHADOWS_CASCADE || _MAIN_LIGHT_SHADOWS
 		Light mainLight = GetMainLight(shadowCoord);
 	#else
@@ -33,4 +33,39 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
 
 #endif
 
+}
+
+void DirectSpecular_half(half3 Specular, half Smoothness, half3 Direction, half3 Color, half3 WorldNormal, half3 WorldView, out half3 Out)
+{
+#if SHADERGRAPH_PREVIEW
+	Out = 0;
+#else
+	Smoothness = exp2(10 * Smoothness + 1);
+	WorldNormal = normalize(WorldNormal);
+	WorldView = SafeNormalize(WorldView);
+	Out = LightingSpecular(Color, Direction, WorldNormal, WorldView, half4(Specular, 0), Smoothness);
+#endif
+}
+
+void AdditionalLights_half(half3 SpecColor, half Smoothness, half3 WorldPosition, half3 WorldNormal, half3 WorldView, out half3 Diffuse, out half3 Specular)
+{
+	half3 diffuseColor = 0;
+	half3 specularColor = 0;
+
+#ifndef SHADERGRAPH_PREVIEW
+	Smoothness = exp2(10 * Smoothness + 1);
+	WorldNormal = normalize(WorldNormal);
+	WorldView = SafeNormalize(WorldView);
+	int pixelLightCount = GetAdditionalLightsCount();
+	for (int i = 0; i < pixelLightCount; ++i)
+	{
+		Light light = GetAdditionalLight(i, WorldPosition);
+		half3 attenuatedLightColor = light.color * (light.distanceAttenuation * light.shadowAttenuation);
+		diffuseColor += LightingLambert(attenuatedLightColor, light.direction, WorldNormal);
+		specularColor += LightingSpecular(attenuatedLightColor, light.direction, WorldNormal, WorldView, half4(SpecColor, 0), Smoothness);
+	}
+#endif
+
+	Diffuse = diffuseColor;
+	Specular = specularColor;
 }
