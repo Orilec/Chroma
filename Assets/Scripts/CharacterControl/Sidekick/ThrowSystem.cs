@@ -18,6 +18,8 @@ public class ThrowSystem : MonoBehaviour
     private bool _sidekickIsAvailable = true, _throwWasPressedLastFrame, _isRetrieving;
     
     public Transform RetrievePos { get { return _retrievePos; } set { _retrievePos = value; } }
+    public bool SidekickIsAvailable { get { return _sidekickIsAvailable; } set { _sidekickIsAvailable = value; } }
+    public bool IsRetrieving { get { return _isRetrieving; } set { _isRetrieving = value; } }
 
     private void Awake()
     {
@@ -55,6 +57,8 @@ public class ThrowSystem : MonoBehaviour
 
     private void ThrowSidekickUntargeted()
     {
+        _sidekickGameObject.SetActive(false);
+        _sidekickIsAvailable = false;
         _untargetedTrajectoryEmission.Play();
     }
 
