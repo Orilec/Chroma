@@ -18,4 +18,9 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<Sprite> CardCollected;
     public UnityEvent<bool> PauseGame;
     public UnityEvent<bool> EnterValidateLevel;
+
+    public void DebugCollectible()
+    {
+        CardCollected.Invoke(null);
+    }
 }

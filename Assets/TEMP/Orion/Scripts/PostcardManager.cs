@@ -9,7 +9,9 @@ public class PostcardManager : MonoBehaviour
     [SerializeField] private Postcard _postcardPrefab;
     [SerializeField] private Transform _postcardContainer;
     [SerializeField] private PlayerEventsPublisher _playerEvents;
-    
+    [SerializeField] private float _additionalRotation;
+
+    private float _currentRotation;
     public List<Postcard> Postcards { get { return _postcards; } }
 
     private void Awake()
@@ -20,6 +22,7 @@ public class PostcardManager : MonoBehaviour
     private void AddNewPostCard(Sprite sprite)
     {
         var card = Instantiate(_postcardPrefab, _postcardContainer);
-        card.InitCard(sprite);
+        _currentRotation += _additionalRotation;
+        card.InitCard(sprite, _currentRotation);
     }
 }

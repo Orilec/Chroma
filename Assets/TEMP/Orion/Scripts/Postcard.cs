@@ -19,8 +19,9 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _rectTransform.position += new Vector3(0, 100, 0);
     }
 
-    public void InitCard(Sprite sprite)
+    public void InitCard(Sprite sprite, float rotation)
     {
-        _image.sprite = sprite;
+        _rectTransform.rotation = Quaternion.Euler(0,0,rotation);
+        //_image.sprite = sprite;
     }
 }
