@@ -10,7 +10,7 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
 #else	
 
 
-		// grab the shadow coordinates
+		// shadow coordinates
 	#if SHADOWS_SCREEN
 		half4 clipPos = TransformWorldToHClip(WorldPos);
 		half4 shadowCoord = ComputeScreenPos(clipPos);
@@ -18,7 +18,7 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
 		half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
 	#endif 
 
-		// grab the main light
+		// main light
 	#if _MAIN_LIGHT_SHADOWS_CASCADE || _MAIN_LIGHT_SHADOWS
 		Light mainLight = GetMainLight(shadowCoord);
 	#else
