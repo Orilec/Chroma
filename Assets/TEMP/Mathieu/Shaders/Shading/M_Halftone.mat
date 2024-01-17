@@ -25,9 +25,9 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
+  m_ValidKeywords:
   - _MAIN_LIGHT_SHADOWS
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -47,11 +47,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: 79071d12df102a9409918af02f299ab1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_25f07e81fa234db5b387f35202627ff6_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d4aa7816407c85c4a95aae980fe10373, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_af9884a719184919b91fb9537cfb1f9f_Out_0_Texture2D:
@@ -77,13 +81,15 @@ Material:
     - _Debug_1: 0
     - _Debug_2: 0
     - _Debug_3: 0
-    - _Density: 12.01
-    - _FalloffThreshold: 1.47
-    - _LitThreshold: 0.75
+    - _Density: 18.75
+    - _FalloffThreshold: 1.57
+    - _FloatTestPower: 1
+    - _LitThreshold: 0.67
     - _MAIN_LIGHT_SHADOWS: 1
     - _NEW_ShadowStep: -0.42
-    - _NoiseScale: 0
-    - _NoiseStrenght: 0.57
+    - _NoiseScale: 1.83
+    - _NoiseStrenght: 0.47
+    - _NormalStrength: 2.22
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
@@ -100,17 +106,17 @@ Material:
     - _OutlineThickness: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RadiusCutoff: 0.21
+    - _RadiusCutoff: 0.45
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
-    - _ShadingMultiplyer: 0.09
+    - _ShadingMultiplyer: 0
     - _Smoothness: 2.04
-    - _Softness: 0.67
-    - _TextureBlend: 0.29
+    - _Softness: 0.76
+    - _TextureBlend: 0
     - _USESCREENSPACE: 0
     m_Colors:
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
