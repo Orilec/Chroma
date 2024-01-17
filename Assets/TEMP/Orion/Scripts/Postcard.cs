@@ -9,6 +9,7 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private Image _image;
+    [SerializeField] private Button _button;
 
     private PostcardManager _postcardManager;
     private Vector3 _startPos;
@@ -18,6 +19,7 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _startPos = _rectTransform.position;
         _postcardManager = postcardManager;
         _image.enabled = true;
+        _button.enabled = true;
         //_image.sprite = sprite;
     }
 
