@@ -39,7 +39,6 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 elapsedTime / _postcardManager.PostcardAnimationTime);
 
             _rectTransform.position = lerpedPos;
-            
             yield return null;
         }
     }
@@ -47,22 +46,34 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         eventData.selectedObject = this.gameObject;
-        _postcardManager.SelectedPostcard = this;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         eventData.selectedObject = null;
-        _postcardManager.SelectedPostcard = null;
     }
 
     public void OnSelect(BaseEventData eventData)
     {
         StartCoroutine(MoveCard(true));
+        _postcardManager.SelectedPostcard = this;
+        _postcardManager.LastSelectedPostcard = this;
+        
+        for (int i = 0; i < _postcardManager.Postcards.Count; i++)
+        {
+            if (_postcardManager.Postcards[i] == this)
+            {
+                _postcardManager.LastSelectedIndex = i;
+                return;
+            }
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
         StartCoroutine(MoveCard(false));
+        _postcardManager.SelectedPostcard = null;
     }
+
+
 }
