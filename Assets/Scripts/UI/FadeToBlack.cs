@@ -10,6 +10,7 @@ public class FadeToBlack : MonoBehaviour
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     [SerializeField] private float respawnFadeSpeed = 5f; 
     [SerializeField] private float respawnBlackScreenTime = 2f; 
+    [SerializeField] private float timeBeforeBlackScreen = 2f; 
     private Image _blackImage;
     private float _fadeAmount;
     private void Awake()
@@ -46,6 +47,8 @@ public class FadeToBlack : MonoBehaviour
 
     private IEnumerator RespawnFadeToBlack(float fadeSpeed, float blackTime)
     {
+        yield return new WaitForSeconds(timeBeforeBlackScreen);
+        
         bool finished = false;
         bool firstStarted = false;
         bool secondStarted = false;

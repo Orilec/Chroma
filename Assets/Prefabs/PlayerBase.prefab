@@ -8318,6 +8318,7 @@ MonoBehaviour:
     type: 2}
   respawnFadeSpeed: 3
   respawnBlackScreenTime: 1
+  timeBeforeBlackScreen: 2
 --- !u!1 &8661235484106613916
 GameObject:
   m_ObjectHideFlags: 0
@@ -14117,7 +14118,7 @@ PrefabInstance:
     - target: {fileID: 2431793559223581197, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2431793559223581197, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
@@ -16278,7 +16279,7 @@ PrefabInstance:
     - target: {fileID: 5878587575438018064, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.929
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 5896443942901864115, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
@@ -17269,7 +17270,7 @@ PrefabInstance:
     - target: {fileID: 2298866556868506953, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.107486755
+      value: 0.10748674
       objectReference: {fileID: 0}
     - target: {fileID: 2298866556868506953, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
@@ -17279,7 +17280,7 @@ PrefabInstance:
     - target: {fileID: 2298866556868506953, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000022351742
+      value: 0.000000018626451
       objectReference: {fileID: 0}
     - target: {fileID: 4256716984854973426, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
@@ -17356,6 +17357,16 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 7599473584049262219}
+    - target: {fileID: 4969886768689534973, guid: c771f0dddda691043b14b25881cd992c,
+        type: 3}
+      propertyPath: _movementSmoothTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969886768689534973, guid: c771f0dddda691043b14b25881cd992c,
+        type: 3}
+      propertyPath: _verticalSmoothTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalPosition.x
