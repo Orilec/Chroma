@@ -9,9 +9,18 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent LeavingGround;
     public UnityEvent EnteringGround;
     public UnityEvent<bool> Jumping;
+    public UnityEvent<bool> Sliding;
+    public UnityEvent<bool> AirSliding;
+    public UnityEvent<bool> SlideJumping;
+    public UnityEvent<bool> Dying;
     public UnityEvent<bool> GroundedState;
     public UnityEvent<float> LocomotionSpeed;
     public UnityEvent<Sprite> CardCollected;
     public UnityEvent<bool> PauseGame;
     public UnityEvent<bool> EnterValidateLevel;
+
+    public void DebugCollectible()
+    {
+        CardCollected.Invoke(null);
+    }
 }
