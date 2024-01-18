@@ -9,6 +9,7 @@ public class AirSlideState : BaseCharacterState
     
     public override void OnEnter()
     {
+        _playerEvents.AirSliding.Invoke(true);
         _playerController.CanAirSlide = false;
         _playerController.Trail.EnableAirSlideTrail();
     }
@@ -28,5 +29,6 @@ public class AirSlideState : BaseCharacterState
     {
         _playerController.Trail.DisableAirSlideTrail();
         _forceMultiplier = 1f;
+        _playerEvents.AirSliding.Invoke(false);
     }
 }
