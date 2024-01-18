@@ -14,6 +14,8 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private PostcardManager _postcardManager;
     private Vector3 _startPos;
     
+    public Button CardButton{ get { return _button; } }
+    
     public void InitCard(Sprite sprite, PostcardManager postcardManager)
     {
         _startPos = _rectTransform.position;
@@ -59,9 +61,9 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _postcardManager.SelectedPostcard = this;
         _postcardManager.LastSelectedPostcard = this;
         
-        for (int i = 0; i < _postcardManager.Postcards.Count; i++)
+        for (int i = 0; i < _postcardManager.SelectablePostcards.Count; i++)
         {
-            if (_postcardManager.Postcards[i] == this)
+            if (_postcardManager.SelectablePostcards[i] == this)
             {
                 _postcardManager.LastSelectedIndex = i;
                 return;
@@ -73,6 +75,11 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         StartCoroutine(MoveCard(false));
         _postcardManager.SelectedPostcard = null;
+    }
+
+    public void DebugClick()
+    {
+        Debug.Log(gameObject.name + " is clicked");
     }
 
 
