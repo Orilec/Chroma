@@ -23,6 +23,7 @@ float3 CustomLightHandling(CustomLightingData d, Light light) {
 
     float diffuse = saturate(dot(d.normalWS, light.direction));
     float specularDot = saturate(dot(d.normalWS, normalize(light.direction + d.viewDirectionWS)));
+
     
     float specular = pow(specularDot, GetSmoothnessPower(d.smoothness)) * diffuse;
 

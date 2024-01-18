@@ -11,6 +11,7 @@ public class SlideState : BaseCharacterState
 
     public override void OnEnter()
     {
+        _playerEvents.Sliding.Invoke(true);
         BasicSlide();
         _playerController.Trail.EnableSlideTrail();
     }
@@ -44,6 +45,7 @@ public class SlideState : BaseCharacterState
         _playerController.SlidingJumpBufferCounter.Start();
         _playerController.CanAirSlide = true;
         _playerController.SlideCooldownTimer.Start();
+        _playerEvents.Sliding.Invoke(false);
     }
     
 
