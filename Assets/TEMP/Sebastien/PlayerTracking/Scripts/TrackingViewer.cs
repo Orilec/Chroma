@@ -59,7 +59,7 @@ public class TrackingViewer : MonoBehaviour
         }
 
         // Définir une couleur pour les Gizmos (par exemple, rouge)
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.blue;
 
         // Dessiner la ligne en reliant chaque point au suivant
         for (int i = 0; i < trackPoints.Length - 1; i++)
