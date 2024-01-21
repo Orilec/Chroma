@@ -14,9 +14,6 @@ public class MusicSystem : MonoBehaviour
     // Temps de transition en secondes
     public float transitionTime = 1.0f;
 
-    private GameObject interactor;
-    public GameObject player;
-
 
     void Start()
     {
