@@ -18,10 +18,17 @@ public class GroundCheck : MonoBehaviour
 
     public RaycastHit GroundCheckHit;
     public RaycastHit EnvironmentCheckHit;
+    public bool AutoSlide;
+    public Transform slopeDirection;
 
     private void Update()
     {
         IsGrounded = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out GroundCheckHit, _groundDistance, _groundLayers);
+        if (GroundCheckHit.transform != null)
+        {
+            AutoSlide = GroundCheckHit.transform.CompareTag("AutoSlide");
+            if (AutoSlide) slopeDirection = GroundCheckHit.transform.GetChild(0);
+        }
         IsOnEnvironment = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out EnvironmentCheckHit, _groundDistance, _environmentLayers);
         if (IsGrounded == false && IsGrounded != previousState)
         {
