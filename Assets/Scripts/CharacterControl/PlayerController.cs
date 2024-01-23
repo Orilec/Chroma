@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private BouncePlatform _bouncePlatform;
 
     private const float ZeroF = 0f;
-    private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed;
+    private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed, _leavingGroundY;
     private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame, _isOnSlope, _isAutoSliding, _wasSlideJumping;
 
     private Vector3 _movement;
@@ -209,6 +209,9 @@ public class PlayerController : MonoBehaviour
         _uiEventsPublisher.FadeToBlackFinished.AddListener(StopRespawning);
         _uiEventsPublisher.FirstFadeFinished.AddListener(Fading);
         
+        _playerEventsPublisher.LeavingGround.AddListener(SaveYPos);
+        _playerEventsPublisher.EnteringGround.AddListener(CompareYPos);
+        
         //Set coroutines
         AccelerationCoroutine = Accelerate(0f, 0f);
         DecelerationCoroutine = Decelerate(0f, 0f);
@@ -224,6 +227,17 @@ public class PlayerController : MonoBehaviour
         HandleTimers();
         DebugRespawn();
         
+    }
+
+    private void SaveYPos()
+    {
+        _leavingGroundY = transform.position.y;
+    }
+
+    private void CompareYPos()
+    {
+        var lowerGround = (transform.position.y - _leavingGroundY) < -1f;
+        _playerEventsPublisher.LandingToLower.Invoke(lowerGround);
     }
 
     private void DebugRespawn()

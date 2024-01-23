@@ -14,6 +14,7 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<bool> SlideJumping;
     public UnityEvent<bool> Dying;
     public UnityEvent<bool> GroundedState;
+    public UnityEvent<bool> LandingToLower;
     public UnityEvent<float> LocomotionSpeed;
     public UnityEvent<Sprite> CardCollected;
     public UnityEvent<bool> PauseGame;
