@@ -42,9 +42,9 @@ public class CharaParameters : ScriptableObject
     public float slideSpeedDecrementAmount = 2f;
     public float slopeSlideMaxSpeed = 200f;
     public float slopeSlideIncrementAmount = 2f;
-    public float slideBoostTime = 1f;
-    public float initialSlideBoostForce = 15000f;
-    public float continualSlideBoostForceMultiplier = 0.8f;
+    public float slideBoostTime = 0.2f;
+    public float initialSlideBoostForce = 1500f;
+    public float continualSlideBoostForceMultiplier = 0.05f;
     
     [Header("Sliding Jump Parameters")] 
     public float slidingJumpVerticalForce = 1500f;
