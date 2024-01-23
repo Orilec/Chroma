@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class MiasmaParticlesKill : MonoBehaviour
 {
 
@@ -12,7 +13,7 @@ public class MiasmaParticlesKill : MonoBehaviour
 
     InteractorScript[] interactors;
 
-    private List<SphereCollider> killColliders; 
+    private List<CapsuleCollider> killColliders; 
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class MiasmaParticlesKill : MonoBehaviour
 
     private void Start()
     {
-        killColliders = new List<SphereCollider>(); 
+        killColliders = new List<CapsuleCollider>(); 
 
         FindInteractors(); 
         SetTriggers(); 
@@ -41,14 +42,15 @@ public class MiasmaParticlesKill : MonoBehaviour
 
     private void SetTriggers()
     {
-        foreach (InteractorScript interactor in interactors)
-        {
-            SphereCollider sphereCollider = interactor.SphereCollider;
 
-            if (!killColliders.Contains(sphereCollider))
+        for (int i = 0; i < interactors.Length; i++)
+        {
+            CapsuleCollider capsuleCollider = interactors[i].CapsuleCollider;
+
+            if (!killColliders.Contains(capsuleCollider))
             {
-                particleS.trigger.AddCollider(interactor.SphereCollider); //Add to trigger colliders list in Particle System
-                killColliders.Add(sphereCollider); //Add to gameobject list
+                particleS.trigger.AddCollider(capsuleCollider);  
+                killColliders.Add(capsuleCollider); //Add to gameobject list
             }
         }
         
