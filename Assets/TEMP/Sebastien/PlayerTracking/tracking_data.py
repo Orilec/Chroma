@@ -46,7 +46,7 @@ def generate_density_heatmap(all_positions, file_count):
 
 
 def main():
-    tracking_folder_path = 'C:/Users/Megaport/Desktop/PS5/Chroma/Assets/TEMP/Sebastien/PlayerTracking'
+    tracking_folder_path = 'D:\SALMON_Sébastien\Chroma\Assets\TEMP\Sebastien\PlayerTracking'
     file_count = 0
     all_positions = []
 
