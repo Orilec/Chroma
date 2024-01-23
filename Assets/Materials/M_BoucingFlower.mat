@@ -32,6 +32,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HatchingTex_1:
+        m_Texture: {fileID: 2800000, guid: 6c191a11622499d4c9cfd45af5ce824f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: b0c770c4895ecc248ae7c28fecc7967a, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -64,11 +68,13 @@ Material:
     m_Floats:
     - _Blend: 0
     - _Debug: 0
+    - _FalloffThreshold: 2
     - _HasEmissive: 0
     - _HasEmissiveMap: 0
     - _HasSmoothnessMap: 0
     - _HatchingSpeed: 3
     - _HatchingStrenght: 0.2
+    - _LitThreshold: 1
     - _MoveSpeed: 0
     - _NoiseScale: 1
     - _NoiseStrenght: 0.57
@@ -76,6 +82,8 @@ Material:
     - _QueueOffset: 0
     - _RadiusCutoff: 0.34
     - _SmoothnessSlider: 0
+    - _Softness: 0.3
+    - _USESCREENSPACE: 0
     m_Colors:
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}

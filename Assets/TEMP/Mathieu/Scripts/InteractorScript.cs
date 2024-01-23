@@ -16,12 +16,18 @@ public class InteractorScript : MonoBehaviour
     public float decolorationSpeed;
 
     private bool swapFinished = false;
-    private GameObject parent; 
+    private GameObject parent;
 
+    //Sphere Collider for miasma particles kill
+    private SphereCollider _sphereCollider; 
+
+    public SphereCollider SphereCollider { get {return _sphereCollider;  } }
 
     private void Awake()
     {
         parent = transform.root.gameObject;
+
+        _sphereCollider = GetComponent<SphereCollider>(); 
     }
 
     private void Start()
@@ -59,6 +65,9 @@ public class InteractorScript : MonoBehaviour
         }
 
         //Shader.SetGlobalFloat("_RadiusInteractor", radius);
+
+        //Update Sphere Collider radius
+        _sphereCollider.radius = radius; 
     }
 
     public bool GetSwapFinished()

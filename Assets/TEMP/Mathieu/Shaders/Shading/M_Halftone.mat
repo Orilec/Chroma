@@ -38,6 +38,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _CalculateMainLight_6743a15fc8514b219366666ac209f7d9_SmoothnessMap_2895282383_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _HatchTex:
         m_Texture: {fileID: 2800000, guid: a0d5b95d66d585b489008a703871f17c, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -81,15 +85,15 @@ Material:
     - _Debug_1: 0
     - _Debug_2: 0
     - _Debug_3: 0
-    - _Density: 18.75
-    - _FalloffThreshold: 1.57
+    - _Density: 17
+    - _FalloffThreshold: 2.12
     - _FloatTestPower: 1
-    - _LitThreshold: 0.67
+    - _LitThreshold: 1.04
     - _MAIN_LIGHT_SHADOWS: 1
     - _NEW_ShadowStep: 0.86
     - _NoiseScale: 1.83
     - _NoiseStrenght: 0.47
-    - _NormalStrength: 1.27
+    - _NormalStrength: 1.44
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
@@ -109,16 +113,17 @@ Material:
     - _RadiusCutoff: 0.45
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
-    - _Rotation: 45
+    - _Rotation: 333.4
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
-    - _ShadingMultiplyer: 0
+    - _ShadingMultiplyer: -0.26
     - _Smoothness: 2.04
     - _Softness: 0.76
     - _TextureBlend: 0
     - _USESCREENSPACE: 0
     m_Colors:
+    - _DensityVector: {r: 67.5, g: 2.81, b: 0, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
