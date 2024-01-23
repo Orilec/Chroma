@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationEventsHolder : MonoBehaviour
 {
-    [SerializeField] MeshCollider meshCollider;
+    [SerializeField] Collider meshCollider;
 
 
     public void ActivateObject()

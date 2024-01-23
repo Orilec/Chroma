@@ -21,6 +21,7 @@ public class FallState : BaseCharacterState
     public override void FixedUpdate()
     {
         HandleFallGravity();
+        if (_playerController.WasSlideJumping) _playerController.PlayerMoveInputZ = 1f;
         _playerController.PlayerMove();
         _playerController.HandleRotation();
     }
