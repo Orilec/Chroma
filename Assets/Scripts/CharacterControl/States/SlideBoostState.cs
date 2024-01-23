@@ -15,6 +15,7 @@ public class SlideBoostState : BaseCharacterState
     public override void FixedUpdate()
     {
         HandleJump();
+        _playerController.PlayerMove();
         _playerController.HandleRotation();
     }
     
@@ -28,16 +29,18 @@ public class SlideBoostState : BaseCharacterState
     
     private void HandleJump()
     {
+        _playerController.PlayerMoveInputZ = 1f;
+        var calculatedJumpInput = _playerController.PlayerMoveInputY;
         if (!_playerController.InitialJump)
         {
-            _calculatedJumpInput = _direction * _playerController.InitialSlideBoostForce;
+            calculatedJumpInput = _playerController.InitialSlideBoostForce;
             _playerController.InitialJump = true;
         }
         else
         {
-            _calculatedJumpInput *= _playerController.ContinualSlideBoostForceMultiplier;
+            calculatedJumpInput = _playerController.InitialSlideBoostForce * _playerController.ContinualSlideBoostForceMultiplier;
         }
-        _playerController.PlayerMoveInput =  _calculatedJumpInput; 
+        _playerController.PlayerMoveInputY =  calculatedJumpInput; 
     }
     
     
