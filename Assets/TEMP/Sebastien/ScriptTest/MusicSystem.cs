@@ -27,7 +27,7 @@ public class MusicSystem : MonoBehaviour
         drums.clip = drumsClip;
 
         // Charge la musique de base
-        baseMusic.Play();
+        //baseMusic.Play();
         Debug.Log("Musique de base");
 
     }
@@ -58,7 +58,7 @@ public class MusicSystem : MonoBehaviour
         }
         else
         {
-            AddInstrument(track, baseMusic.time);
+            //AddInstrument(track, baseMusic.time);
             Debug.Log(track.clip.name + " ajoutée");
             Debug.Log("New music starting time : " + track.time);
 
