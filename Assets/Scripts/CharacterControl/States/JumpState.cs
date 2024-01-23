@@ -8,8 +8,6 @@ public class JumpState : BaseCharacterState
 {
     public JumpState(PlayerController player, InputReader input, PlayerEventsPublisher playerEvents) : base(player, input, playerEvents) { }
 
-    private bool _initialJump;
-
     
     public override void OnEnter()
     {

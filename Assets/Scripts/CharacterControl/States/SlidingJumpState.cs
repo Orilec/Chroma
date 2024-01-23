@@ -55,5 +55,6 @@ public class SlidingJumpState : BaseCharacterState
         _jumpMultiplier = 1f;
         _fallMultiplier = _playerController.SlidingJumpBaseFallGravity;
         _playerEvents.SlideJumping.Invoke(false);
+        _playerController.WasSlideJumping = true;
     }
 }
