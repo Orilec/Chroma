@@ -13,6 +13,7 @@ public class CharacterAnimationManager : MonoBehaviour
     private int _slideJumpingHash = Animator.StringToHash("IsSlideJumping");
     private int _dyingHash = Animator.StringToHash("IsDying");
     private int _groundedHash = Animator.StringToHash("IsGrounded");
+    private int _landingLower = Animator.StringToHash("LandingToLowerPoint");
     private int _currentSpeedHash = Animator.StringToHash("MoveSpeed");
 
     private void Awake()
@@ -24,6 +25,7 @@ public class CharacterAnimationManager : MonoBehaviour
         _playerEvents.Dying.AddListener(Dying);
         _playerEvents.LocomotionSpeed.AddListener(CurrentSpeed);
         _playerEvents.GroundedState.AddListener(Grounded);
+        _playerEvents.LandingToLower.AddListener(LandingLower);
     }
 
     private void Jumping(bool isJumping)
@@ -51,6 +53,10 @@ public class CharacterAnimationManager : MonoBehaviour
     private void Grounded(bool isGrounded)
     {
         _animator.SetBool(_groundedHash, isGrounded);
+    }
+    private void LandingLower(bool lower)
+    {
+        _animator.SetBool(_landingLower, lower);
     }
 
     private void CurrentSpeed(float speed)
