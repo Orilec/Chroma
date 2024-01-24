@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed, _leavingGroundY;
     private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame, _isOnSlope, _isAutoSliding, _wasSlideJumping;
-
+    private int _stepsSinceGrounded;
     private Vector3 _movement;
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement, _localGroundCheckHitNormal;
 
@@ -149,7 +150,7 @@ public class PlayerController : MonoBehaviour
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
-        At(groundedState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_groundCheck.IsGrounded));
+        At(groundedState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_groundCheck.IsGrounded && _stepsSinceGrounded > 1));
         At(groundedState, slideState, new FuncPredicate(()=> _slideTimer.IsRunning));
         At(groundedState,slidingJumpState, new FuncPredicate(()=> _slidingJumpTimer.IsRunning));
         At(groundedState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
@@ -173,7 +174,7 @@ public class PlayerController : MonoBehaviour
         
         At(slideState, groundedState, new FuncPredicate(()=> !_slideTimer.IsRunning && _groundCheck.IsGrounded && !_isDownSlope));
         At(slideState, autoSlideState, new FuncPredicate(()=> _groundCheck.IsGrounded && _isOnSlope && _groundCheck.AutoSlide));
-        At(slideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded));
+        At(slideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded && _stepsSinceGrounded > 1));
         At(slideState, slidingJumpState, new FuncPredicate(()=>  _slidingJumpTimer.IsRunning));
         At(slideState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
@@ -191,7 +192,7 @@ public class PlayerController : MonoBehaviour
         At(respawningState, fallState, new FuncPredicate(()=> !_isRespawning));
         Any(respawningState, new FuncPredicate(()=> _isRespawning));
         
-        At(autoSlideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded || !_isDownSlope && !_groundCheck.IsGrounded));
+        At(autoSlideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded && _stepsSinceGrounded > 1 || !_isDownSlope && !_groundCheck.IsGrounded));
         At(autoSlideState, groundedState, new FuncPredicate(()=>  !_groundCheck.AutoSlide && _groundCheck.IsGrounded || !_isDownSlope && _groundCheck.IsGrounded));
         At(autoSlideState, slidingJumpState, new FuncPredicate(()=>  _slidingJumpTimer.IsRunning));
         At(autoSlideState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
@@ -256,6 +257,8 @@ public class PlayerController : MonoBehaviour
         _stateMachine.FixedUpdate();
         
         PlayerSlope();
+        PlayerBumps();
+        SnapToGround();
         
         _rigidbody.AddForce(_playerMoveInput, ForceMode.Force);
 
@@ -379,6 +382,22 @@ public class PlayerController : MonoBehaviour
             }
         }
         _playerMoveInput = calculatedPlayerMovement;
+    }
+
+    private void PlayerBumps()
+    {
+        _stepsSinceGrounded += 1;
+        if (_groundCheck.IsGrounded) _stepsSinceGrounded = 0;
+    }
+
+    private void SnapToGround()
+    {
+        if (_groundCheck.IsGrounded) return;
+        if (_stepsSinceGrounded > 1) return;
+        if (!_groundCheck.GroundBelow) return;
+        _playerMoveInput = new Vector3(_playerMoveInput.x,-10000f, _playerMoveInput.z);
+        _groundCheck.IsGrounded = true;
+
     }
     
     public void HandleRotation()

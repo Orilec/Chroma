@@ -9,11 +9,25 @@ public class BlobShadow : MonoBehaviour
     [SerializeField] private Transform _blobShadowTransform;
     [SerializeField] private float _maxDistance;    
     [SerializeField] private LayerMask _groundLayers;
+    [SerializeField] private GroundCheck _groundCheck;
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
+    private float _originalYpos;
+    private void Awake()
+    {
+        _playerEvents.EnteringGround.AddListener(ResetYPos);
+        _originalYpos = _blobShadowTransform.localPosition.y;
+    }
 
     private void Update()
     {
-        HandleShadowPosition();
+        if(!_groundCheck.IsGrounded) HandleShadowPosition();
     }
+
+    private void ResetYPos()
+    {
+        _blobShadowTransform.localPosition = new Vector3(_blobShadowTransform.localPosition.x, _originalYpos, _blobShadowTransform.localPosition.z);
+    }
+    
 
     private void HandleShadowPosition()
     {
