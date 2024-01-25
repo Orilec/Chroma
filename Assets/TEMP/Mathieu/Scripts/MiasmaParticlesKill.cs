@@ -20,6 +20,7 @@ public class MiasmaParticlesKill : MonoBehaviour
     private void Awake()
     {
         particleS = GetComponent<ParticleSystem>();
+
     }
 
     private void Start()
@@ -27,7 +28,7 @@ public class MiasmaParticlesKill : MonoBehaviour
         killColliders = new List<CapsuleCollider>(); 
 
         FindInteractors(); 
-        SetTriggers(); 
+        SetTriggers();
     }
 
     // Update is called once per frame
@@ -67,19 +68,20 @@ public class MiasmaParticlesKill : MonoBehaviour
 
         for (int i = 0; i < numEnter; i++)
         {
+            ParticleSystem.Particle particle = particlesEnter[i]; 
+
             ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams
             {
-                position = particlesEnter[i].position,
-                velocity = particlesEnter[i].velocity,
-                startColor = particlesEnter[i].startColor,
-                startSize = particlesEnter[i].startSize,
-                startLifetime = particlesEnter[i].startLifetime
+                position = particle.position,
+                velocity = particle.velocity,
+                startColor = new Color(particle.startColor.r, particle.startColor.g, particle.startColor.b, 0f),
+                startSize = particle.startSize,
+                startLifetime = particle.remainingLifetime,
             };
 
-            //ParticleSystem.Particle particle = particlesEnter[i];
-            //particle.startColor = new Color(particle.startColor.r, particle.startColor.g, particle.startColor.b, 0f); //Alpha to 0
-            //particle.position = particlesEnter[i].position; 
-            //particlesEnter[i] = particle;
+            particle.remainingLifetime = 0;
+            particlesEnter[i] = particle;
+
 
             particleDestination.Emit(emitParams, 1);
 
