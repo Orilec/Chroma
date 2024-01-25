@@ -14,6 +14,9 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private PostcardManager _postcardManager;
     private Vector3 _startPos;
     
+    public Button CardButton{ get { return _button; } }
+    public Image CardImage{ get { return _image; } }
+    
     public void InitCard(Sprite sprite, PostcardManager postcardManager)
     {
         _startPos = _rectTransform.position;
@@ -39,7 +42,6 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 elapsedTime / _postcardManager.PostcardAnimationTime);
 
             _rectTransform.position = lerpedPos;
-            
             yield return null;
         }
     }
@@ -47,22 +49,39 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         eventData.selectedObject = this.gameObject;
-        _postcardManager.SelectedPostcard = this;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         eventData.selectedObject = null;
-        _postcardManager.SelectedPostcard = null;
     }
 
     public void OnSelect(BaseEventData eventData)
     {
         StartCoroutine(MoveCard(true));
+        _postcardManager.SelectedPostcard = this;
+        _postcardManager.LastSelectedPostcard = this;
+        
+        for (int i = 0; i < _postcardManager.SelectablePostcards.Count; i++)
+        {
+            if (_postcardManager.SelectablePostcards[i] == this)
+            {
+                _postcardManager.LastSelectedIndex = i;
+                return;
+            }
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
         StartCoroutine(MoveCard(false));
+        _postcardManager.SelectedPostcard = null;
     }
+
+    public void OnClick()
+    {
+        _postcardManager.ShowPostcard(this);
+    }
+
+
 }

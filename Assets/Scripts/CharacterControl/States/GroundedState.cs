@@ -9,6 +9,7 @@ public class GroundedState : BaseCharacterState
 
     public override void OnEnter()
     {
+        _playerController.WasSlideJumping = false;
         _playerController.PlayerFallTimer.Stop();
         _playerController.PlayerFallTimer.Reset(_playerController.PlayerFallTimeMax);
         _playerController.InitialJump = false;
@@ -34,7 +35,7 @@ public class GroundedState : BaseCharacterState
     
     private void HandleMovement()
     {
-         var gravity = 0f;
+         var gravity = -9.8f;
         _playerController.GravityFallCurrent = _playerController.GravityFallMin;
         _playerController.PlayerMoveInputY = gravity;
         

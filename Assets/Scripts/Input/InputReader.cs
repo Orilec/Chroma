@@ -4,8 +4,13 @@ using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour
 {
+    private string _previousControlScheme = "";
+    private const string _gamepadScheme = "Gamepad";
+    private const string _mouseScheme = "KeyboardMouse";
     public Vector2 MoveInput { get; private set; } = Vector2.zero;
+    public Vector2 NavigateInput { get; private set; } = Vector2.zero;
     public bool MoveIsPressed { get; private set; } = false;
+    public bool ClickIsPressed { get; private set; } = false;
     
     public Vector2 LookInput { get; private set; } = Vector2.zero;
     public bool InvertMouseY { get; private set; } = true;
@@ -17,18 +22,25 @@ public class InputReader : MonoBehaviour
     public bool RecenterCameraIsPressed { get; private set; } = false; 
     public bool DisplayNotebook { get; private set; } = false; 
     public bool ValidateLevel { get; private set; } = false; 
-    public bool DebugRespawn { get; private set; } = false; 
+    public bool DebugRespawn { get; private set; } = false;
+    public bool IsInUI { get; private set; } = false; 
     
     
-    CharacterInputActions _input;
+    private CharacterInputActions _input;
+    private PlayerInput _playerInput;
     
     public CharacterInputActions PlayerInput { get { return _input; } }
 
     private void OnEnable()
     {
         _input = new  CharacterInputActions();
+        _input.Enable();
+        
         _input.CharacterControls.Enable();
         _input.Interaction.Enable();
+        _input.UI.Enable();
+        
+        //_playerInput.onControlsChanged += OnControlsChanged;
 
         _input.CharacterControls.Move.performed += SetMove;
         _input.CharacterControls.Move.canceled += SetMove;
@@ -56,11 +68,20 @@ public class InputReader : MonoBehaviour
         
         _input.Interaction.ValidateLevel.started += SetValidate;
         _input.Interaction.ValidateLevel.canceled += SetValidate;
+        
+        _input.UI.Navigate.started += SetNavigate;
+        _input.UI.Navigate.canceled += SetNavigate;
+        
+        _input.UI.Click.started += SetClick;
+        _input.UI.Click.canceled += SetClick;
+        
     }
     private void OnDisable()
     {
         _input.CharacterControls.Disable();
-
+        _input.Interaction.Disable();
+        _input.UI.Disable();
+        
         _input.CharacterControls.Move.performed -= SetMove;
         _input.CharacterControls.Move.canceled -= SetMove;
 
@@ -84,6 +105,12 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.DebugRespawn.started -= SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled -= SetRespawn;
+        
+        _input.UI.Navigate.started -= SetNavigate;
+        _input.UI.Navigate.canceled -= SetNavigate;
+        
+        _input.UI.Click.started -= SetClick;
+        _input.UI.Click.canceled -= SetClick;
     }
 
     public void DisableCharacterControl()
@@ -94,6 +121,34 @@ public class InputReader : MonoBehaviour
     {
         _input.CharacterControls.Enable();
     }
+    public void EnableUIControl()
+    {
+        _input.UI.Enable();
+        IsInUI = true;
+    }
+    public void DisableUIControl()
+    {
+        _input.UI.Disable();
+        IsInUI = false;
+    }
+    
+    private void OnControlsChanged(PlayerInput input)
+    {
+        Debug.Log("controls changed");
+        if (IsInUI)
+        {
+            if (_playerInput.currentControlScheme == _mouseScheme && _previousControlScheme != _mouseScheme)
+            {
+                Cursor.visible = true;
+                _previousControlScheme = _mouseScheme;
+            }
+            else if (_playerInput.currentControlScheme == _gamepadScheme && _previousControlScheme != _gamepadScheme)
+            {
+                Cursor.visible = false;
+                _previousControlScheme = _gamepadScheme;
+            }
+        }
+    }
     
     private void SetMove(InputAction.CallbackContext ctx)
     {
@@ -101,6 +156,15 @@ public class InputReader : MonoBehaviour
         MoveIsPressed = !(MoveInput == Vector2.zero); 
     }
     
+    private void SetNavigate(InputAction.CallbackContext ctx)
+    {
+        NavigateInput = ctx.ReadValue<Vector2>();
+    }
+    private void SetClick(InputAction.CallbackContext ctx)
+    {
+        ClickIsPressed = ctx.started;
+    }
+
     private void SetLook(InputAction.CallbackContext ctx)
     {
         LookInput = ctx.ReadValue<Vector2>();
