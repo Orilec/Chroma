@@ -2,6 +2,7 @@
 //As the rbarraza.com website is not live anymore you can get an archived version from web archive 
 //or check an archived version that I uploaded on my website: https://dandarawy.com/html5-canvas-pageflip/
 
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -27,15 +28,20 @@ public class FlippingNotebook : MonoBehaviour {
     [SerializeField] private Image _leftNext;
     [SerializeField] private Image _right;
     [SerializeField] private Image _rightNext;
+    [SerializeField] private UIEventsPublisher _uiEvents;
+    [SerializeField] private NotebookManager _notebookManager;
     
     [Header("Pages References")]
     [SerializeField] private Sprite[] bookPages;
     
     [Header("Parameters")]
     [SerializeField] private bool enableShadowEffect=true;
-    [SerializeField] private float _pageFlipTime = 0.2f;
-    [SerializeField] private int _animationFramesCount = 20;
+    [SerializeField] private float _basePageFlipTime = 0.2f;
+    [SerializeField] private int _baseAnimationFramesCount = 20;
+    [SerializeField] private float _fastPageFlipTime = 0.2f;
+    [SerializeField] private int _fastAnimationFramesCount = 20;
 
+    private float _pageFlipTime, _animationFramesCount;
     
     private float _radius1, _radius2;
     //Spine Bottom
@@ -57,19 +63,17 @@ public class FlippingNotebook : MonoBehaviour {
     private int _currentPage = 0;
     private bool _isFlipping;
     
-    public int TotalPageCount
+    public int TotalPageCount { get { return bookPages.Length; } }
+    public int CurrentPage { get { return _currentPage; } }
+    public Vector3 EndBottomLeft { get { return _ebl; } }
+    public Vector3 EndBottomRight { get { return _ebr; } }
+
+    private void Awake()
     {
-        get { return bookPages.Length; }
+        _pageFlipTime = _basePageFlipTime;
+        _animationFramesCount = _baseAnimationFramesCount;
     }
-    public Vector3 EndBottomLeft
-    {
-        get { return _ebl; }
-    }
-    public Vector3 EndBottomRight
-    {
-        get { return _ebr; }
-    }
-    
+
     void Start()
     {
         if (!canvas) canvas=GetComponentInParent<Canvas>();
@@ -97,9 +101,41 @@ public class FlippingNotebook : MonoBehaviour {
         
     }
     
-    void PageFlipped()
+    private void PageFlipped()
     {
+        if (_currentPage == 0)_uiEvents.NotebookFlipped.Invoke(true, false);
+        else if (_currentPage == TotalPageCount)_uiEvents.NotebookFlipped.Invoke(false, true);
+        else _uiEvents.NotebookFlipped.Invoke(false, false);
         _isFlipping = false;
+    }
+
+    public void FlipToEnd()
+    {
+        StartCoroutine(FlipToPage(TotalPageCount));
+    }
+
+    public void FlipToBeginning()
+    {
+        StartCoroutine(FlipToPage(0));
+    }
+    private IEnumerator FlipToPage(int pageNumber)
+    {
+        _pageFlipTime = _fastPageFlipTime;
+        _animationFramesCount = _fastAnimationFramesCount;
+        while (_currentPage != pageNumber)
+        {
+            if (_currentPage < pageNumber)
+            {
+                FlipRightPage();
+            }
+            else
+            {
+                FlipLeftPage();
+            }
+            yield return new WaitUntil(() => !_isFlipping);
+        }
+        _pageFlipTime = _basePageFlipTime;
+        _animationFramesCount = _baseAnimationFramesCount;
     }
     
     public void FlipRightPage()
@@ -119,6 +155,7 @@ public class FlippingNotebook : MonoBehaviour {
     {
         if (_isFlipping) return;
         if (_currentPage <= 0) return;
+        if (_currentPage == TotalPageCount) _notebookManager.HidePostcards();
         _isFlipping = true;
         float frameTime = _pageFlipTime / _animationFramesCount;
         float xc = (EndBottomRight.x + EndBottomLeft.x) / 2;
@@ -386,6 +423,9 @@ public class FlippingNotebook : MonoBehaviour {
             _currentPage += 2;
         else
             _currentPage -= 2;
+        
+
+        
         _leftNext.transform.SetParent(BookPanel.transform, true);
         _left.transform.SetParent(BookPanel.transform, true);
         _leftNext.transform.SetParent(BookPanel.transform, true);

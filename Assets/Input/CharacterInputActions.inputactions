@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DisplayNotebook",
-                    "type": "Button",
-                    "id": "4acebb0a-4f7e-4c67-8147-7b367939ae43",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "DebugRespawn",
                     "type": "Button",
                     "id": "96e741b0-d075-4809-8d79-737cd0a41e02",
@@ -257,28 +248,6 @@
                 },
                 {
                     "name": "",
-                    "id": "df7a28cb-f657-4582-adb6-bfb0a7a137c3",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "DisplayNotebook",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "572fc232-b477-4e29-8e5b-2d3bb3ffaa65",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "DisplayNotebook",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4960ace4-b498-4a6f-99ed-cb064ab12d9a",
                     "path": "<Keyboard>/t",
                     "interactions": "",
@@ -313,6 +282,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DisplayNotebook",
+                    "type": "Button",
+                    "id": "cb6696b5-367a-4765-a3ae-303fac461854",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -335,6 +313,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ValidateLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ff8de74-8c49-4ddb-8227-aabbaf117463",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DisplayNotebook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d127a798-fd65-4aba-a6e7-db13ed4ac60b",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "DisplayNotebook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

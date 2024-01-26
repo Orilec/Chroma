@@ -38,10 +38,8 @@ public class PostcardManager : MonoBehaviour
         _postcardCloseUpImage = _postcardCloseUpTransform.GetComponent<Image>();
         _playerEvents.CardCollected.AddListener(AddNewPostCard);
         _selectablePostcards = new List<Postcard>();
-        _inputReader.EnableUIControl();
-        _inputReader.DisableCharacterControl();
     }
-
+    
     private void Update()
     {
         if (_inputReader.NavigateInput.x == 1)

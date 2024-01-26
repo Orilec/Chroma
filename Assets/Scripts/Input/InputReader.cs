@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,11 +32,14 @@ public class InputReader : MonoBehaviour
     
     public CharacterInputActions PlayerInput { get { return _input; } }
 
-    private void OnEnable()
+    private void Awake()
     {
         _input = new  CharacterInputActions();
         _input.Enable();
-        
+    }
+
+    private void OnEnable()
+    {
         _input.CharacterControls.Enable();
         _input.Interaction.Enable();
         _input.UI.Enable();
@@ -60,8 +64,8 @@ public class InputReader : MonoBehaviour
         _input.CharacterControls.RecenterCamera.started += SetRecenter;
         _input.CharacterControls.RecenterCamera.canceled += SetRecenter;
         
-        _input.CharacterControls.DisplayNotebook.started += SetNotebook;
-        _input.CharacterControls.DisplayNotebook.canceled += SetNotebook;
+        _input.Interaction.DisplayNotebook.started += SetNotebook;
+        _input.Interaction.DisplayNotebook.canceled += SetNotebook;
         
         _input.CharacterControls.DebugRespawn.started += SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled += SetRespawn;
@@ -100,8 +104,8 @@ public class InputReader : MonoBehaviour
         _input.CharacterControls.RecenterCamera.started -= SetRecenter;
         _input.CharacterControls.RecenterCamera.canceled -= SetRecenter;
         
-        _input.CharacterControls.DisplayNotebook.started -= SetNotebook;
-        _input.CharacterControls.DisplayNotebook.canceled -= SetNotebook;
+        _input.Interaction.DisplayNotebook.started -= SetNotebook;
+        _input.Interaction.DisplayNotebook.canceled -= SetNotebook;
         
         _input.CharacterControls.DebugRespawn.started -= SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled -= SetRespawn;
