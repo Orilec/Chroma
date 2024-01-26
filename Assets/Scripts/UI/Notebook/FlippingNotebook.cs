@@ -118,6 +118,11 @@ public class FlippingNotebook : MonoBehaviour {
     {
         StartCoroutine(FlipToPage(0));
     }
+    
+    public void FlipToNotes()
+    {
+        StartCoroutine(FlipToPage(2));
+    }
     private IEnumerator FlipToPage(int pageNumber)
     {
         _pageFlipTime = _fastPageFlipTime;

@@ -9,6 +9,7 @@ public class NotebookManager : MonoBehaviour
     [SerializeField] private PlayerEventsPublisher _playerEvents;
     [SerializeField] private InputReader _input;
     [SerializeField] private UIEventsPublisher _uiEvents;
+    [SerializeField] private FlippingNotebook _notebook;
     [SerializeField] private RectTransform _postcardContainer;
     [SerializeField] private RectTransform _leftBookPages;
     [SerializeField] private RectTransform _rightBookPages;
@@ -36,6 +37,15 @@ public class NotebookManager : MonoBehaviour
             DisplayNotebook();
         }
         _displayedWasPressedLastFrame = _input.DisplayNotebook;
+        
+        if (_input.NavigateInput.x >= 0.95)
+        {
+            _notebook.FlipRightPage();
+        }
+        else if (_input.NavigateInput.x <= -0.95)
+        {
+            _notebook.FlipLeftPage();
+        }
     }
 
     private void DisplayNotebook()
@@ -59,7 +69,7 @@ public class NotebookManager : MonoBehaviour
 
     public void HidePostcards()
     {
-        SectionDisplay(_postcardContainer, _rightBookPages, _rightButton, true);
+        _postcardContainer.gameObject.SetActive(false);
     }
 
     private void SectionDisplay(RectTransform section, RectTransform bookPages, Button flipButton, bool show)

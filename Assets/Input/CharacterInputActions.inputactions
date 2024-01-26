@@ -291,6 +291,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExitNotebook",
+                    "type": "Button",
+                    "id": "69f3ce35-c94c-4d9c-90f5-01856861ec73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -335,6 +344,28 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "DisplayNotebook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea50e62b-d5aa-44f9-a6d5-7c0a6859cf7c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ExitNotebook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79fa1b24-1cea-4f97-8ec1-1b23a25fce58",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ExitNotebook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -430,6 +461,24 @@
                     "type": "PassThrough",
                     "id": "5664e4bb-be04-4521-ac0d-ef71f826cc86",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PreviousCategory",
+                    "type": "Button",
+                    "id": "76be8563-40a2-4299-9024-2c7fe6552fd2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextCategory",
+                    "type": "Button",
+                    "id": "fc4875c3-c33a-4d6f-bab7-074aa9ddc748",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -862,6 +911,28 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a532cef-ae7d-4ef3-b70b-514f50362f5f",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PreviousCategory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad626f12-bce3-48c8-a521-f6f8a54399d9",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NextCategory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

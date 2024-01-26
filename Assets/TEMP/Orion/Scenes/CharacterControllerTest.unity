@@ -8727,7 +8727,7 @@ PrefabInstance:
     - target: {fileID: 3806301852977943714, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14353028
+      value: 0.14353025
       objectReference: {fileID: 0}
     - target: {fileID: 3806301852977943714, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
@@ -8737,7 +8737,24 @@ PrefabInstance:
     - target: {fileID: 3806301852977943714, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000026077032
+      value: 0.000000022351742
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974666290930268189, guid: 941e388687dc2604f896e898abc4d8c2,
+        type: 3}
+      propertyPath: _messagePrefab
+      value: 
+      objectReference: {fileID: 4668254377980081269, guid: d4daee6639202a946908bd76965745fb,
+        type: 3}
+    - target: {fileID: 3974666290930268189, guid: 941e388687dc2604f896e898abc4d8c2,
+        type: 3}
+      propertyPath: _messageFromSidekickPrefab
+      value: 
+      objectReference: {fileID: 4668254377980081269, guid: 3c2bdce93bd8bf24890c317e89faec84,
+        type: 3}
+    - target: {fileID: 5152920708618834715, guid: 941e388687dc2604f896e898abc4d8c2,
+        type: 3}
+      propertyPath: m_Spacing
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6389258025765222668, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}

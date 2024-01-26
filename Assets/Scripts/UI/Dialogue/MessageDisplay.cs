@@ -15,7 +15,7 @@ public class MessageDisplay : MonoBehaviour
 
     public void InitMessage(Message messageInfo, string senderName)
     {
-        _nameText.text = senderName;
+        //_nameText.text = senderName;
         _contentText.text = messageInfo.Content;
         _icon.sprite = messageInfo.Icon;
     }
