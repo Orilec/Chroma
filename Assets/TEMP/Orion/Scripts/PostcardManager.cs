@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
@@ -11,11 +12,14 @@ public class PostcardManager : MonoBehaviour
     [SerializeField] private PlayerEventsPublisher _playerEvents;
     [SerializeField] private float _postcardAnimationOffset = 50f;
     [SerializeField] private float _postcardAnimationTime = 0.1f;
+    [SerializeField] private RectTransform _postcardCloseUpTransform;
     [SerializeField] private InputReader _inputReader;
     
     private Postcard _selectedPostcard, _lastSelected;
     private int _currentAddedIndex, _lastSelectedIndex;
     private List<Postcard> _selectablePostcards;
+    private bool _clickWasPressedLastFrame;
+    private Image _postcardCloseUpImage;
     
     public float PostcardAnimationOffset { get { return _postcardAnimationOffset; } }
     public float PostcardAnimationTime { get { return _postcardAnimationTime; } }
@@ -31,6 +35,7 @@ public class PostcardManager : MonoBehaviour
 
     private void Awake()
     {
+        _postcardCloseUpImage = _postcardCloseUpTransform.GetComponent<Image>();
         _playerEvents.CardCollected.AddListener(AddNewPostCard);
         _selectablePostcards = new List<Postcard>();
         _inputReader.EnableUIControl();
@@ -48,10 +53,12 @@ public class PostcardManager : MonoBehaviour
             HandleCardSelection(-1);
         }
 
-        if (_inputReader.ClickIsPressed && _selectedPostcard != null)
+        if (_inputReader.ClickIsPressed && _selectedPostcard != null && !_clickWasPressedLastFrame)
         {
             _selectedPostcard.CardButton.onClick.Invoke();
         }
+
+        _clickWasPressedLastFrame = _inputReader.ClickIsPressed;
     }
 
     private void AddNewPostCard(Sprite sprite)
@@ -75,5 +82,12 @@ public class PostcardManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(_selectablePostcards[newIndex].gameObject);
             _selectedPostcard = _selectablePostcards[newIndex];
         }
+    }
+
+    public void ShowPostcard(Postcard card)
+    {
+        card.CardImage.enabled = false;
+        _postcardCloseUpImage.sprite = card.CardImage.sprite;
+        _postcardCloseUpImage.enabled = true;
     }
 }

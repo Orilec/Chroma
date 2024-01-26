@@ -15,6 +15,7 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Vector3 _startPos;
     
     public Button CardButton{ get { return _button; } }
+    public Image CardImage{ get { return _image; } }
     
     public void InitCard(Sprite sprite, PostcardManager postcardManager)
     {
@@ -77,9 +78,9 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _postcardManager.SelectedPostcard = null;
     }
 
-    public void DebugClick()
+    public void OnClick()
     {
-        Debug.Log(gameObject.name + " is clicked");
+        _postcardManager.ShowPostcard(this);
     }
 
 
