@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c767cc9a426264c92c23fff42d1da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.58633876
+  radius: 0
   maxRadius: 5
   isActive: 0
-  colorationSpeed: 0.02
+  colorationSpeed: 5
   isCast: 1
   isTemporary: 1
-  decolorationSpeed: 0.005
+  decolorationSpeed: 3
 --- !u!136 &3873470108173712961
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.58633876
-  m_Height: 1.1726775
+  m_Radius: 1.4653978e-11
+  m_Height: 2.9307955e-11
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

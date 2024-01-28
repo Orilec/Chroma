@@ -74,11 +74,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
         type: 3}
-      propertyPath: radius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
-        type: 3}
       propertyPath: maxRadius
       value: 3.6
       objectReference: {fileID: 0}
@@ -235,6 +230,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2855207051565348488}
     m_Modifications:
+    - target: {fileID: -809828480950454423, guid: 125be02f40c0aad45b31cbef5842d0c9,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -809828480950454423, guid: 125be02f40c0aad45b31cbef5842d0c9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d77648a6488df9044a49a1a4ee610cf6, type: 2}
     - target: {fileID: -9028583170174710717, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1055,16 +1060,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
       objectReference: {fileID: 0}
-    - target: {fileID: -809828480950454423, guid: 125be02f40c0aad45b31cbef5842d0c9,
-        type: 3}
-      propertyPath: m_UpdateWhenOffscreen
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -809828480950454423, guid: 125be02f40c0aad45b31cbef5842d0c9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d77648a6488df9044a49a1a4ee610cf6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

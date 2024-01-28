@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class InteractorScript : MonoBehaviour
 {
     
     public float radius;
     public float maxRadius;
     public bool isActive = false;
-    public float colorationSpeed = 0.03f;
+    public float colorationSpeed = 3f;
 
     public bool isCast;
     public bool isTemporary;
@@ -41,7 +41,7 @@ public class InteractorScript : MonoBehaviour
     {
         if (radius < maxRadius && isActive && !swapFinished) //Process coloration for interactor object and temporary interactors
         {
-            radius = Mathf.Lerp(radius, maxRadius, colorationSpeed); 
+            radius = Mathf.Lerp(radius, maxRadius,  Time.deltaTime); 
         }
 
         if ((maxRadius - radius) <= (maxRadius/10) && !swapFinished) //Coloration limit : finish swap for event
@@ -57,10 +57,18 @@ public class InteractorScript : MonoBehaviour
 
         if(swapFinished && isTemporary) //if temporary, swap back to uncolored 
         {
-            radius = Mathf.Lerp(radius, 0, decolorationSpeed);
+            radius = Mathf.Lerp(radius, 0, decolorationSpeed * Time.deltaTime);
             if(radius <= maxRadius / 10 && isCast) // if interactor is casted, destroy 
             {
                 Destroy(gameObject); 
+            }
+            else if(radius <= maxRadius / 10 && !isCast) //if interactor is not casted
+            {
+                radius = 0f; 
+                isActive = false;
+                swapFinished = false;
+
+                // ----- > RESET TARGET <-------
             }
         }
 
@@ -69,6 +77,12 @@ public class InteractorScript : MonoBehaviour
         //Update Sphere Collider radius
         _capsuleCollider.radius = radius;
         _capsuleCollider.height = 2 * radius; 
+    }
+
+
+    public void SetInteractorActive()
+    {
+        isActive = true; 
     }
 
     public bool GetSwapFinished()

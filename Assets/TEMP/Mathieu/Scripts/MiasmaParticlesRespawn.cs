@@ -99,10 +99,7 @@ public class MiasmaParticlesRespawn : MonoBehaviour
             ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams
             {
                 position = particle.position,
-                velocity = particle.velocity,
                 startColor = new Color(particle.startColor.r, particle.startColor.g, particle.startColor.b, 1f),
-                startSize = particle.startSize,
-                startLifetime = particle.remainingLifetime,
             };
 
             particle.remainingLifetime = 0;
@@ -117,6 +114,11 @@ public class MiasmaParticlesRespawn : MonoBehaviour
 
         particleS.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, particlesEnter);
         particleS.SetTriggerParticles(ParticleSystemTriggerEventType.Exit, particlesExit);
+    }
+
+    public void EmitFromOtherParticleSystem(ParticleSystem.EmitParams emitParams)
+    {
+
     }
 
 }

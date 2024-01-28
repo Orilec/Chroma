@@ -76,7 +76,6 @@ public class MiasmaParticlesKill : MonoBehaviour
                 velocity = particle.velocity,
                 startColor = new Color(particle.startColor.r, particle.startColor.g, particle.startColor.b, 0f),
                 startSize = particle.startSize,
-                startLifetime = particle.remainingLifetime,
             };
 
             particle.remainingLifetime = 0;
@@ -101,28 +100,8 @@ public class MiasmaParticlesKill : MonoBehaviour
         particleS.SetTriggerParticles(ParticleSystemTriggerEventType.Exit, particlesExit);
     }
 
-    private void TransferParticles(List<ParticleSystem.Particle> transferredParticles)
+    public void EmitFromOtherParticleSystem(ParticleSystem.EmitParams emitParams)
     {
-        // Accédez aux particules du système source
-        List<ParticleSystem.Particle> sourceParticles = transferredParticles;
-        int numParticles = transferredParticles.Count;
-
-        // Émettez de nouvelles particules dans le système de destination
-        particleDestination.Emit(numParticles);
-
-        // Accédez aux particules nouvellement émises dans le système de destination
-        ParticleSystem.Particle[] destinationParticles = new ParticleSystem.Particle[particleDestination.particleCount];
-        numParticles = particleDestination.GetParticles(destinationParticles);
-
-        // Transférez les propriétés nécessaires
-        for (int i = 0; i < numParticles; i++)
-        {
-            // Exemple de transfert de la position et de la couleur
-            destinationParticles[i].position = sourceParticles[i].position;
-            destinationParticles[i].startColor = sourceParticles[i].startColor;
-        }
-
-        // Appliquez les modifications aux particules du système de destination
-        particleDestination.SetParticles(destinationParticles, numParticles);
+        
     }
 }
