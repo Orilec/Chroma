@@ -31,7 +31,6 @@ public class ColorableObject : MonoBehaviour
         //{
         //    GetComponentInChildren<Animator>().SetBool("isActive", true);
         //}
-
     }
 
     //Draw coloration interactor limits in scene

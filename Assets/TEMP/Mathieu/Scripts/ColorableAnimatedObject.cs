@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,13 @@ public class ColorableAnimatedObject : ColorableObject
     private void StartAnimation()
     {
         GetComponentInChildren<Animator>().SetBool("isActive", true);
+        GetComponentInChildren<Animator>().SetBool("isReversed", false);
+    }
+
+    private void StartReverseAnimation()
+    {
+        GetComponentInChildren<Animator>().SetBool("isReversed", true); 
+        GetComponentInChildren<Animator>().SetBool("isActive", false); 
     }
 
     private void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
@@ -66,16 +74,25 @@ public class ColorableAnimatedObject : ColorableObject
 
     }
 
+    private void InteractorEvent_OnDecolorationFinished(InteractorEvent arg1, InteractorEventArgs arg2)
+    {
+        SetObjectInactive(); 
+    }
+
 
     private void OnEnable()
     {
         interactorEvent.OnColorationFinished += InteractorEvent_OnColorationFinished; 
+        interactorEvent.OnDecolorationFinished += InteractorEvent_OnDecolorationFinished; 
     }
 
     private void OnDisable()
     {
         interactorEvent.OnColorationFinished -= InteractorEvent_OnColorationFinished;
+        interactorEvent.OnDecolorationFinished -= InteractorEvent_OnDecolorationFinished;
     }
+
+ 
 
     public override void SetObjectActive()
     {
@@ -93,7 +110,12 @@ public class ColorableAnimatedObject : ColorableObject
         {
             SetMaterialToColored(); 
         }
+    }
 
+    public void SetObjectInactive()
+    {
+        isColored = false;
+        StartReverseAnimation();
     }
 
     private void SetMaterialToColored()
