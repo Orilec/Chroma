@@ -13,7 +13,7 @@ public class PostcardManager : MonoBehaviour
     [SerializeField] private float _postcardAnimationOffset = 50f;
     [SerializeField] private float _postcardAnimationTime = 0.1f;
     [SerializeField] private RectTransform _postcardCloseUpTransform;
-    [SerializeField] private InputReader _inputReader;
+    [SerializeField] private InputReader _input;
     
     private Postcard _selectedPostcard, _lastSelected;
     private int _currentAddedIndex, _lastSelectedIndex;
@@ -38,27 +38,25 @@ public class PostcardManager : MonoBehaviour
         _postcardCloseUpImage = _postcardCloseUpTransform.GetComponent<Image>();
         _playerEvents.CardCollected.AddListener(AddNewPostCard);
         _selectablePostcards = new List<Postcard>();
-        _inputReader.EnableUIControl();
-        _inputReader.DisableCharacterControl();
     }
-
+    
     private void Update()
     {
-        if (_inputReader.NavigateInput.x == 1)
+        if (_input.NavigateInput.x >= 0.95)
         {
             HandleCardSelection(1);
         }
-        else if (_inputReader.NavigateInput.x == -1)
+        else if (_input.NavigateInput.x <= -0.95)
         {
             HandleCardSelection(-1);
         }
 
-        if (_inputReader.ClickIsPressed && _selectedPostcard != null && !_clickWasPressedLastFrame)
+        if (_input.ClickIsPressed && _selectedPostcard != null && !_clickWasPressedLastFrame)
         {
             _selectedPostcard.CardButton.onClick.Invoke();
         }
 
-        _clickWasPressedLastFrame = _inputReader.ClickIsPressed;
+        _clickWasPressedLastFrame = _input.ClickIsPressed;
     }
 
     private void AddNewPostCard(Sprite sprite)
