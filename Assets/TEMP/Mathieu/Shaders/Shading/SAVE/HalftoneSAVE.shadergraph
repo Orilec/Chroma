@@ -4449,7 +4449,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Smoothness",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -4711,7 +4711,7 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Specular",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -6409,6 +6409,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "451ec603e8184bc3ae9718d550afc932",
+    "m_Id": 1567322455,
+    "m_DisplayName": "NormalStrength",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_NormalStrength",
+    "m_StageCapability": 2,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.CategoryData",
     "m_ObjectId": "4557f8956e0d4601a8169a8b21dc8e23",
     "m_Name": "DEBUG",
@@ -6587,6 +6602,24 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Texture2DInputMaterialSlot",
+    "m_ObjectId": "4857dd3ff8984e6db30e4d9e70cd5d5f",
+    "m_Id": -1399684913,
+    "m_DisplayName": "SmoothnessMap",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_SmoothnessMap",
+    "m_StageCapability": 2,
+    "m_BareResource": false,
+    "m_Texture": {
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_Guid": ""
+    },
+    "m_DefaultType": 0
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SamplerStateMaterialSlot",
     "m_ObjectId": "48dcca94da90416cb4571568424a6700",
     "m_Id": 3,
@@ -6688,7 +6721,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Specular",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -7837,6 +7870,12 @@
             "m_Id": "8399b5c136614ef18e08fe6b18bf9da0"
         },
         {
+            "m_Id": "451ec603e8184bc3ae9718d550afc932"
+        },
+        {
+            "m_Id": "4857dd3ff8984e6db30e4d9e70cd5d5f"
+        },
+        {
             "m_Id": "4d6aec8ad34749ad9a1e9ba03e07e1d0"
         },
         {
@@ -7855,12 +7894,16 @@
     "m_PropertyGuids": [
         "505eee10-ac1d-498a-851d-a2e794b89788",
         "d21a4f0e-44c7-4d17-9252-97eb0e487adb",
-        "f9e83c18-40c1-4834-803b-ce7d7924cea5"
+        "f9e83c18-40c1-4834-803b-ce7d7924cea5",
+        "4408ffcd-2ab5-4a40-9620-9cd9b984bf8a",
+        "a225efc0-6203-40bf-8c26-046e802b0c20"
     ],
     "m_PropertyIds": [
         1994516252,
         -1344269995,
-        1776050976
+        1776050976,
+        1567322455,
+        -1399684913
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []

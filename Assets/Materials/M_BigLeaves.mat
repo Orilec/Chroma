@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_BigLeaves
-  m_Shader: {fileID: -6465566751694194690, guid: b596cdf599f4b414ca473271917b6cbf,
+  m_Shader: {fileID: -6465566751694194690, guid: 60c2f36503551f140a9d030a470abcf0,
     type: 3}
   m_Parent: {fileID: 2100000, guid: c5afcd218453f7d4a97db3b9a2af3cbe, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -41,14 +41,22 @@ Material:
         m_Texture: {fileID: 2800000, guid: bc428f147ecb9d74b9c7bfaab9de2119, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: 5ef6642208efe2d4587fdbbefae80a44, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Debug: 0
     - _NoiseStrenght: 0.57
+    - _OutlineDepthStrength: 0
+    - _OutlineThickness: 0
     - _RadiusCutoff: 0.21
     - _SmoothnessSlider: 0
-    m_Colors: []
+    m_Colors:
+    - _MainColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

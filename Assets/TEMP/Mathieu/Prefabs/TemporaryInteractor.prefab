@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8132970701782000183}
   - component: {fileID: 898110408948168787}
+  - component: {fileID: 3873470108173712961}
   m_Layer: 0
   m_Name: TemporaryInteractor
   m_TagString: Untagged
@@ -47,7 +48,32 @@ MonoBehaviour:
   radius: 0
   maxRadius: 5
   isActive: 0
-  colorationSpeed: 0.02
+  colorationSpeed: 5
+  colorationTime: 0.5
+  decolorationTime: 2
   isCast: 1
   isTemporary: 1
-  decolorationSpeed: 0.005
+  decolorationSpeed: 3
+--- !u!136 &3873470108173712961
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4380877409868593253}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4653978e-11
+  m_Height: 2.9307955e-11
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
