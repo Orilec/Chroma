@@ -11,6 +11,8 @@ public class InputReader : MonoBehaviour
     public Vector2 NavigateInput { get; private set; } = Vector2.zero;
     public bool MoveIsPressed { get; private set; } = false;
     public bool ClickIsPressed { get; private set; } = false;
+    public bool NextSectionIsPressed { get; private set; } = false;
+    public bool PreviousSectionIsPressed { get; private set; } = false;
     
     public Vector2 LookInput { get; private set; } = Vector2.zero;
     public bool InvertMouseY { get; private set; } = true;
@@ -74,7 +76,12 @@ public class InputReader : MonoBehaviour
         
         _input.UI.Click.started += SetClick;
         _input.UI.Click.canceled += SetClick;
+
+        _input.UI.NextCategory.started += SetNextCategory;
+        _input.UI.NextCategory.canceled += SetNextCategory;
         
+        _input.UI.NextCategory.started += SetNextCategory;
+        _input.UI.NextCategory.canceled += SetNextCategory;
     }
     private void OnDisable()
     {
@@ -151,6 +158,16 @@ public class InputReader : MonoBehaviour
         if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
         else _isKeyboardMouse = false;
         ClickIsPressed = ctx.started;
+    }
+    private void SetNextCategory(InputAction.CallbackContext ctx)
+    {
+        _isKeyboardMouse = false;
+        NextSectionIsPressed = ctx.started;
+    }
+    private void SetPreviousCategory(InputAction.CallbackContext ctx)
+    {
+        _isKeyboardMouse = false;
+        PreviousSectionIsPressed = ctx.started;
     }
 
     private void SetLook(InputAction.CallbackContext ctx)
