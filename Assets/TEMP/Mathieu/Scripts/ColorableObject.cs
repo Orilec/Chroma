@@ -20,7 +20,7 @@ public class ColorableObject : MonoBehaviour
 
     public virtual void SetObjectActive()
     {
-        GetComponentInChildren<InteractorScript>().isActive = true;
+        GetComponentInChildren<InteractorScript>().SetInteractorActive();
 
 
         //if (GetComponent<ColorableGrowingObject>())
@@ -31,7 +31,6 @@ public class ColorableObject : MonoBehaviour
         //{
         //    GetComponentInChildren<Animator>().SetBool("isActive", true);
         //}
-
     }
 
     //Draw coloration interactor limits in scene

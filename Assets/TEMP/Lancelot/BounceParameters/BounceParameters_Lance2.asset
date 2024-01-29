@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc3d75633b804145ac35f8c55554b36, type: 3}
+  m_Name: BounceParameters_Lance2
+  m_EditorClassIdentifier: 
+  bounceInitialForce: 11000
+  bounceContinualForceMultiplier: 0.1
+  bounceTime: 0.3
+  bounceGravityFallMin: -10
+  bounceGravityFallMax: -150
+  bounceGravityFallIncrementAmount: -20
+  bounceGravityFallIncrementTime: 0.05
+  bounceMomentum: 0.5
