@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MessageDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _nameText;
+    [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private TextMeshProUGUI _contentText;
     [SerializeField] private Image _icon;
     [SerializeField] private UIEventsPublisher _uiEvents;
