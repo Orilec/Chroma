@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_LillyPlatform
-  m_Shader: {fileID: -6465566751694194690, guid: b596cdf599f4b414ca473271917b6cbf,
+  m_Shader: {fileID: -6465566751694194690, guid: 43ee6da12dee70846888141807d48ca7,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,6 +32,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: ae9bb195e0cc82447bf079d26aaa8ec0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HatchingTex_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 217a3e41d97a0d749be4d6f9ca735ccc, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -45,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SmoothnessMap:
-        m_Texture: {fileID: 2800000, guid: 8269656dcb404f649a85a190357a865c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -64,11 +68,13 @@ Material:
     m_Floats:
     - _Blend: 0
     - _Debug: 0
+    - _FalloffThreshold: 2
     - _HasEmissive: 0
     - _HasEmissiveMap: 0
     - _HasSmoothnessMap: 0
     - _HatchingSpeed: 3
     - _HatchingStrenght: 0.2
+    - _LitThreshold: 1
     - _MoveSpeed: 0
     - _NoiseScale: 1
     - _NoiseStrenght: 0.57
@@ -76,6 +82,8 @@ Material:
     - _QueueOffset: 0
     - _RadiusCutoff: 0.21
     - _SmoothnessSlider: 0.165
+    - _Softness: 0.3
+    - _USESCREENSPACE: 0
     m_Colors:
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
