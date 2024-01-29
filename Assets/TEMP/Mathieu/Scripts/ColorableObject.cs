@@ -6,10 +6,14 @@ public class ColorableObject : MonoBehaviour
 {
 
     public InteractorEvent interactorEvent;
+
+    private InteractorScript interactor;
+
+    [SerializeField] float interactorRadius; 
     // Start is called before the first frame update
     void Start()
     {
-        
+         
     }
 
     // Update is called once per frame
@@ -36,14 +40,23 @@ public class ColorableObject : MonoBehaviour
     //Draw coloration interactor limits in scene
     void OnDrawGizmosSelected()
     {
-        Vector3 interactorPosition = GetComponentInChildren<InteractorScript>().transform.position;
-        float interactorRadius = GetComponentInChildren<InteractorScript>().maxRadius;
+        InteractorScript interactor = GetComponentInChildren<InteractorScript>();
+
+        Vector3 interactorPosition = interactor.transform.position;
+        float interactorRadius = interactor.maxRadius;
 
         // Draw a sphere and wireframe at the transform's position
         Gizmos.color = new Color(1,0,0,0.2f);
         Gizmos.DrawSphere(interactorPosition, interactorRadius);
         Gizmos.color = new Color(1,0,0,1);
         Gizmos.DrawWireSphere(interactorPosition, interactorRadius);
+    }
+
+    private void OnValidate()
+    {
+        InteractorScript interactor = GetComponentInChildren<InteractorScript>();
+
+        interactor.maxRadius = Mathf.Max(1, interactorRadius); 
     }
 
 }
