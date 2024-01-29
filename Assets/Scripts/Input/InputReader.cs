@@ -1,12 +1,12 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour
 {
-    private string _previousControlScheme = "";
-    private const string _gamepadScheme = "Gamepad";
-    private const string _mouseScheme = "KeyboardMouse";
+    private bool _isKeyboardMouse;
+
     public Vector2 MoveInput { get; private set; } = Vector2.zero;
     public Vector2 NavigateInput { get; private set; } = Vector2.zero;
     public bool MoveIsPressed { get; private set; } = false;
@@ -24,23 +24,23 @@ public class InputReader : MonoBehaviour
     public bool ValidateLevel { get; private set; } = false; 
     public bool DebugRespawn { get; private set; } = false;
     public bool IsInUI { get; private set; } = false; 
-    
-    
+    public bool IsKeyboardMouse { get { return _isKeyboardMouse;}}
     private CharacterInputActions _input;
     private PlayerInput _playerInput;
     
-    public CharacterInputActions PlayerInput { get { return _input; } }
+    public CharacterInputActions PlayerInputActions { get { return _input; } }
 
-    private void OnEnable()
+    private void Awake()
     {
         _input = new  CharacterInputActions();
         _input.Enable();
-        
+    }
+
+    private void OnEnable()
+    {
         _input.CharacterControls.Enable();
         _input.Interaction.Enable();
         _input.UI.Enable();
-        
-        //_playerInput.onControlsChanged += OnControlsChanged;
 
         _input.CharacterControls.Move.performed += SetMove;
         _input.CharacterControls.Move.canceled += SetMove;
@@ -60,8 +60,8 @@ public class InputReader : MonoBehaviour
         _input.CharacterControls.RecenterCamera.started += SetRecenter;
         _input.CharacterControls.RecenterCamera.canceled += SetRecenter;
         
-        _input.CharacterControls.DisplayNotebook.started += SetNotebook;
-        _input.CharacterControls.DisplayNotebook.canceled += SetNotebook;
+        _input.Interaction.DisplayNotebook.started += SetNotebook;
+        _input.Interaction.DisplayNotebook.canceled += SetNotebook;
         
         _input.CharacterControls.DebugRespawn.started += SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled += SetRespawn;
@@ -100,8 +100,8 @@ public class InputReader : MonoBehaviour
         _input.CharacterControls.RecenterCamera.started -= SetRecenter;
         _input.CharacterControls.RecenterCamera.canceled -= SetRecenter;
         
-        _input.CharacterControls.DisplayNotebook.started -= SetNotebook;
-        _input.CharacterControls.DisplayNotebook.canceled -= SetNotebook;
+        _input.Interaction.DisplayNotebook.started -= SetNotebook;
+        _input.Interaction.DisplayNotebook.canceled -= SetNotebook;
         
         _input.CharacterControls.DebugRespawn.started -= SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled -= SetRespawn;
@@ -132,73 +132,77 @@ public class InputReader : MonoBehaviour
         IsInUI = false;
     }
     
-    private void OnControlsChanged(PlayerInput input)
-    {
-        Debug.Log("controls changed");
-        if (IsInUI)
-        {
-            if (_playerInput.currentControlScheme == _mouseScheme && _previousControlScheme != _mouseScheme)
-            {
-                Cursor.visible = true;
-                _previousControlScheme = _mouseScheme;
-            }
-            else if (_playerInput.currentControlScheme == _gamepadScheme && _previousControlScheme != _gamepadScheme)
-            {
-                Cursor.visible = false;
-                _previousControlScheme = _gamepadScheme;
-            }
-        }
-    }
-    
     private void SetMove(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         MoveInput = ctx.ReadValue<Vector2>();
         MoveIsPressed = !(MoveInput == Vector2.zero); 
     }
     
     private void SetNavigate(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         NavigateInput = ctx.ReadValue<Vector2>();
     }
     private void SetClick(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         ClickIsPressed = ctx.started;
     }
 
     private void SetLook(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         LookInput = ctx.ReadValue<Vector2>();
     }
 
     private void SetJump(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         JumpIsPressed = ctx.started;
     } 
     private void SetSlide(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         SlideIsPressed = ctx.started;
     }
     private void SetThrow(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         ThrowIsPressed = ctx.started;
     }
     
     private void SetRecenter(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         RecenterCameraIsPressed = ctx.started;
     }
     
     private void SetNotebook(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         DisplayNotebook = ctx.started;
     }
     private void SetRespawn(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         DebugRespawn = ctx.started;
     }
     
     private void SetValidate(InputAction.CallbackContext ctx)
     {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         ValidateLevel = ctx.started;
     }
 }
