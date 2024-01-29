@@ -13,9 +13,20 @@ public class AnimationEventsHolder : MonoBehaviour
        
     }
 
+    public void DesactivateObject()
+    {
+        DesactivateCollider();
+
+    }
+
     private void ActivateCollider()
     {
         meshCollider.enabled = true; 
+    }
+
+    private void DesactivateCollider()
+    {
+        meshCollider.enabled = false;
     }
 
     private void ActivateScript()
