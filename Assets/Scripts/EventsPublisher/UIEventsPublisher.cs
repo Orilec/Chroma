@@ -10,4 +10,5 @@ public class UIEventsPublisher : ScriptableObject
     public UnityEvent FadeToBlackFinished;
     public UnityEvent FirstFadeFinished;
     public UnityEvent MessageFadeOutFinished;
+    public UnityEvent<bool, bool> NotebookFlipped;
 }

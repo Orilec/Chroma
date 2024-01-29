@@ -11,8 +11,8 @@ public class ChronoMenuWindow : EditorWindow
     private bool startOnSceneLoad = false;
     private float lastSavedTime;
 
-    private bool segmentNamesFoldout = true; // Variable pour déplier/replier la liste des noms de segments
-    private bool parametersFoldout = true; // Variable pour déplier/replier la liste des noms de segments
+    private bool segmentNamesFoldout = true; // Variable pour dÃ©plier/replier la liste des noms de segments
+    private bool parametersFoldout = true; // Variable pour dÃ©plier/replier la liste des noms de segments
 
 
     [MenuItem("Tools/Chrono")]
@@ -74,7 +74,7 @@ public class ChronoMenuWindow : EditorWindow
         if (isRunning)
         {
             float elapsedTime = Time.realtimeSinceStartup - startTime;
-            GUILayout.Label("<size=16><b>Temps écoulé : </b></size>" + elapsedTime.ToString("F3"),style);
+            GUILayout.Label("<size=16><b>Temps Ã©coulÃ© : </b></size>" + elapsedTime.ToString("F3"),style);
 
             if (GUILayout.Button("Add Segment"))
             {
