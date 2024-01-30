@@ -15,7 +15,8 @@ public class TriggerObject : MonoBehaviour
     void Start()
     {
         GetInteractorsFromPathObjects();
-        AssignColorationAndDecolorationTimes(); 
+        AssignColorationAndDecolorationTimes();
+        SetChildrenInteractorsToTemporary(); 
     }
 
     // Update is called once per frame
@@ -46,5 +47,36 @@ public class TriggerObject : MonoBehaviour
             pathInteractors[i].colorationTime = activationTime / numbersOfInteractorsInPath; 
             pathInteractors[i].decolorationTime = deactivationTime; 
         }
+    }
+
+    private void SetChildrenInteractorsToTemporary()
+    {
+        InteractorScript triggerObjectInteractor = GetComponentInChildren<InteractorScript>();
+
+        int numbersOfInteractorsInPath = pathInteractors.Count;
+
+        for (int i = 0; i < numbersOfInteractorsInPath; i++)
+        {
+            pathInteractors[i].isTemporary = true;
+
+        }
+    }
+
+
+
+    void OnDrawGizmosSelected()
+    {
+        GetInteractorsFromPathObjects();
+
+        foreach (InteractorScript interactor in pathInteractors)
+        {
+            Vector3 interactorPosition = interactor.transform.position;
+            float interactorRadius = interactor.maxRadius;
+
+            // Draw a sphere and wireframe at the transform's position
+            Gizmos.color = new Color(1, 0, 0, 0.2f);
+            Gizmos.DrawSphere(interactorPosition, interactorRadius);
+        }
+
     }
 }
