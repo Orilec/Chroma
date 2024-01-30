@@ -61,4 +61,22 @@ public class TriggerObject : MonoBehaviour
 
         }
     }
+
+
+
+    void OnDrawGizmosSelected()
+    {
+        GetInteractorsFromPathObjects();
+
+        foreach (InteractorScript interactor in pathInteractors)
+        {
+            Vector3 interactorPosition = interactor.transform.position;
+            float interactorRadius = interactor.maxRadius;
+
+            // Draw a sphere and wireframe at the transform's position
+            Gizmos.color = new Color(1, 0, 0, 0.2f);
+            Gizmos.DrawSphere(interactorPosition, interactorRadius);
+        }
+
+    }
 }

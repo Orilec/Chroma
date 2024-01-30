@@ -52,6 +52,7 @@ public class ColorableObject : MonoBehaviour
     public virtual void SetObjectInactive()
     {
         isColored = false;
+        SetMaterialToBlackAndWhite(); 
     }
 
 
@@ -84,6 +85,11 @@ public class ColorableObject : MonoBehaviour
         coloredRenderer.material.SetFloat("_Blend", 1);
     }
 
+    private void SetMaterialToBlackAndWhite()
+    {
+        coloredRenderer.material.SetInt("_Debug", 0);
+    }
+
 
 
     // EDITOR 
@@ -101,6 +107,9 @@ public class ColorableObject : MonoBehaviour
         Gizmos.DrawSphere(interactorPosition, interactorRadius);
         Gizmos.color = new Color(1, 0, 0, 1);
         Gizmos.DrawWireSphere(interactorPosition, interactorRadius);
+
+
+
     }
 
 
