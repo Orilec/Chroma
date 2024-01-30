@@ -15,7 +15,8 @@ public class TriggerObject : MonoBehaviour
     void Start()
     {
         GetInteractorsFromPathObjects();
-        AssignColorationAndDecolorationTimes(); 
+        AssignColorationAndDecolorationTimes();
+        SetChildrenInteractorsToTemporary(); 
     }
 
     // Update is called once per frame
@@ -45,6 +46,19 @@ public class TriggerObject : MonoBehaviour
         {
             pathInteractors[i].colorationTime = activationTime / numbersOfInteractorsInPath; 
             pathInteractors[i].decolorationTime = deactivationTime; 
+        }
+    }
+
+    private void SetChildrenInteractorsToTemporary()
+    {
+        InteractorScript triggerObjectInteractor = GetComponentInChildren<InteractorScript>();
+
+        int numbersOfInteractorsInPath = pathInteractors.Count;
+
+        for (int i = 0; i < numbersOfInteractorsInPath; i++)
+        {
+            pathInteractors[i].isTemporary = true;
+
         }
     }
 }

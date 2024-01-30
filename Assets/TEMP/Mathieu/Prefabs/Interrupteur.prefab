@@ -61,8 +61,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactorEvent: {fileID: 8299262977116006242}
-  shouldAnimateAfterColoration: 0
+  interactorRadius: 0
   coloredRenderer: {fileID: 2081166315572740451}
+  fillColorAfterColoration: 0
+  shouldAnimateAfterColoration: 0
 --- !u!1001 &1648211190154753582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,7 +81,37 @@ PrefabInstance:
     - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
         type: 3}
       propertyPath: maxRadius
-      value: 6
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
+        type: 3}
+      propertyPath: isTemporary
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
+        type: 3}
+      propertyPath: colorationTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
+        type: 3}
+      propertyPath: decolorationTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
+        type: 3}
+      propertyPath: easeColorationCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
+        type: 3}
+      propertyPath: easeColorationCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
+        type: 3}
+      propertyPath: easeColorationCurve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4380877409868593253, guid: 821f542180b1aeb4392445f6dc6de9db,
         type: 3}
