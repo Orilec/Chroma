@@ -19,9 +19,15 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<Sprite> CardCollected;
     public UnityEvent<bool> PauseGame;
     public UnityEvent<bool> EnterValidateLevel;
+    public UnityEvent<int> AddingPages;
 
     public void DebugCollectible()
     {
         CardCollected.Invoke(null);
+    }
+
+    public void DebugPages()
+    {
+        AddingPages.Invoke(2);
     }
 }

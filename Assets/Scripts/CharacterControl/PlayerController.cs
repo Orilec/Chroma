@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader _input;
     [SerializeField] private PlayerTrailScript _trail;
     [SerializeField] private RespawnSystem _respawnSystem;
+    [SerializeField] private LayerMask _environmentLayers;
 
     [SerializeField] private CharaParameters _parameters;
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
@@ -343,7 +344,7 @@ public class PlayerController : MonoBehaviour
     {
         var calculatedPlayerMovement = _playerMoveInput;
         
-        _isFacingWall = Physics.Raycast(transform.position, transform.forward, _parameters.distanceFromWall);
+        _isFacingWall = Physics.Raycast(transform.position, transform.forward, _parameters.distanceFromWall, _environmentLayers);
         if (_isFacingWall && !_groundCheck.IsGrounded)
         {
             calculatedPlayerMovement = new Vector3(_playerMoveInput.x * _parameters.facingWallSpeedMultiplier, _playerMoveInput.y, _playerMoveInput.z * _parameters.facingWallSpeedMultiplier);
