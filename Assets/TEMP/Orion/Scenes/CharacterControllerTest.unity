@@ -4560,6 +4560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scenesToLoad:
   - CharacterControllerTest
+  - TestAdditive
 --- !u!4 &992678045
 Transform:
   m_ObjectHideFlags: 0
@@ -8773,7 +8774,7 @@ PrefabInstance:
     - target: {fileID: 3806301852977943714, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.000000029802322
       objectReference: {fileID: 0}
     - target: {fileID: 3806301852977943714, guid: 941e388687dc2604f896e898abc4d8c2,
         type: 3}
@@ -8829,6 +8830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599473584049262219, guid: 941e388687dc2604f896e898abc4d8c2,
+        type: 3}
+      propertyPath: _environmentLayers.m_Bits
+      value: 192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
