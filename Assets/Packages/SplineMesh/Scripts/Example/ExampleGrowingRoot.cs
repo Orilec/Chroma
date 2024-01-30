@@ -66,7 +66,7 @@ namespace SplineMesh {
             int i = 0;
             foreach (var n in spline.nodes) {
                 float nodeDistanceRate = nodeDistance / spline.Length;
-                float nodeScale = startScale * (1 - rate - nodeDistanceRate);   // 1 *  (0 - 0)      1 * (0 -  1)  1 *  ( 1 - (rate - node
+                float nodeScale = startScale * (rate - nodeDistanceRate);   // 1 *  (0 - 0)      1 * (0 -  1)  1 *  ( 1 - (rate - node
                 n.Scale = new Vector2(nodeScale, nodeScale);
                 if (i < spline.curves.Count) {
                     nodeDistance += spline.curves[i++].Length;
