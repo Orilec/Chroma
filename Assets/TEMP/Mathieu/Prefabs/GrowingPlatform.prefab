@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2855207051565348488}
   - component: {fileID: 8299262977116006242}
   - component: {fileID: 80371296488261340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GrowingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16eadca5ea13d1347917b6fda4b7b023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactorEvent: {fileID: 0}
+  interactorEvent: {fileID: 8299262977116006242}
   interactorRadius: 5
   coloredRenderer: {fileID: 8951723814943721705}
   fillColorAfterColoration: 0
@@ -279,6 +279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_LillyPlatform001
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 21166dc4a1d79e248822a9583a557ca9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
