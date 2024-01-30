@@ -13,8 +13,8 @@ public class InteractorScript : MonoBehaviour
 
     [SerializeField] private AnimationCurve easeColorationCurve; 
 
-    public float colorationTime = 3f;
-    public float decolorationTime = 3f;
+    public float colorationTime = 0.6f;
+    public float decolorationTime = 2f;
 
     public bool isCast;
     public bool isTemporary;
