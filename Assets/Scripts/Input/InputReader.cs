@@ -80,8 +80,8 @@ public class InputReader : MonoBehaviour
         _input.UI.NextCategory.started += SetNextCategory;
         _input.UI.NextCategory.canceled += SetNextCategory;
         
-        _input.UI.NextCategory.started += SetNextCategory;
-        _input.UI.NextCategory.canceled += SetNextCategory;
+        _input.UI.PreviousCategory.started += SetPreviousCategory;
+        _input.UI.PreviousCategory.canceled += SetPreviousCategory;
     }
     private void OnDisable()
     {
@@ -118,6 +118,12 @@ public class InputReader : MonoBehaviour
         
         _input.UI.Click.started -= SetClick;
         _input.UI.Click.canceled -= SetClick;
+        
+        _input.UI.NextCategory.started -= SetNextCategory;
+        _input.UI.NextCategory.canceled -= SetNextCategory;
+        
+        _input.UI.PreviousCategory.started -= SetPreviousCategory;
+        _input.UI.PreviousCategory.canceled -= SetPreviousCategory;
     }
 
     public void DisableCharacterControl()
