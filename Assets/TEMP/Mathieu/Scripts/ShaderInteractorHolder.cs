@@ -7,8 +7,8 @@ public class ShaderInteractorHolder : MonoBehaviour
 {
 
     InteractorScript[] interactors;
-    Vector4[] positions = new Vector4[50];
-    float[] radiuses = new float[50];
+    Vector4[] positions = new Vector4[100];
+    float[] radiuses = new float[100];
 
     [Range(0, 1)]
     public float shapeCutoff;
@@ -25,11 +25,13 @@ public class ShaderInteractorHolder : MonoBehaviour
     {
         
         FindInteractors();
+        
     }
 
     private void Update()
     {
-        FindInteractors(); 
+
+        FindInteractors();
 
         for (int i = 0; i < interactors.Length; i++)
         {

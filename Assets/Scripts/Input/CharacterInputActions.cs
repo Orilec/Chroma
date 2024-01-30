@@ -82,15 +82,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DisplayNotebook"",
-                    ""type"": ""Button"",
-                    ""id"": ""4acebb0a-4f7e-4c67-8147-7b367939ae43"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""DebugRespawn"",
                     ""type"": ""Button"",
                     ""id"": ""96e741b0-d075-4809-8d79-737cd0a41e02"",
@@ -279,28 +270,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""df7a28cb-f657-4582-adb6-bfb0a7a137c3"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""DisplayNotebook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""572fc232-b477-4e29-8e5b-2d3bb3ffaa65"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""DisplayNotebook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4960ace4-b498-4a6f-99ed-cb064ab12d9a"",
                     ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
@@ -335,6 +304,24 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DisplayNotebook"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb6696b5-367a-4765-a3ae-303fac461854"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExitNotebook"",
+                    ""type"": ""Button"",
+                    ""id"": ""69f3ce35-c94c-4d9c-90f5-01856861ec73"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -357,6 +344,50 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""ValidateLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ff8de74-8c49-4ddb-8227-aabbaf117463"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DisplayNotebook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d127a798-fd65-4aba-a6e7-db13ed4ac60b"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""DisplayNotebook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea50e62b-d5aa-44f9-a6d5-7c0a6859cf7c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""ExitNotebook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79fa1b24-1cea-4f97-8ec1-1b23a25fce58"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ExitNotebook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -452,6 +483,24 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""type"": ""PassThrough"",
                     ""id"": ""5664e4bb-be04-4521-ac0d-ef71f826cc86"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PreviousCategory"",
+                    ""type"": ""Button"",
+                    ""id"": ""76be8563-40a2-4299-9024-2c7fe6552fd2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextCategory"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc4875c3-c33a-4d6f-bab7-074aa9ddc748"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -886,6 +935,28 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a532cef-ae7d-4ef3-b70b-514f50362f5f"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PreviousCategory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad626f12-bce3-48c8-a521-f6f8a54399d9"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextCategory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -911,11 +982,12 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_CharacterControls_Slide = m_CharacterControls.FindAction("Slide", throwIfNotFound: true);
         m_CharacterControls_ThrowSidekick = m_CharacterControls.FindAction("ThrowSidekick", throwIfNotFound: true);
         m_CharacterControls_RecenterCamera = m_CharacterControls.FindAction("RecenterCamera", throwIfNotFound: true);
-        m_CharacterControls_DisplayNotebook = m_CharacterControls.FindAction("DisplayNotebook", throwIfNotFound: true);
         m_CharacterControls_DebugRespawn = m_CharacterControls.FindAction("DebugRespawn", throwIfNotFound: true);
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_ValidateLevel = m_Interaction.FindAction("ValidateLevel", throwIfNotFound: true);
+        m_Interaction_DisplayNotebook = m_Interaction.FindAction("DisplayNotebook", throwIfNotFound: true);
+        m_Interaction_ExitNotebook = m_Interaction.FindAction("ExitNotebook", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -928,6 +1000,8 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_PreviousCategory = m_UI.FindAction("PreviousCategory", throwIfNotFound: true);
+        m_UI_NextCategory = m_UI.FindAction("NextCategory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -995,7 +1069,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private readonly InputAction m_CharacterControls_Slide;
     private readonly InputAction m_CharacterControls_ThrowSidekick;
     private readonly InputAction m_CharacterControls_RecenterCamera;
-    private readonly InputAction m_CharacterControls_DisplayNotebook;
     private readonly InputAction m_CharacterControls_DebugRespawn;
     public struct CharacterControlsActions
     {
@@ -1007,7 +1080,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         public InputAction @Slide => m_Wrapper.m_CharacterControls_Slide;
         public InputAction @ThrowSidekick => m_Wrapper.m_CharacterControls_ThrowSidekick;
         public InputAction @RecenterCamera => m_Wrapper.m_CharacterControls_RecenterCamera;
-        public InputAction @DisplayNotebook => m_Wrapper.m_CharacterControls_DisplayNotebook;
         public InputAction @DebugRespawn => m_Wrapper.m_CharacterControls_DebugRespawn;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
@@ -1036,9 +1108,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @RecenterCamera.started += instance.OnRecenterCamera;
             @RecenterCamera.performed += instance.OnRecenterCamera;
             @RecenterCamera.canceled += instance.OnRecenterCamera;
-            @DisplayNotebook.started += instance.OnDisplayNotebook;
-            @DisplayNotebook.performed += instance.OnDisplayNotebook;
-            @DisplayNotebook.canceled += instance.OnDisplayNotebook;
             @DebugRespawn.started += instance.OnDebugRespawn;
             @DebugRespawn.performed += instance.OnDebugRespawn;
             @DebugRespawn.canceled += instance.OnDebugRespawn;
@@ -1064,9 +1133,6 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @RecenterCamera.started -= instance.OnRecenterCamera;
             @RecenterCamera.performed -= instance.OnRecenterCamera;
             @RecenterCamera.canceled -= instance.OnRecenterCamera;
-            @DisplayNotebook.started -= instance.OnDisplayNotebook;
-            @DisplayNotebook.performed -= instance.OnDisplayNotebook;
-            @DisplayNotebook.canceled -= instance.OnDisplayNotebook;
             @DebugRespawn.started -= instance.OnDebugRespawn;
             @DebugRespawn.performed -= instance.OnDebugRespawn;
             @DebugRespawn.canceled -= instance.OnDebugRespawn;
@@ -1092,11 +1158,15 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private readonly InputActionMap m_Interaction;
     private List<IInteractionActions> m_InteractionActionsCallbackInterfaces = new List<IInteractionActions>();
     private readonly InputAction m_Interaction_ValidateLevel;
+    private readonly InputAction m_Interaction_DisplayNotebook;
+    private readonly InputAction m_Interaction_ExitNotebook;
     public struct InteractionActions
     {
         private @CharacterInputActions m_Wrapper;
         public InteractionActions(@CharacterInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ValidateLevel => m_Wrapper.m_Interaction_ValidateLevel;
+        public InputAction @DisplayNotebook => m_Wrapper.m_Interaction_DisplayNotebook;
+        public InputAction @ExitNotebook => m_Wrapper.m_Interaction_ExitNotebook;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1109,6 +1179,12 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @ValidateLevel.started += instance.OnValidateLevel;
             @ValidateLevel.performed += instance.OnValidateLevel;
             @ValidateLevel.canceled += instance.OnValidateLevel;
+            @DisplayNotebook.started += instance.OnDisplayNotebook;
+            @DisplayNotebook.performed += instance.OnDisplayNotebook;
+            @DisplayNotebook.canceled += instance.OnDisplayNotebook;
+            @ExitNotebook.started += instance.OnExitNotebook;
+            @ExitNotebook.performed += instance.OnExitNotebook;
+            @ExitNotebook.canceled += instance.OnExitNotebook;
         }
 
         private void UnregisterCallbacks(IInteractionActions instance)
@@ -1116,6 +1192,12 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @ValidateLevel.started -= instance.OnValidateLevel;
             @ValidateLevel.performed -= instance.OnValidateLevel;
             @ValidateLevel.canceled -= instance.OnValidateLevel;
+            @DisplayNotebook.started -= instance.OnDisplayNotebook;
+            @DisplayNotebook.performed -= instance.OnDisplayNotebook;
+            @DisplayNotebook.canceled -= instance.OnDisplayNotebook;
+            @ExitNotebook.started -= instance.OnExitNotebook;
+            @ExitNotebook.performed -= instance.OnExitNotebook;
+            @ExitNotebook.canceled -= instance.OnExitNotebook;
         }
 
         public void RemoveCallbacks(IInteractionActions instance)
@@ -1147,6 +1229,8 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_PreviousCategory;
+    private readonly InputAction m_UI_NextCategory;
     public struct UIActions
     {
         private @CharacterInputActions m_Wrapper;
@@ -1161,6 +1245,8 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @PreviousCategory => m_Wrapper.m_UI_PreviousCategory;
+        public InputAction @NextCategory => m_Wrapper.m_UI_NextCategory;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1200,6 +1286,12 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+            @PreviousCategory.started += instance.OnPreviousCategory;
+            @PreviousCategory.performed += instance.OnPreviousCategory;
+            @PreviousCategory.canceled += instance.OnPreviousCategory;
+            @NextCategory.started += instance.OnNextCategory;
+            @NextCategory.performed += instance.OnNextCategory;
+            @NextCategory.canceled += instance.OnNextCategory;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1234,6 +1326,12 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+            @PreviousCategory.started -= instance.OnPreviousCategory;
+            @PreviousCategory.performed -= instance.OnPreviousCategory;
+            @PreviousCategory.canceled -= instance.OnPreviousCategory;
+            @NextCategory.started -= instance.OnNextCategory;
+            @NextCategory.performed -= instance.OnNextCategory;
+            @NextCategory.canceled -= instance.OnNextCategory;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1277,12 +1375,13 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         void OnSlide(InputAction.CallbackContext context);
         void OnThrowSidekick(InputAction.CallbackContext context);
         void OnRecenterCamera(InputAction.CallbackContext context);
-        void OnDisplayNotebook(InputAction.CallbackContext context);
         void OnDebugRespawn(InputAction.CallbackContext context);
     }
     public interface IInteractionActions
     {
         void OnValidateLevel(InputAction.CallbackContext context);
+        void OnDisplayNotebook(InputAction.CallbackContext context);
+        void OnExitNotebook(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1296,5 +1395,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnPreviousCategory(InputAction.CallbackContext context);
+        void OnNextCategory(InputAction.CallbackContext context);
     }
 }
