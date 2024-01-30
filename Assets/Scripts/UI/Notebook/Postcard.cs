@@ -80,7 +80,7 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnClick()
     {
-        _postcardManager.ShowPostcard(this);
+        _postcardManager.ShowPostcard(this, true);
     }
 
 

@@ -13,6 +13,7 @@ public class InputReader : MonoBehaviour
     public bool ClickIsPressed { get; private set; } = false;
     public bool NextSectionIsPressed { get; private set; } = false;
     public bool PreviousSectionIsPressed { get; private set; } = false;
+    public bool BackIsPressed { get; private set; } = false;
     
     public Vector2 LookInput { get; private set; } = Vector2.zero;
     public bool InvertMouseY { get; private set; } = true;
@@ -70,6 +71,9 @@ public class InputReader : MonoBehaviour
         
         _input.Interaction.ValidateLevel.started += SetValidate;
         _input.Interaction.ValidateLevel.canceled += SetValidate;
+
+        _input.Interaction.ExitNotebook.started += SetBack;
+        _input.Interaction.ExitNotebook.canceled += SetBack;
         
         _input.UI.Navigate.started += SetNavigate;
         _input.UI.Navigate.canceled += SetNavigate;
@@ -112,6 +116,9 @@ public class InputReader : MonoBehaviour
         
         _input.CharacterControls.DebugRespawn.started -= SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled -= SetRespawn;
+        
+        _input.Interaction.ExitNotebook.started -= SetBack;
+        _input.Interaction.ExitNotebook.canceled -= SetBack;
         
         _input.UI.Navigate.started -= SetNavigate;
         _input.UI.Navigate.canceled -= SetNavigate;
@@ -174,6 +181,11 @@ public class InputReader : MonoBehaviour
     {
         _isKeyboardMouse = false;
         PreviousSectionIsPressed = ctx.started;
+    }
+    private void SetBack(InputAction.CallbackContext ctx)
+    {
+        _isKeyboardMouse = false;
+        BackIsPressed = ctx.started;
     }
 
     private void SetLook(InputAction.CallbackContext ctx)
