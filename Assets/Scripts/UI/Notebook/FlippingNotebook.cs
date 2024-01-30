@@ -5,6 +5,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -30,9 +31,11 @@ public class FlippingNotebook : MonoBehaviour {
     [SerializeField] private Image _rightNext;
     [SerializeField] private UIEventsPublisher _uiEvents;
     [SerializeField] private NotebookManager _notebookManager;
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
     
     [Header("Pages References")]
-    [SerializeField] private Sprite[] bookPages;
+    [SerializeField] private List<Sprite> _currentBookPages;
+    [SerializeField] private List<Sprite> _bookPagesPlanned;
     
     [Header("Parameters")]
     [SerializeField] private bool enableShadowEffect=true;
@@ -42,6 +45,7 @@ public class FlippingNotebook : MonoBehaviour {
     [SerializeField] private int _fastAnimationFramesCount = 20;
 
     private float _pageFlipTime, _animationFramesCount;
+    private int _currentAddedPagesIndex;
     
     private float _radius1, _radius2;
     //Spine Bottom
@@ -63,7 +67,8 @@ public class FlippingNotebook : MonoBehaviour {
     private int _currentPage = 0;
     private bool _isFlipping;
     
-    public int TotalPageCount { get { return bookPages.Length; } }
+    public int TotalPageCount { get { return _currentBookPages.Count; } }
+    public bool IsFlipping { get { return _isFlipping; } }
     public int CurrentPage { get { return _currentPage; } }
     public Vector3 EndBottomLeft { get { return _ebl; } }
     public Vector3 EndBottomRight { get { return _ebr; } }
@@ -72,6 +77,7 @@ public class FlippingNotebook : MonoBehaviour {
     {
         _pageFlipTime = _basePageFlipTime;
         _animationFramesCount = _baseAnimationFramesCount;
+        _playerEvents.AddingPages.AddListener(AddPages);
     }
 
     void Start()
@@ -111,17 +117,17 @@ public class FlippingNotebook : MonoBehaviour {
 
     public void FlipToEnd()
     {
-        StartCoroutine(FlipToPage(TotalPageCount));
+        if(!_isFlipping) StartCoroutine(FlipToPage(TotalPageCount));
     }
 
     public void FlipToBeginning()
     {
-        StartCoroutine(FlipToPage(0));
+        if(!_isFlipping) StartCoroutine(FlipToPage(0));
     }
     
     public void FlipToNotes()
     {
-        StartCoroutine(FlipToPage(2));
+        if(!_isFlipping) StartCoroutine(FlipToPage(2));
     }
     private IEnumerator FlipToPage(int pageNumber)
     {
@@ -141,6 +147,20 @@ public class FlippingNotebook : MonoBehaviour {
         }
         _pageFlipTime = _basePageFlipTime;
         _animationFramesCount = _baseAnimationFramesCount;
+    }
+
+    public void AddPages(int pagesToAdd)
+    {
+            for (int i = 0; i < pagesToAdd; i++)
+            {
+                if (_currentAddedPagesIndex < _currentBookPages.Count - 1)
+                {
+                    _currentAddedPagesIndex++;
+                    _currentBookPages[_currentAddedPagesIndex] = _bookPagesPlanned[_currentAddedPagesIndex];
+                }
+            }
+            UpdateSprites();
+        
     }
     
     public void FlipRightPage()
@@ -337,7 +357,7 @@ public class FlippingNotebook : MonoBehaviour {
     }
     public void DragRightPageToPoint(Vector3 point)
     {
-        if (_currentPage >= bookPages.Length) return;
+        if (_currentPage >= _currentBookPages.Count) return;
         _pageDragging = true;
         _mode = FlipMode.RightToLeft;
         _f = point;
@@ -349,15 +369,15 @@ public class FlippingNotebook : MonoBehaviour {
         _left.rectTransform.pivot = new Vector2(0, 0);
         _left.transform.position = _rightNext.transform.position;
         _left.transform.eulerAngles = new Vector3(0, 0, 0);
-        _left.sprite = (_currentPage < bookPages.Length) ? bookPages[_currentPage] : background;
+        _left.sprite = (_currentPage < _currentBookPages.Count) ? _currentBookPages[_currentPage] : background;
         _left.transform.SetAsFirstSibling();
         
         _right.gameObject.SetActive(true);
         _right.transform.position = _rightNext.transform.position;
         _right.transform.eulerAngles = new Vector3(0, 0, 0);
-        _right.sprite = (_currentPage < bookPages.Length - 1) ? bookPages[_currentPage + 1] : background;
+        _right.sprite = (_currentPage < _currentBookPages.Count - 1) ? _currentBookPages[_currentPage + 1] : background;
 
-        _rightNext.sprite = (_currentPage < bookPages.Length - 2) ? bookPages[_currentPage + 2] : background;
+        _rightNext.sprite = (_currentPage < _currentBookPages.Count - 2) ? _currentBookPages[_currentPage + 2] : background;
 
         _leftNext.transform.SetAsFirstSibling();
         if (enableShadowEffect) _shadow.gameObject.SetActive(true);
@@ -376,7 +396,7 @@ public class FlippingNotebook : MonoBehaviour {
 
         _right.gameObject.SetActive(true);
         _right.transform.position = _leftNext.transform.position;
-        _right.sprite = bookPages[_currentPage - 1];
+        _right.sprite = _currentBookPages[_currentPage - 1];
         _right.transform.eulerAngles = new Vector3(0, 0, 0);
         _right.transform.SetAsFirstSibling();
 
@@ -384,9 +404,9 @@ public class FlippingNotebook : MonoBehaviour {
         _left.rectTransform.pivot = new Vector2(1, 0);
         _left.transform.position = _leftNext.transform.position;
         _left.transform.eulerAngles = new Vector3(0, 0, 0);
-        _left.sprite = (_currentPage >= 2) ? bookPages[_currentPage - 2] : background;
+        _left.sprite = (_currentPage >= 2) ? _currentBookPages[_currentPage - 2] : background;
 
-        _leftNext.sprite = (_currentPage >= 3) ? bookPages[_currentPage - 3] : background;
+        _leftNext.sprite = (_currentPage >= 3) ? _currentBookPages[_currentPage - 3] : background;
 
         _rightNext.transform.SetAsFirstSibling();
         if (enableShadowEffect) _shadowLTR.gameObject.SetActive(true);
@@ -411,8 +431,8 @@ public class FlippingNotebook : MonoBehaviour {
     
     void UpdateSprites()
     {
-        _leftNext.sprite= (_currentPage > 0 && _currentPage <= bookPages.Length) ? bookPages[_currentPage-1] : background;
-        _rightNext.sprite=(_currentPage>=0 &&_currentPage<bookPages.Length) ? bookPages[_currentPage] : background;
+        _leftNext.sprite= (_currentPage > 0 && _currentPage <= _currentBookPages.Count) ? _currentBookPages[_currentPage-1] : background;
+        _rightNext.sprite=(_currentPage>=0 &&_currentPage<_currentBookPages.Count) ? _currentBookPages[_currentPage] : background;
     }
     public void TweenForward()
     {

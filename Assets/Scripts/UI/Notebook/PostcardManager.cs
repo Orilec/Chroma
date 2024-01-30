@@ -14,11 +14,12 @@ public class PostcardManager : MonoBehaviour
     [SerializeField] private float _postcardAnimationTime = 0.1f;
     [SerializeField] private RectTransform _postcardCloseUpTransform;
     [SerializeField] private InputReader _input;
+    [SerializeField] private Button _backButton;
     
-    private Postcard _selectedPostcard, _lastSelected;
+    private Postcard _selectedPostcard, _lastSelected, _viewedPostcard;
     private int _currentAddedIndex, _lastSelectedIndex;
     private List<Postcard> _selectablePostcards;
-    private bool _clickWasPressedLastFrame;
+    private bool _clickWasPressedLastFrame, _isViewingPostcard, _backWasPressedLastFrame;
     private Image _postcardCloseUpImage;
     
     public float PostcardAnimationOffset { get { return _postcardAnimationOffset; } }
@@ -56,6 +57,11 @@ public class PostcardManager : MonoBehaviour
             _selectedPostcard.CardButton.onClick.Invoke();
         }
 
+        if (_input.BackIsPressed && !_backWasPressedLastFrame && _isViewingPostcard)
+        {
+            HideShownPostcard();
+        }
+
         _clickWasPressedLastFrame = _input.ClickIsPressed;
     }
 
@@ -82,10 +88,18 @@ public class PostcardManager : MonoBehaviour
         }
     }
 
-    public void ShowPostcard(Postcard card)
+    public void ShowPostcard(Postcard card, bool show)
     {
-        card.CardImage.enabled = false;
+        _backButton.gameObject.SetActive(show);
+        _isViewingPostcard = show;
+        card.CardImage.enabled = !show;
         _postcardCloseUpImage.sprite = card.CardImage.sprite;
-        _postcardCloseUpImage.enabled = true;
+        _postcardCloseUpImage.enabled = show;
+        if(show) _viewedPostcard = card;
+    }
+
+    public void HideShownPostcard()
+    {
+        ShowPostcard(_viewedPostcard, false);
     }
 }
