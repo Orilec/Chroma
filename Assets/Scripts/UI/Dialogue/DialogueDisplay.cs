@@ -71,6 +71,9 @@ public class DialogueDisplay : MonoBehaviour
 
     private void SpawnMessage(Message messageToSpawn)
     {
+        _messagesContainer.GetComponent<VerticalLayoutGroup>().enabled = false;
+        _messagesContainer.GetComponent<VerticalLayoutGroup>().enabled = true;
+        
         MessageDisplay spawnedMessage = null;
         if (messageToSpawn.FromSidekick)
         {

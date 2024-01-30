@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_EntranceRoot
-  m_Shader: {fileID: -6465566751694194690, guid: b596cdf599f4b414ca473271917b6cbf,
+  m_Shader: {fileID: -6465566751694194690, guid: 60c2f36503551f140a9d030a470abcf0,
     type: 3}
   m_Parent: {fileID: 2100000, guid: c5afcd218453f7d4a97db3b9a2af3cbe, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -47,8 +47,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Density: 39.68
     - _NoiseStrenght: 0.57
     - _RadiusCutoff: 0.21
     - _SmoothnessSlider: 0
-    m_Colors: []
+    m_Colors:
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
