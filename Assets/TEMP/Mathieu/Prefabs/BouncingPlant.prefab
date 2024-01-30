@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactorEvent: {fileID: 8299262977116006242}
+  interactorRadius: 5
   shouldAnimateAfterColoration: 0
   fillColorAfterColoration: 0
   coloredRenderer: {fileID: 2415404672419271772}
@@ -75,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 898110408948168787, guid: 821f542180b1aeb4392445f6dc6de9db,
         type: 3}
       propertyPath: maxRadius
-      value: 3.6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4380877409868593253, guid: 821f542180b1aeb4392445f6dc6de9db,
         type: 3}
