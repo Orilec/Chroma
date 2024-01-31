@@ -7,37 +7,29 @@ public class Miasma : MonoBehaviour
 {
     private PlayerController _player;
 
+    private void Awake()
+    {
+        _player = GetComponentInParent<PlayerController>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if (!_player.IsInMiasma)
         {
-            if (!player.IsInMiasma)
-            {
-                player.MiasmaTimer.Start();
-            }
+            _player.MiasmaTimer.Start();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
-        {
-            player.IsInMiasma = true;
-        }
+        _player.IsInMiasma = true;
     }
     private void OnTriggerExit(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
-        {
-            player.IsInMiasma = false;
-            _player = player;
+            _player.IsInMiasma = false;
             Invoke(nameof(StopMiasmaTimer), 0.2f);
-        }
     }
-
+    
     private void StopMiasmaTimer()
     {
         if (!_player.IsInMiasma)
