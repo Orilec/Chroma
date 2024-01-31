@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class MiasmaParticlesKill : MonoBehaviour
 {
+    private class OtherParams{
+        public float alpha;
+        public float test; 
+    }
+
 
     private ParticleSystem particleS;
     [SerializeField] private ParticleSystem particleDestination; 
@@ -12,6 +17,7 @@ public class MiasmaParticlesKill : MonoBehaviour
     private List<ParticleSystem.Particle> particlesEnter = new List<ParticleSystem.Particle>();
     private List<ParticleSystem.Particle> particlesExit = new List<ParticleSystem.Particle>();
 
+    private OtherParams otherParams;
 
     InteractorScript[] interactors;
 
@@ -102,6 +108,9 @@ public class MiasmaParticlesKill : MonoBehaviour
 
     public void EmitFromOtherParticleSystem(ParticleSystem.EmitParams emitParams)
     {
-        
+        particleS.Emit(emitParams, 1);
+
+        particleS.GetComponent<MiasmaParticlesRespawn>().SetOtherParams(otherParams.alpha); 
+
     }
 }
