@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9363db430b562334bb881e1e365e0362, type: 3}
-  m_Name: TestDialogue
+  m_Name: D_IV_Part3
   m_EditorClassIdentifier: 
   _messages:
+  - _fromSidekick: 1
+    _icon: {fileID: 21300000, guid: 8c7667a10594c594bbe5eb36a15521a4, type: 3}
+    _content: Blup blup...
+    _timeOnScreen: 2
   - _fromSidekick: 0
-    _icon: {fileID: 0}
-    _content: 
-    _timeOnScreen: 0
-  - _fromSidekick: 0
-    _icon: {fileID: 0}
-    _content: 
-    _timeOnScreen: 0
+    _icon: {fileID: 21300000, guid: c9b68d38f5d54384f8cbe22322755c03, type: 3}
+    _content: Don't be so pessimistic... I'm sure it'll be fine.
+    _timeOnScreen: 3.5
