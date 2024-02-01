@@ -7,6 +7,7 @@ public class MiasmaHolder : MonoBehaviour
 {
 
     [SerializeField] private ParticleSystem miasmaSpawnerParticleSystem;
+    [SerializeField] private ParticleSystem miasmaHiderParticleSystem;
     private ParticleSystem.Particle[] spawnedParticles;
    
 
@@ -16,8 +17,8 @@ public class MiasmaHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+ 
         spawnedParticles = new ParticleSystem.Particle[miasmaSpawnerParticleSystem.main.maxParticles];
-
     }
 
     // Update is called once per frame
@@ -46,7 +47,21 @@ public class MiasmaHolder : MonoBehaviour
     private void OnValidate()
     {
         //Just to update in EditorMode the number of particles spawning on MiasmaHolder. Does not change in play mode
-        var main = miasmaSpawnerParticleSystem.main;
-        main.maxParticles = numberOfMiasmaParticles;
+        //ParticleSystem.MainModule main = miasmaSpawnerParticleSystem.main;
+        //main.maxParticles = numberOfMiasmaParticles;
+
+        //ParticleSystem.MainModule main2 = miasmaHiderParticleSystem.main;
+        //main2.maxParticles = numberOfMiasmaParticles;
+        ChangeParticleNum(miasmaHiderParticleSystem, numberOfMiasmaParticles);
+        ChangeParticleNum(miasmaSpawnerParticleSystem, numberOfMiasmaParticles);
+
+    }
+
+    public void ChangeParticleNum(ParticleSystem ps, int num_particles)
+    {
+        if (ps == null)
+            ps = GetComponent<ParticleSystem>();
+        ParticleSystem.MainModule main = ps.main; 
+        main.maxParticles = num_particles;
     }
 }
