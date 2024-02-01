@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class MiasmaParticlesRespawn : MonoBehaviour
 {
 
+
     private ParticleSystem particleS;
     [SerializeField] private ParticleSystem particleDestination;
+
 
     private List<ParticleSystem.Particle> particlesEnter = new List<ParticleSystem.Particle>();
     private List<ParticleSystem.Particle> particlesExit = new List<ParticleSystem.Particle>();
@@ -100,6 +103,8 @@ public class MiasmaParticlesRespawn : MonoBehaviour
             {
                 position = particle.position,
                 startColor = new Color(particle.startColor.r, particle.startColor.g, particle.startColor.b, 1f),
+                startSize = particle.startSize,
+                rotation = particle.rotation
             };
 
             particle.remainingLifetime = 0;
@@ -118,7 +123,9 @@ public class MiasmaParticlesRespawn : MonoBehaviour
 
     public void EmitFromOtherParticleSystem(ParticleSystem.EmitParams emitParams)
     {
+        //particleS.Emit(emitParams, 1);
 
+        //particleS.GetComponent<MiasmaParticlesRespawn>().SetOtherParams(otherParams.alpha);
     }
 
 }
