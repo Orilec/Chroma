@@ -10,6 +10,13 @@ public class DialogueTrigger : MonoBehaviour
 
     private bool _dialogueTriggered;
 
+    private BoxCollider boxCollider;
+
+    private void Awake()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
@@ -19,4 +26,15 @@ public class DialogueTrigger : MonoBehaviour
             _narrativeEvents.TriggerDialogue.Invoke(_dialogue.Messages);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        boxCollider = GetComponent<BoxCollider>();
+        // Green
+        Gizmos.color = new Color(0.58f, 1.0f, 0.82f, 0.5f);
+        Gizmos.DrawWireCube(boxCollider.bounds.center, boxCollider.bounds.size);
+        Gizmos.DrawCube(boxCollider.bounds.center, boxCollider.bounds.size);
+    }
+
+
 }

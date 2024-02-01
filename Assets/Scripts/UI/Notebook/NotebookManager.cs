@@ -22,12 +22,12 @@ public class NotebookManager : MonoBehaviour
     {
         _notebookTransform = transform.GetChild(0); 
         _uiEvents.NotebookFlipped.AddListener(HandleSectionDisplay);
-        _input.DisableUIControl();
+        
     }
 
     private void Start()
     {
-
+        _input.DisableUIControl();
     }
 
     private void Update()
