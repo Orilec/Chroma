@@ -35,6 +35,7 @@ public class PlayerTracking : MonoBehaviour
             {
                 playerPositions.Add(playerPosition);
                 lastPlayerPosition = playerPosition;
+                UnityEngine.Debug.Log(playerPositions.Count + " points");
             }
         }
     }
@@ -55,7 +56,7 @@ public class PlayerTracking : MonoBehaviour
 
     private void SaveTrackingData()
     {
-        string folderPath = "Assets/TEMP/Sebastien/PlayerTracking/";
+        string folderPath = "Assets/TEMP/Sebastien/CollectedData/";
 
         if (!Directory.Exists(folderPath))
         {
