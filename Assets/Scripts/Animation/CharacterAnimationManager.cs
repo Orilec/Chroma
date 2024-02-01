@@ -13,6 +13,7 @@ public class CharacterAnimationManager : MonoBehaviour
     private int _slideJumpingHash = Animator.StringToHash("IsSlideJumping");
     private int _dyingHash = Animator.StringToHash("IsDying");
     private int _groundedHash = Animator.StringToHash("IsGrounded");
+    private int _miasmaHash = Animator.StringToHash("IsInMiasma");
     private int _landingLower = Animator.StringToHash("LandingToLowerPoint");
     private int _currentSpeedHash = Animator.StringToHash("MoveSpeed");
 
