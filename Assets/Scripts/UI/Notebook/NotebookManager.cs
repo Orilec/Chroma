@@ -22,12 +22,12 @@ public class NotebookManager : MonoBehaviour
     {
         _notebookTransform = transform.GetChild(0); 
         _uiEvents.NotebookFlipped.AddListener(HandleSectionDisplay);
+        _input.DisableUIControl();
     }
 
     private void Start()
     {
-        _input.EnableUIControl();
-        _input.DisableCharacterControl();
+
     }
 
     private void Update()
@@ -50,9 +50,23 @@ public class NotebookManager : MonoBehaviour
 
     private void DisplayNotebook()
     {
-            _notebookTransform.gameObject.SetActive(!_isDisplayed);
-            _isDisplayed = !_isDisplayed;
-            _playerEvents.PauseGame.Invoke(_isDisplayed);
+        if (!_isDisplayed)
+        {
+            _input.EnableUIControl();
+            _input.DisableCharacterControl();
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else
+        {
+            _input.DisableUIControl();
+            _input.EnableCharacterControl();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        _notebookTransform.gameObject.SetActive(!_isDisplayed);
+        _isDisplayed = !_isDisplayed;
+        _playerEvents.PauseGame.Invoke(_isDisplayed);
     }
 
     private void HandleSectionDisplay(bool startOfBook, bool endOfBook)

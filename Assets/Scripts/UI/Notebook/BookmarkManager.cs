@@ -23,15 +23,10 @@ public class BookmarkManager : MonoBehaviour
     private void Awake()
     {
         _uiEvents.NotebookFlipped.AddListener(OnPageFlipped);
-    }
-
-    private void Start()
-    {
         _currentCategory = _bookmarks[0];
         _currentIndex = 0;
-        _currentCategory.SetAsCurrentCategory(true);
     }
-
+    
     private void Update()
     {
         if (_input.ClickIsPressed && _input.IsKeyboardMouse && EventSystem.current.currentSelectedGameObject != null && !_clickWasPressedLastFrame && !_notebook.IsFlipping)

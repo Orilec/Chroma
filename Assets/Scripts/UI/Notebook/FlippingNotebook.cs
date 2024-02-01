@@ -200,7 +200,7 @@ public class FlippingNotebook : MonoBehaviour {
         {
             y = (-h / (xl * xl)) * (x - xc) * (x - xc);
             UpdateBookRTLToPoint(new Vector3(x, y, 0));
-            yield return new WaitForSeconds(frameTime);
+            yield return new WaitForSecondsRealtime(frameTime);
             x -= dx;
         }
         ReleasePage();
@@ -214,7 +214,7 @@ public class FlippingNotebook : MonoBehaviour {
         {
             y = (-h / (xl * xl)) * (x - xc) * (x - xc);
             UpdateBookLTRToPoint(new Vector3(x, y, 0));
-            yield return new WaitForSeconds(frameTime);
+            yield return new WaitForSecondsRealtime(frameTime);
             x += dx;
         }
         ReleasePage();
@@ -509,7 +509,7 @@ public class FlippingNotebook : MonoBehaviour {
             else
                 UpdateBookLTRToPoint(_f + displacement);
 
-            yield return new WaitForSeconds(0.025f);
+            yield return new WaitForSecondsRealtime(0.025f);
         }
         if (onFinish != null)
             onFinish();

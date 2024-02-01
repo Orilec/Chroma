@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_ModularWall001
+  m_Name: M_TileFloorWood
   m_Shader: {fileID: -6465566751694194690, guid: 43ee6da12dee70846888141807d48ca7,
     type: 3}
   m_Parent: {fileID: 0}
@@ -24,27 +24,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 405264240891df84dab4fcb4066cb8c3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 5cdf26bfc901e4d46be67b3891e87722, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
+    - _CalculateMainLight_6743a15fc8514b219366666ac209f7d9_SmoothnessMap_2895282383_Texture2D:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -52,16 +32,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HatchTex:
+        m_Texture: {fileID: 2800000, guid: ad2e3fac0203f264bb5023b973981c71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _HatchingTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 405264240891df84dab4fcb4066cb8c3, type: 3}
+    - _HatchingTex_1:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 9c5a9fb16bef4b4408b4d0fdd6ad8bb0, type: 3}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f4e12677860b17240b1a3a212c85653f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
@@ -69,23 +53,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6ce0276267d4d6f4ead8eb16aa015061, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SmoothnessMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d7ee065fdd4157f41a3dbd76402ae248, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -102,56 +74,58 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
-    - _AlphaToMask: 0
     - _Blend: 0
-    - _BlendModePreserveSpecular: 1
-    - _BumpScale: 1
-    - _ClearCoatMask: 0
-    - _ClearCoatSmoothness: 0
-    - _Cull: 2
-    - _Cutoff: 0.5
     - _Debug: 0
-    - _DetailAlbedoMapScale: 1
-    - _DetailNormalMapScale: 1
-    - _DstBlend: 0
-    - _DstBlendAlpha: 0
-    - _EnvironmentReflections: 1
-    - _GlossMapScale: 0
-    - _Glossiness: 0
-    - _GlossyReflections: 0
+    - _Density: 1
+    - _FalloffThreshold: 2
+    - _FloatTestPower: 0
+    - _HasEmissive: 0
     - _HasEmissiveMap: 0
-    - _HasSmoothnessMap: 0
+    - _HasSmoothnessMap: 1
     - _HatchingSpeed: 3
     - _HatchingStrenght: 0.2
-    - _Metallic: 0
+    - _LitThreshold: 1
     - _MoveSpeed: 0
+    - _NEW_ShadowStep: 0.1
     - _NoiseScale: 1
-    - _NoiseStrenght: 0.57
-    - _OcclusionStrength: 1
-    - _Parallax: 0.005
+    - _NoiseStrenght: 1
+    - _NormalStrength: 2
+    - _OutlineAcuteDepthThreshold: 1
+    - _OutlineAcuteStartDot: 0.9
+    - _OutlineDepthStrength: 1
+    - _OutlineDepthThreshold: 0
+    - _OutlineDepthTightening: 1
+    - _OutlineDissolve: 0.36
+    - _OutlineFarNormalEndDepth: 10
+    - _OutlineFarNormalStartDepth: 1
+    - _OutlineFarNormalThreshold: 1
+    - _OutlineNormalStrength: 0
+    - _OutlineNormalThreshold: 1
+    - _OutlineNormalTightening: 128
+    - _OutlineThickness: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RadiusCutoff: 0.21
-    - _ReceiveShadows: 1
-    - _Smoothness: 0.5
+    - _RadiusCutoff: 0.64
+    - _Rim_Amount: 6.01
+    - _Rim_step: 0.3
+    - _Rotation: 45
+    - _Saturation: 0
+    - _ShadingMultiplyer: 0
+    - _Smoothness: 0
     - _SmoothnessSlider: 0
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _SrcBlendAlpha: 1
-    - _Surface: 0
-    - _WorkflowMode: 1
-    - _ZWrite: 1
+    - _Softness: 0.3
+    - _TextureBlend: 0
+    - _USESCREENSPACE: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _DensityVector: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0}
+    - _Specular: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2987627120759918419
+--- !u!114 &8887778041983902155
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
