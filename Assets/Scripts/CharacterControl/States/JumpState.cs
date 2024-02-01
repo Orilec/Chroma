@@ -12,6 +12,7 @@ public class JumpState : BaseCharacterState
     public override void OnEnter()
     {
         _playerEvents.Jumping.Invoke(true);
+        _playerController.JumpMinTimer.Start();
     }
 
     public override void Update()
@@ -52,7 +53,7 @@ public class JumpState : BaseCharacterState
     
     void OnJump()
     {
-        if (!_input.JumpIsPressed)
+        if (!_input.JumpIsPressed && !_playerController.JumpMinTimer.IsRunning)
         {
             _playerController.JumpTimer.Stop();
         }

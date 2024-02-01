@@ -32,6 +32,7 @@ public class CharaParameters : ScriptableObject
     public float initialJumpForce = 1500f;
     public float continualJumpForceMultiplier = 0.1f;
     public float jumpTime = 0.3f;
+    public float jumpMinTime = 0.3f;
     public float coyoteTime = 0.15f;
     public float jumpBufferTime = 0.3f;
     

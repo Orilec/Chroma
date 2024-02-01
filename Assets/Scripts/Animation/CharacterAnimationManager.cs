@@ -13,6 +13,7 @@ public class CharacterAnimationManager : MonoBehaviour
     private int _slideJumpingHash = Animator.StringToHash("IsSlideJumping");
     private int _dyingHash = Animator.StringToHash("IsDying");
     private int _groundedHash = Animator.StringToHash("IsGrounded");
+    private int _miasmaHash = Animator.StringToHash("IsInMiasma");
     private int _landingLower = Animator.StringToHash("LandingToLowerPoint");
     private int _currentSpeedHash = Animator.StringToHash("MoveSpeed");
 
@@ -22,6 +23,7 @@ public class CharacterAnimationManager : MonoBehaviour
         _playerEvents.Sliding.AddListener(Sliding);
         _playerEvents.AirSliding.AddListener(AirSliding);
         _playerEvents.SlideJumping.AddListener(SlideJumping);
+        _playerEvents.InMiasma.AddListener(InMiasma);
         _playerEvents.Dying.AddListener(Dying);
         _playerEvents.LocomotionSpeed.AddListener(CurrentSpeed);
         _playerEvents.GroundedState.AddListener(Grounded);
@@ -53,6 +55,10 @@ public class CharacterAnimationManager : MonoBehaviour
     private void Grounded(bool isGrounded)
     {
         _animator.SetBool(_groundedHash, isGrounded);
+    }
+    private void InMiasma(bool isInMiasma)
+    {
+        _animator.SetBool(_miasmaHash, isInMiasma);
     }
     private void LandingLower(bool lower)
     {

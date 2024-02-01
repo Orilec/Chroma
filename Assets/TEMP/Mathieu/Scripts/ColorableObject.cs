@@ -98,13 +98,13 @@ public class ColorableObject : MonoBehaviour
     protected virtual void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
     {
         //Event on Coloration Finished
-        Debug.Log("start coloring"); 
+
 
     }
 
     protected virtual void InteractorEvent_OnDecolorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
     {
-        Debug.Log("done coloring"); 
+
         SetObjectInactive();
     }
 
