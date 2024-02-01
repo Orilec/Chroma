@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private string _mainScene;
+    [SerializeField] private List<string> _scenesToLoadAdditive;
     
-    [SerializeField] private List<string> _scenesToLoad;
-    
-
     private void Awake()
     {
-        LoadScenes(_scenesToLoad);
         DontDestroyOnLoad(gameObject);
+        SceneManager.LoadSceneAsync(_mainScene);
+        LoadScenes(_scenesToLoadAdditive);
     }
     
     private void LoadScenes(List<string> scenes)
@@ -27,8 +28,9 @@ public class SceneLoader : MonoBehaviour
     public void Reload()
     {
         SceneManager.LoadScene("EmptyScene", LoadSceneMode.Single);
-        SceneManager.LoadSceneAsync(_scenesToLoad[0]);
-        LoadScenes(_scenesToLoad);
+        SceneManager.LoadSceneAsync(_mainScene);
+        LoadScenes(_scenesToLoadAdditive);
+        _playerEvents.PauseGame.Invoke(false);
     }
 }
 

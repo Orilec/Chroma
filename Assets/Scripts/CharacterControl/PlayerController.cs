@@ -251,6 +251,11 @@ public class PlayerController : MonoBehaviour
         _respawnWasPressedLastFrame = _input.DebugRespawn;
     }
 
+    public void Respawn()
+    {
+        _isRespawning = true;
+    }
+
     private void FixedUpdate()
     {
         _playerMoveInput = new Vector3(_input.MoveInput.x, 0f, _input.MoveInput.y);
