@@ -5425,6 +5425,7 @@ GameObject:
   - component: {fileID: 612318094056413445}
   - component: {fileID: 7755357788427816768}
   - component: {fileID: 6260242052801179090}
+  - component: {fileID: 5460119556317190227}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -5632,6 +5633,20 @@ MonoBehaviour:
     m_Bits: 192
   _groundCheck: {fileID: 2939936820482204071}
   _playerEvents: {fileID: 11400000, guid: 0b1c965cec2032a44a0f011072a4805e, type: 2}
+--- !u!114 &5460119556317190227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538072917614251858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf27b56cc7c1c61478c63b7b7080cec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  framesInterval: 60
+  minPointsToSave: 500
 --- !u!1 &756871927509036431
 GameObject:
   m_ObjectHideFlags: 0
@@ -18849,7 +18864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5377641019132714016}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1435303, y: -0.000000029802322, z: 0.000000007450581, w: 0.98964596}
+  m_LocalRotation: {x: 0.1435303, y: -0.000000059604645, z: 0.000000022351742, w: 0.98964596}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
