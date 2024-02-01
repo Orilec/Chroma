@@ -69,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f73f277e4be65c24e8d4add41ffa8fda, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -104,14 +104,14 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Blend: 0
+    - _Blend: 1
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Debug: 0
+    - _Debug: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -128,6 +128,7 @@ Material:
     - _MoveSpeed: 0
     - _NoiseScale: 1
     - _NoiseStrenght: 0.57
+    - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0

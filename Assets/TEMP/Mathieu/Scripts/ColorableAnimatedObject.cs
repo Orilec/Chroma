@@ -10,10 +10,6 @@ public class ColorableAnimatedObject : ColorableObject
     public bool shouldAnimateAfterColoration;
     
 
-    private void Awake()
-    {
-        interactorEvent = GetComponent<InteractorEvent>(); 
-    }
 
     // Start is called before the first frame update
     public override void Start()
@@ -40,8 +36,10 @@ public class ColorableAnimatedObject : ColorableObject
         GetComponentInChildren<Animator>().SetBool("isActive", false); 
     }
 
-    private void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
+    protected override void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
     {
+        base.InteractorEvent_OnColorationFinished(interactorEvent, interactorEventArgs); 
+
         if (shouldAnimateAfterColoration)
         {
             StartAnimation();
@@ -53,26 +51,12 @@ public class ColorableAnimatedObject : ColorableObject
 
     }
 
-    private void InteractorEvent_OnDecolorationFinished(InteractorEvent arg1, InteractorEventArgs arg2)
+    protected override void InteractorEvent_OnDecolorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
     {
-        SetObjectInactive();
-
+        base.InteractorEvent_OnDecolorationFinished(interactorEvent, interactorEventArgs);
     }
 
 
-    private void OnEnable()
-    {
-        interactorEvent.OnColorationFinished += InteractorEvent_OnColorationFinished; 
-        interactorEvent.OnDecolorationFinished += InteractorEvent_OnDecolorationFinished; 
-    }
-
-    private void OnDisable()
-    {
-        interactorEvent.OnColorationFinished -= InteractorEvent_OnColorationFinished;
-        interactorEvent.OnDecolorationFinished -= InteractorEvent_OnDecolorationFinished;
-    }
-
- 
 
     public override void SetObjectActive()
     {
