@@ -26,14 +26,22 @@ public class ColorableAnimatedObject : ColorableObject
 
     private void StartAnimation()
     {
-        GetComponentInChildren<Animator>().SetBool("isActive", true);
-        GetComponentInChildren<Animator>().SetBool("isReversed", false);
+        if (GetComponentInChildren<Animator>() != null)
+        {
+            GetComponentInChildren<Animator>().SetBool("isActive", true);
+            GetComponentInChildren<Animator>().SetBool("isReversed", false);
+        }
+      
     }
 
     private void StartReverseAnimation()
     {
-        GetComponentInChildren<Animator>().SetBool("isReversed", true); 
-        GetComponentInChildren<Animator>().SetBool("isActive", false); 
+        if (GetComponentInChildren<Animator>() != null)
+        {
+            GetComponentInChildren<Animator>().SetBool("isReversed", true);
+            GetComponentInChildren<Animator>().SetBool("isActive", false);
+        }
+
     }
 
     protected override void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
