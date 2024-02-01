@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class NotebookManager : MonoBehaviour
     [SerializeField] private RectTransform _rightBookPages;
     [SerializeField] private Button _leftButton;
     [SerializeField] private Button _rightButton;
+    [SerializeField] private TextMeshProUGUI _textCue;
     private Transform _notebookTransform;
     private bool _isDisplayed, _displayedWasPressedLastFrame;
 
@@ -22,12 +24,30 @@ public class NotebookManager : MonoBehaviour
     {
         _notebookTransform = transform.GetChild(0); 
         _uiEvents.NotebookFlipped.AddListener(HandleSectionDisplay);
-        
+        _playerEvents.CardCollected.AddListener(DisplayAddedCardCue);
+        _playerEvents.AddingPages.AddListener(DisplayAddedPagesCue);
     }
 
     private void Start()
     {
         _input.DisableUIControl();
+    }
+
+    private void DisplayAddedCardCue(Sprite card)
+    {
+        StartCoroutine(DisplayCue("Carte postale ajoutée", 2f));
+    }
+    private void DisplayAddedPagesCue(int pages)
+    {
+        StartCoroutine(DisplayCue("Pages ajoutées", 2f));
+    }
+
+    private IEnumerator DisplayCue(String text, float displayTime)
+    {
+        _textCue.text = text;
+        _textCue.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(displayTime);
+        _textCue.gameObject.SetActive(false);
     }
 
     private void Update()

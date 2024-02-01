@@ -47,7 +47,7 @@ public class ThrowSystem : MonoBehaviour
     {
         _sidekickGameObject.SetActive(false);
         _lockedTarget = _targetSystem.currentTarget;
-        _retrievePos = _lockedTarget.transform;
+        _retrievePos.position = _lockedTarget.transform.position;
         _correctTrajectoryEmission.transform.position = _lockedTarget.transform.position;
         var shape = _correctTrajectoryEmission.shape;
         shape.position = _correctTrajectoryEmission.transform.InverseTransformPoint(_sidekickThrowOrigin.position);
