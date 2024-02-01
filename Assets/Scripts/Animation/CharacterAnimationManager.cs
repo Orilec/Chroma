@@ -23,6 +23,7 @@ public class CharacterAnimationManager : MonoBehaviour
         _playerEvents.Sliding.AddListener(Sliding);
         _playerEvents.AirSliding.AddListener(AirSliding);
         _playerEvents.SlideJumping.AddListener(SlideJumping);
+        _playerEvents.InMiasma.AddListener(InMiasma);
         _playerEvents.Dying.AddListener(Dying);
         _playerEvents.LocomotionSpeed.AddListener(CurrentSpeed);
         _playerEvents.GroundedState.AddListener(Grounded);
@@ -54,6 +55,10 @@ public class CharacterAnimationManager : MonoBehaviour
     private void Grounded(bool isGrounded)
     {
         _animator.SetBool(_groundedHash, isGrounded);
+    }
+    private void InMiasma(bool isInMiasma)
+    {
+        _animator.SetBool(_miasmaHash, isInMiasma);
     }
     private void LandingLower(bool lower)
     {
