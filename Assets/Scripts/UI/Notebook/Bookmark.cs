@@ -47,7 +47,7 @@ public class Bookmark : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         
         while (elapsedTime < _bookmarkManager.BookmarkAnimationTime)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledTime;
 
             Vector3 lerpedPos = Vector3.Lerp(_rectTransform.position, endPos,
                 elapsedTime / _bookmarkManager.BookmarkAnimationTime);

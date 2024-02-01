@@ -55,7 +55,8 @@ public class ColorableAnimatedObject : ColorableObject
 
     private void InteractorEvent_OnDecolorationFinished(InteractorEvent arg1, InteractorEventArgs arg2)
     {
-        SetObjectInactive(); 
+        SetObjectInactive();
+
     }
 
 

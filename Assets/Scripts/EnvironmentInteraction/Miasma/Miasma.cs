@@ -6,44 +6,69 @@ using UnityEngine;
 public class Miasma : MonoBehaviour
 {
     private PlayerController _player;
+    private InteractorScript[] _interactors;
+    private bool _wasInInteractorRadiusLastFrame;
 
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
+        _player = GetComponentInParent<PlayerController>();
+    }
+
+    private void Start()
+    {
+        FindInteractors();
+    }
+
+    private void FixedUpdate()
+    {
+        foreach (var interactor in _interactors)
         {
-            if (!player.IsInMiasma)
+            float interactorRadius = interactor.radius; 
+            Vector3 interactorPosition = interactor.transform.position;
+            Vector3 objectPosition = transform.position;
+
+
+            bool isPointInRadiusRange = Mathf.Pow((objectPosition.x - interactorPosition.x), 2) + Mathf.Pow((objectPosition.y - interactorPosition.y), 2) + Mathf.Pow((objectPosition.z - interactorPosition.z), 2) < Mathf.Pow(interactorRadius, 2);
+
+            if (isPointInRadiusRange)   
             {
-                player.MiasmaTimer.Start();
+                ExitMiasma();
             }
+            _wasInInteractorRadiusLastFrame = isPointInRadiusRange;
+        
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if (!_player.IsInMiasma && !_wasInInteractorRadiusLastFrame)
         {
-            player.IsInMiasma = true;
+            _player.MiasmaTimer.Start();
+            _player.IsInMiasma = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
-        {
-            player.IsInMiasma = false;
-            _player = player;
-            Invoke(nameof(StopMiasmaTimer), 0.2f);
-        }
+          ExitMiasma();  
     }
 
+    private void ExitMiasma()
+    {
+        _player.IsInMiasma = false;
+        Invoke(nameof(StopMiasmaTimer), 0.2f);
+    }
+    
     private void StopMiasmaTimer()
     {
         if (!_player.IsInMiasma)
         {
             _player.MiasmaTimer.Stop();
         }
+    }
+    
+    private void FindInteractors()
+    {
+        _interactors = FindObjectsOfType<InteractorScript>();
     }
 
 }

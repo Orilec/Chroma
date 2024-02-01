@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,12 @@ public class Target : MonoBehaviour
         _targetSystem = FindObjectOfType<TargetSystem>();
         _playerTransform = FindObjectOfType<PlayerController>().transform;
         _renderer = GetComponent<MeshRenderer>();
+        _colorable.interactorEvent.OnDecolorationFinished += ReActivate;
+    }
+
+    private void OnDisable()
+    {
+        _colorable.interactorEvent.OnDecolorationFinished -= ReActivate;
     }
 
     private void Start()
@@ -38,10 +45,8 @@ public class Target : MonoBehaviour
         if (Vector3.Distance(transform.position, _playerTransform.position) < _targetSystem.minReachDistance && !isBehindPlayer && !isReachable && !isActivated && onScreen)
         {
             isReachable = true;
-            if (_targetSystem.visibleTargets.Contains(this))
-            {
-                _targetSystem.reachableTargets.Add(this);
-            }
+            _targetSystem.reachableTargets.Add(this);
+            
         }
 
         if ((Vector3.Distance(transform.position, _playerTransform.position) > _targetSystem.minReachDistance || isBehindPlayer || !onScreen) && isReachable )
@@ -60,50 +65,26 @@ public class Target : MonoBehaviour
             _renderer.material.SetFloat("_Alpha", 1f); 
 
         }
-        else if (_targetSystem.currentTarget != this && !isActivated)
+        else if (_targetSystem.currentTarget != this)
         {
             _renderer.material.SetFloat("_Alpha", 0f); 
-
         }
     }
 
-    private void OnBecameVisible()
-    {
-        if (!_targetSystem.visibleTargets.Contains(this))
-        {
-            _targetSystem.visibleTargets.Add(this);
-            
-            if(isReachable)
-                _targetSystem.reachableTargets.Add(this);
-        }
-    }
-
-    private void OnBecameInvisible()
-    {
-        if (_targetSystem.visibleTargets.Contains(this))
-        {
-            _targetSystem.visibleTargets.Remove(this);
-            
-            if (_targetSystem.reachableTargets.Contains(this))
-            {
-                _targetSystem.reachableTargets.Remove(this);
-            }
-        }
-    }
-
+    
     public void OnActivate()
     {
         isActivated = true;
-        _renderer.material.color = Color.green;
         if (_colorable != null)
         {
             _colorable.SetObjectActive();
         }
-        if (_targetSystem.reachableTargets.Contains(this))
-        {
-            _targetSystem.reachableTargets.Remove(this);
-        }
+        _targetSystem.reachableTargets.Remove(this);
+        isReachable = false;
+    }
 
-        gameObject.SetActive(false);
+    private void ReActivate(InteractorEvent arg1, InteractorEventArgs arg2)
+    {
+        isActivated = false;
     }
 }
