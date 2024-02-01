@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315484902060579035}
   - component: {fileID: 3476911042620946022}
+  - component: {fileID: 4575376816510677246}
   m_Layer: 0
   m_Name: TestMoss
   m_TagString: Untagged
@@ -46,11 +47,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f425bd282c005904db1095e56a29dfea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactorEvent: {fileID: 0}
+  interactorEvent: {fileID: 4575376816510677246}
   interactorRadius: 5.9
-  coloredRenderer: {fileID: 0}
+  coloredRenderer: {fileID: 6337797900970922490}
   fillColorAfterColoration: 0
   shouldAnimateAfterColoration: 0
+--- !u!114 &4575376816510677246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466050414056805567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43fc515867e45df409947b6f173d0a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4626872736956026238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +161,12 @@ PrefabInstance:
 --- !u!4 &5169935834744973973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1752cf2a7db695d43acc5d2fe54cb84d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4626872736956026238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6337797900970922490 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1752cf2a7db695d43acc5d2fe54cb84d,
     type: 3}
   m_PrefabInstance: {fileID: 4626872736956026238}
   m_PrefabAsset: {fileID: 0}
