@@ -35,7 +35,7 @@ public class PlayerTracking : MonoBehaviour
             {
                 playerPositions.Add(playerPosition);
                 lastPlayerPosition = playerPosition;
-            
+                UnityEngine.Debug.Log(playerPositions.Count + " points");
             }
         }
     }
