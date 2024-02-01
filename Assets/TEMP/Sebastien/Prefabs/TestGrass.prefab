@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1315484902060579035}
-  - component: {fileID: 3476911042620946022}
+  - component: {fileID: 7489445545358989170}
+  - component: {fileID: 4798754403287103216}
   m_Layer: 0
   m_Name: TestGrass
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   - {fileID: 2314005068482226853}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3476911042620946022
+--- !u!114 &7489445545358989170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,14 +44,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 6466050414056805567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f425bd282c005904db1095e56a29dfea, type: 3}
+  m_Script: {fileID: 11500000, guid: 82b0d8708ec914f47b580833546615fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactorEvent: {fileID: 0}
+  interactorEvent: {fileID: 4798754403287103216}
   interactorRadius: 5.9
-  shouldAnimateAfterColoration: 0
+  coloredRenderer: {fileID: 8630544029254003951}
   fillColorAfterColoration: 0
-  coloredRenderer: {fileID: 0}
+--- !u!114 &4798754403287103216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466050414056805567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43fc515867e45df409947b6f173d0a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5819462823112476818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +172,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e3117d9a1dd5d6a41824696dab63d5c1,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5822
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3117d9a1dd5d6a41824696dab63d5c1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5822
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3117d9a1dd5d6a41824696dab63d5c1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5822
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3117d9a1dd5d6a41824696dab63d5c1,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -208,6 +235,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e3117d9a1dd5d6a41824696dab63d5c1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f39e37905736fab46b3fec6b6b1fd33b, type: 2}
+    - target: {fileID: -5754084199372789682, guid: e3117d9a1dd5d6a41824696dab63d5c1,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -9010193167645078742, guid: 6fd21a897f9aac147b2a5ec0c6e3e195,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: e3117d9a1dd5d6a41824696dab63d5c1,
         type: 3}
       propertyPath: m_Name
@@ -221,6 +259,12 @@ PrefabInstance:
 --- !u!4 &7462172996251309952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3117d9a1dd5d6a41824696dab63d5c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6918742547979251819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8630544029254003951 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e3117d9a1dd5d6a41824696dab63d5c1,
     type: 3}
   m_PrefabInstance: {fileID: 6918742547979251819}
   m_PrefabAsset: {fileID: 0}
