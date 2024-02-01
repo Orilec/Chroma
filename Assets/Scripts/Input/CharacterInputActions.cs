@@ -315,6 +315,15 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""DisplayMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""626b350a-5306-44c6-9e0b-977a5d9fa87e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""ExitNotebook"",
                     ""type"": ""Button"",
                     ""id"": ""69f3ce35-c94c-4d9c-90f5-01856861ec73"",
@@ -388,6 +397,28 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""ExitNotebook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c31114cd-d888-4050-b6a1-92b7b95d7130"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DisplayMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64b47bfc-40d4-4d63-8e25-1c78c0e2de46"",
+                    ""path"": ""<Keyboard>/semicolon"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""DisplayMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -987,6 +1018,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_ValidateLevel = m_Interaction.FindAction("ValidateLevel", throwIfNotFound: true);
         m_Interaction_DisplayNotebook = m_Interaction.FindAction("DisplayNotebook", throwIfNotFound: true);
+        m_Interaction_DisplayMenu = m_Interaction.FindAction("DisplayMenu", throwIfNotFound: true);
         m_Interaction_ExitNotebook = m_Interaction.FindAction("ExitNotebook", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1159,6 +1191,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     private List<IInteractionActions> m_InteractionActionsCallbackInterfaces = new List<IInteractionActions>();
     private readonly InputAction m_Interaction_ValidateLevel;
     private readonly InputAction m_Interaction_DisplayNotebook;
+    private readonly InputAction m_Interaction_DisplayMenu;
     private readonly InputAction m_Interaction_ExitNotebook;
     public struct InteractionActions
     {
@@ -1166,6 +1199,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
         public InteractionActions(@CharacterInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ValidateLevel => m_Wrapper.m_Interaction_ValidateLevel;
         public InputAction @DisplayNotebook => m_Wrapper.m_Interaction_DisplayNotebook;
+        public InputAction @DisplayMenu => m_Wrapper.m_Interaction_DisplayMenu;
         public InputAction @ExitNotebook => m_Wrapper.m_Interaction_ExitNotebook;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
@@ -1182,6 +1216,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @DisplayNotebook.started += instance.OnDisplayNotebook;
             @DisplayNotebook.performed += instance.OnDisplayNotebook;
             @DisplayNotebook.canceled += instance.OnDisplayNotebook;
+            @DisplayMenu.started += instance.OnDisplayMenu;
+            @DisplayMenu.performed += instance.OnDisplayMenu;
+            @DisplayMenu.canceled += instance.OnDisplayMenu;
             @ExitNotebook.started += instance.OnExitNotebook;
             @ExitNotebook.performed += instance.OnExitNotebook;
             @ExitNotebook.canceled += instance.OnExitNotebook;
@@ -1195,6 +1232,9 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
             @DisplayNotebook.started -= instance.OnDisplayNotebook;
             @DisplayNotebook.performed -= instance.OnDisplayNotebook;
             @DisplayNotebook.canceled -= instance.OnDisplayNotebook;
+            @DisplayMenu.started -= instance.OnDisplayMenu;
+            @DisplayMenu.performed -= instance.OnDisplayMenu;
+            @DisplayMenu.canceled -= instance.OnDisplayMenu;
             @ExitNotebook.started -= instance.OnExitNotebook;
             @ExitNotebook.performed -= instance.OnExitNotebook;
             @ExitNotebook.canceled -= instance.OnExitNotebook;
@@ -1381,6 +1421,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
     {
         void OnValidateLevel(InputAction.CallbackContext context);
         void OnDisplayNotebook(InputAction.CallbackContext context);
+        void OnDisplayMenu(InputAction.CallbackContext context);
         void OnExitNotebook(InputAction.CallbackContext context);
     }
     public interface IUIActions

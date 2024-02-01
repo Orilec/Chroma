@@ -24,6 +24,7 @@ public class InputReader : MonoBehaviour
     public bool ThrowIsPressed { get; private set; } = false; 
     public bool RecenterCameraIsPressed { get; private set; } = false; 
     public bool DisplayNotebook { get; private set; } = false; 
+    public bool DisplayMenu { get; private set; } = false; 
     public bool ValidateLevel { get; private set; } = false; 
     public bool DebugRespawn { get; private set; } = false;
     public bool IsInUI { get; private set; } = false; 
@@ -65,6 +66,9 @@ public class InputReader : MonoBehaviour
         
         _input.Interaction.DisplayNotebook.started += SetNotebook;
         _input.Interaction.DisplayNotebook.canceled += SetNotebook;
+        
+        _input.Interaction.DisplayMenu.started += SetMenu;
+        _input.Interaction.DisplayMenu.canceled += SetMenu;
         
         _input.CharacterControls.DebugRespawn.started += SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled += SetRespawn;
@@ -113,6 +117,9 @@ public class InputReader : MonoBehaviour
         
         _input.Interaction.DisplayNotebook.started -= SetNotebook;
         _input.Interaction.DisplayNotebook.canceled -= SetNotebook;
+        
+        _input.Interaction.DisplayMenu.started -= SetMenu;
+        _input.Interaction.DisplayMenu.canceled -= SetMenu;
         
         _input.CharacterControls.DebugRespawn.started -= SetRespawn;
         _input.CharacterControls.DebugRespawn.canceled -= SetRespawn;
@@ -226,6 +233,13 @@ public class InputReader : MonoBehaviour
         if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
         else _isKeyboardMouse = false;
         DisplayNotebook = ctx.started;
+    }
+    
+    private void SetMenu(InputAction.CallbackContext ctx)
+    {
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
+        DisplayMenu = ctx.started;
     }
     private void SetRespawn(InputAction.CallbackContext ctx)
     {
