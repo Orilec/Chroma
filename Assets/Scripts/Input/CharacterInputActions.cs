@@ -216,7 +216,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""5fa2a0b4-9009-4c5f-963f-f45e96c971b8"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -249,21 +249,10 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""9a95dd0a-414d-4840-969b-35aad16f1e63"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/u"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""RecenterCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fcabdb86-8513-4a3d-bec7-349430bd59d3"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
                     ""action"": ""RecenterCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -370,7 +359,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                 {
                     ""name"": """",
                     ""id"": ""d127a798-fd65-4aba-a6e7-db13ed4ac60b"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -415,6 +404,17 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""name"": """",
                     ""id"": ""64b47bfc-40d4-4d63-8e25-1c78c0e2de46"",
                     ""path"": ""<Keyboard>/semicolon"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""DisplayMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bab098fd-d54b-46c7-ae95-90621b911d15"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
