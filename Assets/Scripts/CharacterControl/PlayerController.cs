@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement, _localGroundCheckHitNormal;
 
     private List<Timer> _timers;
-    private CountdownTimer _jumpTimer, _playerFallTimer, _bounceFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _miasmaTimer, _slideCooldownTimer, _slideBoostTimer;
+    private CountdownTimer _jumpTimer, _playerFallTimer, _bounceFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _miasmaTimer, _slideCooldownTimer, _slideBoostTimer, _jumpMinTimer;
 
     private StateMachine _stateMachine;
     
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public RespawnSystem RespawnSystem{ get { return _respawnSystem; } }
     public Vector3 GroundCheckHitNormal{ get { return _localGroundCheckHitNormal; } }
     public CountdownTimer JumpTimer { get { return _jumpTimer; } }
+    public CountdownTimer JumpMinTimer { get { return _jumpMinTimer; } }
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
     public CountdownTimer CoyoteTimeCounter { get { return _coyoteTimeCounter; } }
     public CountdownTimer JumpBufferTimeCounter { get { return _jumpBufferTimeCounter; } }
@@ -115,6 +116,7 @@ public class PlayerController : MonoBehaviour
         
         //Timers setup
         _jumpTimer = new CountdownTimer(_parameters.jumpTime);
+        _jumpMinTimer = new CountdownTimer(_parameters.jumpMinTime);
         _playerFallTimer = new CountdownTimer(_parameters.playerFallTimeMax);
         _coyoteTimeCounter = new CountdownTimer(_parameters.coyoteTime);
         _jumpBufferTimeCounter = new CountdownTimer(_parameters.jumpBufferTime);
@@ -128,7 +130,7 @@ public class PlayerController : MonoBehaviour
         _slideCooldownTimer = new CountdownTimer(_parameters.slideCooldownTime);
         _slideBoostTimer = new CountdownTimer(_parameters.slideBoostTime);
         
-        _timers = new List<Timer> { _jumpTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _bounceFallTimer, _miasmaTimer, _slideCooldownTimer, _slideBoostTimer };
+        _timers = new List<Timer> { _jumpTimer,_jumpMinTimer, _playerFallTimer, _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _bounceFallTimer, _miasmaTimer, _slideCooldownTimer, _slideBoostTimer };
         
         //_jumpTimer.OnTimerStop += () => ;
         
