@@ -20,7 +20,12 @@ public class ColorableObject : MonoBehaviour
     public bool fillColorAfterColoration;
 
 
-    
+
+    private void Awake()
+    {
+        interactorEvent = GetComponent<InteractorEvent>();
+    }
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -90,7 +95,32 @@ public class ColorableObject : MonoBehaviour
         coloredRenderer.material.SetInt("_Debug", 0);
     }
 
+    protected virtual void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
+    {
+        //Event on Coloration Finished
+        Debug.Log("start coloring"); 
 
+    }
+
+    protected virtual void InteractorEvent_OnDecolorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
+    {
+        Debug.Log("done coloring"); 
+        SetObjectInactive();
+    }
+
+
+
+    private void OnEnable()
+    {
+        interactorEvent.OnColorationFinished += InteractorEvent_OnColorationFinished;
+        interactorEvent.OnDecolorationFinished += InteractorEvent_OnDecolorationFinished;
+    }
+
+    private void OnDisable()
+    {
+        interactorEvent.OnColorationFinished -= InteractorEvent_OnColorationFinished;
+        interactorEvent.OnDecolorationFinished -= InteractorEvent_OnDecolorationFinished;
+    }
 
     // EDITOR 
 
