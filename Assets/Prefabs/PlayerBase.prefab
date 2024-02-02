@@ -15860,7 +15860,7 @@ PrefabInstance:
     - target: {fileID: 8263784332291268160, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 16119
+      value: 65271
       objectReference: {fileID: 0}
     - target: {fileID: 8263784332291268160, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
@@ -16884,6 +16884,64 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 6662644105329539905}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _bookPagesPlanned.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _currentBookPages.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _bookPagesPlanned.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: e42ea46c4e2349045bd5d5b9b40b3a2c,
+        type: 3}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _bookPagesPlanned.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 729046068dc63a440bee4f5d29d40d94,
+        type: 3}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _bookPagesPlanned.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: a4133a1ba7e4987408ec02aa0fe92e33,
+        type: 3}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _bookPagesPlanned.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: bcd1ee4bbf7c3024cb9f2e1a67bd0bb8,
+        type: 3}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _bookPagesPlanned.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bce278b2f5a72948b8d41ec0304714f,
+        type: 3}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _bookPagesPlanned.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bce278b2f5a72948b8d41ec0304714f,
+        type: 3}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _currentBookPages.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: bcd1ee4bbf7c3024cb9f2e1a67bd0bb8,
+        type: 3}
+    - target: {fileID: 8733422032487508493, guid: d06c8ed96c3f908419ddeb443a8a234e,
+        type: 3}
+      propertyPath: _currentBookPages.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bce278b2f5a72948b8d41ec0304714f,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17056,17 +17114,17 @@ PrefabInstance:
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 23.364666
       objectReference: {fileID: 0}
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 4.200074
       objectReference: {fileID: 0}
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.5
+      value: -145.36862
       objectReference: {fileID: 0}
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
@@ -17076,7 +17134,7 @@ PrefabInstance:
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12550542
+      value: 0.1255054
       objectReference: {fileID: 0}
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
@@ -17086,7 +17144,7 @@ PrefabInstance:
     - target: {fileID: 5998050394805110078, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000037252903
+      value: -0.000000011175871
       objectReference: {fileID: 0}
     - target: {fileID: 6267366458977573450, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}

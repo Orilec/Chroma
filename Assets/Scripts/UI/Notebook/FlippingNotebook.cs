@@ -151,6 +151,7 @@ public class FlippingNotebook : MonoBehaviour {
 
     public void AddPages(int pagesToAdd)
     {
+        Debug.Log("adding page");
             for (int i = 0; i < pagesToAdd; i++)
             {
                 if (_currentAddedPagesIndex < _currentBookPages.Count - 1)
