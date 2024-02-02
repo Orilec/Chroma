@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 [Header("References")] 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private GroundCheck _groundCheck;
+    [SerializeField] private ThrowSystem _throwSystem;
     [SerializeField] private InputReader _input;
     [SerializeField] private PlayerTrailScript _trail;
     [SerializeField] private RespawnSystem _respawnSystem;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     
     //SIMPLE GETTERS
     public RespawnSystem RespawnSystem{ get { return _respawnSystem; } }
+    public ThrowSystem ThrowSystem{ get { return _throwSystem; } }
     public Vector3 GroundCheckHitNormal{ get { return _localGroundCheckHitNormal; } }
     public CountdownTimer JumpTimer { get { return _jumpTimer; } }
     public CountdownTimer JumpMinTimer { get { return _jumpMinTimer; } }
