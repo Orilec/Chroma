@@ -16926,7 +16926,7 @@ PrefabInstance:
     - target: {fileID: 2090961706570983977, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000029802322
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2090961706570983977, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
@@ -16962,6 +16962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.000000007450581
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723677930800227036, guid: c771f0dddda691043b14b25881cd992c,
+        type: 3}
+      propertyPath: m_CollideAgainst.m_Bits
+      value: 32960
       objectReference: {fileID: 0}
     - target: {fileID: 4256716984854973426, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
@@ -17101,7 +17106,7 @@ PrefabInstance:
     - target: {fileID: 7237359927490529252, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_ClearFlags
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7237359927490529252, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
