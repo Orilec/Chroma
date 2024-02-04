@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         At(groundedState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         At(groundedState, autoSlideState, new FuncPredicate(()=> _isOnSlope && _groundCheck.AutoSlide));
         
-        At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning));
+        At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_jumpMinTimer.IsRunning));
         At(jumpState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
         
         At(fallState, groundedState, new FuncPredicate(()=> _groundCheck.IsGrounded));
@@ -266,6 +266,7 @@ public class PlayerController : MonoBehaviour
  
         _stateMachine.FixedUpdate();
         
+        PlayerFacingWall();
         PlayerSlope();
         PlayerBumps();
         SnapToGround();
@@ -340,7 +341,6 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
-        _playerMoveInput = PlayerFacingWall();
         if (!_isAutoSliding) _playerMoveInput = ConvertToCameraSpace(_playerMoveInput);
         else _playerMoveInput = ConvertToSlopeDirection(_groundCheck.slopeDirection, _playerMoveInput);
 
@@ -349,7 +349,7 @@ public class PlayerController : MonoBehaviour
         _playerEventsPublisher.LocomotionSpeed.Invoke(_relativeCurrentSpeed);
     }
 
-    private Vector3 PlayerFacingWall()
+    private void PlayerFacingWall()
     {
         var calculatedPlayerMovement = _playerMoveInput;
         
@@ -358,7 +358,7 @@ public class PlayerController : MonoBehaviour
         {
             calculatedPlayerMovement = new Vector3(_playerMoveInput.x * _parameters.facingWallSpeedMultiplier, _playerMoveInput.y, _playerMoveInput.z * _parameters.facingWallSpeedMultiplier);
         }
-        return calculatedPlayerMovement;
+        _playerMoveInput = calculatedPlayerMovement;
 
     }
 
