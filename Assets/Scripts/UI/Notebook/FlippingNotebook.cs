@@ -80,6 +80,12 @@ public class FlippingNotebook : MonoBehaviour {
         _playerEvents.AddingPages.AddListener(AddPages);
     }
 
+    private void OnEnable()
+    {
+        AddPages(_notebookManager.pagesToAdd);
+        _notebookManager.pagesToAdd = 0;
+    }
+
     void Start()
     {
         if (!canvas) canvas=GetComponentInParent<Canvas>();
@@ -160,7 +166,6 @@ public class FlippingNotebook : MonoBehaviour {
                 }
             }
             UpdateSprites();
-        
     }
     
     public void FlipRightPage()

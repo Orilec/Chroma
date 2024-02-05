@@ -19,7 +19,7 @@ MonoBehaviour:
   maxSlopeAngle: 35
   maxSlopeFallSpeed: 3000
   distanceFromWall: 1.5
-  facingWallSpeedMultiplier: 1
+  facingWallSpeedMultiplier: 0.01
   gravityFallMin: -5
   gravityFallMax: -200
   gravityFallIncrementAmount: -5
@@ -28,10 +28,10 @@ MonoBehaviour:
   miasmaTimeBeforeDeath: 2
   miasmaSpeed: 50
   miasmaGravity: -40
-  initialJumpForce: 1400
-  continualJumpForceMultiplier: 0.06
+  initialJumpForce: 1300
+  continualJumpForceMultiplier: 0.05
   jumpTime: 0.2
-  jumpMinTime: 0.3
+  jumpMinTime: 0.2
   coyoteTime: 0.1
   jumpBufferTime: 0.3
   slideNormalSpeed: 200
