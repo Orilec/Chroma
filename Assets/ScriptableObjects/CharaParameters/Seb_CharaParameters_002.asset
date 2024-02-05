@@ -29,13 +29,13 @@ MonoBehaviour:
   miasmaSpeed: 50
   miasmaGravity: -40
   initialJumpForce: 1300
-  continualJumpForceMultiplier: 0.05
+  continualJumpForceMultiplier: 0.06
   jumpTime: 0.2
   jumpMinTime: 0.2
   coyoteTime: 0.1
   jumpBufferTime: 0.3
-  slideNormalSpeed: 200
-  slideTime: 0.5
+  slideNormalSpeed: 220
+  slideTime: 0.8
   slideCooldownTime: 1
   slideSpeedDecrementAmount: 1
   slopeSlideMaxSpeed: 350
@@ -43,7 +43,7 @@ MonoBehaviour:
   slideBoostTime: 0.2
   initialSlideBoostForce: 2500
   continualSlideBoostForceMultiplier: 0.1
-  slidingJumpVerticalForce: 1000
+  slidingJumpVerticalForce: 1200
   slidingJumpHorizontalForce: 200
   slidingJumpContinualMultiplier: 0.6
   slidingJumpBaseFallGravity: -0.01
