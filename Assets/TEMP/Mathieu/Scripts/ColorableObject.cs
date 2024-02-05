@@ -13,11 +13,17 @@ public class ColorableObject : MonoBehaviour
 
     InteractorScript[] interactors;
 
-    private bool isColored = false;
+    public bool isColored = false;
 
     [SerializeField] private Renderer coloredRenderer;
 
     public bool fillColorAfterColoration;
+
+    public bool isSwitch; //pas la console
+
+    public TriggerObject associatedDoor; 
+
+    public float switchReactivationTime; 
 
 
 
