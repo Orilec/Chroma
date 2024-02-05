@@ -23,7 +23,7 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _postcardManager = postcardManager;
         _image.enabled = true;
         _button.enabled = true;
-        //_image.sprite = sprite;
+        _image.sprite = sprite;
     }
 
     private IEnumerator MoveCard(bool selected)

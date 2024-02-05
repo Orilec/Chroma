@@ -24,29 +24,31 @@ public class PauseMenuControl : MonoBehaviour
     {
         if (_input.DisplayMenu && !_displayedWasPressedLastFrame)
         {
-            DisplayMenu();
+            if(_isDisplayed) HideMenu();
+            else if(!_isDisplayed && !PauseControl.IsPaused) DisplayMenu();
         }
         _displayedWasPressedLastFrame = _input.DisplayMenu;
     }
 
+    public void HideMenu()
+    {
+        _input.DisableUIControl();
+        _input.EnableCharacterControl();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        _menuTransform.gameObject.SetActive(false);
+        _isDisplayed = false;
+        _playerEvents.PauseGame.Invoke(false);
+    }
+
     public void DisplayMenu()
     {
-        if (!_isDisplayed && !PauseControl.IsPaused)
-        {
-            _input.EnableUIControl();
-            _input.DisableCharacterControl();
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
-        else
-        {
-            _input.DisableUIControl();
-            _input.EnableCharacterControl();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        _menuTransform.gameObject.SetActive(!_isDisplayed);
-        _isDisplayed = !_isDisplayed;
-        _playerEvents.PauseGame.Invoke(_isDisplayed);
+        _input.EnableUIControl();
+        _input.DisableCharacterControl();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        _menuTransform.gameObject.SetActive(true);
+        _isDisplayed = true;
+        _playerEvents.PauseGame.Invoke(true);
     }
 }

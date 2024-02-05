@@ -191,7 +191,8 @@ public class InputReader : MonoBehaviour
     }
     private void SetBack(InputAction.CallbackContext ctx)
     {
-        _isKeyboardMouse = false;
+        if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
+        else _isKeyboardMouse = false;
         BackIsPressed = ctx.started;
     }
 
