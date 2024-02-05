@@ -24,6 +24,7 @@ public class RespawningState : BaseCharacterState
 
     public override void OnExit()
     {
+        _playerController.ThrowSystem.StopRetrieve();
         _playerEvents.Dying.Invoke(false);
     }
 }

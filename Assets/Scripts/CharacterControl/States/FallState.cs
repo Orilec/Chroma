@@ -8,7 +8,7 @@ public class FallState : BaseCharacterState
 
     public override void OnEnter()
     {
-
+        
     }
     
     public override void Update()
@@ -22,6 +22,7 @@ public class FallState : BaseCharacterState
     {
         HandleFallGravity();
         if (_playerController.WasSlideJumping) _playerController.PlayerMoveInputZ = 1f;
+        _playerController.CurrentSpeed = _playerController.MaxMoveSpeed;
         _playerController.PlayerMove();
         _playerController.HandleRotation();
     }
@@ -55,7 +56,7 @@ public class FallState : BaseCharacterState
     
     void OnJump()
     {
-        if (_input.JumpIsPressed && _playerController.CoyoteTimeCounter.IsRunning)
+        if (_input.JumpIsPressed && _playerController.CoyoteTimeCounter.IsRunning && !_playerController.JumpWasPressedLastFrame)
         {
             _playerController.JumpTimer.Start();
         }

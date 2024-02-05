@@ -20,6 +20,8 @@ public class NotebookManager : MonoBehaviour
     private Transform _notebookTransform;
     private bool _isDisplayed, _displayedWasPressedLastFrame;
 
+    public int pagesToAdd;
+
     private void Awake()
     {
         _notebookTransform = transform.GetChild(0); 
@@ -27,6 +29,7 @@ public class NotebookManager : MonoBehaviour
         _playerEvents.CardCollected.AddListener(DisplayAddedCardCue);
         _playerEvents.AddingPages.AddListener(DisplayAddedPagesCue);
     }
+    
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class NotebookManager : MonoBehaviour
     private void DisplayAddedPagesCue(int pages)
     {
         StartCoroutine(DisplayCue("Pages ajoutées", 2f));
+        pagesToAdd += pages;
     }
 
     private IEnumerator DisplayCue(String text, float displayTime)
