@@ -31,7 +31,7 @@ public class PauseMenuControl : MonoBehaviour
 
     public void DisplayMenu()
     {
-        if (!_isDisplayed)
+        if (!_isDisplayed && !PauseControl.IsPaused)
         {
             _input.EnableUIControl();
             _input.DisableCharacterControl();

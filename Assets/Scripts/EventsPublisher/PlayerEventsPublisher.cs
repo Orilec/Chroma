@@ -22,6 +22,8 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<bool> EnterValidateLevel;
     public UnityEvent<int> AddingPages;
 
+    public bool IsInMenu;
+    
     public void DebugCollectible()
     {
         CardCollected.Invoke(null);

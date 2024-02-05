@@ -74,7 +74,7 @@ public class NotebookManager : MonoBehaviour
 
     private void DisplayNotebook()
     {
-        if (!_isDisplayed)
+        if (!_isDisplayed && !PauseControl.IsPaused)
         {
             _input.EnableUIControl();
             _input.DisableCharacterControl();
