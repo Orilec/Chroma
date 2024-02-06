@@ -78,13 +78,29 @@ public class Target : MonoBehaviour
         if (_colorable != null)
         {
             _colorable.SetObjectActive();
+
+            //if (_colorable.isSwitch)
+            //{
+            //    StartCoroutine(ReActivateSwitch()); 
+            //}
         }
         _targetSystem.reachableTargets.Remove(this);
         isReachable = false;
+
     }
 
     private void ReActivate(InteractorEvent arg1, InteractorEventArgs arg2)
     {
         isActivated = false;
+    }
+
+    private IEnumerator ReActivateSwitch()
+    {
+        yield return new WaitForSeconds(_colorable.switchReactivationTime);
+        foreach(ColorableObject element in _colorable.associatedDoor.PathObjects)
+        {
+            element.isColored = false; 
+        }
+        ReActivate(null, null); 
     }
 }

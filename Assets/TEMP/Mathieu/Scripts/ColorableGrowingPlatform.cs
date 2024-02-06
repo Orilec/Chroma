@@ -41,15 +41,15 @@ public class ColorableGrowingPlatform : ColorableObject
         StartCoroutine(Wither());
     }
 
-    private void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
+    protected override void InteractorEvent_OnColorationFinished(InteractorEvent interactorEvent, InteractorEventArgs interactorEventArgs)
     {
-      
 
+        base.InteractorEvent_OnColorationFinished(interactorEvent, interactorEventArgs);
     }
 
-    private void InteractorEvent_OnDecolorationFinished(InteractorEvent arg1, InteractorEventArgs arg2)
+    protected override void InteractorEvent_OnDecolorationFinished(InteractorEvent arg1, InteractorEventArgs arg2)
     {
-        SetObjectInactive();
+        base.InteractorEvent_OnDecolorationFinished(arg1, arg2);
     }
 
 

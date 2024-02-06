@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9363db430b562334bb881e1e365e0362, type: 3}
+  m_Name: D_V_Part2_EN
+  m_EditorClassIdentifier: 
+  _messages:
+  - _fromSidekick: 1
+    _icon: {fileID: 21300000, guid: 8c7667a10594c594bbe5eb36a15521a4, type: 3}
+    _content: Blup, blup ?
+    _timeOnScreen: 2
+  - _fromSidekick: 0
+    _icon: {fileID: 21300000, guid: c9b68d38f5d54384f8cbe22322755c03, type: 3}
+    _content: The color doesn't seem to stay...
+    _timeOnScreen: 3.5
