@@ -77,13 +77,18 @@ public class FlippingNotebook : MonoBehaviour {
     {
         _pageFlipTime = _basePageFlipTime;
         _animationFramesCount = _baseAnimationFramesCount;
-        _playerEvents.AddingPages.AddListener(AddPages);
         _currentPage = 2;
+        _currentAddedPagesIndex = 1;
     }
 
     private void OnEnable()
     {
+        Debug.Log("enabling");
         AddPages(_notebookManager.pagesToAdd);
+    }
+
+    private void OnDisable()
+    {
         _notebookManager.pagesToAdd = 0;
     }
 
@@ -158,12 +163,13 @@ public class FlippingNotebook : MonoBehaviour {
 
     public void AddPages(int pagesToAdd)
     {
+        Debug.Log(pagesToAdd);
             for (int i = 0; i < pagesToAdd; i++)
             {
                 if (_currentAddedPagesIndex < _currentBookPages.Count - 1)
                 {
-                    _currentAddedPagesIndex++;
                     _currentBookPages[_currentAddedPagesIndex] = _bookPagesPlanned[_currentAddedPagesIndex];
+                    _currentAddedPagesIndex++;
                 }
             }
             UpdateSprites();

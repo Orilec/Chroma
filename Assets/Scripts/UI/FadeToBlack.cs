@@ -17,12 +17,18 @@ public class FadeToBlack : MonoBehaviour
     {
         _blackImage = GetComponent<Image>();
         _playerEventsPublisher.Respawn.AddListener(StartRespawnFade);
+        _playerEventsPublisher.EndOfVSLevel.AddListener(EndVSLevel);
+    }
+
+    private void EndVSLevel()
+    {
+        StartCoroutine(EndOfVsLevel());
     }
 
     private IEnumerator EndOfVsLevel()
     {
         yield return new WaitForSeconds(5f);
-        StartCoroutine(FadeImage(respawnFadeSpeed));
+        StartCoroutine(RespawnFadeToBlack(respawnFadeSpeed, respawnBlackScreenTime));
     }
 
     private IEnumerator FadeImage(float fadeSpeed, bool toBlack = true)
