@@ -11,6 +11,9 @@ public class TriggerObject : MonoBehaviour
 
     private List<InteractorScript> pathInteractors;
 
+
+    public List<ColorableObject> PathObjects  { get { return pathObjects; } }
+
     // Start is called before the first frame update
     void Start()
     {
