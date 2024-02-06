@@ -19,6 +19,12 @@ public class FadeToBlack : MonoBehaviour
         _playerEventsPublisher.Respawn.AddListener(StartRespawnFade);
     }
 
+    private IEnumerator EndOfVsLevel()
+    {
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(FadeImage(respawnFadeSpeed));
+    }
+
     private IEnumerator FadeImage(float fadeSpeed, bool toBlack = true)
     {
         Color objectColor = _blackImage.color;

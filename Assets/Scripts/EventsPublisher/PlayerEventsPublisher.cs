@@ -20,6 +20,7 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<Sprite> CardCollected;
     public UnityEvent<bool> PauseGame;
     public UnityEvent<bool> EnterValidateLevel;
+    public UnityEvent EndOfVSLevel;
     public UnityEvent<int> AddingPages;
 
     public bool IsInMenu;
