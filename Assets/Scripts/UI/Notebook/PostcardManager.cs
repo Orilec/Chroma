@@ -23,6 +23,7 @@ public class PostcardManager : MonoBehaviour
     private Image _postcardCloseUpImage;
     
     public float PostcardAnimationOffset { get { return _postcardAnimationOffset; } }
+    public bool IsViewingPostcard { get { return _isViewingPostcard; } }
     public float PostcardAnimationTime { get { return _postcardAnimationTime; } }
     public Postcard SelectedPostcard { get { return _selectedPostcard; } set { _selectedPostcard = value; } }
     public Postcard LastSelectedPostcard { get { return _lastSelected; } set { _lastSelected = value; } }
@@ -63,6 +64,7 @@ public class PostcardManager : MonoBehaviour
         }
 
         _clickWasPressedLastFrame = _input.ClickIsPressed;
+        _backWasPressedLastFrame = _input.BackIsPressed;
     }
 
     private void AddNewPostCard(Sprite sprite)

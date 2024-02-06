@@ -6,6 +6,7 @@ using UnityEngine;
 public class PauseControl : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEvents;
+    public static bool IsPaused;
 
     private void Awake()
     {
@@ -16,10 +17,12 @@ public class PauseControl : MonoBehaviour
     {
         if (paused)
         {
+            IsPaused = true;
             Time.timeScale = 0f;
         }
         else
         {
+            IsPaused = false;
             Time.timeScale = 1f;
         }
     }

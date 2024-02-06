@@ -78,6 +78,7 @@ public class FlippingNotebook : MonoBehaviour {
         _pageFlipTime = _basePageFlipTime;
         _animationFramesCount = _baseAnimationFramesCount;
         _playerEvents.AddingPages.AddListener(AddPages);
+        _currentPage = 2;
     }
 
     private void OnEnable()

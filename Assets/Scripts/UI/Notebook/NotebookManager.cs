@@ -11,6 +11,7 @@ public class NotebookManager : MonoBehaviour
     [SerializeField] private InputReader _input;
     [SerializeField] private UIEventsPublisher _uiEvents;
     [SerializeField] private FlippingNotebook _notebook;
+    [SerializeField] private PostcardManager _postcardManager;
     [SerializeField] private RectTransform _postcardContainer;
     [SerializeField] private RectTransform _leftBookPages;
     [SerializeField] private RectTransform _rightBookPages;
@@ -18,8 +19,8 @@ public class NotebookManager : MonoBehaviour
     [SerializeField] private Button _rightButton;
     [SerializeField] private TextMeshProUGUI _textCue;
     private Transform _notebookTransform;
-    private bool _isDisplayed, _displayedWasPressedLastFrame;
-
+    private bool _isDisplayed, _displayedWasPressedLastFrame, _backWasPressedLastFrame;
+    
     public int pagesToAdd;
 
     private void Awake()
@@ -58,7 +59,8 @@ public class NotebookManager : MonoBehaviour
     {
         if (_input.DisplayNotebook && !_displayedWasPressedLastFrame)
         {
-            DisplayNotebook();
+            if(_isDisplayed) HideNotebook();
+            else if(!_isDisplayed && !PauseControl.IsPaused) DisplayNotebook();
         }
         _displayedWasPressedLastFrame = _input.DisplayNotebook;
         
@@ -70,27 +72,37 @@ public class NotebookManager : MonoBehaviour
         {
             _notebook.FlipLeftPage();
         }
+        
+        if (_isDisplayed && _input.BackIsPressed && !_backWasPressedLastFrame && !_postcardManager.IsViewingPostcard)
+        {
+            HideNotebook();
+        }
+
+        _backWasPressedLastFrame = _input.BackIsPressed;
+    }
+
+    private void HideNotebook()
+    {
+        _input.DisableUIControl();
+        _input.EnableCharacterControl();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
+        _notebookTransform.gameObject.SetActive(false);
+        _isDisplayed = false;
+        _playerEvents.PauseGame.Invoke(false);
     }
 
     private void DisplayNotebook()
     {
-        if (!_isDisplayed)
-        {
-            _input.EnableUIControl();
-            _input.DisableCharacterControl();
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
-        else
-        {
-            _input.DisableUIControl();
-            _input.EnableCharacterControl();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        _notebookTransform.gameObject.SetActive(!_isDisplayed);
-        _isDisplayed = !_isDisplayed;
-        _playerEvents.PauseGame.Invoke(_isDisplayed);
+        _input.EnableUIControl();
+        _input.DisableCharacterControl();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        
+        _notebookTransform.gameObject.SetActive(true);
+        _isDisplayed = true;
+        _playerEvents.PauseGame.Invoke(true);
     }
 
     private void HandleSectionDisplay(bool startOfBook, bool endOfBook)
