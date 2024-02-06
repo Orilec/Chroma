@@ -7,14 +7,20 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private UIEventsPublisher _UiEvents;
     [SerializeField] private int _mainScene;
     [SerializeField] private List<int> _scenesToLoadAdditive;
+
+    private bool _endOfLevel;
     
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene(_mainScene);
         LoadScenes(_scenesToLoadAdditive);
+        _playerEvents.EndOfVSLevel.AddListener(SetEndOfLevel);
+        _UiEvents.FirstFadeFinished.AddListener(EndOfVSLevel);
+
     }
     
     private void LoadScenes(List<int> scenes)
@@ -27,10 +33,21 @@ public class SceneLoader : MonoBehaviour
 
     public void Reload()
     {
+        _endOfLevel = false;
         SceneManager.LoadScene(6, LoadSceneMode.Single);
         SceneManager.LoadSceneAsync(_mainScene);
         LoadScenes(_scenesToLoadAdditive);
         _playerEvents.PauseGame.Invoke(false);
+    }
+
+    private void SetEndOfLevel()
+    {
+        _endOfLevel = true;
+    }
+
+    private void EndOfVSLevel()
+    {
+        if(_endOfLevel) SceneManager.LoadScene(7, LoadSceneMode.Single);
     }
 }
 

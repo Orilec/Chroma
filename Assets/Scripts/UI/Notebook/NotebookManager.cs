@@ -17,6 +17,7 @@ public class NotebookManager : MonoBehaviour
     [SerializeField] private RectTransform _rightBookPages;
     [SerializeField] private Button _leftButton;
     [SerializeField] private Button _rightButton;
+    [SerializeField] private RectTransform _cueTransform;
     [SerializeField] private TextMeshProUGUI _textCue;
     private Transform _notebookTransform;
     private bool _isDisplayed, _displayedWasPressedLastFrame, _backWasPressedLastFrame;
@@ -39,20 +40,20 @@ public class NotebookManager : MonoBehaviour
 
     private void DisplayAddedCardCue(Sprite card)
     {
-        StartCoroutine(DisplayCue("Carte postale ajoutée", 2f));
+        StartCoroutine(DisplayCue("Carte postale ajoutée", 4f));
     }
     private void DisplayAddedPagesCue(int pages)
     {
-        StartCoroutine(DisplayCue("Pages ajoutées", 2f));
+        StartCoroutine(DisplayCue("Pages ajoutées", 4f));
         pagesToAdd += pages;
     }
 
     private IEnumerator DisplayCue(String text, float displayTime)
     {
         _textCue.text = text;
-        _textCue.gameObject.SetActive(true);
+        _cueTransform.gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(displayTime);
-        _textCue.gameObject.SetActive(false);
+        _cueTransform.gameObject.SetActive(false);
     }
 
     private void Update()
