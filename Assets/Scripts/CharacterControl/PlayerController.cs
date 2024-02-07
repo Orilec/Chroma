@@ -403,6 +403,7 @@ public class PlayerController : MonoBehaviour
     private void SnapToGround()
     {
         if (_groundCheck.IsGrounded) return;
+        if (_jumpTimer.IsRunning) return;
         if (_stepsSinceGrounded > 1) return;
         if (!_groundCheck.GroundBelow) return;
         _playerMoveInput = new Vector3(_playerMoveInput.x,-10000f, _playerMoveInput.z);

@@ -32,20 +32,21 @@ public class Miasma : MonoBehaviour
 
             if (isPointInRadiusRange)   
             {
-                ExitMiasma();
+                ExitMiasmaImmediate();
             }
             _wasInInteractorRadiusLastFrame = isPointInRadiusRange;
-        
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private IEnumerator OnTriggerStay(Collider other)
     {
         if (!_player.IsInMiasma && !_wasInInteractorRadiusLastFrame)
         {
+            Debug.Log("starting timer");
             _player.MiasmaTimer.Start();
             _player.IsInMiasma = true;
         }
+        yield return new WaitForFixedUpdate();
     }
     private void OnTriggerExit(Collider other)
     {
@@ -56,6 +57,11 @@ public class Miasma : MonoBehaviour
     {
         _player.IsInMiasma = false;
         Invoke(nameof(StopMiasmaTimer), 0.2f);
+    }
+    private void ExitMiasmaImmediate()
+    {
+        _player.IsInMiasma = false;
+        StopMiasmaTimer();
     }
     
     private void StopMiasmaTimer()
