@@ -35,7 +35,7 @@ public class GroundedState : BaseCharacterState
     
     private void HandleMovement()
     {
-         var gravity = -9.8f;
+         var gravity = -50f;
         _playerController.GravityFallCurrent = _playerController.GravityFallMin;
         _playerController.PlayerMoveInputY = gravity;
         
