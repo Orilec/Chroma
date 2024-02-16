@@ -36,7 +36,7 @@ public class Target : MonoBehaviour
         transform.rotation *= Quaternion.Euler(90,0,0);
         
         Vector3 playerToObject = transform.position - _playerTransform.position;
-        bool isBehindPlayer = Vector3.Dot(_mainCam.transform.forward, playerToObject) < 0;
+        bool isBehindPlayer = Vector3.Dot(_playerTransform.forward, playerToObject) < 0;
         
         Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
         bool onScreen = screenPoint.x > 0 + _targetSystem.HorizontalAimTreshold && screenPoint.x < 1 - _targetSystem.HorizontalAimTreshold && screenPoint.y > 0 + _targetSystem.VerticalAimTreshold && screenPoint.y < 1 -_targetSystem.VerticalAimTreshold ;
