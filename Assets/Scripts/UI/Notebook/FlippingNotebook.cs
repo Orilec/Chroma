@@ -83,7 +83,6 @@ public class FlippingNotebook : MonoBehaviour {
 
     private void OnEnable()
     {
-        Debug.Log("enabling");
         AddPages(_notebookManager.pagesToAdd);
     }
 
