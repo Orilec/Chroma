@@ -20,7 +20,7 @@ public class NotebookManager : MonoBehaviour
     [SerializeField] private RectTransform _cueTransform;
     [SerializeField] private TextMeshProUGUI _textCue;
     private Transform _notebookTransform;
-    private bool _isDisplayed, _displayedWasPressedLastFrame, _backWasPressedLastFrame;
+    private bool _isDisplayed, _displayedWasPressedLastFrame, _backWasPressedLastFrame, _isInPostcardSection;
     
     public int pagesToAdd;
 
@@ -69,7 +69,7 @@ public class NotebookManager : MonoBehaviour
         {
             _notebook.FlipRightPage();
         }
-        else if (_input.NavigateInput.x <= -0.95)
+        else if (_input.NavigateInput.x <= -0.95 && !_isInPostcardSection)
         {
             _notebook.FlipLeftPage();
         }
@@ -108,7 +108,7 @@ public class NotebookManager : MonoBehaviour
 
     private void HandleSectionDisplay(bool startOfBook, bool endOfBook)
     {
-        if (startOfBook) SectionDisplay(null, _leftBookPages, _leftButton,true);
+        if (startOfBook) {SectionDisplay(null, _leftBookPages, _leftButton,true);}
         else if(endOfBook) SectionDisplay(_postcardContainer, _rightBookPages, _rightButton, true);
         else
         {
@@ -116,6 +116,8 @@ public class NotebookManager : MonoBehaviour
             SectionDisplay(_postcardContainer, _rightBookPages, _rightButton, false);
             SectionDisplay(null,null, null, true);
         }
+
+        _isInPostcardSection = endOfBook;
     }
 
     public void HidePostcards()
