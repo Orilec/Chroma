@@ -17,7 +17,7 @@ public class Bookmark : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     private void Start()
     {
-        _startPos = _rectTransform.position;
+        _startPos = _rectTransform.anchoredPosition;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -47,12 +47,12 @@ public class Bookmark : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         
         while (elapsedTime < _bookmarkManager.BookmarkAnimationTime)
         {
-            elapsedTime += Time.unscaledTime;
+            elapsedTime += Time.unscaledDeltaTime;
 
-            Vector3 lerpedPos = Vector3.Lerp(_rectTransform.position, endPos,
+            Vector3 lerpedPos = Vector3.Lerp(_rectTransform.anchoredPosition, endPos,
                 elapsedTime / _bookmarkManager.BookmarkAnimationTime);
 
-            _rectTransform.position = lerpedPos;
+            _rectTransform.anchoredPosition = lerpedPos;
             yield return null;
         }
     }
