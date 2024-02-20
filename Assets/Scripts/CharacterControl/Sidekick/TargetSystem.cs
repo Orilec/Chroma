@@ -40,10 +40,7 @@ public class TargetSystem : MonoBehaviour
         for (int i = 0; i < reachableTargets.Count; i++)
         {
 
-            distances[i] =
-                (Vector2.Distance(Camera.main.WorldToScreenPoint(reachableTargets[i].transform.position), MiddleOfScreen()) * _screenDistanceWeight)
-                +
-                (Vector3.Distance(transform.position, reachableTargets[i].transform.position) * _positionDistanceWeight);
+            distances[i] = (Vector3.Distance(transform.position, reachableTargets[i].transform.position) * _positionDistanceWeight);
         }
 
         //Finds the smallest of the distances

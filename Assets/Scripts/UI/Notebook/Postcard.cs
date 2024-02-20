@@ -19,7 +19,7 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     public void InitCard(Sprite sprite, PostcardManager postcardManager)
     {
-        _startPos = _rectTransform.position;
+        _startPos = _rectTransform.anchoredPosition;
         _postcardManager = postcardManager;
         _image.enabled = true;
         _button.enabled = true;
@@ -36,12 +36,12 @@ public class Postcard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         
         while (elapsedTime < _postcardManager.PostcardAnimationTime)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
 
-            Vector3 lerpedPos = Vector3.Lerp(_rectTransform.position, endPos,
+            Vector3 lerpedPos = Vector3.Lerp(_rectTransform.anchoredPosition, endPos,
                 elapsedTime / _postcardManager.PostcardAnimationTime);
 
-            _rectTransform.position = lerpedPos;
+            _rectTransform.anchoredPosition = lerpedPos;
             yield return null;
         }
     }
