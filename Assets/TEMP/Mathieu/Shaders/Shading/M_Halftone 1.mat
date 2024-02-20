@@ -85,6 +85,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 1
+    - _CONTRASTMODIFIERS: 0
     - _Debug: 0
     - _Debug_1: 0
     - _Debug_2: 0
@@ -117,7 +118,7 @@ Material:
     - _QueueOffset: 0
     - _RadiusCutoff: 0.45
     - _Rim_Amount: 6.01
-    - _Rim_step: 0.3
+    - _Rim_step: 1
     - _Rotation: 333.4
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
@@ -129,6 +130,7 @@ Material:
     - _ShapeSize: 0.02
     - _Smoothness: 2.04
     - _Softness: 0.76
+    - _TESTSATURATION: 2
     - _TextureBlend: 0
     - _USESCREENSPACE: 0
     m_Colors:
@@ -138,4 +140,5 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
+    - _StepContraste: {r: 0.14, g: 0.19, b: 0, a: 0}
   m_BuildTextureStacks: []
