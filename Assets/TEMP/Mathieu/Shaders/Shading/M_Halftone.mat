@@ -26,6 +26,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _CONTRASTMODIFIERS
   - _MAIN_LIGHT_SHADOWS
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -85,11 +86,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 1
+    - _CONTRASTMODIFIERS: 1
     - _Debug: 0
     - _Debug_1: 0
     - _Debug_2: 0
     - _Debug_3: 0
-    - _Density: 9.4
+    - _Density: 10
     - _FalloffThreshold: 2.12
     - _FloatTestPower: 1
     - _LitThreshold: 1.04
@@ -112,7 +114,7 @@ Material:
     - _OutlineNormalThreshold: 1.1
     - _OutlineNormalTightening: 128
     - _OutlineRotation: 0.01
-    - _OutlineThickness: 0.001
+    - _OutlineThickness: 0.0011
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.45
@@ -123,19 +125,23 @@ Material:
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
     - _ShadingMultiplyer: 0.1
-    - _ShapeNoiseStrenght: 0.23
-    - _ShapeNoiseTiling: 84.3
+    - _ShapeNoiseStrenght: 0.5
+    - _ShapeNoiseTiling: 86.16
     - _ShapeSharpness: 0.14
     - _ShapeSize: 0.04
     - _Smoothness: 2.04
     - _Softness: 0.76
-    - _TextureBlend: 0.467
+    - _Step1Contraste: 0.14
+    - _Step2Contrast: 0.19
+    - _TESTSATURATION: 1.61
+    - _TextureBlend: 0.2
     - _USESCREENSPACE: 0
     m_Colors:
-    - _ColorLINE: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
+    - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
     - _DensityVector: {r: 67.5, g: 2.81, b: 0, a: 0}
-    - _MainColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
+    - _StepContraste: {r: 0, g: 0.3, b: 0, a: 0}
   m_BuildTextureStacks: []
