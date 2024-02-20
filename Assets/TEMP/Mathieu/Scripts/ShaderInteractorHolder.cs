@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShaderInteractorHolder : MonoBehaviour
 {
 
-    InteractorScript[] interactors;
+    public InteractorScript[] interactors;
     Vector4[] positions = new Vector4[128];
     float[] radiuses = new float[128];
 

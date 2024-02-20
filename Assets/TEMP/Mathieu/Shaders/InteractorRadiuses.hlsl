@@ -16,7 +16,7 @@ void InteractorRadiuses_float(in float3 WorldPos, out float Shapes)
         // spheres
         float3 dis = distance(_ShaderInteractorsPositions[i].xyz, WorldPos);
         float sphereR = 1 - saturate(dis / _ShaderInteractorsRadiuses[i]).r;
-        sphereR = (smoothstep(_ShapeCutoff, _ShapeCutoff + _ShapeSmoothness, sphereR));
+        //sphereR = (smoothstep(_ShapeCutoff, _ShapeCutoff + _ShapeSmoothness, sphereR));
         spheres += (sphereR);
 
     }
