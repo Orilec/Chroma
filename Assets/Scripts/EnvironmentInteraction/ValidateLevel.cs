@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ValidateLevel : MonoBehaviour
 {
     [SerializeField] private InputReader _input;
     [SerializeField] private float _holdButtonTime;
     [SerializeField] private CinemachineVirtualCamera _newCam;
-    [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     private CountdownTimer _timer;
     private PlayerController _player;
     private IEnumerator _coroutine;
@@ -26,7 +27,7 @@ public class ValidateLevel : MonoBehaviour
         if (player != null && !_validated)
         {
             _player = player;
-            _playerEvents.EnterValidateLevel.Invoke(true);
+            _narrativeEvents.EnterValidateLevel.Invoke(true);
         }
     }
     
@@ -34,7 +35,7 @@ public class ValidateLevel : MonoBehaviour
     {
         if (other.gameObject == _player.gameObject)
         {
-            _playerEvents.EnterValidateLevel.Invoke(false);
+            _narrativeEvents.EnterValidateLevel.Invoke(false);
             _timerStarted = false;
             _timer.Stop();
         }
@@ -79,7 +80,7 @@ public class ValidateLevel : MonoBehaviour
     {
         _validated = true;
         _newCam.Priority = 15;
-        _playerEvents.EnterValidateLevel.Invoke(false);
+        _narrativeEvents.EnterValidateLevel.Invoke(false);
         _colorableObject.SetObjectActive();
     }
 

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     [SerializeField] private UIEventsPublisher _UiEvents;
     [SerializeField] private int _mainScene;
     [SerializeField] private List<int> _scenesToLoadAdditive;
@@ -18,7 +19,7 @@ public class SceneLoader : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene(_mainScene);
         LoadScenes(_scenesToLoadAdditive);
-        _playerEvents.EndOfVSLevel.AddListener(SetEndOfLevel);
+        _narrativeEvents.EndOfVSLevel.AddListener(SetEndOfLevel);
         _UiEvents.FirstFadeFinished.AddListener(EndOfVSLevel);
 
     }
