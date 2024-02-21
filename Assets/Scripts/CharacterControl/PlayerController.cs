@@ -8,22 +8,24 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
-[Header("References")] 
-    [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private GroundCheck _groundCheck;
-    [SerializeField] private ThrowSystem _throwSystem;
-    [SerializeField] private InputReader _input;
-    [SerializeField] private PlayerTrailScript _trail;
-    [SerializeField] private RespawnSystem _respawnSystem;
+    [Header("Parameters")] 
     [SerializeField] private LayerMask _environmentLayers;
-
     [SerializeField] private CharaParameters _parameters;
+    
+    [Header("Event Publishers")] 
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     
     public IEnumerator AccelerationCoroutine, DecelerationCoroutine;
     
+    // References
     private Transform mainCam;
+    private Rigidbody _rigidbody;
+    private GroundCheck _groundCheck;
+    private ThrowSystem _throwSystem;
+    private InputReader _input;
+    private PlayerTrailScript _trail;
+    private RespawnSystem _respawnSystem;
 
     private BouncePlatform _bouncePlatform;
 
@@ -113,6 +115,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         mainCam = Camera.main.transform;
+
+        _rigidbody = GetComponent<Rigidbody>();
+        _groundCheck = GetComponent<GroundCheck>();
+        _throwSystem = GetComponent<ThrowSystem>();
+        _input = FindObjectOfType<InputReader>();
+        _trail = FindObjectOfType<PlayerTrailScript>();
+        _respawnSystem = GetComponent<RespawnSystem>();
         
         _rigidbody.freezeRotation = true;
         
