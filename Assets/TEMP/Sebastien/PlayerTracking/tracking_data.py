@@ -30,7 +30,7 @@ def generate_density_heatmap(all_positions, file_count):
 
     # Colormap (o les jolies couleurs)
     plt.figure(figsize=(1280/80, 720/80))  
-    plt.imshow(heatmap.T, extent=[0, heatmap_size, 0, heatmap_size], cmap=plt.cm.plasma, origin='lower', aspect='auto', interpolation='gaussian', vmax=np.max(heatmap)*0.1)
+    plt.imshow(heatmap.T, extent=[0, heatmap_size, 0, heatmap_size], cmap=plt.cm.seismic, origin='lower', aspect='auto', interpolation='gaussian', vmax=np.max(heatmap)*0.1)
     
     # Définir le format par défaut des axes x et y
     plt.xticks(np.linspace(0, heatmap_size, 10), rotation=45)
