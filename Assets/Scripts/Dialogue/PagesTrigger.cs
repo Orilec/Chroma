@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PagesTrigger : MonoBehaviour
 {
-    [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     [SerializeField] private int _nbPagesToAdd;
     private bool _pagesAdded;
 
@@ -13,7 +14,7 @@ public class PagesTrigger : MonoBehaviour
         var player = other.GetComponent<PlayerController>();
         if (player != null && !_pagesAdded)
         {
-            _playerEvents.AddingPages.Invoke(_nbPagesToAdd);
+            _narrativeEvents.AddingPages.Invoke(_nbPagesToAdd);
             _pagesAdded = true;
         }
     }

@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class TargetSystem : MonoBehaviour
 {
-    public List<Target> visibleTargets;
     public List<Target> reachableTargets;
     public float minReachDistance = 70;
     
     public Target currentTarget;
-    public Target storedTarget;
-    private Transform _cachedTarget;
     
    [Range(0.0f, 0.5f)] public float VerticalAimTreshold;
    [Range(0.0f, 0.5f)] public float HorizontalAimTreshold;
-
-    
-    [SerializeField] float _screenDistanceWeight = 1;
-    [SerializeField] float _positionDistanceWeight = 8;
-
-
+   
+   
     private void Update()
     {
         if (reachableTargets.Count < 1)
@@ -40,7 +33,7 @@ public class TargetSystem : MonoBehaviour
         for (int i = 0; i < reachableTargets.Count; i++)
         {
 
-            distances[i] = (Vector3.Distance(transform.position, reachableTargets[i].transform.position) * _positionDistanceWeight);
+            distances[i] = (Vector3.Distance(transform.position, reachableTargets[i].transform.position));
         }
 
         //Finds the smallest of the distances
@@ -59,8 +52,4 @@ public class TargetSystem : MonoBehaviour
 
     }
     
-    Vector2 MiddleOfScreen()
-    {
-        return new Vector2(Screen.width / 2, Screen.height / 2);
-    }
 }

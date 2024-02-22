@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 public class PostcardManager : MonoBehaviour
 {
     [SerializeField] private List<Postcard> _postcards;
-    [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     [SerializeField] private float _postcardAnimationOffset = 50f;
     [SerializeField] private float _postcardAnimationTime = 0.1f;
     [SerializeField] private RectTransform _postcardCloseUpTransform;
@@ -38,7 +38,7 @@ public class PostcardManager : MonoBehaviour
     private void Awake()
     {
         _postcardCloseUpImage = _postcardCloseUpTransform.GetComponent<Image>();
-        _playerEvents.CardCollected.AddListener(AddNewPostCard);
+        _narrativeEvents.CardCollected.AddListener(AddNewPostCard);
         _selectablePostcards = new List<Postcard>();
     }
     

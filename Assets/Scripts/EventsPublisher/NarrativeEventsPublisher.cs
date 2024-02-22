@@ -8,4 +8,8 @@ public class NarrativeEventsPublisher : ScriptableObject
 {
     public UnityEvent<Message[]> TriggerDialogue;
     public UnityEvent<CinemachineVirtualCamera, bool> TriggerCamera;
+    public UnityEvent<Sprite> CardCollected;
+    public UnityEvent<bool> EnterValidateLevel;
+    public UnityEvent EndOfVSLevel;
+    public UnityEvent<int> AddingPages;
 }
