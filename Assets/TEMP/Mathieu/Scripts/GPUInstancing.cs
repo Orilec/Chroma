@@ -49,7 +49,7 @@ public class CullingInstancedDemo : MonoBehaviour
         // build a list of random matrices for every instance
         for (int i = 0; i < instances; i++)
         {
-            Vector3 position = new Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-range, range));
+            Vector3 position = new Vector3(Random.Range(-range, range) + transform.position.x, Random.Range(-range, range) + transform.position.y, Random.Range(-range, range) + +transform.position.z);
             Quaternion rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
             Vector3 scale = new Vector3(Random.Range(0.5f, 1.5f), Random.Range(0.5f, 1.5f), Random.Range(0.5f, 1.5f));
 
@@ -69,6 +69,9 @@ public class CullingInstancedDemo : MonoBehaviour
     // debug/visual stuff
     void OnDrawGizmos()
     {
+        Gizmos.color = new Color(1, 0, 0, 0.6f);
+        Gizmos.DrawWireCube(transform.position, new Vector3(range * 2f, range * 2f, range * 2f));
+
         if (drawBounds)
         {
             Gizmos.color = new Color(0, 1, 0, 0.3f);
