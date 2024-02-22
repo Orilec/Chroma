@@ -28,9 +28,10 @@ Material:
   m_ValidKeywords:
   - _CONTRASTMODIFIERS
   - _MAIN_LIGHT_SHADOWS
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -114,13 +115,14 @@ Material:
     - _OutlineNormalThreshold: 1.1
     - _OutlineNormalTightening: 128
     - _OutlineRotation: 0.01
-    - _OutlineThickness: 0.0011
+    - _OutlineThickness: 0.0012
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.45
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
+    - _STYLE: 0
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
@@ -134,7 +136,7 @@ Material:
     - _Step1Contraste: 0.14
     - _Step2Contrast: 0.19
     - _TESTSATURATION: 2
-    - _TextureBlend: 0.053
+    - _TextureBlend: 0
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}

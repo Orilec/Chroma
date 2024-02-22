@@ -12,11 +12,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private BoxCollider boxCollider;
 
-    private void Awake()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
