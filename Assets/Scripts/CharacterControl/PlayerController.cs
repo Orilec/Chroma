@@ -8,23 +8,24 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
-[Header("References")] 
-    [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private GroundCheck _groundCheck;
-    [SerializeField] private ThrowSystem _throwSystem;
-    [SerializeField] private InputReader _input;
-    [SerializeField] private PlayerTrailScript _trail;
-    [SerializeField] private RespawnSystem _respawnSystem;
+    [Header("Parameters")] 
     [SerializeField] private LayerMask _environmentLayers;
-
     [SerializeField] private CharaParameters _parameters;
+    
+    [Header("Event Publishers")] 
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     
     public IEnumerator AccelerationCoroutine, DecelerationCoroutine;
     
-    private Transform mainCam;
-
+    //References
+    private Transform _mainCam;
+    private Rigidbody _rigidbody;
+    private GroundCheck _groundCheck;
+    private ThrowSystem _throwSystem;
+    private InputReader _input;
+    private PlayerTrailScript _trail;
+    private RespawnSystem _respawnSystem;
     private BouncePlatform _bouncePlatform;
 
     private const float ZeroF = 0f;
@@ -39,10 +40,16 @@ public class PlayerController : MonoBehaviour
 
     private StateMachine _stateMachine;
     
-    //SIMPLE GETTERS
+    //SIMPLE REFERENCES GETTERS 
     public RespawnSystem RespawnSystem{ get { return _respawnSystem; } }
     public ThrowSystem ThrowSystem{ get { return _throwSystem; } }
     public Vector3 GroundCheckHitNormal{ get { return _localGroundCheckHitNormal; } }
+    public GroundCheck GroundCheck{ get { return _groundCheck; } }
+    public Rigidbody Rigidbody{ get { return _rigidbody; } }
+    public PlayerTrailScript Trail{ get { return _trail; } }
+    public BouncePlatform CurrentBouncePlatform{ get { return _bouncePlatform; } }
+    
+    //TIMERS GETTERS 
     public CountdownTimer JumpTimer { get { return _jumpTimer; } }
     public CountdownTimer JumpMinTimer { get { return _jumpMinTimer; } }
     public CountdownTimer PlayerFallTimer { get { return _playerFallTimer; } }
@@ -52,15 +59,13 @@ public class PlayerController : MonoBehaviour
     public CountdownTimer SlidingJumpTimer { get { return _slidingJumpTimer; } }
     public CountdownTimer SlidingJumpBufferCounter { get { return _slidingJumpBufferCounter; } }
     public CountdownTimer AirSlideTimer { get { return _airSlideTimer; } }
-    public CountdownTimer BounceTimer { get { return _bounceTimer; } }
     public CountdownTimer SlideBoostTimer { get { return _slideBoostTimer; } }
     public CountdownTimer BounceFallTimer { get { return _bounceFallTimer; } }
     public CountdownTimer MiasmaTimer { get { return _miasmaTimer; } }
     public CountdownTimer SlideCooldownTimer { get { return _slideCooldownTimer; } }
-    public GroundCheck GroundCheck{ get { return _groundCheck; } }
-    public Rigidbody Rigidbody{ get { return _rigidbody; } }
-    public PlayerTrailScript Trail{ get { return _trail; } }
-    public BouncePlatform CurrentBouncePlatform{ get { return _bouncePlatform; } }
+    
+    
+    //PARAMETERS GETTERS 
     public float GravityFallMin { get { return _parameters.gravityFallMin; } }
     public float GravityFallMax { get { return _parameters.gravityFallMax; } }
     public float GravityFallIncrementAmount { get { return _parameters.gravityFallIncrementAmount; } }
@@ -108,11 +113,30 @@ public class PlayerController : MonoBehaviour
     public bool WasSlideJumping { get { return _wasSlideJumping;} set { _wasSlideJumping = value; } }
 
     
-
-
+    //State machine utility functions
+    void At(IState from, IState to, IPredicate condition) => _stateMachine.AddTransition(from, to, condition);
+    void Any(IState to, IPredicate condition) => _stateMachine.AddAnyTransition(to, condition);
+    
+    
+    //Timer update
+    private void HandleTimers()
+    {
+        foreach (var timer in _timers)
+        {
+            timer.Tick(Time.deltaTime);
+        }
+    }
+    
     private void Awake()
     {
-        mainCam = Camera.main.transform;
+        //Filling references
+        _mainCam = Camera.main.transform;
+        _rigidbody = GetComponent<Rigidbody>();
+        _groundCheck = GetComponent<GroundCheck>();
+        _throwSystem = GetComponent<ThrowSystem>();
+        _input = FindObjectOfType<InputReader>();
+        _trail = FindObjectOfType<PlayerTrailScript>();
+        _respawnSystem = GetComponent<RespawnSystem>();
         
         _rigidbody.freezeRotation = true;
         
@@ -211,55 +235,28 @@ public class PlayerController : MonoBehaviour
         // Set Initial State
         _stateMachine.SetState(groundedState);
         
-        //Set events
+        //Set event listeners
         _uiEventsPublisher.FadeToBlackFinished.AddListener(StopRespawning);
         _uiEventsPublisher.FirstFadeFinished.AddListener(Fading);
         
         _playerEventsPublisher.LeavingGround.AddListener(SaveYPos);
         _playerEventsPublisher.EnteringGround.AddListener(CompareYPos);
         
-        //Set coroutines
+        //Setup coroutines
         AccelerationCoroutine = Accelerate(0f, 0f);
         DecelerationCoroutine = Decelerate(0f, 0f);
     }
 
-    void At(IState from, IState to, IPredicate condition) => _stateMachine.AddTransition(from, to, condition);
-    void Any(IState to, IPredicate condition) => _stateMachine.AddAnyTransition(to, condition);
     
     
+    //Update and fixed update functions
     private void Update()
     {
         _stateMachine.Update();
         HandleTimers();
         DebugRespawn();
-        
     }
-
-    private void SaveYPos()
-    {
-        _leavingGroundY = transform.position.y;
-    }
-
-    private void CompareYPos()
-    {
-        var lowerGround = (transform.position.y - _leavingGroundY) < -1f;
-        _playerEventsPublisher.LandingToLower.Invoke(lowerGround);
-    }
-
-    private void DebugRespawn()
-    {
-        if (_input.DebugRespawn && ! _respawnWasPressedLastFrame)
-        {
-            _isRespawning = true;
-        }
-        _respawnWasPressedLastFrame = _input.DebugRespawn;
-    }
-
-    public void Respawn()
-    {
-        _isRespawning = true;
-    }
-
+    
     private void FixedUpdate()
     {
         _playerMoveInput = new Vector3(_input.MoveInput.x, 0f, _input.MoveInput.y);
@@ -274,51 +271,36 @@ public class PlayerController : MonoBehaviour
         _rigidbody.AddForce(_playerMoveInput, ForceMode.Force);
 
     }
-
-    private void HandleTimers()
-    {
-        foreach (var timer in _timers)
-        {
-            timer.Tick(Time.deltaTime);
-        }
-    }
     
+    
+    //Respawning functions
+    private void DebugRespawn()
+    {
+        if (_input.DebugRespawn && ! _respawnWasPressedLastFrame)
+        {
+            _isRespawning = true;
+        }
+        _respawnWasPressedLastFrame = _input.DebugRespawn;
+    }
+    public void Respawn()
+    {
+        _isRespawning = true;
+    }
     private void StopRespawning()
     {
         IsRespawning = false;
         _isFadingToBlack = false;
     }
-    private void Fading()
-    {
-        _isFadingToBlack = true;
-    }
     
-    public Vector3 ConvertToCameraSpace(Vector3 vectorToRotate)
+    
+
+    //Input and movement handling functions
+    private Vector3 ConvertToTransformSpace(Transform directionTransform, Vector3 vectorToRotate)
     {
         float currentYValue = vectorToRotate.y;
 
-        Vector3 cameraForward = mainCam.forward;
-        Vector3 cameraRight = mainCam.right;
-
-        cameraForward.y = 0;
-        cameraRight.y = 0;
-
-        cameraForward = cameraForward.normalized;
-        cameraRight = cameraRight.normalized;
-
-        Vector3 cameraForwardZProduct = vectorToRotate.z * cameraForward;
-        Vector3 cameraRightXProduct = vectorToRotate.x * cameraRight;
-
-        Vector3 vectorRotatedToCameraSpace = cameraForwardZProduct + cameraRightXProduct;
-        vectorRotatedToCameraSpace.y = currentYValue;
-        return vectorRotatedToCameraSpace;
-    }
-    private Vector3 ConvertToSlopeDirection(Transform slopeDirection , Vector3 vectorToRotate)
-    {
-        float currentYValue = vectorToRotate.y;
-
-        Vector3 slopeDirectionForward = slopeDirection.forward;
-        Vector3 slopeDirectionRight = slopeDirection.right;
+        Vector3 slopeDirectionForward = directionTransform.forward;
+        Vector3 slopeDirectionRight = directionTransform.right;
 
         slopeDirectionForward.y = 0;
         slopeDirectionRight.y = 0;
@@ -341,8 +323,8 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
-        if (!_isAutoSliding) _playerMoveInput = ConvertToCameraSpace(_playerMoveInput);
-        else _playerMoveInput = ConvertToSlopeDirection(_groundCheck.slopeDirection, _playerMoveInput);
+        if (!_isAutoSliding) _playerMoveInput = ConvertToTransformSpace(_mainCam.transform, _playerMoveInput);
+        else _playerMoveInput = ConvertToTransformSpace(_groundCheck.slopeDirection, _playerMoveInput);
 
         if (_input.MoveInput.magnitude <= 0) _relativeCurrentSpeed = 0f;
         else _relativeCurrentSpeed = (_currentSpeed - BaseMoveSpeed ) / (_parameters.maxMoveSpeed - BaseMoveSpeed);
@@ -359,7 +341,6 @@ public class PlayerController : MonoBehaviour
             calculatedPlayerMovement = new Vector3(_playerMoveInput.x * _parameters.facingWallSpeedMultiplier, _playerMoveInput.y, _playerMoveInput.z * _parameters.facingWallSpeedMultiplier);
         }
         _playerMoveInput = calculatedPlayerMovement;
-
     }
 
     private void PlayerSlope()
@@ -393,13 +374,13 @@ public class PlayerController : MonoBehaviour
         }
         _playerMoveInput = calculatedPlayerMovement;
     }
-
+    
     private void PlayerBumps()
     {
         _stepsSinceGrounded += 1;
         if (_groundCheck.IsGrounded) _stepsSinceGrounded = 0;
     }
-
+    
     private void SnapToGround()
     {
         if (_groundCheck.IsGrounded) return;
@@ -408,7 +389,6 @@ public class PlayerController : MonoBehaviour
         if (!_groundCheck.GroundBelow) return;
         _playerMoveInput = new Vector3(_playerMoveInput.x,-10000f, _playerMoveInput.z);
         _groundCheck.IsGrounded = true;
-
     }
     
     public void HandleRotation()
@@ -427,6 +407,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    
+    //Acceleration and Deceleration coroutines
     public IEnumerator Decelerate(float desiredSpeed, float decrementAmount)
     {
         while (_currentSpeed > desiredSpeed)
@@ -435,7 +417,6 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }   
-    
     public IEnumerator Accelerate(float desiredSpeed, float incrementAmount)
     {
         while (_currentSpeed < desiredSpeed)
@@ -444,16 +425,36 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+    
 
+    //Other functions
     public void UpdateBouncePlatform(BouncePlatform newPlatform)
     {
         _bounceTimer.Reset(newPlatform.BounceTime);
         _bouncePlatform = newPlatform;
         _bounceTimer.Start();
     }
-
-    public void GetCollectible(Sprite sprite)
+    
+    private void SaveYPos()
     {
-        _playerEventsPublisher.CardCollected.Invoke(sprite);
+        _leavingGroundY = transform.position.y;
     }
+
+    private void CompareYPos()
+    {
+        float fallHeight = transform.position.y - _leavingGroundY;
+        var lowerGround = fallHeight < -1f;
+        _playerEventsPublisher.LandingToLower.Invoke(lowerGround);
+
+        if (fallHeight < -_parameters.respawningFallHeight)
+        {
+            _isRespawning = true;
+        }
+    }
+    
+    private void Fading()
+    {
+        _isFadingToBlack = true;
+    }
+    
 }

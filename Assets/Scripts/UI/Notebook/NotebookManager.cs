@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class NotebookManager : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     [SerializeField] private InputReader _input;
     [SerializeField] private UIEventsPublisher _uiEvents;
     [SerializeField] private FlippingNotebook _notebook;
@@ -28,8 +29,8 @@ public class NotebookManager : MonoBehaviour
     {
         _notebookTransform = transform.GetChild(0); 
         _uiEvents.NotebookFlipped.AddListener(HandleSectionDisplay);
-        _playerEvents.CardCollected.AddListener(DisplayAddedCardCue);
-        _playerEvents.AddingPages.AddListener(DisplayAddedPagesCue);
+        _narrativeEvents.CardCollected.AddListener(DisplayAddedCardCue);
+        _narrativeEvents.AddingPages.AddListener(DisplayAddedPagesCue);
     }
     
 
