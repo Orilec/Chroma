@@ -6,7 +6,12 @@ public class CullingInstancedDemo : MonoBehaviour
     // How many meshes to draw.
     public int instances;
     // Range to draw meshes within.
-    public float range;
+    [Range(1, 200)]
+    public float rangeX = 1f;
+    [Range(1, 200)]
+    public float rangeY = 1f;
+    [Range(1, 200)]
+    public float rangeZ = 1f;
     // Material to use for drawing the meshes.
     public Material material;
     // mesh to draw
@@ -21,6 +26,13 @@ public class CullingInstancedDemo : MonoBehaviour
     public bool Octree = true;
     // max draw distance for meshes
     public float maxDrawDistance = 125;
+
+
+
+    [SerializeField] private bool _rotateToGroundNormal = false;
+    [SerializeField] private bool _randomYAxisRotation = false;
+    [SerializeField] private float _maxYRotation = 90;
+    [SerializeField] private LayerMask _groundLayer;
 
     // quadtreedata ----------------------------------------------------------------------
     QuadTreeNode quadTree;
@@ -47,10 +59,21 @@ public class CullingInstancedDemo : MonoBehaviour
     {
         cameraFrustumPlanes = new Plane[6];
         // build a list of random matrices for every instance
+
+
+        RaycastHit hit;
+
         for (int i = 0; i < instances; i++)
         {
-            Vector3 position = new Vector3(Random.Range(-range, range) + transform.position.x, Random.Range(-range, range) + transform.position.y, Random.Range(-range, range) + +transform.position.z);
-            Quaternion rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+            Vector3 rayTestPosition = GetRandomRayPosition();
+            Ray ray = new Ray(rayTestPosition, rayTestPosition + new Vector3(0, -rangeY * 2f, 0));
+
+            if (!Physics.Raycast(ray, out hit, _groundLayer)) continue;
+
+            Quaternion rotation = GetRotation(hit.normal);
+            Vector3 position = hit.point;
+
+
             Vector3 scale = new Vector3(Random.Range(0.5f, 1.5f), Random.Range(0.5f, 1.5f), Random.Range(0.5f, 1.5f));
 
             Matrix4x4 mat = Matrix4x4.TRS(position, rotation, scale);
@@ -60,7 +83,7 @@ public class CullingInstancedDemo : MonoBehaviour
         SetupQuadTree();
     }
 
-    // // debug/visual stuff
+    // debug/visual stuff
     void OnGUI()
     {
         style.fontSize = 30;
@@ -70,7 +93,13 @@ public class CullingInstancedDemo : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.6f);
-        Gizmos.DrawWireCube(transform.position, new Vector3(range * 2f, range * 2f, range * 2f));
+        Gizmos.DrawWireCube(transform.position, new Vector3(rangeX * 2f, rangeY * 2f, rangeZ * 2f));
+
+        Vector3 rayTestPosition = GetRandomRayPosition();
+        Ray ray = new Ray(rayTestPosition, Vector3.down * 2000);
+
+        Gizmos.color = new Color(1, 1, 0, 1f);
+        Gizmos.DrawRay(ray); 
 
         if (drawBounds)
         {
@@ -150,5 +179,24 @@ public class CullingInstancedDemo : MonoBehaviour
         {
             Graphics.DrawMeshInstanced(mesh, 0, material, matricesAll);
         }
+    }
+
+    private Quaternion GetRotation(Vector3 normal)
+    {
+        Vector3 eulerIdentiy = Quaternion.identity.eulerAngles;
+        eulerIdentiy.x += 90; //can be removed or changed, depends on your mesh
+
+        if (_randomYAxisRotation) eulerIdentiy.y += Random.Range(-_maxYRotation, _maxYRotation);
+
+        if (_rotateToGroundNormal)
+        {
+            return Quaternion.FromToRotation(Vector3.up, normal) * Quaternion.Euler(eulerIdentiy);
+        }
+        return Quaternion.Euler(eulerIdentiy);
+    }
+
+    private Vector3 GetRandomRayPosition()
+    {
+        return new Vector3(transform.position.x + Random.Range(-rangeX, rangeX), transform.position.y + rangeY, transform.position.z + Random.Range(-rangeZ, rangeZ));
     }
 }
