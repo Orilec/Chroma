@@ -16,6 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     
+    [Header("Debug")] 
+    [SerializeField] private bool drawGizmo; 
+    [Range(1, 20)]
+    [SerializeField] private float scaleX = 1f;
+    [Range(1, 20)]
+    [SerializeField] private float scaleY = 1f;
+
     public IEnumerator AccelerationCoroutine, DecelerationCoroutine;
     
     //References
@@ -456,5 +463,18 @@ public class PlayerController : MonoBehaviour
     {
         _isFadingToBlack = true;
     }
-    
+
+
+    //Visual debug
+    private void OnDrawGizmos()
+    {
+        if (!drawGizmo) return; 
+        Gizmos.color = new Color(0, 0.3f, 1f, 1f);
+
+        Gizmos.DrawWireCube(transform.position - new Vector3(0f, _parameters.respawningFallHeight/2 + transform.localScale.y, 0f) , new Vector3(2f * scaleX, _parameters.respawningFallHeight, 2f * scaleY));
+
+        Gizmos.color = new Color(0, 0.3f, 1f, 0.2f);
+        Gizmos.DrawCube(transform.position - new Vector3(0f, _parameters.respawningFallHeight/2 + transform.localScale.y, 0f) , new Vector3(2f * scaleX, _parameters.respawningFallHeight, 2f * scaleY));
+    }
+
 }

@@ -14,10 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: SimpleFollowCamera
-    m_To: SidescrollingCamera
+    m_To: ZoomingInCamera
     m_Blend:
       m_Style: 1
-      m_Time: 3
+      m_Time: 7
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: '**ANY CAMERA**'
+    m_To: SimpleFollowCamera
+    m_Blend:
+      m_Style: 1
+      m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -25,21 +36,10 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: SimpleFollowCamera
-    m_To: ZoomingOutCamera
+    m_To: '**ANY CAMERA**'
     m_Blend:
       m_Style: 1
-      m_Time: 5
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: SidescrollingCameraEnd
-    m_Blend:
-      m_Style: 1
-      m_Time: 5
+      m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
