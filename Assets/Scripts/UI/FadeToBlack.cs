@@ -8,8 +8,9 @@ public class FadeToBlack : MonoBehaviour
 {
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEventsPublisher;
     [SerializeField] private float respawnFadeSpeed = 5f; 
-    [SerializeField] private float respawnBlackScreenTime = 2f; 
+    [SerializeField] private float respawnBlackScreenTime = 2f;  
     [SerializeField] private float timeBeforeBlackScreen = 2f; 
     private Image _blackImage;
     private float _fadeAmount;
@@ -17,7 +18,7 @@ public class FadeToBlack : MonoBehaviour
     {
         _blackImage = GetComponent<Image>();
         _playerEventsPublisher.Respawn.AddListener(StartRespawnFade);
-        _playerEventsPublisher.EndOfVSLevel.AddListener(EndVSLevel);
+        _narrativeEventsPublisher.EndOfVSLevel.AddListener(EndVSLevel);
     }
 
     private void EndVSLevel()
