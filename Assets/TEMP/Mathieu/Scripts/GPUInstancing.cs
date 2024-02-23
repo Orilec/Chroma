@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
 public class CullingInstancedDemo : MonoBehaviour
 {
     // How many meshes to draw.
@@ -66,11 +67,11 @@ public class CullingInstancedDemo : MonoBehaviour
         for (int i = 0; i < instances; i++)
         {
             Vector3 rayTestPosition = GetRandomRayPosition();
-            Ray ray = new Ray(rayTestPosition, rayTestPosition + new Vector3(0, -rangeY * 2f, 0));
+            Ray ray = new Ray(rayTestPosition, Vector3.down);
 
-            if (!Physics.Raycast(ray, out hit, _groundLayer)) continue;
+            if (!Physics.Raycast(ray, out hit, rangeY * 2f ,_groundLayer)) continue;
 
-            Quaternion rotation = GetRotation(hit.normal);
+            Quaternion rotation = GetRotation(-hit.normal);
             Vector3 position = hit.point;
 
 
@@ -96,7 +97,7 @@ public class CullingInstancedDemo : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector3(rangeX * 2f, rangeY * 2f, rangeZ * 2f));
 
         Vector3 rayTestPosition = GetRandomRayPosition();
-        Ray ray = new Ray(rayTestPosition, Vector3.down * 2000);
+        Ray ray = new Ray(rayTestPosition, Vector3.down);
 
         Gizmos.color = new Color(1, 1, 0, 1f);
         Gizmos.DrawRay(ray); 
@@ -112,6 +113,7 @@ public class CullingInstancedDemo : MonoBehaviour
             Gizmos.DrawWireCube(bounds.center, bounds.size);
         }
     }
+
 
     void GetFrustomData()
     {
