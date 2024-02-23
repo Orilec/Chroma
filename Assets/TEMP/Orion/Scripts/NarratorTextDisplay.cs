@@ -18,14 +18,18 @@ public class NarratorTextDisplay : MonoBehaviour
         }
     }
     
-    [SerializeField] private float _fadeDuration = 0.5f;
+    [SerializeField] private float _fadeInDuration = 0.5f;
     [SerializeField] private float _travelSpeed = 8f;
+    [SerializeField] private float _fadeOutDuration = 2f;
     private Coroutine _fade;
     private List<NarratorText> _narratorTexts;
+    private bool _triggered;
+    private PlayerController _player;
 
     private void Awake()
     {
         _narratorTexts = new List<NarratorText>();
+        _player = FindObjectOfType<PlayerController>();
 
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -37,6 +41,14 @@ public class NarratorTextDisplay : MonoBehaviour
         ResetTexts();
     }
 
+    public void EndDisplay()
+    {
+        foreach (var narrator in _narratorTexts)
+        {
+            StartCoroutine(FadeOutText(narrator.NarratorTMPText));
+        }
+    }
+
     private void ResetTexts()
     {
         foreach (var narratorText in _narratorTexts)
@@ -44,7 +56,23 @@ public class NarratorTextDisplay : MonoBehaviour
             narratorText.NarratorTMPText.text = "";
         }
     }
-    
+
+    private IEnumerator FadeOutText(TMP_Text textDisplay)
+    {
+        float duration = _fadeOutDuration; //Fade out over 2 seconds.
+        float currentTime = 0f;
+        while (currentTime < duration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, currentTime / duration);
+            textDisplay.color = new Color(textDisplay.color.r, textDisplay.color.g, textDisplay.color.b, alpha);
+            currentTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        Destroy(textDisplay.gameObject);
+    }
+
+
+
     // Lookup table for hex characters.
     static readonly char[] NIBBLE_TO_HEX = new char[]
     {
@@ -108,7 +136,7 @@ public class NarratorTextDisplay : MonoBehaviour
 
                 for (int i = lastChar; i > opaqueChars; i--)
                 {
-                    byte fade = (byte)(255f * Mathf.Clamp01((leadingEdge - i) / (_travelSpeed * _fadeDuration)));
+                    byte fade = (byte)(255f * Mathf.Clamp01((leadingEdge - i) / (_travelSpeed * _fadeInDuration)));
                     builder[i * 26 + 14] = NIBBLE_TO_HEX[fade >> 4];
                     builder[i * 26 + 15] = NIBBLE_TO_HEX[fade & 0xF];
 
@@ -130,9 +158,9 @@ public class NarratorTextDisplay : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if (other.gameObject == _player.gameObject && !_triggered)
         {
+            _triggered = true;
             FadeTo();
         }
     }

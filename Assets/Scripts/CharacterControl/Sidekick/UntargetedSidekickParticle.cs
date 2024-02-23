@@ -18,12 +18,7 @@ public class UntargetedSidekickParticle : MonoBehaviour
         _particle = GetComponent<ParticleSystem>();
         _collisionEvents = new List<ParticleCollisionEvent>();
     }
-
-    private void FixedUpdate()
-    {
-        transform.rotation = Camera.main.transform.rotation;
-    }
-
+    
 
     private void OnParticleCollision(GameObject other)
     {

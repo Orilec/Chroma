@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "EventsPublisher/UIEventsPublisher")]
 public class UIEventsPublisher : ScriptableObject
 {
     public UnityEvent FadeToBlackFinished;

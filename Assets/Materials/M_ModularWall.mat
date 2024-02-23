@@ -12,7 +12,8 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -79,6 +80,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 0
+    - _CONTRASTMODIFIERS: 0
     - _Debug: 0
     - _Density: 1
     - _FalloffThreshold: 2
@@ -113,6 +115,7 @@ Material:
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
+    - _STYLE: 0
     - _Saturation: 0
     - _ShadingMultiplyer: 0
     - _ShapeNoiseStrenght: 0.3
@@ -122,6 +125,7 @@ Material:
     - _Smoothness: 0
     - _SmoothnessSlider: 0
     - _Softness: 0.3
+    - _TESTSATURATION: 2
     - _TextureBlend: 0
     - _USESCREENSPACE: 0
     m_Colors:
@@ -133,6 +137,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0}
     - _Specular: {r: 0, g: 0, b: 0, a: 0}
+    - _StepContraste: {r: 0.14, g: 0.19, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1493085053962996794
 MonoBehaviour:
