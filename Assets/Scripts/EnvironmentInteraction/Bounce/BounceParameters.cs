@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "MovementParameters/BounceParameters")]
 public class BounceParameters : ScriptableObject
 {
     [Header("Bounce Parameters")] 
