@@ -5,25 +5,27 @@ using UnityEngine;
 
 public class ThrowSystem : MonoBehaviour
 {
-    [SerializeField] private TargetSystem _targetSystem;
+    
     [SerializeField] private ParticleSystem _correctTrajectoryEmission;
     [SerializeField] private ParticleSystem _untargetedTrajectoryEmission;
     [SerializeField] private ParticleSystem _retrieveTrajectoryEmission;
     [SerializeField] private Transform _sidekickThrowOrigin;
-    [SerializeField] private InputReader _input;
     [SerializeField] private GameObject _sidekickGameObject;
 
+    private TargetSystem _targetSystem;
+    private InputReader _input;
+    
     private Target _lockedTarget, _lastActivatedTarget;
     private Transform _retrievePos;
     private bool _sidekickIsAvailable = true, _throwWasPressedLastFrame, _isRetrieving;
     
     public Transform RetrievePos { get { return _retrievePos; } set { _retrievePos = value; } }
-    public bool SidekickIsAvailable { get { return _sidekickIsAvailable; } set { _sidekickIsAvailable = value; } }
-    public bool IsRetrieving { get { return _isRetrieving; } set { _isRetrieving = value; } }
 
     private void Awake()
     {
         _retrievePos = new GameObject().transform;
+        _targetSystem = FindObjectOfType<TargetSystem>();
+        _input = FindObjectOfType<InputReader>();
     }
 
     private void Update()

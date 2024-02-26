@@ -9,7 +9,9 @@ using UnityEngine.Serialization;
 public class PostcardManager : MonoBehaviour
 {
     [SerializeField] private List<Postcard> _postcards;
-    [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
+    [SerializeField] private ChromachievemEventsPublisher _chromachievemEvents;
+    [SerializeField] private Chromachievement _chromachievementCards;
     [SerializeField] private float _postcardAnimationOffset = 50f;
     [SerializeField] private float _postcardAnimationTime = 0.1f;
     [SerializeField] private RectTransform _postcardCloseUpTransform;
@@ -38,7 +40,7 @@ public class PostcardManager : MonoBehaviour
     private void Awake()
     {
         _postcardCloseUpImage = _postcardCloseUpTransform.GetComponent<Image>();
-        _playerEvents.CardCollected.AddListener(AddNewPostCard);
+        _narrativeEvents.CardCollected.AddListener(AddNewPostCard);
         _selectablePostcards = new List<Postcard>();
     }
     
@@ -76,6 +78,11 @@ public class PostcardManager : MonoBehaviour
             addedCard.InitCard(sprite, this);
             EventSystem.current.SetSelectedGameObject(addedCard.gameObject);
             _currentAddedIndex++;
+        }
+
+        if (_currentAddedIndex == _postcards.Count)
+        {
+            _chromachievemEvents.ChromachievementUnlocked.Invoke(_chromachievementCards);
         }
     }
     

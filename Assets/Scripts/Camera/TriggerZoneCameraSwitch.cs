@@ -10,10 +10,14 @@ public class TriggerZoneCameraSwitch : MonoBehaviour
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
 
     private PlayerController _player;
+    
+    private void Awake()
+    {
+        _player = FindObjectOfType<PlayerController>();
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
-        if(_player == null) _player = other.GetComponent<PlayerController>();
-        
         if (_player.gameObject == other.gameObject)
         {
             _narrativeEvents.TriggerCamera.Invoke(_camera, true);

@@ -75,12 +75,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blend: 0
+    - _Blend: 1
     - _BlendSlider: 1
     - _Debug: 0
     - _Gloss: 0.5
     - _HatchingSpeed: 3
-    - _HatchingStrenght: 0.3
+    - _HatchingStrenght: 0.1
     - _Metallic: 0
     - _MoveSpeed: 0
     - _NoiseScale: 0.33
@@ -90,8 +90,8 @@ Material:
     - _RadiusCutoff: 0.25
     - _Smoothness: 0
     m_Colors:
-    - _GroundTiling: {r: 0.02, g: 0.02, b: 0, a: 0}
+    - _GroundTiling: {r: 2, g: 2, b: 0, a: 0}
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _HatchingTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _HatchingTiling: {r: 60, g: 60, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

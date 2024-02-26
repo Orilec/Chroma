@@ -25,8 +25,8 @@ public class CameraSwitchManager : MonoBehaviour
     {
         if (entering)
         {
-            if(!_possibleCameras.Contains(camera)) _possibleCameras.Add(camera);
-            
+            if (!_possibleCameras.Contains(camera)) _possibleCameras.Add(camera);
+
             if (_currentCamera == _simpleFollowCamera)
             {
                 SetNewCamera(camera);
@@ -34,8 +34,6 @@ public class CameraSwitchManager : MonoBehaviour
         }
         else
         {
-            if(_possibleCameras.Contains(camera)) _possibleCameras.Remove(camera);
-            
             if (_possibleCameras.Count > 0)
             {
                 SetNewCamera(_possibleCameras[0]);
@@ -45,14 +43,15 @@ public class CameraSwitchManager : MonoBehaviour
                 SetNewCamera(_simpleFollowCamera);
             }
         }
+    }
+        private void SetNewCamera(CinemachineVirtualCamera camera)
+        {
+            if (_possibleCameras.Contains(camera)) _possibleCameras.Remove(camera);
+            camera.Priority = 10;
+            _currentCamera.Priority = 1;
+            _currentCamera = camera;
+        }
         
-    }
-
-    private void SetNewCamera(CinemachineVirtualCamera camera)
-    {
-        camera.Priority = 10;
-        _currentCamera.Priority = 1;
-        _currentCamera = camera;
-    }
-    
 }
+
+

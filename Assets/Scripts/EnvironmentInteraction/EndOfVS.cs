@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EndOfVS : MonoBehaviour
 {
-    [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
         if (player != null)
         {
-            _playerEvents.EndOfVSLevel.Invoke();
+            _narrativeEvents.EndOfVSLevel.Invoke();
         }
     }
 }

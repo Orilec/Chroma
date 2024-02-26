@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class NotebookManager : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEvents;
+    [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     [SerializeField] private InputReader _input;
     [SerializeField] private UIEventsPublisher _uiEvents;
     [SerializeField] private FlippingNotebook _notebook;
@@ -20,7 +21,7 @@ public class NotebookManager : MonoBehaviour
     [SerializeField] private RectTransform _cueTransform;
     [SerializeField] private TextMeshProUGUI _textCue;
     private Transform _notebookTransform;
-    private bool _isDisplayed, _displayedWasPressedLastFrame, _backWasPressedLastFrame;
+    private bool _isDisplayed, _displayedWasPressedLastFrame, _backWasPressedLastFrame, _isInPostcardSection;
     
     public int pagesToAdd;
 
@@ -28,8 +29,8 @@ public class NotebookManager : MonoBehaviour
     {
         _notebookTransform = transform.GetChild(0); 
         _uiEvents.NotebookFlipped.AddListener(HandleSectionDisplay);
-        _playerEvents.CardCollected.AddListener(DisplayAddedCardCue);
-        _playerEvents.AddingPages.AddListener(DisplayAddedPagesCue);
+        _narrativeEvents.CardCollected.AddListener(DisplayAddedCardCue);
+        _narrativeEvents.AddingPages.AddListener(DisplayAddedPagesCue);
     }
     
 
@@ -69,7 +70,7 @@ public class NotebookManager : MonoBehaviour
         {
             _notebook.FlipRightPage();
         }
-        else if (_input.NavigateInput.x <= -0.95)
+        else if (_input.NavigateInput.x <= -0.95 && !_isInPostcardSection)
         {
             _notebook.FlipLeftPage();
         }
@@ -108,7 +109,7 @@ public class NotebookManager : MonoBehaviour
 
     private void HandleSectionDisplay(bool startOfBook, bool endOfBook)
     {
-        if (startOfBook) SectionDisplay(null, _leftBookPages, _leftButton,true);
+        if (startOfBook) {SectionDisplay(null, _leftBookPages, _leftButton,true);}
         else if(endOfBook) SectionDisplay(_postcardContainer, _rightBookPages, _rightButton, true);
         else
         {
@@ -116,6 +117,8 @@ public class NotebookManager : MonoBehaviour
             SectionDisplay(_postcardContainer, _rightBookPages, _rightButton, false);
             SectionDisplay(null,null, null, true);
         }
+
+        _isInPostcardSection = endOfBook;
     }
 
     public void HidePostcards()

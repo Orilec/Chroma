@@ -8,11 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_ModularWall
-  m_Shader: {fileID: -6465566751694194690, guid: 43ee6da12dee70846888141807d48ca7,
+  m_Shader: {fileID: -6465566751694194690, guid: 60c2f36503551f140a9d030a470abcf0,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -24,8 +25,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _CalculateMainLight_6743a15fc8514b219366666ac209f7d9_SmoothnessMap_2895282383_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissiveMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HatchTex:
+        m_Texture: {fileID: 2800000, guid: ad2e3fac0203f264bb5023b973981c71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HatchingTex:
@@ -48,6 +57,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 5cdf26bfc901e4d46be67b3891e87722, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b04809425b2c45ca963b18447d5f18d9_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 79071d12df102a9409918af02f299ab1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SmoothnessMap:
         m_Texture: {fileID: 2800000, guid: 9c5a9fb16bef4b4408b4d0fdd6ad8bb0, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -67,8 +80,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 0
+    - _CONTRASTMODIFIERS: 0
     - _Debug: 0
+    - _Density: 1
     - _FalloffThreshold: 2
+    - _FloatTestPower: 0
     - _HasEmissive: 0
     - _HasEmissiveMap: 0
     - _HasSmoothnessMap: 0
@@ -76,18 +92,52 @@ Material:
     - _HatchingStrenght: 0.2
     - _LitThreshold: 1
     - _MoveSpeed: 0
+    - _NEW_ShadowStep: 0.1
     - _NoiseScale: 2.32
     - _NoiseStrenght: 0.6
     - _NormalStrength: 1
+    - _OutlineAcuteDepthThreshold: 1
+    - _OutlineAcuteStartDot: 0.9
+    - _OutlineDepthStrength: 1
+    - _OutlineDepthThreshold: 0
+    - _OutlineDepthTightening: 1
+    - _OutlineDissolve: 0.36
+    - _OutlineFarNormalEndDepth: 10
+    - _OutlineFarNormalStartDepth: 1
+    - _OutlineFarNormalThreshold: 1
+    - _OutlineNormalStrength: 0
+    - _OutlineNormalThreshold: 1
+    - _OutlineNormalTightening: 128
+    - _OutlineThickness: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.48
+    - _Rim_Amount: 6.01
+    - _Rim_step: 0.3
+    - _Rotation: 45
+    - _STYLE: 0
+    - _Saturation: 0
+    - _ShadingMultiplyer: 0
+    - _ShapeNoiseStrenght: 0.3
+    - _ShapeNoiseTiling: 10
+    - _ShapeSharpness: 0.07
+    - _ShapeSize: 0.21
+    - _Smoothness: 0
     - _SmoothnessSlider: 0
     - _Softness: 0.3
+    - _TESTSATURATION: 2
+    - _TextureBlend: 0
     - _USESCREENSPACE: 0
     m_Colors:
+    - _ColorLINE: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
+    - _DensityVector: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0}
+    - _Specular: {r: 0, g: 0, b: 0, a: 0}
+    - _StepContraste: {r: 0.14, g: 0.19, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1493085053962996794
 MonoBehaviour:
