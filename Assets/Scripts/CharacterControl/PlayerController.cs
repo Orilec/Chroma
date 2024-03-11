@@ -269,7 +269,6 @@ public class PlayerController : MonoBehaviour
         _stateMachine.Update();
         HandleTimers();
         DebugRespawn();
-        Debug.Log(_relativeCurrentSpeed);
     }
     
     private void FixedUpdate()
