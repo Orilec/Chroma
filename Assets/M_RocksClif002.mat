@@ -12,7 +12,8 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -93,7 +94,7 @@ Material:
     - _NormalBWStrength: 0
     - _NormalStrength: 1
     - _OutlineAcuteDepthThreshold: 1
-    - _OutlineAcuteStartDot: 0.9
+    - _OutlineAcuteStartDot: -1.28
     - _OutlineDepthStrength: 1
     - _OutlineDepthThreshold: 0
     - _OutlineDepthTightening: 1
@@ -107,10 +108,11 @@ Material:
     - _OutlineThickness: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RadiusCutoff: 0.57
+    - _RadiusCutoff: 1.51
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
+    - _STYLE: 0
     - _Saturation: 0
     - _ShadingMultiplyer: 0
     - _ShapeNoiseStrenght: 0.3
