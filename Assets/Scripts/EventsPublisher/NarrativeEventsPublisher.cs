@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "EventsPublisher/NarrativeEventsPublisher")]
 public class NarrativeEventsPublisher : ScriptableObject
 {
     public UnityEvent<Message[]> TriggerDialogue;

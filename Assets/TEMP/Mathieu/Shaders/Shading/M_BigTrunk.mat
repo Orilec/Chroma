@@ -28,6 +28,7 @@ Material:
   m_ValidKeywords:
   - _CONTRASTMODIFIERS
   - _MAIN_LIGHT_SHADOWS
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -121,6 +122,7 @@ Material:
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
+    - _STYLE: 0
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
@@ -133,7 +135,7 @@ Material:
     - _Softness: 0.76
     - _Step1Contraste: 0.14
     - _Step2Contrast: 0.19
-    - _TESTSATURATION: 4.4
+    - _TESTSATURATION: 2.45
     - _TextureBlend: 0.053
     - _USESCREENSPACE: 0
     m_Colors:
@@ -143,5 +145,5 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
-    - _StepContraste: {r: 0, g: 0.21, b: 0, a: 0}
+    - _StepContraste: {r: 0.07, g: 0.18, b: 0, a: 0}
   m_BuildTextureStacks: []

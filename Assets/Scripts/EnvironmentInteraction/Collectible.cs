@@ -7,10 +7,17 @@ public class Collectible : MonoBehaviour
 {
     [SerializeField] private Sprite _sprite ;
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents ;
+
+    private PlayerController _player;
+
+    private void Awake()
+    {
+        _player = FindObjectOfType<PlayerController>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if (other.gameObject == _player.gameObject)
         {
             _narrativeEvents.CardCollected.Invoke(_sprite);
             Destroy(this.gameObject);

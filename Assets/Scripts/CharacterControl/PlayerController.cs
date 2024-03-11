@@ -16,6 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UIEventsPublisher _uiEventsPublisher;
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     
+    [Header("Debug")] 
+    [SerializeField] private bool drawGizmo; 
+    [Range(1, 20)]
+    [SerializeField] private float scaleX = 1f;
+    [Range(1, 20)]
+    [SerializeField] private float scaleY = 1f;
+
     public IEnumerator AccelerationCoroutine, DecelerationCoroutine;
     
     //References
@@ -272,6 +279,7 @@ public class PlayerController : MonoBehaviour
 
     }
     
+    
     //Respawning functions
     private void DebugRespawn()
     {
@@ -294,32 +302,12 @@ public class PlayerController : MonoBehaviour
     
 
     //Input and movement handling functions
-    public Vector3 ConvertToCameraSpace(Vector3 vectorToRotate)
+    private Vector3 ConvertToTransformSpace(Transform directionTransform, Vector3 vectorToRotate)
     {
         float currentYValue = vectorToRotate.y;
 
-        Vector3 cameraForward = _mainCam.forward;
-        Vector3 cameraRight = _mainCam.right;
-
-        cameraForward.y = 0;
-        cameraRight.y = 0;
-
-        cameraForward = cameraForward.normalized;
-        cameraRight = cameraRight.normalized;
-
-        Vector3 cameraForwardZProduct = vectorToRotate.z * cameraForward;
-        Vector3 cameraRightXProduct = vectorToRotate.x * cameraRight;
-
-        Vector3 vectorRotatedToCameraSpace = cameraForwardZProduct + cameraRightXProduct;
-        vectorRotatedToCameraSpace.y = currentYValue;
-        return vectorRotatedToCameraSpace;
-    }
-    private Vector3 ConvertToSlopeDirection(Transform slopeDirection , Vector3 vectorToRotate)
-    {
-        float currentYValue = vectorToRotate.y;
-
-        Vector3 slopeDirectionForward = slopeDirection.forward;
-        Vector3 slopeDirectionRight = slopeDirection.right;
+        Vector3 slopeDirectionForward = directionTransform.forward;
+        Vector3 slopeDirectionRight = directionTransform.right;
 
         slopeDirectionForward.y = 0;
         slopeDirectionRight.y = 0;
@@ -342,8 +330,8 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
-        if (!_isAutoSliding) _playerMoveInput = ConvertToCameraSpace(_playerMoveInput);
-        else _playerMoveInput = ConvertToSlopeDirection(_groundCheck.slopeDirection, _playerMoveInput);
+        if (!_isAutoSliding) _playerMoveInput = ConvertToTransformSpace(_mainCam.transform, _playerMoveInput);
+        else _playerMoveInput = ConvertToTransformSpace(_groundCheck.slopeDirection, _playerMoveInput);
 
         if (_input.MoveInput.magnitude <= 0) _relativeCurrentSpeed = 0f;
         else _relativeCurrentSpeed = (_currentSpeed - BaseMoveSpeed ) / (_parameters.maxMoveSpeed - BaseMoveSpeed);
@@ -360,7 +348,6 @@ public class PlayerController : MonoBehaviour
             calculatedPlayerMovement = new Vector3(_playerMoveInput.x * _parameters.facingWallSpeedMultiplier, _playerMoveInput.y, _playerMoveInput.z * _parameters.facingWallSpeedMultiplier);
         }
         _playerMoveInput = calculatedPlayerMovement;
-
     }
 
     private void PlayerSlope()
@@ -462,13 +449,32 @@ public class PlayerController : MonoBehaviour
 
     private void CompareYPos()
     {
-        var lowerGround = (transform.position.y - _leavingGroundY) < -1f;
+        float fallHeight = transform.position.y - _leavingGroundY;
+        var lowerGround = fallHeight < -1f;
         _playerEventsPublisher.LandingToLower.Invoke(lowerGround);
+
+        if (fallHeight < -_parameters.respawningFallHeight)
+        {
+            _isRespawning = true;
+        }
     }
     
     private void Fading()
     {
         _isFadingToBlack = true;
     }
-    
+
+
+    //Visual debug
+    private void OnDrawGizmos()
+    {
+        if (!drawGizmo) return; 
+        Gizmos.color = new Color(0, 0.3f, 1f, 1f);
+
+        Gizmos.DrawWireCube(transform.position - new Vector3(0f, _parameters.respawningFallHeight/2 + transform.localScale.y, 0f) , new Vector3(2f * scaleX, _parameters.respawningFallHeight, 2f * scaleY));
+
+        Gizmos.color = new Color(0, 0.3f, 1f, 0.2f);
+        Gizmos.DrawCube(transform.position - new Vector3(0f, _parameters.respawningFallHeight/2 + transform.localScale.y, 0f) , new Vector3(2f * scaleX, _parameters.respawningFallHeight, 2f * scaleY));
+    }
+
 }

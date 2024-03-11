@@ -12,7 +12,8 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -114,6 +115,7 @@ Material:
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
+    - _STYLE: 0
     - _Saturation: 0
     - _ShadingMultiplyer: 0
     - _ShapeNoiseStrenght: 0.3

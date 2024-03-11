@@ -30,7 +30,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5886253200420607732}
-  - {fileID: 1544563431122843400}
   m_Father: {fileID: 2408707729939804373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &756342255678716694
@@ -481,13 +480,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4916913639656346214}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: 0.32419056, y: 16.26537, z: 0.725262}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 152221859479371716}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 5878587575438018064}
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!198 &8263784332291268160
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5467,11 +5466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589c22cb53711e24cafa979be3656f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 8402685839819395084}
-  _groundCheck: {fileID: 5695802296482862175}
-  _input: {fileID: 0}
-  _trail: {fileID: 178811129823926484}
-  _respawnSystem: {fileID: 6529924563142949071}
   _environmentLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5530,12 +5524,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5881c8427de2a7a4f89dc20e2d9272ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetSystem: {fileID: 0}
   _correctTrajectoryEmission: {fileID: 0}
   _untargetedTrajectoryEmission: {fileID: 8263784332291268160}
   _retrieveTrajectoryEmission: {fileID: 0}
   _sidekickThrowOrigin: {fileID: 152221859479371716}
-  _input: {fileID: 0}
   _sidekickGameObject: {fileID: 750340060976878093}
 --- !u!114 &6754213251411105395
 MonoBehaviour:
@@ -5816,6 +5808,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 195451952b6e3d14e96bcec9fc35df62,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1544563431122843400}
     - targetCorrespondingSourceObject: {fileID: -616082930834091730, guid: 195451952b6e3d14e96bcec9fc35df62,
         type: 3}
       insertIndex: -1

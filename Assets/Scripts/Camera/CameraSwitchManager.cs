@@ -50,7 +50,6 @@ public class CameraSwitchManager : MonoBehaviour
             camera.Priority = 10;
             _currentCamera.Priority = 1;
             _currentCamera = camera;
-            Debug.Log(_currentCamera);
         }
         
 }

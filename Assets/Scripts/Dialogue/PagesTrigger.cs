@@ -9,10 +9,16 @@ public class PagesTrigger : MonoBehaviour
     [SerializeField] private int _nbPagesToAdd;
     private bool _pagesAdded;
 
+    private PlayerController _player;
+    
+    private void Awake()
+    {
+        _player = FindObjectOfType<PlayerController>();
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
-        var player = other.GetComponent<PlayerController>();
-        if (player != null && !_pagesAdded)
+        if (other.gameObject == _player.gameObject && !_pagesAdded)
         {
             _narrativeEvents.AddingPages.Invoke(_nbPagesToAdd);
             _pagesAdded = true;
