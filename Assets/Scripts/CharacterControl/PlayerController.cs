@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private BouncePlatform _bouncePlatform;
 
     private const float ZeroF = 0f;
-    private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed, _leavingGroundY;
+    private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed, _leavingGroundY, _currentBaseSpeed, _currentMaxSpeed;
     private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame, _isOnSlope, _isAutoSliding, _wasSlideJumping;
     private int _stepsSinceGrounded;
     private Vector3 _movement;
@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
     public float GravityFallIncrementTime { get { return _parameters.gravityFallIncrementTime; } }
     public float PlayerFallTimeMax { get { return _parameters.playerFallTimeMax; } }
     public float SlideNormalSpeed { get { return _parameters.slideNormalSpeed; } }
-    public float MaxMoveSpeed { get { return _parameters.maxMoveSpeed; } }
     public float BaseMoveSpeed { get { return _parameters.baseMoveSpeed; } }
     public float MoveSpeedIncrement { get { return _parameters.speedIncrement; } }
     public float MiasmaSpeed { get { return _parameters.miasmaSpeed; } }
@@ -106,6 +105,8 @@ public class PlayerController : MonoBehaviour
     public float PlayerMoveInputZ { get { return _playerMoveInput.z; } set { _playerMoveInput.z = value; } }
     public Vector3 PlayerMoveInput { get { return _playerMoveInput; } set { _playerMoveInput = value; } }
     public float CurrentSpeed { get { return _currentSpeed; } set { _currentSpeed = value; } }
+    public float CurrentBaseSpeed { get { return _currentBaseSpeed; } set { _currentBaseSpeed = value; } }
+    public float CurrentMaxSpeed { get { return _currentMaxSpeed; } set { _currentMaxSpeed = value; } }
     public float InitialJumpForce { get { return _parameters.initialJumpForce; }set { _parameters.initialJumpForce = value; } }
     public float ContinualJumpForceMultiplier { get { return _parameters.continualJumpForceMultiplier; }set { _parameters.continualJumpForceMultiplier = value; } }
     public float GravityFallCurrent { get { return _gravityFallCurrent; }set { _gravityFallCurrent = value; } }
@@ -249,9 +250,15 @@ public class PlayerController : MonoBehaviour
         _playerEventsPublisher.LeavingGround.AddListener(SaveYPos);
         _playerEventsPublisher.EnteringGround.AddListener(CompareYPos);
         
+        _playerEventsPublisher.ChangeBaseSpeed.AddListener(ChangeMoveSpeed);
+        
         //Setup coroutines
         AccelerationCoroutine = Accelerate(0f, 0f);
         DecelerationCoroutine = Decelerate(0f, 0f);
+        
+        //Setup speed variables
+        _currentBaseSpeed = BaseMoveSpeed;
+        _currentMaxSpeed = _parameters.maxMoveSpeed;
     }
 
     
@@ -262,6 +269,7 @@ public class PlayerController : MonoBehaviour
         _stateMachine.Update();
         HandleTimers();
         DebugRespawn();
+        Debug.Log(_relativeCurrentSpeed);
     }
     
     private void FixedUpdate()
@@ -334,7 +342,7 @@ public class PlayerController : MonoBehaviour
         else _playerMoveInput = ConvertToTransformSpace(_groundCheck.slopeDirection, _playerMoveInput);
 
         if (_input.MoveInput.magnitude <= 0) _relativeCurrentSpeed = 0f;
-        else _relativeCurrentSpeed = (_currentSpeed - BaseMoveSpeed ) / (_parameters.maxMoveSpeed - BaseMoveSpeed);
+        else _relativeCurrentSpeed = (_currentSpeed - _currentBaseSpeed ) / (_parameters.maxMoveSpeed - BaseMoveSpeed);
         _playerEventsPublisher.LocomotionSpeed.Invoke(_relativeCurrentSpeed);
     }
 
@@ -462,6 +470,21 @@ public class PlayerController : MonoBehaviour
     private void Fading()
     {
         _isFadingToBlack = true;
+    }
+
+    private void ChangeMoveSpeed(bool change, float newBaseSpeed, float newMaxSpeed)
+    {
+        if (change)
+        {
+            _currentBaseSpeed = newBaseSpeed;
+            _currentMaxSpeed = newMaxSpeed;
+            _currentSpeed = _currentBaseSpeed;
+        }
+        else
+        {
+            _currentBaseSpeed = BaseMoveSpeed;
+            _currentMaxSpeed = _parameters.maxMoveSpeed;
+        }
     }
 
 

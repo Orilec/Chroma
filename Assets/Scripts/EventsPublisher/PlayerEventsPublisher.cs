@@ -18,5 +18,6 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<bool> LandingToLower;
     public UnityEvent<float> LocomotionSpeed;
     public UnityEvent<bool> PauseGame;
-    
+    public UnityEvent<bool, float, float> ChangeBaseSpeed;
+
 }
