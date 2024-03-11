@@ -43,15 +43,19 @@ public class GroundedState : BaseCharacterState
         {
             //_playerController.Trail.EnableDustParticles(); 
 
-            if (_playerController.CurrentSpeed < _playerController.MaxMoveSpeed)
+            if (_playerController.CurrentSpeed < _playerController.CurrentMaxSpeed)
             {
                 _playerController.CurrentSpeed += _playerController.MoveSpeedIncrement;
+            }
+            else
+            {
+                _playerController.CurrentSpeed = _playerController.CurrentMaxSpeed;
             }
         }
         else
         {
             //_playerController.Trail.DisableDustParticles();
-            _playerController.CurrentSpeed = _playerController.BaseMoveSpeed;
+            _playerController.CurrentSpeed = _playerController.CurrentBaseSpeed;
         }
     }
 
