@@ -39,7 +39,7 @@ public class SlideState : BaseCharacterState
     {
         _playerController.StopCoroutine(_playerController.AccelerationCoroutine);
         _slopeCoroutineStarted = false;
-        _playerController.StartCoroutine(_playerController.Decelerate(_playerController.MaxMoveSpeed, _playerController.SlideSpeedDecrementAmount));
+        _playerController.StartCoroutine(_playerController.Decelerate(_playerController.CurrentMaxSpeed, _playerController.SlideSpeedDecrementAmount));
         _playerController.Trail.DisableSlideTrail();
         _playerController.CoyoteTimeCounter.Start();
         _playerController.SlidingJumpBufferCounter.Start();
