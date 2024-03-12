@@ -6,6 +6,7 @@ using UnityEngine;
 public class UntargetedSidekickParticle : MonoBehaviour
 {
     [SerializeField] private ThrowSystem _throwSystem;
+    [SerializeField] private CameraSwitchManager _cameraSwitch;
     [SerializeField] private ParticleSystem _particle;
     [SerializeField] private float _timeBeforeRetrieve = 0.2f;
 
@@ -13,12 +14,23 @@ public class UntargetedSidekickParticle : MonoBehaviour
     
     private List<ParticleCollisionEvent> _collisionEvents;
 
+    private Quaternion _baseRotation;
+
     private void Awake()
     {
         _particle = GetComponent<ParticleSystem>();
         _collisionEvents = new List<ParticleCollisionEvent>();
+        _baseRotation = transform.localRotation;
     }
-    
+
+    private void FixedUpdate()
+    {
+        if(_cameraSwitch.IsFlCamera()) transform.rotation = Camera.main.transform.rotation;
+        else
+        {
+            transform.localRotation = _baseRotation;
+        }
+    }
 
     private void OnParticleCollision(GameObject other)
     {
