@@ -3,22 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CameraSwitchManager : MonoBehaviour
 {
     
     [SerializeField] private CinemachineBrain _cinemachineBrain;
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
-    [SerializeField] private CinemachineVirtualCamera _simpleFollowCamera;
+    [SerializeField] private CinemachineVirtualCameraBase _flCamera;
 
-    private List<CinemachineVirtualCamera> _possibleCameras;
-    private CinemachineVirtualCamera _currentCamera;
+    private List<CinemachineVirtualCameraBase> _possibleCameras;
+    private CinemachineVirtualCameraBase _currentCamera;
 
     private void Awake()
     {
-        _possibleCameras = new List<CinemachineVirtualCamera>();
+        _possibleCameras = new List<CinemachineVirtualCameraBase>();
         _narrativeEvents.TriggerCamera.AddListener(OnTriggerCameraZone);
-        _currentCamera = _simpleFollowCamera;
+        _currentCamera = _flCamera;
     }
 
     private void OnTriggerCameraZone(CinemachineVirtualCamera camera, bool entering)
@@ -27,7 +28,7 @@ public class CameraSwitchManager : MonoBehaviour
         {
             if (!_possibleCameras.Contains(camera)) _possibleCameras.Add(camera);
 
-            if (_currentCamera == _simpleFollowCamera)
+            if (_currentCamera == _flCamera)
             {
                 SetNewCamera(camera);
             }
@@ -40,11 +41,11 @@ public class CameraSwitchManager : MonoBehaviour
             }
             else
             {
-                SetNewCamera(_simpleFollowCamera);
+                SetNewCamera(_flCamera);
             }
         }
     }
-        private void SetNewCamera(CinemachineVirtualCamera camera)
+        private void SetNewCamera(CinemachineVirtualCameraBase camera)
         {
             if (_possibleCameras.Contains(camera)) _possibleCameras.Remove(camera);
             camera.Priority = 10;

@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    [SerializeField] private TargetSystem _targetSystem;
-    [SerializeField] private Transform _playerTransform;
+     
     [SerializeField] private ColorableObject _colorable;
+    private TargetSystem _targetSystem;
+    private Transform _playerTransform;
     private MeshRenderer _renderer;
-    public bool isReachable, isActivated;
+    [HideInInspector] public bool isReachable, isActivated;
 
     private Camera _mainCam;
     private void OnEnable()

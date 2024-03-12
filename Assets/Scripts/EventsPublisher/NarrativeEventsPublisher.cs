@@ -12,4 +12,7 @@ public class NarrativeEventsPublisher : ScriptableObject
     public UnityEvent<bool> EnterValidateLevel;
     public UnityEvent EndOfVSLevel;
     public UnityEvent<int> AddingPages;
+    public UnityEvent<bool, int> KioskAreaEntered;
+    public UnityEvent KioskObjectColored;
+    public UnityEvent KioskAreaCompleted;
 }
