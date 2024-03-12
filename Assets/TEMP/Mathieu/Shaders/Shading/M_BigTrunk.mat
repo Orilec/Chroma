@@ -101,13 +101,14 @@ Material:
     - _Density: 10
     - _FalloffThreshold: 3.2
     - _FloatTestPower: 1
+    - _HasNormalMap: 0
     - _LitThreshold: 1.04
     - _MAIN_LIGHT_SHADOWS: 1
     - _NEW_ShadowStep: 0.86
     - _NoiseLerp: 0.504
     - _NoiseScale: 1.83
     - _NoiseStrenght: 0.47
-    - _NormalBWStrength: 0
+    - _NormalBWStrength: 1
     - _NormalStrength: 1.44
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
@@ -145,6 +146,7 @@ Material:
     - _Step2Contrast: 0.19
     - _TESTSATURATION: 2.45
     - _TextureBlend: 0.053
+    - _TextureTiling: 1
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
