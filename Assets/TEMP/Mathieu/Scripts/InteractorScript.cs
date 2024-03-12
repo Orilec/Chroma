@@ -87,6 +87,8 @@ public class InteractorScript : MonoBehaviour
 
     public void SetInteractorActive()
     {
+        AddToInteractorsArray(); 
+
         if (isTemporary)
         {
             StartCoroutine(SwapTemporaryColor());
@@ -119,6 +121,8 @@ public class InteractorScript : MonoBehaviour
 
         radius = maxRadius; // Set final radius
 
+        RemoveFromInteractorsArray(); 
+
         //Call event for animation/fill
         if (parent.GetComponent<ColorableObject>() != null)
         {
@@ -148,6 +152,8 @@ public class InteractorScript : MonoBehaviour
 
         radius = 0;
 
+        RemoveFromInteractorsArray(); 
+
         //Call event for reverse animation
         if (!isCast)
         {
@@ -160,6 +166,34 @@ public class InteractorScript : MonoBehaviour
         if (isCast)
         {
             Destroy(gameObject); 
+        }
+    }
+
+    private void AddToInteractorsArray()
+    {
+        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        {
+            var interactor = ShaderInteractorHolder.interactors[i]; 
+
+            if (interactor == null)
+            {
+                interactor = this;
+                break; 
+            }
+        }
+    }
+
+    private void RemoveFromInteractorsArray()
+    {
+        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        {
+            var interactor = ShaderInteractorHolder.interactors[i];
+
+            if (interactor == this)
+            {
+                interactor = null;
+                break; 
+            }
         }
     }
 }

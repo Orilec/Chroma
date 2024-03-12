@@ -1,5 +1,5 @@
-float4 _ShaderInteractorsPositions[128];
-float _ShaderInteractorsRadiuses[128];
+float4 _ShaderInteractorsPositions[30];
+float _ShaderInteractorsRadiuses[30];
 
 float _ShapeCutoff;
 float _ShapeSmoothness;
@@ -11,7 +11,7 @@ void InteractorRadiuses_float(in float3 WorldPos, out float Shapes)
     Shapes = 0;
 #else
     float spheres = 0;
-    for (int i = 0; i < 128; i++)
+    for (int i = 0; i < 30; i++)
     {
         // spheres
         float3 dis = distance(_ShaderInteractorsPositions[i].xyz, WorldPos);
