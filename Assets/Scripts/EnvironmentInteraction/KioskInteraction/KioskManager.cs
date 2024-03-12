@@ -7,7 +7,7 @@ public class KioskManager : MonoBehaviour
 {
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     private int _requiredObjectsCount, _objectsColored;
-    private bool _isInArea;
+    private bool _isInArea, _completed;
     private PlayerController _player;
     private void OnEnable()
     {
@@ -19,7 +19,7 @@ public class KioskManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_player.gameObject == other.gameObject)
+        if (_player.gameObject == other.gameObject && !_completed)
         {
             _isInArea = true;
             _narrativeEvents.KioskAreaEntered.Invoke(true, _requiredObjectsCount);
@@ -27,7 +27,7 @@ public class KioskManager : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (_player.gameObject == other.gameObject)
+        if (_player.gameObject == other.gameObject && !_completed)
         {
             _isInArea = false;
             _narrativeEvents.KioskAreaEntered.Invoke(false, _requiredObjectsCount);
@@ -48,6 +48,7 @@ public class KioskManager : MonoBehaviour
 
     private void DebugAreaCompleted()
     {
+        _completed = true;
         _isInArea = false;
         _narrativeEvents.KioskAreaEntered.Invoke(false, _requiredObjectsCount);
         Debug.Log("Area Completed");
