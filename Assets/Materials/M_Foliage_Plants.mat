@@ -21,11 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Foliage_Plants
-  m_Shader: {fileID: -6465566751694194690, guid: 44f004b5abc69f9448312065c6387457,
+  m_Shader: {fileID: -6465566751694194690, guid: 81ac1159f979f5c4e9c8549316ccab63,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 305d84b08adb0ba4483b88e38366ce0b, type: 2}
   m_ModifiedSerializedProperties: 4
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -42,6 +43,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _CONTRASTMODIFIERS: 0
+    - _NormalStrength: 0
+    - _Saturation: 0
+    m_Colors:
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
