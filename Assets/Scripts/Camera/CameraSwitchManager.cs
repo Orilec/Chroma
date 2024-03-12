@@ -22,6 +22,11 @@ public class CameraSwitchManager : MonoBehaviour
         _currentCamera = _flCamera;
     }
 
+    public bool IsFlCamera()
+    {
+        return _currentCamera == _flCamera;
+    }
+
     private void OnTriggerCameraZone(CinemachineVirtualCamera camera, bool entering)
     {
         if (entering)
