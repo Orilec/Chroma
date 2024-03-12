@@ -39,7 +39,7 @@ public class AutoSlideState : BaseCharacterState
         _playerController.IsAutoSliding = false;
         _playerController.StopCoroutine(_playerController.AccelerationCoroutine);
         _slopeCoroutineStarted = false;
-        _playerController.DecelerationCoroutine = _playerController.Decelerate(_playerController.MaxMoveSpeed, _playerController.SlideSpeedDecrementAmount);
+        _playerController.DecelerationCoroutine = _playerController.Decelerate(_playerController.CurrentMaxSpeed, _playerController.SlideSpeedDecrementAmount);
         _playerController.StartCoroutine(_playerController.DecelerationCoroutine);
         _playerController.Trail.DisableSlideTrail();
         _playerEvents.Sliding.Invoke(false);
