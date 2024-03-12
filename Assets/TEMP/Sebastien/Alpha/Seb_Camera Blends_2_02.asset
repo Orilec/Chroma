@@ -10,22 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36baaa8bdcb9d8b49b9199833965d2c3, type: 3}
-  m_Name: Seb_Camera Blends
+  m_Name: Seb_Camera Blends_2_02
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: SimpleFollowCamera
-    m_To: SidescrollingCamera
-    m_Blend:
-      m_Style: 1
-      m_Time: 3
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: ZoomingOutCamera
+    m_To: C_1_Side_01
     m_Blend:
       m_Style: 1
       m_Time: 5
@@ -35,11 +24,11 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: SidescrollingCameraEnd
+  - m_From: '**ANY CAMERA**'
+    m_To: SimpleFollowCamera
     m_Blend:
       m_Style: 1
-      m_Time: 5
+      m_Time: 6
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

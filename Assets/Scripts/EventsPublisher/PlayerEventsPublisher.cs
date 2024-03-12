@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "EventsPublisher/PlayerEventsPublisher")]
 public class PlayerEventsPublisher : ScriptableObject
 {
     public UnityEvent Respawn;
@@ -18,5 +18,6 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<bool> LandingToLower;
     public UnityEvent<float> LocomotionSpeed;
     public UnityEvent<bool> PauseGame;
-    
+    public UnityEvent<bool, float, float> ChangeBaseSpeed;
+
 }

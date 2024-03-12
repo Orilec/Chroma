@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "MovementParameters/CharaParameters")]
 public class CharaParameters : ScriptableObject
 {
     [Header("Movement Parameters")] 

@@ -22,7 +22,7 @@ public class FallState : BaseCharacterState
     {
         HandleFallGravity();
         if (_playerController.WasSlideJumping) _playerController.PlayerMoveInputZ = 1f;
-        _playerController.CurrentSpeed = _playerController.MaxMoveSpeed;
+        _playerController.CurrentSpeed = _playerController.CurrentMaxSpeed;
         _playerController.PlayerMove();
         _playerController.HandleRotation();
     }

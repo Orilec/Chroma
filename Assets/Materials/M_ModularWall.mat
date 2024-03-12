@@ -12,7 +12,8 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -53,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 5cdf26bfc901e4d46be67b3891e87722, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9142a9211118d3849a883cae3d3d9b74, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_b04809425b2c45ca963b18447d5f18d9_Texture_1_Texture2D:
@@ -97,8 +98,8 @@ Material:
     - _NormalStrength: 1
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
-    - _OutlineDepthStrength: 1
-    - _OutlineDepthThreshold: 0.15
+    - _OutlineDepthStrength: -3.11
+    - _OutlineDepthThreshold: 0
     - _OutlineDepthTightening: 1
     - _OutlineDissolve: 0.36
     - _OutlineFarNormalEndDepth: 10
@@ -107,7 +108,7 @@ Material:
     - _OutlineNormalStrength: 0
     - _OutlineNormalThreshold: 1
     - _OutlineNormalTightening: 128
-    - _OutlineThickness: 0.001
+    - _OutlineThickness: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.48
