@@ -39,11 +39,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoTexture1:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 82ed36158124b0e4aaf5d59382d80ce9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 34439c05573fabc4abc3ce02fde26195, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture3:
@@ -63,11 +63,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_1:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: bb2db4548c4521748a2873e5da747792, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 41da90a224bc2e24c86ae5dccb6c49c2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_3:
@@ -93,13 +93,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _B_WSaturation: 2
-    - _Blend: 0
+    - _Blend: 1
     - _CONTRASTMODIFIERS: 0
-    - _Debug: 0
+    - _Debug: 1
     - _FalloffThreshold: 0
     - _HasNormalMap: 1
     - _LitThreshold: 0
-    - _NormalBWStrength: 0
+    - _NormalBWStrength: 801.4
     - _NormalStrength: 0
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
@@ -129,7 +129,7 @@ Material:
     - _Smoothness: 0
     - _Softness: 0
     - _TextureBlend: 0
-    - _TextureTiling: 1
+    - _TextureTiling: -1.67
     - _USESCREENSPACE: 0
     m_Colors:
     - _DensityVector: {r: 1, g: 1, b: 0, a: 0}
