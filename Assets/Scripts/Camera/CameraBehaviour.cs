@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField] private float  _verticalSmoothTime = 0.25f;
     private float _followSpeed = 1000;
     [SerializeField] private float _targetYOffset;
+    
+    private CinemachineFreeLook _flCamera;
 
     private float _targetY;
     private float _currentSmoothTime;
@@ -23,6 +26,7 @@ public class CameraBehaviour : MonoBehaviour
     private void OnEnable()
     {
         _playerEvents.LeavingGround.AddListener(OnLeavingGround);
+        _flCamera = FindObjectOfType<CinemachineFreeLook>();
     }
 
     void Start()
@@ -58,5 +62,11 @@ public class CameraBehaviour : MonoBehaviour
         _targetTransform.rotation = _playerTransform.rotation;
         var desiredPosition = new Vector3(_playerTransform.position.x, _targetY + _targetYOffset, _playerTransform.position.z);
         _targetTransform.position = Vector3.SmoothDamp(_targetTransform.position, desiredPosition, ref _vel, _currentSmoothTime, _followSpeed);
+    }
+
+    void RecenterCamera()
+    {
+        _flCamera.m_XAxis.Value = 0;
+        _flCamera.m_YAxis.Value = 0.5f;
     }
 }
