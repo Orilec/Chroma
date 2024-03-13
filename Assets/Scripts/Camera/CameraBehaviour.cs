@@ -28,7 +28,7 @@ public class CameraBehaviour : MonoBehaviour
     {
         _playerEvents.LeavingGround.AddListener(OnLeavingGround);
         _flCamera = FindObjectOfType<CinemachineFreeLook>();
-        _input = FindObjectOfType<InputReader>();
+        _input = ChroManager.GetManager<InputReader>();
     }
 
     void Start()

@@ -12,7 +12,7 @@ public class Collectible : MonoBehaviour
 
     private void Awake()
     {
-        _player = FindObjectOfType<PlayerController>();
+        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
     }
 
     private void OnTriggerEnter(Collider other)

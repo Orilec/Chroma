@@ -142,9 +142,12 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _groundCheck = GetComponent<GroundCheck>();
         _throwSystem = GetComponent<ThrowSystem>();
-        _input = FindObjectOfType<InputReader>();
+        _input = ChroManager.GetManager<InputReader>();
         _trail = FindObjectOfType<PlayerTrailScript>();
         _respawnSystem = GetComponent<RespawnSystem>();
+        
+        //Subscribing to manager
+        ChroManager.GetManager<PlayerManager>().SubscribePlayer(this);
         
         _rigidbody.freezeRotation = true;
         

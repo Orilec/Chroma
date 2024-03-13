@@ -29,7 +29,7 @@ public class NarratorTextDisplay : MonoBehaviour
     private void Awake()
     {
         _narratorTexts = new List<NarratorText>();
-        _player = FindObjectOfType<PlayerController>();
+        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
 
         for (int i = 0; i < transform.childCount; i++)
         {

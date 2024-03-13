@@ -11,7 +11,7 @@ public class KioskManager : MonoBehaviour
     private PlayerController _player;
     private void OnEnable()
     {
-        _player = FindObjectOfType<PlayerController>();
+        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
         _requiredObjectsCount = transform.childCount;
         _narrativeEvents.KioskObjectColored.AddListener(AddColoredObject);
         _narrativeEvents.KioskAreaCompleted.AddListener(DebugAreaCompleted);

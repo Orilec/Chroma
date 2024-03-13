@@ -11,7 +11,7 @@ public class CutscenePlayerMover : MonoBehaviour
 
     private void Awake()
     {
-        _player = FindObjectOfType<PlayerController>();
+        ChroManager.GetManager<PlayerManager>().GetPlayer();
     }
 
     public void MovePlayer()
