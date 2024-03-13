@@ -121,6 +121,7 @@ public class InteractorScript : MonoBehaviour
 
         radius = maxRadius; // Set final radius
 
+
         RemoveFromInteractorsArray(); 
 
         //Call event for animation/fill
@@ -140,7 +141,9 @@ public class InteractorScript : MonoBehaviour
             yield return null;
         }
 
+
         radius = maxRadius; // Set final radius
+
 
         timeElapsed = 0;
         while (timeElapsed < decolorationTime)
@@ -151,6 +154,8 @@ public class InteractorScript : MonoBehaviour
         }
 
         radius = 0;
+
+
 
         RemoveFromInteractorsArray(); 
 
@@ -171,29 +176,32 @@ public class InteractorScript : MonoBehaviour
 
     private void AddToInteractorsArray()
     {
-        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
-        {
-            var interactor = ShaderInteractorHolder.interactors[i]; 
+        ShaderInteractorHolder.instance.SubcribeInteractor(this);
+        //for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        //{
+        //    var interactor = ShaderInteractorHolder.interactors[i]; 
+        //    //ShaderInteractorHolder.instance.UpdateInteractor();
 
-            if (interactor == null)
-            {
-                interactor = this;
-                break; 
-            }
-        }
+        //    if (interactor == null)
+        //    {
+        //        ShaderInteractorHolder.interactors[i] = this;
+        //        break; 
+        //    }
+        //}
     }
 
     private void RemoveFromInteractorsArray()
     {
-        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
-        {
-            var interactor = ShaderInteractorHolder.interactors[i];
+        //for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        //{
+        //    var interactor = ShaderInteractorHolder.interactors[i];
 
-            if (interactor == this)
-            {
-                interactor = null;
-                break; 
-            }
-        }
+        //    if (interactor == this)
+        //    {
+        //        ShaderInteractorHolder.interactors[i] = null;
+        //        break; 
+        //    }
+        //}
+        ShaderInteractorHolder.instance.UnsubscribeInteractor(this);
     }
 }
