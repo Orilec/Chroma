@@ -39,11 +39,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoTexture1:
-        m_Texture: {fileID: 2800000, guid: 82ed36158124b0e4aaf5d59382d80ce9, type: 3}
+        m_Texture: {fileID: 2800000, guid: daa1f699e67fda345a2b8849c244dfd6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture2:
-        m_Texture: {fileID: 2800000, guid: 34439c05573fabc4abc3ce02fde26195, type: 3}
+        m_Texture: {fileID: 2800000, guid: f67bca574bd0fb24ea80bb20da5e2863, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture3:
@@ -63,11 +63,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_1:
-        m_Texture: {fileID: 2800000, guid: bb2db4548c4521748a2873e5da747792, type: 3}
+        m_Texture: {fileID: 2800000, guid: f93237c295717d1448f75327ba427725, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_2:
-        m_Texture: {fileID: 2800000, guid: 41da90a224bc2e24c86ae5dccb6c49c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2db3d6b04e00cd046a85d42ec39b7842, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_3:
@@ -95,12 +95,12 @@ Material:
     - _B_WSaturation: 2
     - _Blend: 1
     - _CONTRASTMODIFIERS: 0
-    - _Debug: 1
-    - _FalloffThreshold: 0
-    - _HasNormalMap: 1
-    - _LitThreshold: 0
-    - _NormalBWStrength: 801.4
-    - _NormalStrength: 0
+    - _Debug: 0
+    - _FalloffThreshold: 2.12
+    - _HasNormalMap: 0
+    - _LitThreshold: 1.4
+    - _NormalBWStrength: 1.93
+    - _NormalStrength: 6.39
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
@@ -121,18 +121,18 @@ Material:
     - _Rotation: 45
     - _SWAPSTYLE: 0
     - _Saturation: 0
-    - _ShadingMultiplyer: 0
-    - _ShapeNoiseStrenght: 0.3
-    - _ShapeNoiseTiling: 10
-    - _ShapeSharpness: 0.07
-    - _ShapeSize: 0.21
+    - _ShadingMultiplyer: 0.1
+    - _ShapeNoiseStrenght: 1.9
+    - _ShapeNoiseTiling: 389.05
+    - _ShapeSharpness: 0.14
+    - _ShapeSize: 0.14
     - _Smoothness: 0
-    - _Softness: 0
+    - _Softness: 0.76
     - _TextureBlend: 0
-    - _TextureTiling: -1.67
+    - _TextureTiling: 10.85
     - _USESCREENSPACE: 0
     m_Colors:
-    - _DensityVector: {r: 1, g: 1, b: 0, a: 0}
+    - _DensityVector: {r: 10, g: 10, b: 0, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0}
