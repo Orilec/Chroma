@@ -5124,7 +5124,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1826095949}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &633379359
+--- !u!64 &633379363
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5145,7 +5145,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4493585093827132993, guid: 47b28971ba350e84ea2df4c05c07ff45, type: 3}
+  m_Mesh: {fileID: -1550514412580984892, guid: 47b28971ba350e84ea2df4c05c07ff45, type: 3}
 --- !u!1001 &649465385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11279,12 +11279,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6236906871dcac14793785c9a9a9f2fc, type: 2}
+      objectReference: {fileID: 2100000, guid: eab559eba1b135a458d25bafd912e7a2, type: 2}
     - target: {fileID: -7511558181221131132, guid: 47b28971ba350e84ea2df4c05c07ff45,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: eab559eba1b135a458d25bafd912e7a2, type: 2}
+      objectReference: {fileID: 2100000, guid: 6236906871dcac14793785c9a9a9f2fc, type: 2}
     - target: {fileID: 919132149155446097, guid: 47b28971ba350e84ea2df4c05c07ff45,
         type: 3}
       propertyPath: m_Name
@@ -11302,7 +11302,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47b28971ba350e84ea2df4c05c07ff45,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 633379359}
+      addedObject: {fileID: 633379363}
   m_SourcePrefab: {fileID: 100100000, guid: 47b28971ba350e84ea2df4c05c07ff45, type: 3}
 --- !u!1001 &1830623417
 PrefabInstance:
