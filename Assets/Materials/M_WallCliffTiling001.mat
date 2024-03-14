@@ -48,6 +48,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: ad2e3fac0203f264bb5023b973981c71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: fce436b6aca868b44a46c3f088d588ea, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,12 +64,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: c14ba02a58daae64a9c61178ff31e5eb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 2800000, guid: a9c81d4e017e81746898a3c90bd9fd6d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_25f07e81fa234db5b387f35202627ff6_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: d4aa7816407c85c4a95aae980fe10373, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_b04809425b2c45ca963b18447d5f18d9_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 79071d12df102a9409918af02f299ab1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_af9884a719184919b91fb9537cfb1f9f_Out_0_Texture2D:
@@ -96,14 +108,16 @@ Material:
     - _Density: 10
     - _FalloffThreshold: 2.12
     - _FloatTestPower: 1
+    - _HasOcclusionMap: 1
     - _LitThreshold: 1.04
     - _MAIN_LIGHT_SHADOWS: 1
     - _NEW_ShadowStep: 0.86
     - _NoiseLerp: 0.504
     - _NoiseScale: 1.83
     - _NoiseStrenght: 0.47
-    - _NormalBWStrength: -28.86
-    - _NormalStrength: -4.81
+    - _NormalBWStrength: -11.8
+    - _NormalStrength: -4.54
+    - _OcclusionPower: 0.08
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
@@ -133,18 +147,18 @@ Material:
     - _ShapeNoiseTiling: 86.16
     - _ShapeSharpness: 0.14
     - _ShapeSize: 0.04
-    - _Smoothness: 2.69
+    - _Smoothness: 4.94
     - _Softness: 0.76
     - _Step1Contraste: 0.14
     - _Step2Contrast: 0.19
     - _TESTSATURATION: 2.72
     - _TextureBlend: 0.053
-    - _TextureTiling: 10
+    - _TextureTiling: 3
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
-    - _DensityVector: {r: 20, g: 20, b: 0, a: 0}
-    - _MainColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+    - _DensityVector: {r: 5, g: 5, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
