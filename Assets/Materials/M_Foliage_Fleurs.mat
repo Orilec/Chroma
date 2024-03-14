@@ -21,11 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Foliage_Fleurs
-  m_Shader: {fileID: -6465566751694194690, guid: 44f004b5abc69f9448312065c6387457,
+  m_Shader: {fileID: -6465566751694194690, guid: 81ac1159f979f5c4e9c8549316ccab63,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
@@ -37,6 +38,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _CalculateMainLight_6743a15fc8514b219366666ac209f7d9_SmoothnessMap_2895282383_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissiveMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -51,6 +56,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: d9b0b8f7aea870040b200c5f6fec0033, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -68,20 +77,33 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 1
+    - _CONTRASTMODIFIERS: 0
     - _Debug: 0
     - _GroundBlend: 0
     - _HasEmissiveMap: 0
+    - _HasNormalMap: 0
     - _HatchingSpeed: 3
     - _HatchingStrenght: 0.2
     - _MoveSpeed: 0
     - _NoiseScale: 1
     - _NoiseStrenght: 0.47
+    - _NormalStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.33
+    - _STYLE: 0
+    - _Saturation: 0
+    - _ShapeNoiseStrenght: 0.3
+    - _ShapeNoiseTiling: 10
+    - _ShapeSharpness: 0.07
+    - _ShapeSize: 0.21
+    - _Smoothness: 0
     - _SmoothnessSlider: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorLINE: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Specular: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
