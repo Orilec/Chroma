@@ -7,16 +7,15 @@ public class Target : MonoBehaviour
 {
      
     [SerializeField] private ColorableObject _colorable;
-    private TargetSystem _targetSystem;
+    private TargetManager _targetManager;
     private Transform _playerTransform;
     private MeshRenderer _renderer;
     [HideInInspector] public bool isReachable, isActivated;
 
     private Camera _mainCam;
-    private void OnEnable()
+    private void Awake()
     {
-        _targetSystem = FindObjectOfType<TargetSystem>();
-        _playerTransform = FindObjectOfType<PlayerController>().transform;
+        _targetManager = ChroManager.GetManager<TargetManager>();
         _renderer = GetComponent<MeshRenderer>();
         _colorable.interactorEvent.OnDecolorationFinished += ReActivate;
     }
@@ -28,6 +27,7 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
+        _playerTransform = ChroManager.GetManager<PlayerManager>().GetPlayer().transform;
         _mainCam = Camera.main;
     }
 
@@ -40,33 +40,33 @@ public class Target : MonoBehaviour
         bool isBehindPlayer = Vector3.Dot(_playerTransform.forward, playerToObject) < 0;
         
         Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
-        bool onScreen = screenPoint.x > 0 + _targetSystem.HorizontalAimTreshold && screenPoint.x < 1 - _targetSystem.HorizontalAimTreshold && screenPoint.y > 0 + _targetSystem.VerticalAimTreshold && screenPoint.y < 1 -_targetSystem.VerticalAimTreshold ;
+        bool onScreen = screenPoint.x > 0 + _targetManager.HorizontalAimTreshold && screenPoint.x < 1 - _targetManager.HorizontalAimTreshold && screenPoint.y > 0 + _targetManager.VerticalAimTreshold && screenPoint.y < 1 -_targetManager.VerticalAimTreshold ;
         
 
-        if (Vector3.Distance(transform.position, _playerTransform.position) < _targetSystem.minReachDistance && !isBehindPlayer && !isReachable && !isActivated && onScreen)
+        if (Vector3.Distance(transform.position, _playerTransform.position) < _targetManager.minReachDistance && !isBehindPlayer && !isReachable && !isActivated && onScreen)
         {
             isReachable = true;
-            _targetSystem.reachableTargets.Add(this);
+            _targetManager.reachableTargets.Add(this);
             
         }
 
-        if ((Vector3.Distance(transform.position, _playerTransform.position) > _targetSystem.minReachDistance || isBehindPlayer || !onScreen) && isReachable )
+        if ((Vector3.Distance(transform.position, _playerTransform.position) > _targetManager.minReachDistance || isBehindPlayer || !onScreen) && isReachable )
         {
             isReachable = false;
-            if (_targetSystem.reachableTargets.Contains(this))
+            if (_targetManager.reachableTargets.Contains(this))
             {
-                _targetSystem.reachableTargets.Remove(this);
+                _targetManager.reachableTargets.Remove(this);
             }
         }
 
         //debug current target
-        if (_targetSystem.currentTarget == this && !isActivated)
+        if (_targetManager.currentTarget == this && !isActivated)
         {
 
             _renderer.material.SetFloat("_Alpha", 1f); 
 
         }
-        else if (_targetSystem.currentTarget != this)
+        else if (_targetManager.currentTarget != this)
         {
             _renderer.material.SetFloat("_Alpha", 0f); 
         }
@@ -85,7 +85,7 @@ public class Target : MonoBehaviour
             //    StartCoroutine(ReActivateSwitch()); 
             //}
         }
-        _targetSystem.reachableTargets.Remove(this);
+        _targetManager.reachableTargets.Remove(this);
         isReachable = false;
 
     }
