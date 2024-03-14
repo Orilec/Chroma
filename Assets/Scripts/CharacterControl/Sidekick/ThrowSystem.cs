@@ -12,7 +12,7 @@ public class ThrowSystem : MonoBehaviour
     [SerializeField] private Transform _sidekickThrowOrigin;
     [SerializeField] private GameObject _sidekickGameObject;
 
-    private TargetSystem _targetSystem;
+    private TargetManager _targetManager;
     private InputReader _input;
     
     private Target _lockedTarget, _lastActivatedTarget;
@@ -24,17 +24,17 @@ public class ThrowSystem : MonoBehaviour
     private void Awake()
     {
         _retrievePos = new GameObject().transform;
-        _targetSystem = FindObjectOfType<TargetSystem>();
-        _input = FindObjectOfType<InputReader>();
+        _targetManager = ChroManager.GetManager<TargetManager>();
+        _input = ChroManager.GetManager<InputReader>();
     }
 
     private void Update()
     {
-        if (_input.ThrowIsPressed && _sidekickIsAvailable && _targetSystem.currentTarget != null && !_throwWasPressedLastFrame)
+        if (_input.ThrowIsPressed && _sidekickIsAvailable && _targetManager.currentTarget != null && !_throwWasPressedLastFrame)
         {
             ThrowSidekickOnTarget();
         }
-        else if (_input.ThrowIsPressed && _sidekickIsAvailable && _targetSystem.currentTarget == null && !_throwWasPressedLastFrame)
+        else if (_input.ThrowIsPressed && _sidekickIsAvailable && _targetManager.currentTarget == null && !_throwWasPressedLastFrame)
         {
             ThrowSidekickUntargeted();
         }
@@ -48,7 +48,7 @@ public class ThrowSystem : MonoBehaviour
     private void ThrowSidekickOnTarget()
     {
         _sidekickGameObject.SetActive(false);
-        _lockedTarget = _targetSystem.currentTarget;
+        _lockedTarget = _targetManager.currentTarget;
         _retrievePos.position = _lockedTarget.transform.position;
         _correctTrajectoryEmission.transform.position = _lockedTarget.transform.position;
         var shape = _correctTrajectoryEmission.shape;
