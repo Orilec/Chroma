@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KioskManager : MonoBehaviour
+public class KioskArea : MonoBehaviour
 {
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     private int _requiredObjectsCount, _objectsColored;
