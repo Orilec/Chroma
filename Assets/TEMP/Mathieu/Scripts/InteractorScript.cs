@@ -87,6 +87,8 @@ public class InteractorScript : MonoBehaviour
 
     public void SetInteractorActive()
     {
+        AddToInteractorsArray(); 
+
         if (isTemporary)
         {
             StartCoroutine(SwapTemporaryColor());
@@ -119,6 +121,9 @@ public class InteractorScript : MonoBehaviour
 
         radius = maxRadius; // Set final radius
 
+
+        RemoveFromInteractorsArray(); 
+
         //Call event for animation/fill
         if (parent.GetComponent<ColorableObject>() != null)
         {
@@ -136,7 +141,9 @@ public class InteractorScript : MonoBehaviour
             yield return null;
         }
 
+
         radius = maxRadius; // Set final radius
+
 
         timeElapsed = 0;
         while (timeElapsed < decolorationTime)
@@ -147,6 +154,10 @@ public class InteractorScript : MonoBehaviour
         }
 
         radius = 0;
+
+
+
+        RemoveFromInteractorsArray(); 
 
         //Call event for reverse animation
         if (!isCast)
@@ -161,5 +172,36 @@ public class InteractorScript : MonoBehaviour
         {
             Destroy(gameObject); 
         }
+    }
+
+    private void AddToInteractorsArray()
+    {
+        ShaderInteractorHolder.instance.SubcribeInteractor(this);
+        //for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        //{
+        //    var interactor = ShaderInteractorHolder.interactors[i]; 
+        //    //ShaderInteractorHolder.instance.UpdateInteractor();
+
+        //    if (interactor == null)
+        //    {
+        //        ShaderInteractorHolder.interactors[i] = this;
+        //        break; 
+        //    }
+        //}
+    }
+
+    private void RemoveFromInteractorsArray()
+    {
+        //for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        //{
+        //    var interactor = ShaderInteractorHolder.interactors[i];
+
+        //    if (interactor == this)
+        //    {
+        //        ShaderInteractorHolder.interactors[i] = null;
+        //        break; 
+        //    }
+        //}
+        ShaderInteractorHolder.instance.UnsubscribeInteractor(this);
     }
 }
