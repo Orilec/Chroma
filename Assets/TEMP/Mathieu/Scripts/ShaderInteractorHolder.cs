@@ -11,8 +11,8 @@ public class ShaderInteractorHolder : MonoBehaviour
     private int currentIndex;
 
 
-    Vector4[] positions = new Vector4[30];
-    float[] radiuses = new float[30];
+    Vector4[] positions = new Vector4[100];
+    float[] radiuses = new float[100];
 
     [Range(0, 1)]
     public float shapeCutoff;
