@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Manager
 {
     [SerializeField] private PlayerEventsPublisher _playerEvents;
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
@@ -16,12 +16,10 @@ public class SceneLoader : MonoBehaviour
     
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene(_mainScene);
-        LoadScenes(_scenesToLoadAdditive);
+        // SceneManager.LoadScene(_mainScene);
+        // LoadScenes(_scenesToLoadAdditive);
         _narrativeEvents.EndOfVSLevel.AddListener(SetEndOfLevel);
         _UiEvents.FirstFadeFinished.AddListener(EndOfVSLevel);
-
     }
     
     private void LoadScenes(List<int> scenes)
