@@ -9,7 +9,7 @@ public class CutscenePlayerMover : MonoBehaviour
     [SerializeField] private PlayerEventsPublisher _playerEvents;
     private PlayerController _player;
 
-    private void Awake()
+    private void Start()
     {
         ChroManager.GetManager<PlayerManager>().GetPlayer();
     }

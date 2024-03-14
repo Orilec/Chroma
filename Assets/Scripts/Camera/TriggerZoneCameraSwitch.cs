@@ -11,7 +11,7 @@ public class TriggerZoneCameraSwitch : MonoBehaviour
 
     private PlayerController _player;
     
-    private void Awake()
+    private void Start()
     {
         _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
     }

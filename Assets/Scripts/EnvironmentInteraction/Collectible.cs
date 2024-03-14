@@ -10,7 +10,7 @@ public class Collectible : MonoBehaviour
 
     private PlayerController _player;
 
-    private void Awake()
+    private void Start()
     {
         _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
     }

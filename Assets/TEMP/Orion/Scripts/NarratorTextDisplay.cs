@@ -26,7 +26,7 @@ public class NarratorTextDisplay : MonoBehaviour
     private bool _triggered;
     private PlayerController _player;
 
-    private void Awake()
+    private void Start()
     {
         _narratorTexts = new List<NarratorText>();
         _player = ChroManager.GetManager<PlayerManager>().GetPlayer();

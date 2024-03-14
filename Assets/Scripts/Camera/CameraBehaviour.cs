@@ -23,8 +23,9 @@ public class CameraBehaviour : MonoBehaviour
     private float _currentSmoothTime;
     private Vector3 _vel;
     private Camera _mainCam;
+    
 
-    private void OnEnable()
+    private void Awake()
     {
         _playerEvents.LeavingGround.AddListener(OnLeavingGround);
         _flCamera = FindObjectOfType<CinemachineFreeLook>();

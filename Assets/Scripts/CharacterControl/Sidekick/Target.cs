@@ -16,7 +16,6 @@ public class Target : MonoBehaviour
     private void Awake()
     {
         _targetManager = ChroManager.GetManager<TargetManager>();
-        _playerTransform = ChroManager.GetManager<PlayerManager>().GetPlayer().transform;
         _renderer = GetComponent<MeshRenderer>();
         _colorable.interactorEvent.OnDecolorationFinished += ReActivate;
     }
@@ -28,6 +27,7 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
+        _playerTransform = ChroManager.GetManager<PlayerManager>().GetPlayer().transform;
         _mainCam = Camera.main;
     }
 

@@ -11,10 +11,14 @@ public class KioskManager : MonoBehaviour
     private PlayerController _player;
     private void OnEnable()
     {
-        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
         _requiredObjectsCount = transform.childCount;
         _narrativeEvents.KioskObjectColored.AddListener(AddColoredObject);
         _narrativeEvents.KioskAreaCompleted.AddListener(DebugAreaCompleted);
+    }
+
+    private void Start()
+    {
+        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
     }
 
     private void OnTriggerEnter(Collider other)

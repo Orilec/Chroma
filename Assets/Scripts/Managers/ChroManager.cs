@@ -7,7 +7,7 @@ public class ChroManager : MonoBehaviour
 {
     
     [SerializeField] private List<Manager> _managers;
-    private static ChroManager _instance;
+    private static ChroManager _instance = null;
 
     private void Awake()
     {
@@ -16,7 +16,10 @@ public class ChroManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else Destroy(this);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     
     public static T GetManager<T>() where T : Manager
