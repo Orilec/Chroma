@@ -14,6 +14,7 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<bool> SlideJumping;
     public UnityEvent<bool> Dying;
     public UnityEvent<bool> InMiasma;
+    public UnityEvent<bool> OnCliff;
     public UnityEvent<bool> GroundedState;
     public UnityEvent<bool> LandingToLower;
     public UnityEvent<float> LocomotionSpeed;
