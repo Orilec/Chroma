@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 195914a7b2e2c024e911a32ecfd0924e, type: 3}
+        m_Texture: {fileID: 2800000, guid: f4e12677860b17240b1a3a212c85653f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
@@ -90,7 +90,7 @@ Material:
     - _MoveSpeed: 0
     - _NoiseScale: 1
     - _NoiseStrenght: 1.69
-    - _NormalBWStrength: 0
+    - _NormalBWStrength: 1
     - _NormalStrength: 1
     - _OcclusionPower: 1
     - _OutlineAcuteDepthThreshold: 1
@@ -123,13 +123,13 @@ Material:
     - _SmoothnessSlider: 0
     - _Softness: 0.3
     - _TextureBlend: 0
-    - _TextureTiling: 1
+    - _TextureTiling: 1.6
     - _USESCREENSPACE: 0
     m_Colors:
     - _DensityVector: {r: 2, g: 2, b: 0, a: 0}
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0}
     - _Specular: {r: 0, g: 0, b: 0, a: 0}
