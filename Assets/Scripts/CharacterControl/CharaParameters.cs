@@ -29,6 +29,9 @@ public class CharaParameters : ScriptableObject
     public float miasmaSpeed = 20f;
     public float miasmaGravity = -20f;
     
+    [Header("Cliff Parameters")] 
+    public float cliffSpeed = 50f;
+    
     [Header("Jump Parameters")] 
     public float initialJumpForce = 1500f;
     public float continualJumpForceMultiplier = 0.1f;

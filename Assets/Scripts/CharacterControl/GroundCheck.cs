@@ -21,6 +21,7 @@ public class GroundCheck : MonoBehaviour
     public RaycastHit GroundCheckHit;
     public RaycastHit EnvironmentCheckHit;
     public bool AutoSlide;
+    public bool OnCliff;
     public Transform slopeDirection;
 
     private void Update()
@@ -30,6 +31,7 @@ public class GroundCheck : MonoBehaviour
         if (GroundCheckHit.transform != null)
         {
             AutoSlide = GroundCheckHit.transform.CompareTag("AutoSlide");
+            OnCliff = GroundCheckHit.transform.CompareTag("Cliff");
             if (AutoSlide) slopeDirection = GroundCheckHit.transform.GetChild(0);
         }
         IsOnEnvironment = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out EnvironmentCheckHit, _groundDistance, _environmentLayers);

@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
     public float InitialSlideBoostForce { get { return _parameters.initialSlideBoostForce; } }
     public float ContinualSlideBoostForceMultiplier { get { return _parameters.continualSlideBoostForceMultiplier; } }
     public float MiasmaGravity { get { return _parameters.miasmaGravity; } }
+    public float CliffSpeed { get { return _parameters.cliffSpeed; } }
     public bool IsDownSlope { get { return _isDownSlope; } }
     
     
@@ -139,6 +140,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        //Subscribing to manager
+        ChroManager.GetManager<PlayerManager>().SubscribePlayer(this);
+        
         //Filling references
         _mainCam = Camera.main.transform;
         _rigidbody = GetComponent<Rigidbody>();
@@ -147,9 +151,6 @@ public class PlayerController : MonoBehaviour
         _input = ChroManager.GetManager<InputReader>();
         _trail = FindObjectOfType<PlayerTrailScript>();
         _respawnSystem = GetComponent<RespawnSystem>();
-        
-        //Subscribing to manager
-        ChroManager.GetManager<PlayerManager>().SubscribePlayer(this);
         
         _rigidbody.freezeRotation = true;
         
@@ -189,6 +190,7 @@ public class PlayerController : MonoBehaviour
         var respawningState = new RespawningState(this, _input, _playerEventsPublisher);
         var slideBoostState = new SlideBoostState(this, _input, _playerEventsPublisher);
         var autoSlideState = new AutoSlideState(this, _input, _playerEventsPublisher);
+        var cliffState = new CliffState(this, _input, _playerEventsPublisher);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
@@ -197,6 +199,7 @@ public class PlayerController : MonoBehaviour
         At(groundedState,slidingJumpState, new FuncPredicate(()=> _slidingJumpTimer.IsRunning));
         At(groundedState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         At(groundedState, autoSlideState, new FuncPredicate(()=> _isOnSlope && _groundCheck.AutoSlide));
+        At(groundedState, cliffState, new FuncPredicate(()=> _groundCheck.OnCliff));
         
         At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_jumpMinTimer.IsRunning));
         At(jumpState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
@@ -241,6 +244,10 @@ public class PlayerController : MonoBehaviour
         At(autoSlideState, slideBoostState, new FuncPredicate(()=> _slideBoostTimer.IsRunning));
         
         At(slideBoostState, fallState, new FuncPredicate(()=> !_slideBoostTimer.IsRunning));
+        
+        At(cliffState, groundedState, new FuncPredicate(()=> !_groundCheck.OnCliff));
+        At(cliffState, groundedState, new FuncPredicate(()=> !_groundCheck.IsGrounded));
+        At(cliffState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         // At(groundedEnvironmentState, fallState, new FuncPredicate(()=> !_groundCheck.IsOnEnvironment));
         // Any(groundedEnvironmentState, new FuncPredicate(()=> _groundCheck.IsOnEnvironment));
