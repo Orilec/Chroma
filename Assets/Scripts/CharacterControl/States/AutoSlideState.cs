@@ -19,9 +19,9 @@ public class AutoSlideState : BaseCharacterState
     }
     public override void FixedUpdate()
     {
-        _playerController.PlayerMoveInputZ = 1;
-        
-        _playerController.PlayerMove();
+        // _playerController.PlayerMoveInputZ = 1;
+        //
+        // _playerController.PlayerMove();
         
         if (!_slopeCoroutineStarted)
         {
