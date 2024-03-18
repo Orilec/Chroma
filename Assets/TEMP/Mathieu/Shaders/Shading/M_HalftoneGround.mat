@@ -47,6 +47,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_53e7f936e44a4ba286373fde6096cfd0_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -69,13 +81,17 @@ Material:
     - _Density: 1
     - _FalloffThreshold: 0
     - _FloatTestPower: 0
+    - _HasOcclusionMap: 0
+    - _IsMetallic: 0
     - _LitThreshold: 0
     - _MAIN_LIGHT_SHADOWS: 1
+    - _Metallic: 0
     - _NEW_ShadowStep: 0.1
     - _NoiseScale: 2.38
     - _NoiseStrenght: 0.23
     - _NormalBWStrength: 0
     - _NormalStrength: 0
+    - _OcclusionPower: 1
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
