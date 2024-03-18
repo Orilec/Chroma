@@ -299,7 +299,6 @@ public class PlayerController : MonoBehaviour
         SnapToGround();
         
         _rigidbody.AddForce(_playerMoveInput, ForceMode.Force);
-        Debug.DrawRay(transform.position, _playerMoveInput, Color.red);
     }
     
     

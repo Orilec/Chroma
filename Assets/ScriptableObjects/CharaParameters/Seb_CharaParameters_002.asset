@@ -29,17 +29,18 @@ MonoBehaviour:
   miasmaTimeBeforeDeath: 2
   miasmaSpeed: 50
   miasmaGravity: -40
+  cliffSpeed: 50
   initialJumpForce: 800
   continualJumpForceMultiplier: 0.06
   jumpTime: 0.2
   jumpMinTime: 0.2
   coyoteTime: 0.1
   jumpBufferTime: 0.3
-  slideNormalSpeed: 220
+  slideNormalSpeed: 180
   slideTime: 0.8
   slideCooldownTime: 1
   slideSpeedDecrementAmount: 1
-  slopeSlideMaxSpeed: 350
+  slopeSlideMaxSpeed: 200
   slopeSlideIncrementAmount: 2
   slideBoostTime: 0.2
   initialSlideBoostForce: 2500
