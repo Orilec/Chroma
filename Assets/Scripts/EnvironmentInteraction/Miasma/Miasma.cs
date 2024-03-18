@@ -34,7 +34,6 @@ public class Miasma : MonoBehaviour
             {
                 ExitMiasmaImmediate();
             }
-            _wasInInteractorRadiusLastFrame = isPointInRadiusRange;
         }
     }
 
@@ -60,8 +59,16 @@ public class Miasma : MonoBehaviour
     }
     private void ExitMiasmaImmediate()
     {
+        _wasInInteractorRadiusLastFrame = true;
         _player.IsInMiasma = false;
-        StopMiasmaTimer();
+        _player.MiasmaTimer.Stop();
+        StartCoroutine(ResetWasInInteractorRadius());
+    }
+
+    private IEnumerator ResetWasInInteractorRadius()
+    {
+        yield return new WaitForFixedUpdate();
+        _wasInInteractorRadiusLastFrame = false;
     }
     
     private void StopMiasmaTimer()
