@@ -64,6 +64,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_53e7f936e44a4ba286373fde6096cfd0_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_25f07e81fa234db5b387f35202627ff6_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: d4aa7816407c85c4a95aae980fe10373, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -105,8 +109,10 @@ Material:
     - _FalloffThreshold: 2.12
     - _FloatTestPower: 1
     - _HasOcclusionMap: 0
+    - _IsMetallic: 0
     - _LitThreshold: 1.04
     - _MAIN_LIGHT_SHADOWS: 1
+    - _Metallic: 0
     - _NEW_ShadowStep: 0.86
     - _NoiseLerp: 0.504
     - _NoiseScale: 1.83
