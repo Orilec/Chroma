@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ThrowSystem : MonoBehaviour
 {
+    [SerializeField] private float _throwSidekickCooldown = 2f;
     
     [SerializeField] private ParticleSystem _correctTrajectoryEmission;
     [SerializeField] private ParticleSystem _untargetedTrajectoryEmission;
@@ -79,8 +80,14 @@ public class ThrowSystem : MonoBehaviour
     public void StopRetrieve()
     {
         _isRetrieving = false;
-        _sidekickIsAvailable = true;
+        StartCoroutine(SidekickCooldown());
         _sidekickGameObject.SetActive(true);
+    }
+
+    private IEnumerator SidekickCooldown()
+    {
+        yield return new WaitForSeconds(_throwSidekickCooldown);
+        _sidekickIsAvailable = true;
     }
 
     private IEnumerator UpdateSidekickRetrievePoint()
