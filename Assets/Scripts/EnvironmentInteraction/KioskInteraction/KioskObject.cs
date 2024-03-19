@@ -8,10 +8,19 @@ public class KioskObject : ColorableObject
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     [SerializeField] private ColorableObject _appearObject;
     [SerializeField] private float _delayBeforeAppear;
+    [SerializeField] private Trail _associatedTrail;
     private bool _isActivated;
+
+    public float DelayBeforeAppear { get { return _delayBeforeAppear; } }
 
     public override void SetObjectActive()
     {
+        if (_associatedTrail != null)
+        {
+            _associatedTrail.SetTrailActive(); 
+        }
+
+
         base.SetObjectActive();
         Invoke(nameof(SetAppearObjectActive), _delayBeforeAppear);
     }
