@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_BigFlower
+  m_Name: M_Rock004_Bis
   m_Shader: {fileID: -6465566751694194690, guid: 60c2f36503551f140a9d030a470abcf0,
     type: 3}
   m_Parent: {fileID: 0}
@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 92899b7092d91f34ab1a26ee9ec398d4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3b38844571ecd554788cd311d02db376, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 241412d2377b4f544920c01a5899dfa5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4cb577fdaa2232441ba73633823c1d9d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -117,8 +117,8 @@ Material:
     - _NoiseLerp: 0.504
     - _NoiseScale: 1.83
     - _NoiseStrenght: 0.47
-    - _NormalBWStrength: 6.24
-    - _NormalStrength: 0.39
+    - _NormalBWStrength: 1
+    - _NormalStrength: 1.44
     - _OcclusionPower: 1
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
@@ -137,14 +137,14 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.45
-    - _Rim_Amount: 4.59
+    - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
     - _SWAPSTYLE: 0
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
-    - _ShadingMultiplyer: -0.05
+    - _ShadingMultiplyer: 0.1
     - _ShapeNoiseStrenght: 0.5
     - _ShapeNoiseTiling: 86.16
     - _ShapeSharpness: 0.14
@@ -153,17 +153,17 @@ Material:
     - _Softness: 0.76
     - _Step1Contraste: 0.14
     - _Step2Contrast: 0.19
-    - _TESTSATURATION: 5.03
+    - _TESTSATURATION: 2.03
     - _TextureBlend: 0.053
     - _TextureTiling: 1
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
-    - _DensityVector: {r: 5, g: 5, b: 0, a: 0}
+    - _DensityVector: {r: 67.5, g: 2.81, b: 0, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
-    - _StepContraste: {r: 0, g: 0.08, b: 0, a: 0}
+    - _StepContraste: {r: 0, g: 0.14, b: 0, a: 0}
     - _SwapLineColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
   m_BuildTextureStacks: []
