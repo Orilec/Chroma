@@ -13,7 +13,6 @@ public class KioskArea : MonoBehaviour
     {
         _requiredObjectsCount = transform.childCount;
         _narrativeEvents.KioskObjectColored.AddListener(AddColoredObject);
-        _narrativeEvents.KioskAreaCompleted.AddListener(DebugAreaCompleted);
     }
 
     private void Start()
@@ -45,6 +44,7 @@ public class KioskArea : MonoBehaviour
             _objectsColored++;
             if (_objectsColored == _requiredObjectsCount)
             {
+                DebugAreaCompleted();
                 _narrativeEvents.KioskAreaCompleted.Invoke();
             }
         }
@@ -55,6 +55,6 @@ public class KioskArea : MonoBehaviour
         _completed = true;
         _isInArea = false;
         _narrativeEvents.KioskAreaEntered.Invoke(false, _requiredObjectsCount);
-        Debug.Log("Area Completed");
+        Debug.Log("Area Completed" + this.name);
     }
 }
