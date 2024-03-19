@@ -39,6 +39,8 @@ public class InteractorScript : MonoBehaviour
     {
         //maxRadius = Random.Range(3f, 5f); 
         if (isCast) SetInteractorActive(); // activate temporary interactor as soon as it spawns
+
+        AddToInteractorsArray();
     }
 
     // Update is called once per frame
@@ -87,10 +89,10 @@ public class InteractorScript : MonoBehaviour
 
     public void SetInteractorActive()
     {
-        AddToInteractorsArray(); 
 
         if (isTemporary)
         {
+            AddToInteractorsArray(); //Add temporary interactor to interactors array
             StartCoroutine(SwapTemporaryColor());
         }
         else
@@ -122,8 +124,6 @@ public class InteractorScript : MonoBehaviour
         radius = maxRadius; // Set final radius
 
 
-        RemoveFromInteractorsArray(); 
-
         //Call event for animation/fill
         if (parent.GetComponent<ColorableObject>() != null)
         {
@@ -141,9 +141,7 @@ public class InteractorScript : MonoBehaviour
             yield return null;
         }
 
-
         radius = maxRadius; // Set final radius
-
 
         timeElapsed = 0;
         while (timeElapsed < decolorationTime)
@@ -155,9 +153,7 @@ public class InteractorScript : MonoBehaviour
 
         radius = 0;
 
-
-
-        RemoveFromInteractorsArray(); 
+        RemoveFromInteractorsArray(); //Remove temporary interactor from interactors array
 
         //Call event for reverse animation
         if (!isCast)
@@ -174,34 +170,31 @@ public class InteractorScript : MonoBehaviour
         }
     }
 
+
+
     private void AddToInteractorsArray()
     {
-        ShaderInteractorHolder.instance.SubcribeInteractor(this);
-        //for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
-        //{
-        //    var interactor = ShaderInteractorHolder.interactors[i]; 
-        //    //ShaderInteractorHolder.instance.UpdateInteractor();
+        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        {
 
-        //    if (interactor == null)
-        //    {
-        //        ShaderInteractorHolder.interactors[i] = this;
-        //        break; 
-        //    }
-        //}
+            if (ShaderInteractorHolder.interactors[i] == null)
+            {
+                ShaderInteractorHolder.interactors[i] = this;
+                break; 
+            }
+        }
     }
 
     private void RemoveFromInteractorsArray()
     {
-        //for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
-        //{
-        //    var interactor = ShaderInteractorHolder.interactors[i];
+        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        {
 
-        //    if (interactor == this)
-        //    {
-        //        ShaderInteractorHolder.interactors[i] = null;
-        //        break; 
-        //    }
-        //}
-        ShaderInteractorHolder.instance.UnsubscribeInteractor(this);
+            if (ShaderInteractorHolder.interactors[i] == this)
+            {
+                ShaderInteractorHolder.interactors[i] = null;
+                break; 
+            }
+        }
     }
 }

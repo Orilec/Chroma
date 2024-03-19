@@ -11,7 +11,7 @@ public class CutscenePlayerMover : MonoBehaviour
 
     private void Start()
     {
-        ChroManager.GetManager<PlayerManager>().GetPlayer();
+        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
     }
 
     public void MovePlayer()
