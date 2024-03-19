@@ -60,6 +60,18 @@ Material:
         m_Texture: {fileID: 2800000, guid: c3c448e74cc98a047acbff989fe4ea93, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_53e7f936e44a4ba286373fde6096cfd0_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_af9884a719184919b91fb9537cfb1f9f_Out_0_Texture2D:
         m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -88,13 +100,17 @@ Material:
     - _Density: 12.01
     - _FalloffThreshold: 1.47
     - _FloatTestPower: 0
+    - _HasOcclusionMap: 0
+    - _IsMetallic: 0
     - _LitThreshold: 0.75
     - _MAIN_LIGHT_SHADOWS: 1
+    - _Metallic: 0
     - _NEW_ShadowStep: -0.42
     - _NoiseScale: 0
     - _NoiseStrenght: 0.57
     - _NormalBWStrength: 0
     - _NormalStrength: 0
+    - _OcclusionPower: 1
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
