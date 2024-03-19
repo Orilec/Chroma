@@ -60,12 +60,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: 667e1466f3b83ee4d934743a89ba169f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_53e7f936e44a4ba286373fde6096cfd0_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_25f07e81fa234db5b387f35202627ff6_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: d4aa7816407c85c4a95aae980fe10373, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_b04809425b2c45ca963b18447d5f18d9_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 79071d12df102a9409918af02f299ab1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_af9884a719184919b91fb9537cfb1f9f_Out_0_Texture2D:
@@ -96,14 +108,18 @@ Material:
     - _Density: 10
     - _FalloffThreshold: 2.12
     - _FloatTestPower: 1
+    - _HasOcclusionMap: 0
+    - _IsMetallic: 0
     - _LitThreshold: 1.04
     - _MAIN_LIGHT_SHADOWS: 1
+    - _Metallic: 0
     - _NEW_ShadowStep: 0.86
     - _NoiseLerp: 0.504
     - _NoiseScale: 1.83
     - _NoiseStrenght: 0.47
     - _NormalBWStrength: 0
     - _NormalStrength: 1.44
+    - _OcclusionPower: 1
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
@@ -139,6 +155,7 @@ Material:
     - _Step2Contrast: 0.19
     - _TESTSATURATION: 5.03
     - _TextureBlend: 0.053
+    - _TextureTiling: 1
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
