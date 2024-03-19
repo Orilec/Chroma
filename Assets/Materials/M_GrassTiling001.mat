@@ -64,6 +64,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_53e7f936e44a4ba286373fde6096cfd0_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_25f07e81fa234db5b387f35202627ff6_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: d4aa7816407c85c4a95aae980fe10373, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -102,11 +106,13 @@ Material:
     - _Debug_2: 0
     - _Debug_3: 0
     - _Density: 10
-    - _FalloffThreshold: 2.12
+    - _FalloffThreshold: 3.1
     - _FloatTestPower: 1
     - _HasOcclusionMap: 0
-    - _LitThreshold: 1.04
+    - _IsMetallic: 0
+    - _LitThreshold: 2.13
     - _MAIN_LIGHT_SHADOWS: 1
+    - _Metallic: 0
     - _NEW_ShadowStep: 0.86
     - _NoiseLerp: 0.504
     - _NoiseScale: 1.83
@@ -139,9 +145,9 @@ Material:
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
     - _ShadingMultiplyer: 0.1
-    - _ShapeNoiseStrenght: 0.5
-    - _ShapeNoiseTiling: 86.16
-    - _ShapeSharpness: 0.14
+    - _ShapeNoiseStrenght: 2.5
+    - _ShapeNoiseTiling: 314.87
+    - _ShapeSharpness: 0.08
     - _ShapeSize: 0.04
     - _Smoothness: 2.69
     - _Softness: 0.76
@@ -153,11 +159,11 @@ Material:
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
-    - _DensityVector: {r: 67.5, g: 2.81, b: 0, a: 0}
+    - _DensityVector: {r: 10, g: 10, b: 0, a: 0}
     - _MainColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
-    - _StepContraste: {r: 0, g: 0.14, b: 0, a: 0}
-    - _SwapLineColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
+    - _StepContraste: {r: 0.04, g: 0.14, b: 0, a: 0}
+    - _SwapLineColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 0}
   m_BuildTextureStacks: []
