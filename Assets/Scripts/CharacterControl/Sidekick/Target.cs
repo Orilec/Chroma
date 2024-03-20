@@ -7,6 +7,7 @@ public class Target : MonoBehaviour
 {
      
     [SerializeField] private ColorableObject _colorable;
+    private Collider _collider;
     private TargetManager _targetManager;
     private Transform _playerTransform;
     private MeshRenderer _renderer;
@@ -17,6 +18,7 @@ public class Target : MonoBehaviour
     {
         _targetManager = ChroManager.GetManager<TargetManager>();
         _renderer = GetComponent<MeshRenderer>();
+        _collider = GetComponent<Collider>();
         _colorable.interactorEvent.OnDecolorationFinished += ReActivate;
     }
 
@@ -75,8 +77,9 @@ public class Target : MonoBehaviour
     
     public void OnActivate()
     {
+        _collider.enabled = false;
         isActivated = true;
-        if (_colorable != null)
+        if (_colorable != null && !_colorable.isColored)
         {
             _colorable.SetObjectActive();
 
