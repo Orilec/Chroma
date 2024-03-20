@@ -21,11 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Fougeres_002
-  m_Shader: {fileID: -6465566751694194690, guid: 43ee6da12dee70846888141807d48ca7,
+  m_Shader: {fileID: -6465566751694194690, guid: 81ac1159f979f5c4e9c8549316ccab63,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -88,6 +89,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 0
+    - _CONTRASTMODIFIERS: 0
     - _Debug: 0
     - _Debug_1: 0
     - _Debug_2: 0
@@ -96,6 +98,7 @@ Material:
     - _FalloffThreshold: 1.47
     - _FloatTestPower: 0
     - _HasEmissiveMap: 0
+    - _HasNormalMap: 0
     - _HasSmoothnessMap: 0
     - _HatchingSpeed: 3
     - _HatchingStrenght: 0.2
@@ -126,10 +129,15 @@ Material:
     - _Rim_Amount: 6.01
     - _Rim_step: 0.3
     - _Rotation: 45
+    - _STYLE: 0
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
     - _ShadingMultiplyer: 0.09
+    - _ShapeNoiseStrenght: 0.3
+    - _ShapeNoiseTiling: 10
+    - _ShapeSharpness: 0.07
+    - _ShapeSize: 0.21
     - _Smoothness: 2.04
     - _SmoothnessSlider: 0
     - _Softness: 0.67
@@ -137,6 +145,7 @@ Material:
     - _USESCREENSPACE: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _ColorLINE: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
     - _DensityVector: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HatchingTiling: {r: 4, g: 4, b: 0, a: 0}

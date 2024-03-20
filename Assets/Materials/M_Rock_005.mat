@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_RockCliff002bis
+  m_Name: M_Rock_005
   m_Shader: {fileID: -6465566751694194690, guid: 60c2f36503551f140a9d030a470abcf0,
     type: 3}
   m_Parent: {fileID: 0}
@@ -48,8 +48,12 @@ Material:
         m_Texture: {fileID: 2800000, guid: ad2e3fac0203f264bb5023b973981c71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ecbb9ba3b33845f4b995e980d65171d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 708bf8c71b3b0b943a87d90a550961e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
@@ -57,11 +61,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: e50793d717b16184cae90b087d261372, type: 3}
+        m_Texture: {fileID: 2800000, guid: c6f076376368f5341bc0c41ec63a3cd3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a9c81d4e017e81746898a3c90bd9fd6d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleCubemap_53e7f936e44a4ba286373fde6096cfd0_Cube_1_Cubemap:
@@ -108,7 +112,7 @@ Material:
     - _Density: 10
     - _FalloffThreshold: 2.12
     - _FloatTestPower: 1
-    - _HasOcclusionMap: 0
+    - _HasOcclusionMap: 1
     - _IsMetallic: 0
     - _LitThreshold: 1.04
     - _MAIN_LIGHT_SHADOWS: 1
@@ -118,8 +122,8 @@ Material:
     - _NoiseScale: 1.83
     - _NoiseStrenght: 0.47
     - _NormalBWStrength: 1
-    - _NormalStrength: 1
-    - _OcclusionPower: 1
+    - _NormalStrength: -4.54
+    - _OcclusionPower: 0.08
     - _OutlineAcuteDepthThreshold: 1
     - _OutlineAcuteStartDot: 0.9
     - _OutlineDepthStrength: 1
@@ -137,19 +141,19 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RadiusCutoff: 0.45
-    - _Rim_Amount: 6.01
+    - _Rim_Amount: 9.05
     - _Rim_step: 0.3
     - _Rotation: 45
     - _SWAPSTYLE: 0
     - _Saturation: 0
     - _SecondOutlineDissolve: 0.33
     - _SecondOutlineRotation: -0.01
-    - _ShadingMultiplyer: 0.1
+    - _ShadingMultiplyer: 0.34
     - _ShapeNoiseStrenght: 0.5
     - _ShapeNoiseTiling: 86.16
     - _ShapeSharpness: 0.14
     - _ShapeSize: 0.04
-    - _Smoothness: 2.69
+    - _Smoothness: 0.9
     - _Softness: 0.76
     - _Step1Contraste: 0.14
     - _Step2Contrast: 0.19
@@ -159,8 +163,8 @@ Material:
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
-    - _DensityVector: {r: 67.5, g: 2.81, b: 0, a: 0}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _DensityVector: {r: 5, g: 5, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
     - _Specular: {r: 1, g: 1, b: 1, a: 0}
