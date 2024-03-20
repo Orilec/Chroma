@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine; 
+using Cinemachine;
 
 public class Trail : MonoBehaviour
 {
     [SerializeField] private CinemachineDollyCart dollyCart;
     [SerializeField] private CinemachineSmoothPath dollyTrack;
     [SerializeField] private KioskObject kioskObject;
+    [SerializeField] private List<ParticleSystem> spinningParticleSystems;
     
 
     private float travelTime;
@@ -25,7 +26,13 @@ public class Trail : MonoBehaviour
 
     public void SetTrailActive()
     {
-        StartCoroutine(StartPath());
+        StartCoroutine(StartPath()); //Start dolly cart with trails and particles attached
+
+        foreach (ParticleSystem sPS in spinningParticleSystems)
+        {
+            sPS.Play(); //Start spinning particles
+        }
+
     }
 
 
@@ -53,6 +60,13 @@ public class Trail : MonoBehaviour
     {
         pathLength = dollyTrack.PathLength;
         dollyCart.m_Position = 0f;
-        travelTime = kioskObject.DelayBeforeAppear; 
+        travelTime = kioskObject.DelayBeforeAppear;
+
+        foreach (ParticleSystem sPS in spinningParticleSystems)
+        {
+            ParticleSystem.MainModule main = sPS.main; 
+            main.startLifetime = travelTime;
+
+        }
     }
 }
