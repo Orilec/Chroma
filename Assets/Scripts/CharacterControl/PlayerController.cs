@@ -470,7 +470,7 @@ public class PlayerController : MonoBehaviour
         _leavingGroundY = transform.position.y;
     }
 
-    private void CompareYPos()
+    private void CompareYPos(Transform objectUnderFeet)
     {
         float fallHeight = transform.position.y - _leavingGroundY;
         var lowerGround = fallHeight < -1f;
