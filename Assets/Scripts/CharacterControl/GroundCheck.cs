@@ -22,16 +22,17 @@ public class GroundCheck : MonoBehaviour
     public RaycastHit EnvironmentCheckHit;
     public bool AutoSlide;
     public bool OnCliff;
-
+    public Transform CurrentObjectUnderFeet;
 
     private void Update()
     {
         IsGrounded = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out GroundCheckHit, _groundDistance, _groundLayers);
         GroundBelow = Physics.Raycast(transform.position, Vector3.down, _groundBelowDistance, _groundLayers);
-        if (GroundCheckHit.transform != null)
+        CurrentObjectUnderFeet = GroundCheckHit.transform;
+        if (CurrentObjectUnderFeet != null)
         {
-            AutoSlide = GroundCheckHit.transform.CompareTag("AutoSlide");
-            OnCliff = GroundCheckHit.transform.CompareTag("Cliff");
+            AutoSlide = CurrentObjectUnderFeet.CompareTag("AutoSlide");
+            OnCliff = CurrentObjectUnderFeet.CompareTag("Cliff");
         }
         IsOnEnvironment = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out EnvironmentCheckHit, _groundDistance, _environmentLayers);
         if (IsGrounded == false && IsGrounded != previousState)
@@ -40,7 +41,7 @@ public class GroundCheck : MonoBehaviour
         }
         else if (IsGrounded == true && IsGrounded != previousState)
         {
-            _playerEvents.EnteringGround.Invoke();
+            _playerEvents.EnteringGround.Invoke(CurrentObjectUnderFeet);
         }
     }
 

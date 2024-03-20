@@ -23,7 +23,7 @@ public class BlobShadow : MonoBehaviour
         if(!_groundCheck.IsGrounded) HandleShadowPosition();
     }
 
-    private void ResetYPos()
+    private void ResetYPos(Transform objectUnderFeet)
     {
         _blobShadowTransform.localPosition = new Vector3(_blobShadowTransform.localPosition.x, _originalYpos, _blobShadowTransform.localPosition.z);
     }
