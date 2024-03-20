@@ -7,7 +7,7 @@ public class PlayerEventsPublisher : ScriptableObject
 {
     public UnityEvent Respawn;
     public UnityEvent LeavingGround;
-    public UnityEvent EnteringGround;
+    public UnityEvent<Transform> EnteringGround;
     public UnityEvent<bool> Jumping;
     public UnityEvent<bool> Sliding;
     public UnityEvent<bool> AirSliding;
