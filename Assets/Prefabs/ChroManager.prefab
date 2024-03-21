@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5061245012661993975}
   - component: {fileID: 4760919306137384591}
   - component: {fileID: 4733342404857357358}
+  - component: {fileID: -3684566899998883183}
   m_Layer: 0
   m_Name: ChroManager
   m_TagString: Untagged
@@ -90,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reachableTargets: []
-  minReachDistance: 30
+  minReachDistance: 12
   currentTarget: {fileID: 0}
   VerticalAimTreshold: 0.1
   HorizontalAimTreshold: 0.25
@@ -111,3 +112,29 @@ MonoBehaviour:
   _UiEvents: {fileID: 11400000, guid: 2596671c86cc5074e8ae4cd6fe276d5b, type: 2}
   _mainScene: 0
   _scenesToLoadAdditive: 
+--- !u!114 &-3684566899998883183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2719134146991001412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6d72fa495b247e0a1de9371c0c5909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: ae8d9d44
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: bbcd77dfef979fa478f87d65559a4373,
+      type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 

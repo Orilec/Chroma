@@ -357,7 +357,7 @@ public class PlayerController : MonoBehaviour
         else _playerMoveInput = ConvertToTransformSpace(_slopeDirection, _playerMoveInput);
 
         if (_input.MoveInput.magnitude <= 0) _relativeCurrentSpeed = 0f;
-        else _relativeCurrentSpeed = (_currentSpeed - _currentBaseSpeed ) / (_parameters.maxMoveSpeed - BaseMoveSpeed);
+        else _relativeCurrentSpeed = (_currentSpeed) / (_parameters.maxMoveSpeed);
         _playerEventsPublisher.LocomotionSpeed.Invoke(_relativeCurrentSpeed);
     }
 
@@ -470,7 +470,7 @@ public class PlayerController : MonoBehaviour
         _leavingGroundY = transform.position.y;
     }
 
-    private void CompareYPos()
+    private void CompareYPos(Transform objectUnderFeet)
     {
         float fallHeight = transform.position.y - _leavingGroundY;
         var lowerGround = fallHeight < -1f;
