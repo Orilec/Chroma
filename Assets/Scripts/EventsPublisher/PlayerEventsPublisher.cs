@@ -21,5 +21,6 @@ public class PlayerEventsPublisher : ScriptableObject
     public UnityEvent<bool> PauseGame;
     public UnityEvent<bool, float, float> ChangeBaseSpeed;
     public UnityEvent<bool, Transform> SetAutoslide;
+    public UnityEvent<bool> SetOnCliff;
 
 }

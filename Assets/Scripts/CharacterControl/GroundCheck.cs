@@ -21,7 +21,6 @@ public class GroundCheck : MonoBehaviour
     public RaycastHit GroundCheckHit;
     public RaycastHit EnvironmentCheckHit;
     public bool AutoSlide;
-    public bool OnCliff;
     public Transform CurrentObjectUnderFeet;
 
     private void Update()
@@ -32,7 +31,6 @@ public class GroundCheck : MonoBehaviour
         if (CurrentObjectUnderFeet != null)
         {
             AutoSlide = CurrentObjectUnderFeet.CompareTag("AutoSlide");
-            OnCliff = CurrentObjectUnderFeet.CompareTag("Cliff");
         }
         IsOnEnvironment = Physics.SphereCast(transform.position, _groundDistance, Vector3.down, out EnvironmentCheckHit, _groundDistance, _environmentLayers);
         if (IsGrounded == false && IsGrounded != previousState)
