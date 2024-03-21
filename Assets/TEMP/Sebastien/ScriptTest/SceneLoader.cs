@@ -16,8 +16,8 @@ public class SceneLoader : Manager
     
     private void Awake()
     {
-        // SceneManager.LoadScene(_mainScene);
-        // LoadScenes(_scenesToLoadAdditive);
+        SceneManager.LoadScene(_mainScene);
+        LoadScenes(_scenesToLoadAdditive);
         _narrativeEvents.EndOfVSLevel.AddListener(SetEndOfLevel);
         _UiEvents.FirstFadeFinished.AddListener(EndOfVSLevel);
     }
