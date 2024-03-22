@@ -15,6 +15,11 @@ public enum FlipMode
     RightToLeft,
     LeftToRight
 }
+[System.Serializable]
+public class PagesList
+{
+    public List<Sprite> list;
+}
 [ExecuteInEditMode]
 public class FlippingNotebook : MonoBehaviour {
     [Header("General References")]
@@ -35,7 +40,7 @@ public class FlippingNotebook : MonoBehaviour {
     
     [Header("Pages References")]
     [SerializeField] private List<Sprite> _currentBookPages;
-    [SerializeField] private List<Sprite> _bookPagesPlanned;
+    [SerializeField] private List<PagesList> _bookPagesPlanned;
     
     [Header("Parameters")]
     [SerializeField] private bool enableShadowEffect=true;
@@ -45,7 +50,7 @@ public class FlippingNotebook : MonoBehaviour {
     [SerializeField] private int _fastAnimationFramesCount = 20;
 
     private float _pageFlipTime, _animationFramesCount;
-    private int _currentAddedPagesIndex;
+    private int _currentAddedPagesIndex, _currentAddedSubPagesIndex;
     
     private float _radius1, _radius2;
     //Spine Bottom
@@ -162,13 +167,22 @@ public class FlippingNotebook : MonoBehaviour {
 
     public void AddPages(int pagesToAdd)
     {
-        Debug.Log(pagesToAdd);
             for (int i = 0; i < pagesToAdd; i++)
             {
                 if (_currentAddedPagesIndex < _currentBookPages.Count - 1)
                 {
-                    _currentBookPages[_currentAddedPagesIndex] = _bookPagesPlanned[_currentAddedPagesIndex];
-                    _currentAddedPagesIndex++;
+                    if (_bookPagesPlanned[_currentAddedPagesIndex].list.Count < 1)
+                    {
+                        _currentBookPages[_currentAddedPagesIndex] = _bookPagesPlanned[_currentAddedPagesIndex].list[0];
+                        _currentAddedPagesIndex++;
+                        _currentAddedSubPagesIndex = 0;
+                    }
+                    else
+                    {
+                        _currentBookPages[_currentAddedPagesIndex] = _bookPagesPlanned[_currentAddedPagesIndex].list[_currentAddedSubPagesIndex];
+                        _currentAddedSubPagesIndex++;
+                    }
+
                 }
             }
             UpdateSprites();

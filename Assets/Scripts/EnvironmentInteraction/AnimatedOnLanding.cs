@@ -16,7 +16,6 @@ public class AnimatedOnLanding : MonoBehaviour
 
     private void StartAnim(Transform objectUnderFeet)
     {
-        Debug.Log(objectUnderFeet);
         if (transform == objectUnderFeet)
         {
             _animator.SetBool("isUsed", true);
