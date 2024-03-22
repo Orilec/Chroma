@@ -131,7 +131,7 @@ public class ColorableObject : MonoBehaviour
     // EDITOR 
 
     //Draw coloration interactor limits in scene
-    void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmosSelected()
     {
         InteractorScript interactor = GetComponentInChildren<InteractorScript>();
 
