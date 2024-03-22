@@ -11,7 +11,7 @@ public class InteractorScript : MonoBehaviour
     public bool isActive = false;
     public float colorationSpeed = 3f;
 
-    [SerializeField] private AnimationCurve easeColorationCurve; 
+    [SerializeField] protected AnimationCurve easeColorationCurve; 
 
     public float colorationTime = 0.6f;
     public float decolorationTime = 2f;
@@ -21,7 +21,7 @@ public class InteractorScript : MonoBehaviour
     public float decolorationSpeed;
 
     private bool swapFinished = false;
-    private GameObject parent;
+    protected GameObject parent;
 
     //Sphere Collider for miasma particles kill
     private CapsuleCollider _capsuleCollider; 
@@ -87,7 +87,7 @@ public class InteractorScript : MonoBehaviour
     }
 
 
-    public void SetInteractorActive()
+    public virtual void SetInteractorActive()
     {
 
         if (isTemporary)
