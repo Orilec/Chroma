@@ -51,7 +51,7 @@ public partial class @CharacterInputActions: IInputActionCollection2, IDisposabl
                     ""id"": ""a8b49185-0f94-41a2-8fed-872526f6299b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=1)"",
                     ""initialStateCheck"": false
                 },
                 {
