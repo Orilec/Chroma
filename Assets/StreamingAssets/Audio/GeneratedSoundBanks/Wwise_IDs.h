@@ -53,6 +53,7 @@ namespace AK
                 static const AkUniqueID LEAF = 54442137U;
                 static const AkUniqueID PUDDLE = 2003927601U;
                 static const AkUniqueID STONE = 1216965916U;
+                static const AkUniqueID WOOD = 2058049674U;
             } // namespace SWITCH
         } // namespace FOOTSTEP_SURFACE
 
