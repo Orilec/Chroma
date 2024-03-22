@@ -7,7 +7,7 @@ public class AnimatedOnLanding : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     [SerializeField] private Animator _animator;
-    private PlayerController _player;
+    protected PlayerController _player;
     private void Start()
     {
         _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
