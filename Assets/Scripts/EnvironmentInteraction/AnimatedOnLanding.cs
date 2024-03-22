@@ -7,7 +7,7 @@ public class AnimatedOnLanding : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
     [SerializeField] private Animator _animator;
-    private PlayerController _player;
+    protected PlayerController _player;
     private void Start()
     {
         _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
@@ -16,6 +16,7 @@ public class AnimatedOnLanding : MonoBehaviour
 
     private void StartAnim(Transform objectUnderFeet)
     {
+        Debug.Log(objectUnderFeet);
         if (transform == objectUnderFeet)
         {
             _animator.SetBool("isUsed", true);
