@@ -37,8 +37,9 @@ public class KioskObject : ColorableObject
         _narrativeEvents.KioskObjectColored.Invoke();
     }
 
-    void OnDrawGizmosSelected()
+    protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected(); 
 
         // Draw a line between appear and disappear objects
         Gizmos.color = new Color(1, 0, 0, 1);
