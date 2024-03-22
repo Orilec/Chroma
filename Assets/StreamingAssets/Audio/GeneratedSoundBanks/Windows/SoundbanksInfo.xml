@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../../../../../../../CHROMA_Alpha</ProjectRoot>
+		<SourceFilesRoot>../../../../../../../CHROMA_Alpha/.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>../../../../../../../CHROMA_Alpha/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{4AA3850C-D0F9-AB92-5D3A-BA3DB032D31A}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="247557814" Name="Foley"/>
+				<Bus Id="393239870" Name="SFX"/>
+				<Bus Id="1017660616" Name="Ambiences"/>
+				<Bus Id="1106291253" Name="Beds"/>
+				<Bus Id="1235749641" Name="Dialog"/>
+				<Bus Id="1551306167" Name="UI"/>
+				<Bus Id="2769710370" Name="Barks"/>
+				<Bus Id="3170124113" Name="Voice"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+				<Bus Id="3991942870" Name="Music"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="3545700988" Name="Reverbs"/>
+				<AuxBus Id="3616015272" Name="VoiceReverbs"/>
+			</AuxBusses>
+			<SwitchGroups>
+				<SwitchGroup Id="1833605183" Name="Footstep_Surface">
+					<Switches>
+						<Switch Id="54442137" Name="Leaf"/>
+						<Switch Id="1216965916" Name="Stone"/>
+						<Switch Id="2003927601" Name="Puddle"/>
+						<Switch Id="2058049674" Name="Wood"/>
+						<Switch Id="2195636714" Name="Dirt"/>
+						<Switch Id="4248645337" Name="Grass"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="2111262965" Type="User" Language="SFX" Hash="{DB43B8DE-C847-C608-2856-9C7471B234FC}">
+			<ShortName>Permanent</ShortName>
+			<Path>Permanent.bnk</Path>
+			<Media>
+				<File Id="20225414" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_01.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="34458958" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PM_SDNG_Single_Step_Footstep_19.wav</ShortName>
+					<CachePath>SFX/PM_SDNG_Single_Step_Footstep_19_85DD5028.wem</CachePath>
+				</File>
+				<File Id="75601060" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_03.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="77976298" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_03.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="87376746" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_05.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="143124434" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>WATRSplsh_Hand Splashes in Water 01_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit.wav</ShortName>
+					<CachePath>SFX/WATRSplsh_Hand Splashes in Water 01_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem</CachePath>
+				</File>
+				<File Id="166548409" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_07.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="197646274" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_01.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="207380867" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_03.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="272166948" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_01.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="307160381" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_06.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="330805283" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_04.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="389438103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_08.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="420617737" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_02.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="439873863" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>WATRSplsh_Hand Splashes in Water 02_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit.wav</ShortName>
+					<CachePath>SFX/WATRSplsh_Hand Splashes in Water 02_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem</CachePath>
+				</File>
+				<File Id="452292488" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_07.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="534600742" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_02.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="643780947" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PM_SDNG_Single_Step_Footstep_46.wav</ShortName>
+					<CachePath>SFX/PM_SDNG_Single_Step_Footstep_46_2143CCE3.wem</CachePath>
+				</File>
+				<File Id="668810310" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>WATRSplsh_Hand Splashes in Water 03_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit.wav</ShortName>
+					<CachePath>SFX/WATRSplsh_Hand Splashes in Water 03_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem</CachePath>
+				</File>
+				<File Id="713464984" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_08.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_08_818F3B66.wem</CachePath>
+				</File>
+				<File Id="715224578" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_04.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="725526575" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>WATRSplsh_Hand Splashes in Water 04_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit.wav</ShortName>
+					<CachePath>SFX/WATRSplsh_Hand Splashes in Water 04_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem</CachePath>
+				</File>
+				<File Id="755045353" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_06.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="774862561" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_05.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="816731160" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_07.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_07_818F3B66.wem</CachePath>
+				</File>
+				<File Id="951827566" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Concrete_LeatherShoes_FullStep_05.wav</ShortName>
+					<CachePath>SFX/Concrete_LeatherShoes_FullStep_05_818F3B66.wem</CachePath>
+				</File>
+				<File Id="952171068" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_06.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_06_818F3B66.wem</CachePath>
+				</File>
+				<File Id="969796070" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_04.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1049467279" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hardwood_LeatherShoes_FullStep_02.wav</ShortName>
+					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1068837285" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Grass_LeatherShoes_FullStep_08.wav</ShortName>
+					<CachePath>SFX/Grass_LeatherShoes_FullStep_08_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1898632497" Name="AMB_BED_WindBed" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2661219234" Name="AMB_Em_Bird" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3851554408" Name="AMB_EM_Chimes" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1945208122" Name="AMB_EM_TreeRustleLoop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="794477861" Name="AMB_EM_UrbanSounds" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2086319611" Name="CH_AC_Shoot" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="472678545" Name="CH_AC_ShootImpact" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2911453005" Name="CH_FLY_Jump" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3137763326" Name="CH_FLY_Landing" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1990085751" Name="CH_FLY_LandingRoll" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="931755413" Name="CH_Footstep" DurationType="OneShot" DurationMin="0.323" DurationMax="2.562854">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="2195636714"/>
+							<MediaRefs>
+								<MediaRef Id="34458958"/>
+								<MediaRef Id="643780947"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="2058049674"/>
+							<MediaRefs>
+								<MediaRef Id="20225414"/>
+								<MediaRef Id="75601060"/>
+								<MediaRef Id="713464984"/>
+								<MediaRef Id="774862561"/>
+								<MediaRef Id="816731160"/>
+								<MediaRef Id="952171068"/>
+								<MediaRef Id="969796070"/>
+								<MediaRef Id="1049467279"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="1216965916"/>
+							<MediaRefs>
+								<MediaRef Id="207380867"/>
+								<MediaRef Id="272166948"/>
+								<MediaRef Id="389438103"/>
+								<MediaRef Id="420617737"/>
+								<MediaRef Id="452292488"/>
+								<MediaRef Id="715224578"/>
+								<MediaRef Id="755045353"/>
+								<MediaRef Id="951827566"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="54442137"/>
+							<MediaRefs>
+								<MediaRef Id="77976298"/>
+								<MediaRef Id="87376746"/>
+								<MediaRef Id="166548409"/>
+								<MediaRef Id="197646274"/>
+								<MediaRef Id="307160381"/>
+								<MediaRef Id="330805283"/>
+								<MediaRef Id="534600742"/>
+								<MediaRef Id="1068837285"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="2003927601"/>
+							<MediaRefs>
+								<MediaRef Id="143124434"/>
+								<MediaRef Id="439873863"/>
+								<MediaRef Id="668810310"/>
+								<MediaRef Id="725526575"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="4248645337" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="77976298"/>
+								<MediaRef Id="87376746"/>
+								<MediaRef Id="166548409"/>
+								<MediaRef Id="197646274"/>
+								<MediaRef Id="307160381"/>
+								<MediaRef Id="330805283"/>
+								<MediaRef Id="534600742"/>
+								<MediaRef Id="1068837285"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="3078375082" Name="EM_BMP_Bump" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2797792799" Name="EM_BMP_Deploy" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2845185899" Name="EM_MSM_HurtLoop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2247977996" Name="EM_MSM_Loop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2012424776" Name="EM_PLT_Deploy" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4284786933" Name="EM_TRL_LightTrailLoop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3355353940" Name="EM_TRL_LightTrailSpawn" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="540993415" Name="Start_Music" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="36428879" Name="UI_CLK_BigClick" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1502376508" Name="UI_CLK_MediumClick" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1632864886" Name="UI_CLK_SmallClick" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="741080349" Name="UI_DIA_Close" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3761606967" Name="UI_DIA_Open" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3022561043" Name="UI_NTF_MemoryUnlocked" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="1833605183" Name="Footstep_Surface">
+					<Switches>
+						<Switch Id="54442137" Name="Leaf"/>
+						<Switch Id="1216965916" Name="Stone"/>
+						<Switch Id="2003927601" Name="Puddle"/>
+						<Switch Id="2058049674" Name="Wood"/>
+						<Switch Id="2195636714" Name="Dirt"/>
+						<Switch Id="4248645337" Name="Grass"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="2678230380" Type="User" Language="SFX" Hash="{E5AB3FCA-0C00-0016-5F6C-B0F647B59A6F}">
+			<ShortName>Level3</ShortName>
+			<Path>Level3.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2678230381" Type="User" Language="SFX" Hash="{18AE58EE-5FA7-E7CA-764E-F80B00E44EAC}">
+			<ShortName>Level2</ShortName>
+			<Path>Level2.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2678230382" Type="User" Language="SFX" Hash="{BD2BC74F-8E58-0627-D205-5C9E14A38AA3}">
+			<ShortName>Level1</ShortName>
+			<Path>Level1.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{59137ACC-4DF7-4F30-F807-E2BEBFBBA01C}</FileHash>
+</SoundBanksInfo>
