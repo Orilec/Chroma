@@ -23,12 +23,6 @@ public class BouncePlatform : MonoBehaviour
         if (player != null)
         {
             player.UpdateBouncePlatform(this);
-
-            //Play bounce animation
-            _animator.SetTrigger("isUsed"); 
-            
-            
-            
         }
     }
 }
