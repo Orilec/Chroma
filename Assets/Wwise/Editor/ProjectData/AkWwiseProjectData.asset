@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics/Default Work Unit
     guid: 92d332c5ecf0fb45b33cd2d9f8bd0777
     GuidInternal: 
-    m_lastTime: -8584929225724775808
+    m_lastTime: -8584904928954775808
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy/Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 6553fe94774dd440995b5358fc7c4541
     GuidInternal: 
-    m_lastTime: -8584929164454775808
+    m_lastTime: -8584904928954775808
     List:
     - name: Ambiences
       guid: 9aed770b34c7894fa5859fcc5bca8d4a
@@ -277,7 +277,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 0598a0634b78464fb11aedcc6f51a8be
     GuidInternal: 
-    m_lastTime: -8584905770614775808
+    m_lastTime: -8584904928954775808
     List:
     - name: Level1
       guid: 56a7612e09612143b6dd0ab824a20381
@@ -347,7 +347,7 @@ MonoBehaviour:
     ParentPath: Events/Ambiences
     guid: 2abc4d624913f0469f342db1000a9fae
     GuidInternal: 
-    m_lastTime: -8584905906494775808
+    m_lastTime: -8584904928954775808
     List:
     - name: AMB_BED_WindBed
       guid: e20bd037d8fb2946ab6017b5dc90c94c
@@ -367,8 +367,8 @@ MonoBehaviour:
         guid: e20bd037d8fb2946ab6017b5dc90c94c
       Path: Events/Ambiences/Beds/AMB_BED_WindBed
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: AMB_Em_Bird
       guid: ec4d03e3555b894db24583cd2d9cc04c
       id: 2661219234
@@ -387,8 +387,8 @@ MonoBehaviour:
         guid: ec4d03e3555b894db24583cd2d9cc04c
       Path: Events/Ambiences/Emitters/AMB_Em_Bird
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: AMB_EM_Chimes
       guid: a2edd246e35b934f85d0b6c45a806939
       id: 3851554408
@@ -407,8 +407,8 @@ MonoBehaviour:
         guid: a2edd246e35b934f85d0b6c45a806939
       Path: Events/Ambiences/Emitters/AMB_EM_Chimes
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: AMB_EM_TreeRustleLoop
       guid: 8c6e79b85929464898981768c51b8a3d
       id: 1945208122
@@ -427,8 +427,8 @@ MonoBehaviour:
         guid: 8c6e79b85929464898981768c51b8a3d
       Path: Events/Ambiences/Emitters/AMB_EM_TreeRustleLoop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: AMB_EM_UrbanSounds
       guid: cf776717e308d54597ca684fefb56cf4
       id: 794477861
@@ -447,8 +447,8 @@ MonoBehaviour:
         guid: cf776717e308d54597ca684fefb56cf4
       Path: Events/Ambiences/Emitters/AMB_EM_UrbanSounds
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Beds
       guid: f2e3594892ab4848aed50fd518f156d4
       id: 1106291253
@@ -494,7 +494,7 @@ MonoBehaviour:
     ParentPath: Events/Character
     guid: 96b39ac6e347a04fa0fe049a1b0cac29
     GuidInternal: 
-    m_lastTime: -8584905906184775808
+    m_lastTime: -8584904928954775808
     List:
     - name: Actions
       guid: aff7e5a482981c45879dee2fe659b017
@@ -531,8 +531,8 @@ MonoBehaviour:
         guid: 51c52ea83c8c164ca6143cd8410c7831
       Path: Events/Character/Actions/CH_AC_Shoot
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: CH_AC_ShootImpact
       guid: 5f228152b40dda418254cfb1183a6e0f
       id: 472678545
@@ -551,8 +551,8 @@ MonoBehaviour:
         guid: 5f228152b40dda418254cfb1183a6e0f
       Path: Events/Character/Actions/CH_AC_ShootImpact
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: CH_FLY_Jump
       guid: cf3c64599006ea4dbd26863059710305
       id: 2911453005
@@ -571,8 +571,8 @@ MonoBehaviour:
         guid: cf3c64599006ea4dbd26863059710305
       Path: Events/Character/Foley/CH_FLY_Jump
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: CH_FLY_Landing
       guid: 71e0b3e4028a204eabaad5e622324af7
       id: 3137763326
@@ -591,8 +591,8 @@ MonoBehaviour:
         guid: 71e0b3e4028a204eabaad5e622324af7
       Path: Events/Character/Foley/CH_FLY_Landing
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: CH_FLY_LandingRoll
       guid: f4df5072d305144fbe918f19167bb1e1
       id: 1990085751
@@ -611,8 +611,8 @@ MonoBehaviour:
         guid: f4df5072d305144fbe918f19167bb1e1
       Path: Events/Character/Foley/CH_FLY_LandingRoll
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: CH_Footstep
       guid: d7ec41a4a4dd934cbbaa58d8722e4c65
       id: 931755413
@@ -631,8 +631,8 @@ MonoBehaviour:
         guid: d7ec41a4a4dd934cbbaa58d8722e4c65
       Path: Events/Character/Foley/CH_Footstep
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Foley
       guid: add5815fbb9dbe46922e516365a2e332
       id: 247557814
@@ -661,7 +661,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: 577edd31094184479a82736a67498abe
     GuidInternal: 
-    m_lastTime: -8584929225724775808
+    m_lastTime: -8584904928954775808
     List: []
   - PhysicalPath: Events/Emitters.wwu
     PathAndIcons:
@@ -674,7 +674,7 @@ MonoBehaviour:
     ParentPath: Events/Emitters
     guid: 18fa626f6bb5b744ad1044996f634a80
     GuidInternal: 
-    m_lastTime: -8584905906494775808
+    m_lastTime: -8584904928954775808
     List:
     - name: Bumper_Plant
       guid: 2476bd3d26062445ba0d10b5c2b87ff3
@@ -717,8 +717,8 @@ MonoBehaviour:
         guid: 8c278ec1338bae4796fe0d0acc463bf0
       Path: Events/Emitters/Plants/Bumper_Plant/EM_BMP_Bump
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: EM_BMP_Deploy
       guid: 54618735f70ab24a95bcafe6d03cb17a
       id: 2797792799
@@ -740,8 +740,8 @@ MonoBehaviour:
         guid: 54618735f70ab24a95bcafe6d03cb17a
       Path: Events/Emitters/Plants/Bumper_Plant/EM_BMP_Deploy
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: EM_MSM_HurtLoop
       guid: 2a66c7f425a20d4db3638ae968e36b01
       id: 2845185899
@@ -760,8 +760,8 @@ MonoBehaviour:
         guid: 2a66c7f425a20d4db3638ae968e36b01
       Path: Events/Emitters/Miasma/EM_MSM_HurtLoop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: EM_MSM_Loop
       guid: d87f5585f17a9e48821d6eaec919791f
       id: 2247977996
@@ -780,8 +780,8 @@ MonoBehaviour:
         guid: d87f5585f17a9e48821d6eaec919791f
       Path: Events/Emitters/Miasma/EM_MSM_Loop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: EM_PLT_Deploy
       guid: 532ad57c51a01941922aac61d5cdf96e
       id: 2012424776
@@ -803,8 +803,8 @@ MonoBehaviour:
         guid: 532ad57c51a01941922aac61d5cdf96e
       Path: Events/Emitters/Plants/Platform_Plant/EM_PLT_Deploy
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: EM_TRL_LightTrailLoop
       guid: fa4a8f36403ea54f876803ac71437ba4
       id: 4284786933
@@ -823,8 +823,8 @@ MonoBehaviour:
         guid: fa4a8f36403ea54f876803ac71437ba4
       Path: Events/Emitters/Light_Trail/EM_TRL_LightTrailLoop
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: EM_TRL_LightTrailSpawn
       guid: 24c67c2c17f3ef49954bed1da4edcfe6
       id: 3355353940
@@ -843,8 +843,8 @@ MonoBehaviour:
         guid: 24c67c2c17f3ef49954bed1da4edcfe6
       Path: Events/Emitters/Light_Trail/EM_TRL_LightTrailSpawn
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Light_Trail
       guid: cf8e19341c680d4eaff913cc9c0dce72
       id: 1021530242
@@ -927,7 +927,7 @@ MonoBehaviour:
     ParentPath: Events/Music
     guid: 3a7db9b8c722ea4c8200c6501ed57369
     GuidInternal: 
-    m_lastTime: -8584905836114775808
+    m_lastTime: -8584904928954775808
     List:
     - name: Start_Music
       guid: 06513c105bf47045872ab74d41b915a6
@@ -944,8 +944,8 @@ MonoBehaviour:
         guid: 06513c105bf47045872ab74d41b915a6
       Path: Events/Music/Start_Music
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events/UI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -957,7 +957,7 @@ MonoBehaviour:
     ParentPath: Events/UI
     guid: cc7459ed9c8d0748b3d6917fdc653b65
     GuidInternal: 
-    m_lastTime: -8584905906494775808
+    m_lastTime: -8584904928954775808
     List:
     - name: Clicks
       guid: 492bca6d3a970e4f951c8f6a3ce35d84
@@ -1028,8 +1028,8 @@ MonoBehaviour:
         guid: 9b8ef7b5f41db9469df442f45dfc8163
       Path: Events/UI/Clicks/UI_CLK_BigClick
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: UI_CLK_MediumClick
       guid: 3ed169752db03f4381bdf1491ec79a5f
       id: 1502376508
@@ -1048,8 +1048,8 @@ MonoBehaviour:
         guid: 3ed169752db03f4381bdf1491ec79a5f
       Path: Events/UI/Clicks/UI_CLK_MediumClick
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: UI_CLK_SmallClick
       guid: ea9ab36d19f73c4f8dea218084c2fb70
       id: 1632864886
@@ -1068,8 +1068,8 @@ MonoBehaviour:
         guid: ea9ab36d19f73c4f8dea218084c2fb70
       Path: Events/UI/Clicks/UI_CLK_SmallClick
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: UI_DIA_Close
       guid: bcc05085418cf04a86b7c38730c9dd6a
       id: 741080349
@@ -1088,8 +1088,8 @@ MonoBehaviour:
         guid: bcc05085418cf04a86b7c38730c9dd6a
       Path: Events/UI/Diary/UI_DIA_Close
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: UI_DIA_Open
       guid: b280721f6afaa042b70c2b5567f5ed77
       id: 3761606967
@@ -1108,8 +1108,8 @@ MonoBehaviour:
         guid: b280721f6afaa042b70c2b5567f5ed77
       Path: Events/UI/Diary/UI_DIA_Open
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: UI_NTF_MemoryUnlocked
       guid: 04bc969da2d98641adcada7289cf2341
       id: 3022561043
@@ -1128,8 +1128,8 @@ MonoBehaviour:
         guid: 04bc969da2d98641adcada7289cf2341
       Path: Events/UI/Notifications/UI_NTF_MemoryUnlocked
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
@@ -1142,7 +1142,7 @@ MonoBehaviour:
     ParentPath: Game Parameters/Default Work Unit
     guid: 3c50467aa4ca0a479461e75fa5f86cfc
     GuidInternal: 
-    m_lastTime: -8584929225724775808
+    m_lastTime: -8584904928954775808
     List: []
   StateWwu:
   - PhysicalPath: States/Default Work Unit.wwu
@@ -1156,7 +1156,7 @@ MonoBehaviour:
     ParentPath: States/Default Work Unit
     guid: ae5b0ddd206c53428078c8f3d5ab31f8
     GuidInternal: 
-    m_lastTime: -8584929225724775808
+    m_lastTime: -8584904928954775808
     List: []
   SwitchWwu:
   - PhysicalPath: Switches/Default Work Unit.wwu
@@ -1170,7 +1170,7 @@ MonoBehaviour:
     ParentPath: Switches/Default Work Unit
     guid: fbcaae13ecf34c458e9602ca7478d9bc
     GuidInternal: 
-    m_lastTime: -8584905906494775808
+    m_lastTime: -8584904914044775808
     List:
     - name: Character
       guid: 8ebfbaa1f5c2f24993a5bd27e793718a
@@ -1303,6 +1303,25 @@ MonoBehaviour:
         - ElementName: Stone
           ObjectType: 10
           guid: 30ccf87e60fd5245a3e1e9c95c256f5d
+      - name: Wood
+        guid: 13bce8348291884582872651c4a2582c
+        id: 2058049674
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: fbcaae13ecf34c458e9602ca7478d9bc
+        - ElementName: Character
+          ObjectType: 4
+          guid: 8ebfbaa1f5c2f24993a5bd27e793718a
+        - ElementName: Footstep_Surface
+          ObjectType: 11
+          guid: 94e6c827a18f0e479d412bb58a044d2e
+        - ElementName: Wood
+          ObjectType: 10
+          guid: 13bce8348291884582872651c4a2582c
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -1318,7 +1337,7 @@ MonoBehaviour:
     ParentPath: Triggers/Default Work Unit
     guid: f8f8397c22bd804bab783ef64da454fa
     GuidInternal: 
-    m_lastTime: -8584929225724775808
+    m_lastTime: -8584904928954775808
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
