@@ -1,0 +1,70 @@
+Event	ID	Name			Wwise Object Path	Notes
+	36428879	UI_CLK_BigClick			\UI\Clicks\UI_CLK_BigClick	
+	472678545	CH_AC_ShootImpact			\Character\Actions\CH_AC_ShootImpact	
+	540993415	Start_Music			\Music\Start_Music	
+	741080349	UI_DIA_Close			\UI\Diary\UI_DIA_Close	
+	794477861	AMB_EM_UrbanSounds			\Ambiences\Emitters\AMB_EM_UrbanSounds	
+	931755413	CH_Footstep			\Character\Foley\CH_Footstep	
+	1502376508	UI_CLK_MediumClick			\UI\Clicks\UI_CLK_MediumClick	
+	1632864886	UI_CLK_SmallClick			\UI\Clicks\UI_CLK_SmallClick	
+	1898632497	AMB_BED_WindBed			\Ambiences\Beds\AMB_BED_WindBed	
+	1945208122	AMB_EM_TreeRustleLoop			\Ambiences\Emitters\AMB_EM_TreeRustleLoop	
+	1990085751	CH_FLY_LandingRoll			\Character\Foley\CH_FLY_LandingRoll	
+	2012424776	EM_PLT_Deploy			\Emitters\Plants\Platform_Plant\EM_PLT_Deploy	
+	2086319611	CH_AC_Shoot			\Character\Actions\CH_AC_Shoot	
+	2247977996	EM_MSM_Loop			\Emitters\Miasma\EM_MSM_Loop	
+	2661219234	AMB_Em_Bird			\Ambiences\Emitters\AMB_Em_Bird	
+	2797792799	EM_BMP_Deploy			\Emitters\Plants\Bumper_Plant\EM_BMP_Deploy	
+	2845185899	EM_MSM_HurtLoop			\Emitters\Miasma\EM_MSM_HurtLoop	
+	2911453005	CH_FLY_Jump			\Character\Foley\CH_FLY_Jump	
+	3022561043	UI_NTF_MemoryUnlocked			\UI\Notifications\UI_NTF_MemoryUnlocked	
+	3078375082	EM_BMP_Bump			\Emitters\Plants\Bumper_Plant\EM_BMP_Bump	
+	3137763326	CH_FLY_Landing			\Character\Foley\CH_FLY_Landing	
+	3355353940	EM_TRL_LightTrailSpawn			\Emitters\Light_Trail\EM_TRL_LightTrailSpawn	
+	3761606967	UI_DIA_Open			\UI\Diary\UI_DIA_Open	
+	3851554408	AMB_EM_Chimes			\Ambiences\Emitters\AMB_EM_Chimes	
+	4284786933	EM_TRL_LightTrailLoop			\Emitters\Light_Trail\EM_TRL_LightTrailLoop	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1833605183	Footstep_Surface			\Default Work Unit\Character\Footstep_Surface	
+
+Switch	ID	Name	Switch Group			Notes
+	54442137	Leaf	Footstep_Surface			
+	1216965916	Stone	Footstep_Surface			
+	2003927601	Puddle	Footstep_Surface			
+	2058049674	Wood	Footstep_Surface			
+	2195636714	Dirt	Footstep_Surface			
+	4248645337	Grass	Footstep_Surface			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	20225414	Hardwood_LeatherShoes_FullStep_01	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_01_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_01		67516
+	34458958	PM_SDNG_Single_Step_Footstep_19	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\PM_SDNG_Single_Step_Footstep_19_85DD5028.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Dirt\PM_SDNG_Single_Step_Footstep_19		84194
+	75601060	Hardwood_LeatherShoes_FullStep_03	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_03_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_03		62112
+	77976298	Grass_LeatherShoes_FullStep_03	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_03_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_03		98904
+	87376746	Grass_LeatherShoes_FullStep_05	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_05_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_05		104460
+	143124434	WATRSplsh_Hand Splashes in Water 01_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\WATRSplsh_Hand Splashes in Water 01_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Puddle\WATRSplsh_Hand Splashes in Water 01_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit		246130
+	166548409	Grass_LeatherShoes_FullStep_07	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_07_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_07		104576
+	197646274	Grass_LeatherShoes_FullStep_01	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_01_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_01		89060
+	207380867	Concrete_LeatherShoes_FullStep_03	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_03_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_03		68288
+	272166948	Concrete_LeatherShoes_FullStep_01	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_01_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_01		76196
+	307160381	Grass_LeatherShoes_FullStep_06	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_06_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_06		106476
+	330805283	Grass_LeatherShoes_FullStep_04	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_04_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_04		104844
+	389438103	Concrete_LeatherShoes_FullStep_08	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_08_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_08		74884
+	420617737	Concrete_LeatherShoes_FullStep_02	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_02_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_02		79380
+	439873863	WATRSplsh_Hand Splashes in Water 02_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\WATRSplsh_Hand Splashes in Water 02_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Puddle\WATRSplsh_Hand Splashes in Water 02_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit		246130
+	452292488	Concrete_LeatherShoes_FullStep_07	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_07_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_07		69276
+	534600742	Grass_LeatherShoes_FullStep_02	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_02_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_02		106148
+	643780947	PM_SDNG_Single_Step_Footstep_46	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\PM_SDNG_Single_Step_Footstep_46_2143CCE3.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Dirt\PM_SDNG_Single_Step_Footstep_46		101154
+	668810310	WATRSplsh_Hand Splashes in Water 03_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\WATRSplsh_Hand Splashes in Water 03_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Puddle\WATRSplsh_Hand Splashes in Water 03_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit		208472
+	713464984	Hardwood_LeatherShoes_FullStep_08	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_08_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_08		69028
+	715224578	Concrete_LeatherShoes_FullStep_04	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_04_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_04		71836
+	725526575	WATRSplsh_Hand Splashes in Water 04_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\WATRSplsh_Hand Splashes in Water 04_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Puddle\WATRSplsh_Hand Splashes in Water 04_Pierrick Veillerobe_Gritty Medieval Weapons Construction Kit		189296
+	755045353	Concrete_LeatherShoes_FullStep_06	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_06_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_06		62824
+	774862561	Hardwood_LeatherShoes_FullStep_05	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_05_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_05		68944
+	816731160	Hardwood_LeatherShoes_FullStep_07	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_07_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_07		76864
+	951827566	Concrete_LeatherShoes_FullStep_05	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Concrete_LeatherShoes_FullStep_05_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Stone\Concrete_LeatherShoes_FullStep_05		64540
+	952171068	Hardwood_LeatherShoes_FullStep_06	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_06_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_06		66476
+	969796070	Hardwood_LeatherShoes_FullStep_04	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_04_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_04		75264
+	1049467279	Hardwood_LeatherShoes_FullStep_02	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Hardwood_LeatherShoes_FullStep_02_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Wood\Hardwood_LeatherShoes_FullStep_02		82296
+	1068837285	Grass_LeatherShoes_FullStep_08	Z:\Volumes\Pierrick Veillerobe SSD\Clients\ESMA\24_CHROMA_Alpha\CHROMA_Alpha\.cache\Mac\SFX\Grass_LeatherShoes_FullStep_08_818F3B66.wem		\Actor-Mixer Hierarchy\Characters\Noa\Foley\CH_FLY_NoaStep\CH_FT_Grass\Grass_LeatherShoes_FullStep_08		99628
+
