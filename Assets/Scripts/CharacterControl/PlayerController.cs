@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed, _leavingGroundY, _currentBaseSpeed, _currentMaxSpeed;
-    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame, _isOnSlope, _isAutoSliding, _wasSlideJumping, _canAutoSlide;
+    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame, _isOnSlope, _isAutoSliding, _wasSlideJumping, _canAutoSlide, _onCliff;
     private int _stepsSinceGrounded;
     private Vector3 _movement;
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement, _localGroundCheckHitNormal;
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
         At(groundedState,slidingJumpState, new FuncPredicate(()=> _slidingJumpTimer.IsRunning));
         At(groundedState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         At(groundedState, autoSlideState, new FuncPredicate(()=> _isOnSlope && _canAutoSlide));
-        At(groundedState, cliffState, new FuncPredicate(()=> _groundCheck.OnCliff));
+        At(groundedState, cliffState, new FuncPredicate(()=> _onCliff));
         
         At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_jumpMinTimer.IsRunning));
         At(jumpState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
@@ -247,8 +247,8 @@ public class PlayerController : MonoBehaviour
         
         At(slideBoostState, fallState, new FuncPredicate(()=> !_slideBoostTimer.IsRunning));
         
-        At(cliffState, groundedState, new FuncPredicate(()=> !_groundCheck.OnCliff));
-        At(cliffState, groundedState, new FuncPredicate(()=> !_groundCheck.IsGrounded));
+        At(cliffState, groundedState, new FuncPredicate(()=> !_onCliff));
+        At(cliffState, fallState, new FuncPredicate(()=> !_groundCheck.IsGrounded));
         At(cliffState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         // At(groundedEnvironmentState, fallState, new FuncPredicate(()=> !_groundCheck.IsOnEnvironment));
@@ -267,6 +267,8 @@ public class PlayerController : MonoBehaviour
         _playerEventsPublisher.ChangeBaseSpeed.AddListener(ChangeMoveSpeed);
         
         _playerEventsPublisher.SetAutoslide.AddListener(SetAutoslide);
+        
+        _playerEventsPublisher.SetOnCliff.AddListener(SetOnCLiff);
         
         //Setup coroutines
         AccelerationCoroutine = Accelerate(0f, 0f);
@@ -506,6 +508,10 @@ public class PlayerController : MonoBehaviour
     {
         _canAutoSlide = autoslide;
         _slopeDirection = slopeDirection;
+    }
+    private void SetOnCLiff(bool onCliff)
+    {
+        _onCliff = onCliff;
     }
 
 
