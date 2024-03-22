@@ -1,0 +1,413 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5882a4e62281c4b6c9ee458e8d1117eb, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Virtual Acoustics
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 92d332c5ecf0fb45b33cd2d9f8bd0777
+    ParentPath: Virtual Acoustics/Default Work Unit
+    guid: 92d332c5ecf0fb45b33cd2d9f8bd0777
+    GuidInternal: 
+    m_lastTime: -8584929225724775808
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Master-Mixer Hierarchy
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 6553fe94774dd440995b5358fc7c4541
+    ParentPath: Master-Mixer Hierarchy/Default Work Unit
+    guid: 6553fe94774dd440995b5358fc7c4541
+    GuidInternal: 
+    m_lastTime: -8584929164454775808
+    List:
+    - name: Ambiences
+      guid: 9aed770b34c7894fa5859fcc5bca8d4a
+      id: 1017660616
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 693df467d7003545b271b0e82ce5fe44
+      - ElementName: Ambiences
+        ObjectType: 2
+        guid: 9aed770b34c7894fa5859fcc5bca8d4a
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/SFX/Ambiences
+    - name: Barks
+      guid: 02f36385c94fd74b92f0f260515289aa
+      id: 2769710370
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Voice
+        ObjectType: 2
+        guid: 70144297c6cc8a47a3fb6bbd3e4a789c
+      - ElementName: Barks
+        ObjectType: 2
+        guid: 02f36385c94fd74b92f0f260515289aa
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Voice/Barks
+    - name: Beds
+      guid: fb7019384db1094b9db91e296adc36a9
+      id: 1106291253
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music
+        ObjectType: 2
+        guid: 7872907838c95e49a7d2f938b0544377
+      - ElementName: Beds
+        ObjectType: 2
+        guid: fb7019384db1094b9db91e296adc36a9
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Music/Beds
+    - name: Dialog
+      guid: fc7ddf1b1df4e744859f3ecab6823019
+      id: 1235749641
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Voice
+        ObjectType: 2
+        guid: 70144297c6cc8a47a3fb6bbd3e4a789c
+      - ElementName: Dialog
+        ObjectType: 2
+        guid: fc7ddf1b1df4e744859f3ecab6823019
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Voice/Dialog
+    - name: Foley
+      guid: 666c095c8c0a4d4892046122354970aa
+      id: 247557814
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 693df467d7003545b271b0e82ce5fe44
+      - ElementName: Foley
+        ObjectType: 2
+        guid: 666c095c8c0a4d4892046122354970aa
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/SFX/Foley
+    - name: Master Audio Bus
+      guid: d8a41415a61d2a41a17e75ca0c2149f3
+      id: 3803692087
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus
+    - name: Music
+      guid: 7872907838c95e49a7d2f938b0544377
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music
+        ObjectType: 2
+        guid: 7872907838c95e49a7d2f938b0544377
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Music
+    - name: Reverbs
+      guid: 67c2dc723778dc4f9db1189549c249b2
+      id: 3545700988
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 693df467d7003545b271b0e82ce5fe44
+      - ElementName: Reverbs
+        ObjectType: 1
+        guid: 67c2dc723778dc4f9db1189549c249b2
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/SFX/Reverbs
+    - name: SFX
+      guid: 693df467d7003545b271b0e82ce5fe44
+      id: 393239870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 693df467d7003545b271b0e82ce5fe44
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/SFX
+    - name: UI
+      guid: 62d6498d05e0f740a87bcbd985506549
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: 693df467d7003545b271b0e82ce5fe44
+      - ElementName: UI
+        ObjectType: 2
+        guid: 62d6498d05e0f740a87bcbd985506549
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/SFX/UI
+    - name: Voice
+      guid: 70144297c6cc8a47a3fb6bbd3e4a789c
+      id: 3170124113
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Voice
+        ObjectType: 2
+        guid: 70144297c6cc8a47a3fb6bbd3e4a789c
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Voice
+    - name: VoiceReverbs
+      guid: 43cf070be0f1a1458a26f6b43b6c8e53
+      id: 3616015272
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6553fe94774dd440995b5358fc7c4541
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Voice
+        ObjectType: 2
+        guid: 70144297c6cc8a47a3fb6bbd3e4a789c
+      - ElementName: VoiceReverbs
+        ObjectType: 1
+        guid: 43cf070be0f1a1458a26f6b43b6c8e53
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Voice/VoiceReverbs
+  BankWwu:
+  - PhysicalPath: SoundBanks/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 0598a0634b78464fb11aedcc6f51a8be
+    ParentPath: SoundBanks/Default Work Unit
+    guid: 0598a0634b78464fb11aedcc6f51a8be
+    GuidInternal: 
+    m_lastTime: -8584929154674775808
+    List:
+    - name: Level1
+      guid: 56a7612e09612143b6dd0ab824a20381
+      id: 2678230382
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0598a0634b78464fb11aedcc6f51a8be
+      - ElementName: Level1
+        ObjectType: 7
+        guid: 56a7612e09612143b6dd0ab824a20381
+      Path: SoundBanks/Default Work Unit/Level1
+    - name: Level2
+      guid: 742b245b74f7fe43b674f2290d6d9bb2
+      id: 2678230381
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0598a0634b78464fb11aedcc6f51a8be
+      - ElementName: Level2
+        ObjectType: 7
+        guid: 742b245b74f7fe43b674f2290d6d9bb2
+      Path: SoundBanks/Default Work Unit/Level2
+    - name: Level3
+      guid: 6dfa194c3e128d4588f7a072bf4b9592
+      id: 2678230380
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0598a0634b78464fb11aedcc6f51a8be
+      - ElementName: Level3
+        ObjectType: 7
+        guid: 6dfa194c3e128d4588f7a072bf4b9592
+      Path: SoundBanks/Default Work Unit/Level3
+    - name: Permanent
+      guid: ae23ceed14d0b541a02cafae32558719
+      id: 2111262965
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0598a0634b78464fb11aedcc6f51a8be
+      - ElementName: Permanent
+        ObjectType: 7
+        guid: ae23ceed14d0b541a02cafae32558719
+      Path: SoundBanks/Default Work Unit/Permanent
+  EventWwu:
+  - PhysicalPath: Events/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 577edd31094184479a82736a67498abe
+    ParentPath: Events/Default Work Unit
+    guid: 577edd31094184479a82736a67498abe
+    GuidInternal: 
+    m_lastTime: -8584929225724775808
+    List: []
+  RtpcWwu:
+  - PhysicalPath: Game Parameters/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Game Parameters
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 3c50467aa4ca0a479461e75fa5f86cfc
+    ParentPath: Game Parameters/Default Work Unit
+    guid: 3c50467aa4ca0a479461e75fa5f86cfc
+    GuidInternal: 
+    m_lastTime: -8584929225724775808
+    List: []
+  StateWwu:
+  - PhysicalPath: States/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: States
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: ae5b0ddd206c53428078c8f3d5ab31f8
+    ParentPath: States/Default Work Unit
+    guid: ae5b0ddd206c53428078c8f3d5ab31f8
+    GuidInternal: 
+    m_lastTime: -8584929225724775808
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Switches
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: fbcaae13ecf34c458e9602ca7478d9bc
+    ParentPath: Switches/Default Work Unit
+    guid: fbcaae13ecf34c458e9602ca7478d9bc
+    GuidInternal: 
+    m_lastTime: -8584929225724775808
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers/Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Triggers
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: f8f8397c22bd804bab783ef64da454fa
+    ParentPath: Triggers/Default Work Unit
+    guid: f8f8397c22bd804bab783ef64da454fa
+    GuidInternal: 
+    m_lastTime: -8584929225724775808
+    List: []
+  ExpandedFileSystemItemIds: 
+  ExpandedWaapiItemIds: 
+  AutoSyncSelection: 0
+  autoPopulateEnabled: 1
+  currentDataSource: 0
+  CurrentPluginConfig: 
