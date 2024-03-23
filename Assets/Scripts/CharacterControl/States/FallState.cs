@@ -58,7 +58,6 @@ public class FallState : BaseCharacterState
     {
         if (_input.JumpIsPressed && _playerController.CoyoteTimeCounter.IsRunning && !_playerController.JumpWasPressedLastFrame)
         {
-            Debug.Log("coyote");
             _playerController.JumpTimer.Start();
         }
         if (_input.JumpIsPressed && !_playerController.JumpBufferTimeCounter.IsRunning && !_playerController.JumpWasPressedLastFrame)

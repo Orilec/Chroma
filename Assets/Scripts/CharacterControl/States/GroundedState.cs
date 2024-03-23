@@ -90,7 +90,6 @@ public class GroundedState : BaseCharacterState
             }
             else
             {
-                Debug.Log("from grounded");
                 _playerController.JumpTimer.Start();
             }
         }
