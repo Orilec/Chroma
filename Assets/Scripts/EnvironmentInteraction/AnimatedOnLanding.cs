@@ -6,8 +6,10 @@ using UnityEngine;
 public class AnimatedOnLanding : MonoBehaviour
 {
     [SerializeField] private PlayerEventsPublisher _playerEventsPublisher;
+    [SerializeField] private AK.Wwise.Event _bounceNoise;
     [SerializeField] private Animator _animator;
     protected PlayerController _player;
+    private bool _bounce = true;
     private void Start()
     {
         _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
@@ -19,6 +21,11 @@ public class AnimatedOnLanding : MonoBehaviour
         if (transform == objectUnderFeet)
         {
             _animator.SetBool("isUsed", true);
+            if (_bounce)
+            {
+                _bounceNoise.Post(this.gameObject);
+                StartCoroutine(ResetBounceNoise());
+            }
             StartCoroutine(ResetAfterAFrame());
         }
     }
@@ -27,5 +34,12 @@ public class AnimatedOnLanding : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         _animator.SetBool("isUsed", false);
+    }
+
+    private IEnumerator ResetBounceNoise()
+    {
+        _bounce = false;
+        yield return new WaitForSeconds(0.2f);
+        _bounce = true;
     }
 }
