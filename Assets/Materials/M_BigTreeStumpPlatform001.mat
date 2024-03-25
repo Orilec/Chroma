@@ -72,6 +72,10 @@ Material:
         m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_ab8ec2dc23ff41aeb45424c81a114e1a_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_25f07e81fa234db5b387f35202627ff6_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: d4aa7816407c85c4a95aae980fe10373, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -132,7 +136,7 @@ Material:
     - _OutlineDissolve: 0
     - _OutlineFarNormalEndDepth: 10
     - _OutlineFarNormalStartDepth: 1
-    - _OutlineFarNormalThreshold: 4.81
+    - _OutlineFarNormalThreshold: 9
     - _OutlineNormalStrength: 1
     - _OutlineNormalThreshold: 1.1
     - _OutlineNormalTightening: 128
@@ -163,7 +167,7 @@ Material:
     - _USESCREENSPACE: 0
     m_Colors:
     - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
-    - _DensityVector: {r: 5, g: 5, b: 0, a: 0}
+    - _DensityVector: {r: 20, g: 20, b: 0, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}

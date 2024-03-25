@@ -1,5 +1,70 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &368662228108150384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6746207873458208568}
+  - component: {fileID: 981526173511142687}
+  m_Layer: 8
+  m_Name: CharacterAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6746207873458208568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368662228108150384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4884800090113875571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &981526173511142687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368662228108150384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847fd591093131341829520d93134225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerEvents: {fileID: 11400000, guid: 0b1c965cec2032a44a0f011072a4805e, type: 2}
+  _jumpAkEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0ef2e08c774dbaa45babf8e8a57158e2,
+      type: 2}
+  _landingAkEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f1ed28681a25b894899d1926ce3f523c,
+      type: 2}
+  _landingRollAkEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 15818b1b016d24b43ba61b7ff7abd603,
+      type: 2}
+  _footstepsAkEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4f6d3f942054bef419bfeb5d29c140ad,
+      type: 2}
 --- !u!1 &438351530210905860
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +111,7 @@ CapsuleCollider:
     m_Bits: 8192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 57335
+    m_Bits: 122871
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -5107,7 +5172,7 @@ CapsuleCollider:
     m_Bits: 16384
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 49143
+    m_Bits: 114679
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -16385,12 +16450,12 @@ PrefabInstance:
     - target: {fileID: 2298866556868506953, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000014912617
+      value: -0.000000014912608
       objectReference: {fileID: 0}
     - target: {fileID: 2298866556868506953, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000008583331
+      value: 0.000000008583326
       objectReference: {fileID: 0}
     - target: {fileID: 2723677930800227036, guid: c771f0dddda691043b14b25881cd992c,
         type: 3}
@@ -19806,6 +19871,11 @@ PrefabInstance:
       propertyPath: _groundBelowDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5695802296482862175, guid: 136c1be46c773e549a6ad5bb498128b6,
+        type: 3}
+      propertyPath: _allElementLayers.m_Bits
+      value: 65728
+      objectReference: {fileID: 0}
     - target: {fileID: 5700696058629481684, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20287,6 +20357,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4624780331873483511}
+    - targetCorrespondingSourceObject: {fileID: 2431793559223581197, guid: 136c1be46c773e549a6ad5bb498128b6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6746207873458208568}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6528777628862858623, guid: 136c1be46c773e549a6ad5bb498128b6,
         type: 3}
