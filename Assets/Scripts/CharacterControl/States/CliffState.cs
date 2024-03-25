@@ -26,6 +26,6 @@ public class CliffState : BaseCharacterState
     private void CliffWalk()
     {
         _playerController.PlayerMoveInputY = _playerController.MiasmaGravity;
-        _playerController.CurrentSpeed = _playerController.MiasmaSpeed;
+        _playerController.CurrentSpeed = _playerController.CliffSpeed;
     }
 }
