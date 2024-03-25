@@ -26,10 +26,10 @@ public class NarratorTextDisplay : MonoBehaviour
     private bool _triggered;
     private PlayerController _player;
 
-    private void Awake()
+    private void Start()
     {
         _narratorTexts = new List<NarratorText>();
-        _player = FindObjectOfType<PlayerController>();
+        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
 
         for (int i = 0; i < transform.childCount; i++)
         {

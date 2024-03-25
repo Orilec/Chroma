@@ -11,7 +11,7 @@ public class InteractorScript : MonoBehaviour
     public bool isActive = false;
     public float colorationSpeed = 3f;
 
-    [SerializeField] private AnimationCurve easeColorationCurve; 
+    [SerializeField] protected AnimationCurve easeColorationCurve; 
 
     public float colorationTime = 0.6f;
     public float decolorationTime = 2f;
@@ -21,7 +21,7 @@ public class InteractorScript : MonoBehaviour
     public float decolorationSpeed;
 
     private bool swapFinished = false;
-    private GameObject parent;
+    protected GameObject parent;
 
     //Sphere Collider for miasma particles kill
     private CapsuleCollider _capsuleCollider; 
@@ -39,6 +39,8 @@ public class InteractorScript : MonoBehaviour
     {
         //maxRadius = Random.Range(3f, 5f); 
         if (isCast) SetInteractorActive(); // activate temporary interactor as soon as it spawns
+
+        AddToInteractorsArray();
     }
 
     // Update is called once per frame
@@ -85,10 +87,12 @@ public class InteractorScript : MonoBehaviour
     }
 
 
-    public void SetInteractorActive()
+    public virtual void SetInteractorActive()
     {
+
         if (isTemporary)
         {
+            AddToInteractorsArray(); //Add temporary interactor to interactors array
             StartCoroutine(SwapTemporaryColor());
         }
         else
@@ -119,6 +123,7 @@ public class InteractorScript : MonoBehaviour
 
         radius = maxRadius; // Set final radius
 
+
         //Call event for animation/fill
         if (parent.GetComponent<ColorableObject>() != null)
         {
@@ -148,6 +153,8 @@ public class InteractorScript : MonoBehaviour
 
         radius = 0;
 
+        RemoveFromInteractorsArray(); //Remove temporary interactor from interactors array
+
         //Call event for reverse animation
         if (!isCast)
         {
@@ -160,6 +167,34 @@ public class InteractorScript : MonoBehaviour
         if (isCast)
         {
             Destroy(gameObject); 
+        }
+    }
+
+
+
+    private void AddToInteractorsArray()
+    {
+        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        {
+
+            if (ShaderInteractorHolder.interactors[i] == null)
+            {
+                ShaderInteractorHolder.interactors[i] = this;
+                break; 
+            }
+        }
+    }
+
+    private void RemoveFromInteractorsArray()
+    {
+        for (int i = 0; i < ShaderInteractorHolder.interactors.Length; i++)
+        {
+
+            if (ShaderInteractorHolder.interactors[i] == this)
+            {
+                ShaderInteractorHolder.interactors[i] = null;
+                break; 
+            }
         }
     }
 }

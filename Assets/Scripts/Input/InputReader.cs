@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputReader : MonoBehaviour
+public class InputReader : Manager
 {
     private bool _isKeyboardMouse;
 
@@ -52,7 +52,7 @@ public class InputReader : MonoBehaviour
         _input.CharacterControls.Look.performed += SetLook;
         _input.CharacterControls.Look.canceled += SetLook;
 
-        _input.CharacterControls.Jump.started += SetJump;
+        _input.CharacterControls.Jump.performed += SetJump;
         _input.CharacterControls.Jump.canceled += SetJump;
 
         _input.CharacterControls.Slide.started += SetSlide;
@@ -207,7 +207,7 @@ public class InputReader : MonoBehaviour
     {
         if ( ctx.control.device is Keyboard or Mouse ) _isKeyboardMouse = true;
         else _isKeyboardMouse = false;
-        JumpIsPressed = ctx.started;
+        JumpIsPressed = ctx.performed;
     } 
     private void SetSlide(InputAction.CallbackContext ctx)
     {

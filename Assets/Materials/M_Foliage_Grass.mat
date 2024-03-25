@@ -21,12 +21,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Foliage_Grass
-  m_Shader: {fileID: -6465566751694194690, guid: 44f004b5abc69f9448312065c6387457,
+  m_Shader: {fileID: -6465566751694194690, guid: 81ac1159f979f5c4e9c8549316ccab63,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 305d84b08adb0ba4483b88e38366ce0b, type: 2}
   m_ModifiedSerializedProperties: 4
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_ValidKeywords:
+  - _STYLE_SWAPTEXTURES
+  m_InvalidKeywords:
+  - _SWAPSTYLE_SWAPTEXTURES
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

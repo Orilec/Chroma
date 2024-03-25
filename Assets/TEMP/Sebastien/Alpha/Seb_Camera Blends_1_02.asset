@@ -13,22 +13,11 @@ MonoBehaviour:
   m_Name: Seb_Camera Blends_1_02
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: SimpleFollowCamera
-    m_To: C_1_ZoomingOut_01
+  - m_From: '**ANY CAMERA**'
+    m_To: '**ANY CAMERA**'
     m_Blend:
       m_Style: 1
       m_Time: 5
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: C_2_ZoomingIn_01
-    m_Blend:
-      m_Style: 1
-      m_Time: 6
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -36,40 +25,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: '**ANY CAMERA**'
-    m_To: SimpleFollowCamera
-    m_Blend:
-      m_Style: 1
-      m_Time: 6
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: C_2_Sidescrolling_01
-    m_Blend:
-      m_Style: 1
-      m_Time: 5
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: C_2_FocusSwitch_01
-    m_Blend:
-      m_Style: 1
-      m_Time: 4
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: C_2_FocusSwitch_01
-    m_To: SimpleFollowCamera
+    m_To: C_InkPot_01
     m_Blend:
       m_Style: 1
       m_Time: 3
@@ -79,8 +35,8 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: C_2_ZoomingIn_01
-    m_To: SimpleFollowCamera
+  - m_From: C_Ruler_01
+    m_To: C_Cliff_01
     m_Blend:
       m_Style: 1
       m_Time: 3
@@ -90,19 +46,8 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: C_3_Sidescrolling_01
-    m_Blend:
-      m_Style: 1
-      m_Time: 6
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: C_3_Sidescrolling_01
-    m_To: C_3_Sidescrolling_02
+  - m_From: C_Cliff_01
+    m_To: C_Ruler_01
     m_Blend:
       m_Style: 1
       m_Time: 3
@@ -112,22 +57,11 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: SimpleFollowCamera
-    m_To: C_3_Sidescrolling_02
+  - m_From: C_Tracks_01
+    m_To: FLCamera
     m_Blend:
       m_Style: 1
-      m_Time: 5
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: SidescrollingCameraEnd
-    m_To: SimpleFollowCamera
-    m_Blend:
-      m_Style: 1
-      m_Time: 3
+      m_Time: 2
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

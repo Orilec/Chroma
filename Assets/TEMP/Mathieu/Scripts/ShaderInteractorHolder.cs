@@ -6,9 +6,9 @@ using UnityEngine;
 public class ShaderInteractorHolder : MonoBehaviour
 {
 
-    public InteractorScript[] interactors;
-    Vector4[] positions = new Vector4[128];
-    float[] radiuses = new float[128];
+    public static InteractorScript[] interactors;
+    Vector4[] positions = new Vector4[100];
+    float[] radiuses = new float[100];
 
     [Range(0, 1)]
     public float shapeCutoff;
@@ -18,26 +18,28 @@ public class ShaderInteractorHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindInteractors();
+        //FindInteractors();
         Debug.Log(interactors.Length);
     }
 
     private void OnEnable()
     {
-        
-        FindInteractors();
-        
+        interactors = new InteractorScript[100]; 
     }
 
     private void Update()
     {
 
-        FindInteractors();
+        //FindInteractors();
 
         for (int i = 0; i < interactors.Length; i++)
         {
-            positions[i] = interactors[i].transform.position;
-            radiuses[i] = interactors[i].radius;
+            if (interactors[i] != null)
+            {
+                positions[i] = interactors[i].transform.position;
+                radiuses[i] = interactors[i].radius;
+            }
+
         }
 
         Shader.SetGlobalVectorArray("_ShaderInteractorsPositions", positions);
@@ -50,6 +52,8 @@ public class ShaderInteractorHolder : MonoBehaviour
 
     private void FindInteractors()
     {
-        interactors = FindObjectsOfType<InteractorScript>(); 
+       
     }
+
+    
 }

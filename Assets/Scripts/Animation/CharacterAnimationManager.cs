@@ -14,6 +14,7 @@ public class CharacterAnimationManager : MonoBehaviour
     private int _dyingHash = Animator.StringToHash("IsDying");
     private int _groundedHash = Animator.StringToHash("IsGrounded");
     private int _miasmaHash = Animator.StringToHash("IsInMiasma");
+    private int _cliffHash = Animator.StringToHash("IsOnCliff");
     private int _landingLower = Animator.StringToHash("LandingToLowerPoint");
     private int _currentSpeedHash = Animator.StringToHash("MoveSpeed");
 
@@ -28,6 +29,7 @@ public class CharacterAnimationManager : MonoBehaviour
         _playerEvents.LocomotionSpeed.AddListener(CurrentSpeed);
         _playerEvents.GroundedState.AddListener(Grounded);
         _playerEvents.LandingToLower.AddListener(LandingLower);
+        _playerEvents.OnCliff.AddListener(OnCliff);
     }
 
     private void Jumping(bool isJumping)
@@ -59,6 +61,10 @@ public class CharacterAnimationManager : MonoBehaviour
     private void InMiasma(bool isInMiasma)
     {
         _animator.SetBool(_miasmaHash, isInMiasma);
+    }
+    private void OnCliff(bool isOnCliff)
+    {
+        _animator.SetBool(_cliffHash, isOnCliff);
     }
     private void LandingLower(bool lower)
     {

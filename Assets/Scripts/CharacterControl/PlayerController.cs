@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private const float ZeroF = 0f;
     private float _velocity, _jumpVelocity, _currentSpeed, _gravityFallCurrent, _relativeCurrentSpeed, _leavingGroundY, _currentBaseSpeed, _currentMaxSpeed;
-    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame, _isOnSlope, _isAutoSliding, _wasSlideJumping;
+    private bool _initialJump, _jumpWasPressedLastFrame, _slideWasPressedLastFrame, _isDownSlope, _isFacingWall, _canAirSlide, _isRespawning, _isFadingToBlack, _isInMiasma, _respawnWasPressedLastFrame, _isOnSlope, _isAutoSliding, _wasSlideJumping, _canAutoSlide, _onCliff;
     private int _stepsSinceGrounded;
     private Vector3 _movement;
     private Vector3 _playerMoveInput, _appliedMovement, _cameraRelativeMovement, _localGroundCheckHitNormal;
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
     private CountdownTimer _jumpTimer, _playerFallTimer, _bounceFallTimer , _coyoteTimeCounter, _jumpBufferTimeCounter, _slideTimer, _slidingJumpTimer, _slidingJumpBufferCounter, _airSlideTimer, _bounceTimer, _miasmaTimer, _slideCooldownTimer, _slideBoostTimer, _jumpMinTimer;
 
     private StateMachine _stateMachine;
+
+    private Transform _slopeDirection;
     
     //SIMPLE REFERENCES GETTERS 
     public RespawnSystem RespawnSystem{ get { return _respawnSystem; } }
@@ -96,6 +99,7 @@ public class PlayerController : MonoBehaviour
     public float InitialSlideBoostForce { get { return _parameters.initialSlideBoostForce; } }
     public float ContinualSlideBoostForceMultiplier { get { return _parameters.continualSlideBoostForceMultiplier; } }
     public float MiasmaGravity { get { return _parameters.miasmaGravity; } }
+    public float CliffSpeed { get { return _parameters.cliffSpeed; } }
     public bool IsDownSlope { get { return _isDownSlope; } }
     
     
@@ -135,14 +139,18 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+
     private void Awake()
     {
+        //Subscribing to manager
+        ChroManager.GetManager<PlayerManager>().SubscribePlayer(this);
+        
         //Filling references
         _mainCam = Camera.main.transform;
         _rigidbody = GetComponent<Rigidbody>();
         _groundCheck = GetComponent<GroundCheck>();
         _throwSystem = GetComponent<ThrowSystem>();
-        _input = FindObjectOfType<InputReader>();
+        _input = ChroManager.GetManager<InputReader>();
         _trail = FindObjectOfType<PlayerTrailScript>();
         _respawnSystem = GetComponent<RespawnSystem>();
         
@@ -184,6 +192,7 @@ public class PlayerController : MonoBehaviour
         var respawningState = new RespawningState(this, _input, _playerEventsPublisher);
         var slideBoostState = new SlideBoostState(this, _input, _playerEventsPublisher);
         var autoSlideState = new AutoSlideState(this, _input, _playerEventsPublisher);
+        var cliffState = new CliffState(this, _input, _playerEventsPublisher);
         
         // Transitions creation
         At(groundedState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
@@ -191,7 +200,8 @@ public class PlayerController : MonoBehaviour
         At(groundedState, slideState, new FuncPredicate(()=> _slideTimer.IsRunning));
         At(groundedState,slidingJumpState, new FuncPredicate(()=> _slidingJumpTimer.IsRunning));
         At(groundedState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
-        At(groundedState, autoSlideState, new FuncPredicate(()=> _isOnSlope && _groundCheck.AutoSlide));
+        At(groundedState, autoSlideState, new FuncPredicate(()=> _isOnSlope && _canAutoSlide));
+        At(groundedState, cliffState, new FuncPredicate(()=> _onCliff));
         
         At(jumpState, fallState, new FuncPredicate(()=> !_jumpTimer.IsRunning && !_jumpMinTimer.IsRunning));
         At(jumpState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
@@ -201,7 +211,7 @@ public class PlayerController : MonoBehaviour
         At(fallState, airSlideState, new FuncPredicate(()=> _airSlideTimer.IsRunning));
         At(fallState, bounceState, new FuncPredicate(()=> _bounceTimer.IsRunning));
         At(fallState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
-        At(fallState, autoSlideState, new FuncPredicate(()=> _groundCheck.IsGrounded && _isOnSlope && _groundCheck.AutoSlide));
+        At(fallState, autoSlideState, new FuncPredicate(()=> _groundCheck.IsGrounded && _isOnSlope && _canAutoSlide));
         
         At(bounceFallState, groundedState, new FuncPredicate(()=> _groundCheck.IsGrounded));
         At(bounceFallState, jumpState, new FuncPredicate(()=> _jumpTimer.IsRunning));
@@ -210,14 +220,14 @@ public class PlayerController : MonoBehaviour
         At(bounceFallState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         At(slideState, groundedState, new FuncPredicate(()=> !_slideTimer.IsRunning && _groundCheck.IsGrounded && !_isDownSlope));
-        At(slideState, autoSlideState, new FuncPredicate(()=> _groundCheck.IsGrounded && _isOnSlope && _groundCheck.AutoSlide));
+        At(slideState, autoSlideState, new FuncPredicate(()=> _groundCheck.IsGrounded && _isOnSlope && _canAutoSlide));
         At(slideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded && _stepsSinceGrounded > 1));
         At(slideState, slidingJumpState, new FuncPredicate(()=>  _slidingJumpTimer.IsRunning));
         At(slideState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         At(slidingJumpState, groundedState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && _groundCheck.IsGrounded));
         At(slidingJumpState, fallState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && !_groundCheck.IsGrounded));
-        At(slidingJumpState, autoSlideState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && _groundCheck.IsGrounded && _isOnSlope && _groundCheck.AutoSlide));
+        At(slidingJumpState, autoSlideState, new FuncPredicate(()=> !_slidingJumpTimer.IsRunning && _groundCheck.IsGrounded && _isOnSlope && _canAutoSlide));
         
         At(airSlideState, fallState, new FuncPredicate(()=> !_airSlideTimer.IsRunning));
 
@@ -230,12 +240,16 @@ public class PlayerController : MonoBehaviour
         Any(respawningState, new FuncPredicate(()=> _isRespawning));
         
         At(autoSlideState, fallState, new FuncPredicate(()=>  !_groundCheck.IsGrounded && _stepsSinceGrounded > 1 || !_isDownSlope && !_groundCheck.IsGrounded));
-        At(autoSlideState, groundedState, new FuncPredicate(()=>  !_groundCheck.AutoSlide && _groundCheck.IsGrounded || !_isDownSlope && _groundCheck.IsGrounded));
+        At(autoSlideState, groundedState, new FuncPredicate(()=>  !_canAutoSlide && _groundCheck.IsGrounded || !_isDownSlope && _groundCheck.IsGrounded));
         At(autoSlideState, slidingJumpState, new FuncPredicate(()=>  _slidingJumpTimer.IsRunning));
         At(autoSlideState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         At(autoSlideState, slideBoostState, new FuncPredicate(()=> _slideBoostTimer.IsRunning));
         
         At(slideBoostState, fallState, new FuncPredicate(()=> !_slideBoostTimer.IsRunning));
+        
+        At(cliffState, groundedState, new FuncPredicate(()=> !_onCliff));
+        At(cliffState, fallState, new FuncPredicate(()=> !_groundCheck.IsGrounded));
+        At(cliffState, miasmaState, new FuncPredicate(()=> _miasmaTimer.IsRunning));
         
         // At(groundedEnvironmentState, fallState, new FuncPredicate(()=> !_groundCheck.IsOnEnvironment));
         // Any(groundedEnvironmentState, new FuncPredicate(()=> _groundCheck.IsOnEnvironment));
@@ -251,6 +265,10 @@ public class PlayerController : MonoBehaviour
         _playerEventsPublisher.EnteringGround.AddListener(CompareYPos);
         
         _playerEventsPublisher.ChangeBaseSpeed.AddListener(ChangeMoveSpeed);
+        
+        _playerEventsPublisher.SetAutoslide.AddListener(SetAutoslide);
+        
+        _playerEventsPublisher.SetOnCliff.AddListener(SetOnCLiff);
         
         //Setup coroutines
         AccelerationCoroutine = Accelerate(0f, 0f);
@@ -283,7 +301,6 @@ public class PlayerController : MonoBehaviour
         SnapToGround();
         
         _rigidbody.AddForce(_playerMoveInput, ForceMode.Force);
-
     }
     
     
@@ -337,11 +354,12 @@ public class PlayerController : MonoBehaviour
             _playerMoveInput.z * _currentSpeed * _rigidbody.mass));
         
         _playerMoveInput = calculatedPlayerMovement;
+
         if (!_isAutoSliding) _playerMoveInput = ConvertToTransformSpace(_mainCam.transform, _playerMoveInput);
-        else _playerMoveInput = ConvertToTransformSpace(_groundCheck.slopeDirection, _playerMoveInput);
+        else _playerMoveInput = ConvertToTransformSpace(_slopeDirection, _playerMoveInput);
 
         if (_input.MoveInput.magnitude <= 0) _relativeCurrentSpeed = 0f;
-        else _relativeCurrentSpeed = (_currentSpeed - _currentBaseSpeed ) / (_parameters.maxMoveSpeed - BaseMoveSpeed);
+        else _relativeCurrentSpeed = (_currentSpeed) / (_parameters.maxMoveSpeed);
         _playerEventsPublisher.LocomotionSpeed.Invoke(_relativeCurrentSpeed);
     }
 
@@ -398,7 +416,7 @@ public class PlayerController : MonoBehaviour
     private void SnapToGround()
     {
         if (_groundCheck.IsGrounded) return;
-        if (_jumpTimer.IsRunning) return;
+        if (_jumpTimer.IsRunning || _jumpMinTimer.IsRunning ) return;
         if (_stepsSinceGrounded > 1) return;
         if (!_groundCheck.GroundBelow) return;
         _playerMoveInput = new Vector3(_playerMoveInput.x,-10000f, _playerMoveInput.z);
@@ -454,7 +472,7 @@ public class PlayerController : MonoBehaviour
         _leavingGroundY = transform.position.y;
     }
 
-    private void CompareYPos()
+    private void CompareYPos(Transform objectUnderFeet)
     {
         float fallHeight = transform.position.y - _leavingGroundY;
         var lowerGround = fallHeight < -1f;
@@ -484,6 +502,16 @@ public class PlayerController : MonoBehaviour
             _currentBaseSpeed = BaseMoveSpeed;
             _currentMaxSpeed = _parameters.maxMoveSpeed;
         }
+    }
+
+    private void SetAutoslide(bool autoslide, Transform slopeDirection)
+    {
+        _canAutoSlide = autoslide;
+        _slopeDirection = slopeDirection;
+    }
+    private void SetOnCLiff(bool onCliff)
+    {
+        _onCliff = onCliff;
     }
 
 

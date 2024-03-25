@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_PaintTubeNew
+  m_Shader: {fileID: -6465566751694194690, guid: 60c2f36503551f140a9d030a470abcf0,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _CONTRASTMODIFIERS
+  - _SWAPSTYLE_SWAPTEXTURES
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HatchTex:
+        m_Texture: {fileID: 2800000, guid: ad2e3fac0203f264bb5023b973981c71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2ef382e3175db0e499836677cd150e59, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: a47ae8c24ce01b141bd4988535995175, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_ab8ec2dc23ff41aeb45424c81a114e1a_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _B_WSaturation: 3.87
+    - _Blend: 0
+    - _CONTRASTMODIFIERS: 1
+    - _Debug: 0
+    - _FalloffThreshold: 3
+    - _HasOcclusionMap: 0
+    - _IsMetallic: 0
+    - _LitThreshold: 2
+    - _Metallic: 0
+    - _NormalBWStrength: 1
+    - _NormalStrength: 1
+    - _OcclusionPower: 1
+    - _OutlineAcuteDepthThreshold: 1
+    - _OutlineAcuteStartDot: 0.9
+    - _OutlineDepthStrength: 1
+    - _OutlineDepthThreshold: 1
+    - _OutlineDepthTightening: 1
+    - _OutlineDissolve: 0
+    - _OutlineFarNormalEndDepth: 10
+    - _OutlineFarNormalStartDepth: 1
+    - _OutlineFarNormalThreshold: 4
+    - _OutlineNormalStrength: 1
+    - _OutlineNormalThreshold: 1
+    - _OutlineNormalTightening: 128
+    - _OutlineThickness: 0.001
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Rim_Amount: 14.16
+    - _Rim_step: 0.3
+    - _Rotation: 45
+    - _SWAPSTYLE: 0
+    - _Saturation: 0
+    - _ShadingMultiplyer: 0.36
+    - _ShapeNoiseStrenght: 0.15
+    - _ShapeNoiseTiling: 20
+    - _ShapeSharpness: 0.08
+    - _ShapeSize: 0.04
+    - _Smoothness: 3
+    - _Softness: 0.2
+    - _TextureBlend: 0.053
+    - _TextureTiling: 1
+    - _USESCREENSPACE: 0
+    m_Colors:
+    - _DensityVector: {r: 1, g: 1, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0}
+    - _Specular: {r: 0, g: 0, b: 0, a: 0}
+    - _StepContraste: {r: 0, g: 0.24, b: 0, a: 0}
+    - _SwapLineColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &3536644683257396022
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

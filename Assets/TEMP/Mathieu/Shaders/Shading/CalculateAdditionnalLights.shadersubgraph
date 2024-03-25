@@ -102,6 +102,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "d3589bcc1ffa40c08b85b2b5f43ff537"
+                },
+                "m_SlotId": 7
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "82ce85dc9abd48f7943d8912e3e7a8b2"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "e1fb472028f14355a10580b8e6b8c338"
                 },
                 "m_SlotId": 0
@@ -318,6 +332,29 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "4e7a5606aa8d4ea4bb6d874396b57707",
+    "m_Id": 2,
+    "m_DisplayName": "DiffuseWhite",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "DiffuseWhite",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "5342da2316704f568599ca314a537688",
     "m_Id": 4,
     "m_DisplayName": "WorldView",
@@ -431,6 +468,9 @@
         },
         {
             "m_Id": "b1563285fae24308bbe8b3ac8eb9e26c"
+        },
+        {
+            "m_Id": "4e7a5606aa8d4ea4bb6d874396b57707"
         }
     ],
     "synonyms": [],
@@ -650,6 +690,9 @@
         },
         {
             "m_Id": "88dcaa68a5c84a27a9b0c03646e7b318"
+        },
+        {
+            "m_Id": "d9a249a2c7b640e586631196e7af9821"
         }
     ],
     "synonyms": [
@@ -667,6 +710,29 @@
     "m_FunctionName": "AdditionalLights",
     "m_FunctionSource": "9e326502b9d25374baea6f723deee035",
     "m_FunctionBody": "Enter function body here..."
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "d9a249a2c7b640e586631196e7af9821",
+    "m_Id": 7,
+    "m_DisplayName": "DiffuseWhite",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "DiffuseWhite",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
 }
 
 {

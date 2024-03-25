@@ -16,7 +16,7 @@ public class PauseMenuControl : MonoBehaviour
     private void Awake()
     {
         _menuTransform = transform.GetChild(0);
-        _sceneLoader = FindObjectOfType<SceneLoader>();
+        _sceneLoader = ChroManager.GetManager<SceneLoader>();
         if(_sceneLoader != null ) _restartButton.onClick.AddListener(_sceneLoader.Reload);
     }
 

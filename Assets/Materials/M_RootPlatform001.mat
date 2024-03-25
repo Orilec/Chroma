@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8609635105482888942
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_RootPlatform001
+  m_Shader: {fileID: -6465566751694194690, guid: 60c2f36503551f140a9d030a470abcf0,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _CONTRASTMODIFIERS
+  - _MAIN_LIGHT_SHADOWS
+  - _SWAPSTYLE_SWAPTEXTURES
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CalculateMainLight_6743a15fc8514b219366666ac209f7d9_SmoothnessMap_2895282383_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HatchTex:
+        m_Texture: {fileID: 2800000, guid: ad2e3fac0203f264bb5023b973981c71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4917f65561ea8f04cbd934a1db4a60c2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: b4a25178b98ebd94ebfb0ba816c80650, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 2800000, guid: a9c81d4e017e81746898a3c90bd9fd6d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_53e7f936e44a4ba286373fde6096cfd0_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_ab8ec2dc23ff41aeb45424c81a114e1a_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 61539b199e894a74e88f7a5f07cd8f50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_25f07e81fa234db5b387f35202627ff6_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d4aa7816407c85c4a95aae980fe10373, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b04809425b2c45ca963b18447d5f18d9_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 79071d12df102a9409918af02f299ab1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_af9884a719184919b91fb9537cfb1f9f_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 08f5c03a1b31f4342b0694964d1b9e45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _B_WSaturation: 1.22
+    - _Blend: 1
+    - _CONTRASTMODIFIERS: 1
+    - _Debug: 0
+    - _Debug_1: 0
+    - _Debug_2: 0
+    - _Debug_3: 0
+    - _Density: 10
+    - _FalloffThreshold: 2.37
+    - _FloatTestPower: 1
+    - _HasOcclusionMap: 1
+    - _IsMetallic: 0
+    - _LitThreshold: 0.47
+    - _MAIN_LIGHT_SHADOWS: 1
+    - _Metallic: 0
+    - _NEW_ShadowStep: 0.86
+    - _NoiseLerp: 0.504
+    - _NoiseScale: 1.83
+    - _NoiseStrenght: 0.47
+    - _NormalBWStrength: 1
+    - _NormalStrength: 1
+    - _OcclusionPower: 0.08
+    - _OutlineAcuteDepthThreshold: 1
+    - _OutlineAcuteStartDot: 0.9
+    - _OutlineDepthStrength: 1
+    - _OutlineDepthThreshold: 1
+    - _OutlineDepthTightening: 1
+    - _OutlineDissolve: 0
+    - _OutlineFarNormalEndDepth: 10
+    - _OutlineFarNormalStartDepth: 1
+    - _OutlineFarNormalThreshold: 4.81
+    - _OutlineNormalStrength: 1
+    - _OutlineNormalThreshold: 1.1
+    - _OutlineNormalTightening: 128
+    - _OutlineRotation: 0.01
+    - _OutlineThickness: 0.001
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RadiusCutoff: 0.45
+    - _Rim_Amount: 9.05
+    - _Rim_step: 0.3
+    - _Rotation: 45
+    - _SWAPSTYLE: 0
+    - _Saturation: 0
+    - _SecondOutlineDissolve: 0.33
+    - _SecondOutlineRotation: -0.01
+    - _ShadingMultiplyer: 0.35
+    - _ShapeNoiseStrenght: 2.5
+    - _ShapeNoiseTiling: 314.87
+    - _ShapeSharpness: 0.08
+    - _ShapeSize: 0.04
+    - _Smoothness: 0.9
+    - _Softness: 1.28
+    - _Step1Contraste: 0.14
+    - _Step2Contrast: 0.19
+    - _TESTSATURATION: 2.72
+    - _TextureBlend: 0.053
+    - _TextureTiling: 1
+    - _USESCREENSPACE: 0
+    m_Colors:
+    - _ColorLINE: {r: 1, g: 1, b: 1, a: 0}
+    - _DensityVector: {r: 20, g: 20, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _RimColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0}
+    - _Specular: {r: 1, g: 1, b: 1, a: 0}
+    - _StepContraste: {r: 0, g: 0.14, b: 0, a: 0}
+    - _SwapLineColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
+  m_BuildTextureStacks: []

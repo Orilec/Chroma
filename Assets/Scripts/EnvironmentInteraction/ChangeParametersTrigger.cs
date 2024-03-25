@@ -11,9 +11,9 @@ public class ChangeParametersTrigger : MonoBehaviour
     
     private PlayerController _player;
     
-    private void Awake()
+    private void Start()
     {
-        _player = FindObjectOfType<PlayerController>();
+        _player = ChroManager.GetManager<PlayerManager>().GetPlayer();
     }
     private void OnTriggerEnter(Collider other)
     {
