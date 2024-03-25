@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 2855207051565348488}
   - component: {fileID: 8299262977116006242}
   - component: {fileID: 8751103231698500847}
+  - component: {fileID: 7730907908662796507}
   m_Layer: 0
   m_Name: GrowingLeaf
   m_TagString: Untagged
@@ -123,6 +124,24 @@ MonoBehaviour:
   associatedDoor: {fileID: 0}
   switchReactivationTime: 0
   shouldAnimateAfterColoration: 0
+--- !u!114 &7730907908662796507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497180172412848359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fc6ba1fd5b2ac49877c779cdcbcbd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactorEvent: {fileID: 8299262977116006242}
+  _colorableDeployEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 332294f4f2b28204fbe980bfe731cd4c,
+      type: 2}
 --- !u!1001 &1648211190154753582
 PrefabInstance:
   m_ObjectHideFlags: 0
