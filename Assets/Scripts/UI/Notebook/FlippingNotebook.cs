@@ -171,7 +171,7 @@ public class FlippingNotebook : MonoBehaviour {
             {
                 if (_currentAddedPagesIndex < _currentBookPages.Count - 1)
                 {
-                    if (_bookPagesPlanned[_currentAddedPagesIndex].list.Count < 1)
+                    if (_bookPagesPlanned[_currentAddedPagesIndex].list.Count < 2)
                     {
                         _currentBookPages[_currentAddedPagesIndex] = _bookPagesPlanned[_currentAddedPagesIndex].list[0];
                         _currentAddedPagesIndex++;
@@ -181,6 +181,10 @@ public class FlippingNotebook : MonoBehaviour {
                     {
                         _currentBookPages[_currentAddedPagesIndex] = _bookPagesPlanned[_currentAddedPagesIndex].list[_currentAddedSubPagesIndex];
                         _currentAddedSubPagesIndex++;
+                        if (_currentAddedSubPagesIndex == _bookPagesPlanned[_currentAddedPagesIndex].list.Count)
+                        {
+                            _currentAddedPagesIndex++;
+                        }
                     }
 
                 }

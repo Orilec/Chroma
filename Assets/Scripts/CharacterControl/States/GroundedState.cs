@@ -14,9 +14,13 @@ public class GroundedState : BaseCharacterState
         _playerController.PlayerFallTimer.Reset(_playerController.PlayerFallTimeMax);
         _playerController.InitialJump = false;
         _playerController.CoyoteTimeCounter.Stop();
-        _playerController.JumpTimer.Reset();
         _playerEvents.GroundedState.Invoke(true);
 
+        // if (_playerController.JumpBufferTimeCounter.IsRunning)
+        // {
+        //     Debug.Log("buffer");
+        //     _playerController.JumpTimer.Start();
+        // }
     }
     
     public override void Update()
@@ -78,7 +82,7 @@ public class GroundedState : BaseCharacterState
     
     void OnJump()
     {
-        if (_input.JumpIsPressed && !_playerController.JumpWasPressedLastFrame || _playerController.JumpBufferTimeCounter.IsRunning)
+        if (_input.JumpIsPressed && !_playerController.JumpWasPressedLastFrame)
         {
             if (_playerController.SlidingJumpBufferCounter.IsRunning)
             {

@@ -54,7 +54,7 @@ public class BounceFallState : BaseCharacterState
     
     void OnJump()
     {
-        if (_input.JumpIsPressed && _playerController.CoyoteTimeCounter.IsRunning)
+        if (_input.JumpIsPressed && _playerController.CoyoteTimeCounter.IsRunning && !_playerController.JumpWasPressedLastFrame)
         {
             _playerController.JumpTimer.Start();
         }
