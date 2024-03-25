@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2855207051565348488}
   - component: {fileID: 8299262977116006242}
   - component: {fileID: 8751103231698500847}
+  - component: {fileID: 6536510849588752816}
   m_Layer: 16
   m_Name: BouncingPlant
-  m_TagString: Untagged
+  m_TagString: Bounce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,6 +70,24 @@ MonoBehaviour:
   associatedDoor: {fileID: 0}
   switchReactivationTime: 0
   shouldAnimateAfterColoration: 0
+--- !u!114 &6536510849588752816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497180172412848359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fc6ba1fd5b2ac49877c779cdcbcbd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactorEvent: {fileID: 8299262977116006242}
+  _colorableDeployEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a997afef44831fa45a8d72deb6efaf58,
+      type: 2}
 --- !u!1001 &1648211190154753582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,6 +135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380877409868593253, guid: 821f542180b1aeb4392445f6dc6de9db,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
       objectReference: {fileID: 0}
     - target: {fileID: 8132970701782000183, guid: 821f542180b1aeb4392445f6dc6de9db,
         type: 3}
@@ -195,6 +219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469789859951726699, guid: b1b5b9d93e660e743b6001ab5c8b7b17,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
       objectReference: {fileID: 0}
     - target: {fileID: 6469789859951726702, guid: b1b5b9d93e660e743b6001ab5c8b7b17,
         type: 3}
@@ -475,6 +504,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: -7286305372069228737, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: -7055525320919992002, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
       propertyPath: m_Layer
@@ -610,6 +644,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: -4431828813515911874, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: -4425456910984132868, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -664,6 +703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -3923202146118967297, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
       objectReference: {fileID: 0}
     - target: {fileID: -3916410708831346090, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
@@ -955,6 +999,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: 980784335278781919, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -989,6 +1038,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498364113540817524, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
       objectReference: {fileID: 0}
     - target: {fileID: 1613468002316053855, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
@@ -1045,6 +1099,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 2763813249644625087, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: 3568515494095781795, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
       propertyPath: m_Layer
@@ -1069,6 +1128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887214942223401870, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
       objectReference: {fileID: 0}
     - target: {fileID: 4261636805544552780, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
@@ -1180,6 +1244,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 5534938399482625121, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: 5671734936352504200, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1254,6 +1323,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: cef58f3e768370b4e8278f9d154dfdce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
       objectReference: {fileID: 0}
     - target: {fileID: 7077136235016712840, guid: cef58f3e768370b4e8278f9d154dfdce,
         type: 3}
@@ -1462,7 +1536,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7585718363832890999, guid: cef58f3e768370b4e8278f9d154dfdce, type: 3}
 --- !u!114 &3259580256146408315
@@ -1493,4 +1567,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerEventsPublisher: {fileID: 11400000, guid: 0b1c965cec2032a44a0f011072a4805e,
     type: 2}
+  _bounceNoise:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d9eee00ab8c54a44bbbcce7831ba8f3c,
+      type: 2}
   _animator: {fileID: 7979946779881986925}
