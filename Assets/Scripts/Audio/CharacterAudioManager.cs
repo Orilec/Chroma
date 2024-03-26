@@ -29,7 +29,7 @@ public class CharacterAudioManager : MonoBehaviour
     }
     private void FireLandingAudio(Transform objectUnderFeet)
     {
-        _landingAkEvent.Post(this.gameObject);
+        if(!objectUnderFeet.CompareTag("Bounce")) _landingAkEvent.Post(this.gameObject);
     }
 
     private void SetMovingSpeed(float relativeMoveSpeed)
@@ -48,7 +48,6 @@ public class CharacterAudioManager : MonoBehaviour
         {
             while (_movingSpeed > 0 && _isGrounded)
             {
-                Debug.Log("footstep");
                 _footstepsAkEvent.Post(this.gameObject);
                 yield return new WaitForSeconds(_footstepsSpeed / _movingSpeed);
             }
