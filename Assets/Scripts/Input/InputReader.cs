@@ -148,6 +148,16 @@ public class InputReader : Manager
     {
         _input.CharacterControls.Enable();
     }
+
+    public void DisableLookInput()
+    {
+        if(_input.CharacterControls.Look.enabled)_input.CharacterControls.Look.Disable();
+    }
+
+    public void EnableLookInput()
+    {
+        if(!_input.CharacterControls.Look.enabled)_input.CharacterControls.Look.Enable();
+    }
     public void EnableUIControl()
     {
         _input.UI.Enable();

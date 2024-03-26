@@ -11,15 +11,19 @@ public class SceneLoader : Manager
     [SerializeField] private UIEventsPublisher _UiEvents;
     [SerializeField] private int _mainScene;
     [SerializeField] private List<int> _scenesToLoadAdditive;
+    [SerializeField] private bool _build;
 
     private bool _endOfLevel;
     
     private void Awake()
     {
-        // SceneManager.LoadScene(_mainScene);
-        // LoadScenes(_scenesToLoadAdditive);
         _narrativeEvents.EndOfVSLevel.AddListener(SetEndOfLevel);
         _UiEvents.FirstFadeFinished.AddListener(EndOfVSLevel);
+        if (_build)
+        {
+            SceneManager.LoadScene(_mainScene);
+            LoadScenes(_scenesToLoadAdditive);
+        }
     }
     
     private void LoadScenes(List<int> scenes)
@@ -33,8 +37,16 @@ public class SceneLoader : Manager
     public void Reload()
     {
         _endOfLevel = false;
-        SceneManager.LoadScene(6, LoadSceneMode.Single);
-        SceneManager.LoadSceneAsync(_mainScene);
+        SceneManager.LoadScene(_mainScene);
+        LoadScenes(_scenesToLoadAdditive);
+        _playerEvents.PauseGame.Invoke(false);
+    }
+
+    public void LoadNewLevel(int mainScene, List<int> scenesToLoadAdditive)
+    {
+        _mainScene = mainScene;
+        _scenesToLoadAdditive = scenesToLoadAdditive;
+        SceneManager.LoadScene(_mainScene);
         LoadScenes(_scenesToLoadAdditive);
         _playerEvents.PauseGame.Invoke(false);
     }
