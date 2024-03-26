@@ -140,6 +140,11 @@ public class InputReader : Manager
         _input.UI.PreviousCategory.canceled -= SetPreviousCategory;
     }
 
+    private void Start()
+    {
+        _input.CharacterControls.Slide.Disable();
+    }
+
     public void DisableCharacterControl()
     {
         _input.CharacterControls.Disable();
@@ -147,16 +152,6 @@ public class InputReader : Manager
     public void EnableCharacterControl()
     {
         _input.CharacterControls.Enable();
-    }
-
-    public void DisableLookInput()
-    {
-        if(_input.CharacterControls.Look.enabled)_input.CharacterControls.Look.Disable();
-    }
-
-    public void EnableLookInput()
-    {
-        if(!_input.CharacterControls.Look.enabled)_input.CharacterControls.Look.Enable();
     }
     public void EnableUIControl()
     {
