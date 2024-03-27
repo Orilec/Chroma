@@ -96,6 +96,7 @@ public class Target : MonoBehaviour
     private void ReActivate(InteractorEvent arg1, InteractorEventArgs arg2)
     {
         isActivated = false;
+        _collider.enabled = true;
     }
 
     private IEnumerator ReActivateSwitch()
