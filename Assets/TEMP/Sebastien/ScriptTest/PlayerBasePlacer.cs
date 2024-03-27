@@ -23,6 +23,7 @@ public class PlayerBasePlacer : MonoBehaviour
     {
         Event e = Event.current;
 
+
         // Vérifie la combinaison touche + clic gauche pour le placement
         if (e.type == EventType.MouseDown && e.button == 0 && e.modifiers == EventModifiers.Shift)
         {

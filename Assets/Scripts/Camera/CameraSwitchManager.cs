@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class CameraSwitchManager : MonoBehaviour
@@ -11,15 +12,36 @@ public class CameraSwitchManager : MonoBehaviour
     [SerializeField] private CinemachineBrain _cinemachineBrain;
     [SerializeField] private NarrativeEventsPublisher _narrativeEvents;
     [SerializeField] private CinemachineVirtualCameraBase _flCamera;
+    [SerializeField] private CinemachineInputProvider _cinemachineInput;
 
+    private InputReader _input;
     private List<CinemachineVirtualCameraBase> _possibleCameras;
     private CinemachineVirtualCameraBase _currentCamera;
+
+
 
     private void Awake()
     {
         _possibleCameras = new List<CinemachineVirtualCameraBase>();
         _narrativeEvents.TriggerCamera.AddListener(OnTriggerCameraZone);
         _currentCamera = _flCamera;
+    }
+
+    private void Start()
+    {
+        _input = ChroManager.GetManager<InputReader>();
+    }
+
+    private void Update()
+    {
+        if (_cinemachineBrain.IsBlending)
+        {
+            _cinemachineInput.enabled = false;
+        }
+        else
+        {
+            _cinemachineInput.enabled = true;
+        }
     }
 
     public bool IsFlCamera()

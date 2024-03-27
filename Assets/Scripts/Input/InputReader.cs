@@ -140,6 +140,11 @@ public class InputReader : Manager
         _input.UI.PreviousCategory.canceled -= SetPreviousCategory;
     }
 
+    private void Start()
+    {
+        _input.CharacterControls.Slide.Disable();
+    }
+
     public void DisableCharacterControl()
     {
         _input.CharacterControls.Disable();
