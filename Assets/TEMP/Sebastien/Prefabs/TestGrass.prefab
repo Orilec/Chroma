@@ -50,7 +50,7 @@ MonoBehaviour:
   interactorEvent: {fileID: 4798754403287103216}
   interactorRadius: 5.9
   isColored: 0
-  coloredRenderer: {fileID: 0}
+  coloredRenderer: {fileID: 4071849065790661044}
   fillColorAfterColoration: 0
   isSwitch: 0
   associatedDoor: {fileID: 0}
@@ -138,6 +138,12 @@ PrefabInstance:
 --- !u!4 &2938935183617465051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3117d9a1dd5d6a41824696dab63d5c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3405715856822893872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4071849065790661044 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e3117d9a1dd5d6a41824696dab63d5c1,
     type: 3}
   m_PrefabInstance: {fileID: 3405715856822893872}
   m_PrefabAsset: {fileID: 0}
