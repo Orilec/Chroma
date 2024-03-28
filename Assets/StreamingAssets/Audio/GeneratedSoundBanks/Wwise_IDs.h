@@ -29,8 +29,9 @@ namespace AK
         static const AkUniqueID EM_MSM_HURTLOOP = 2845185899U;
         static const AkUniqueID EM_MSM_LOOP = 2247977996U;
         static const AkUniqueID EM_PLT_DEPLOY = 2012424776U;
-        static const AkUniqueID EM_TRL_LIGHTTRAILLOOP = 4284786933U;
-        static const AkUniqueID EM_TRL_LIGHTTRAILSPAWN = 3355353940U;
+        static const AkUniqueID EM_PSTCARD_LOOP = 4291391310U;
+        static const AkUniqueID EM_TRL_LIGHTTRAILSTART = 178350817U;
+        static const AkUniqueID EM_TRL_LIGHTTRAILSTOP = 500637467U;
         static const AkUniqueID START_MUSIC = 540993415U;
         static const AkUniqueID UI_CLK_BIGCLICK = 36428879U;
         static const AkUniqueID UI_CLK_MEDIUMCLICK = 1502376508U;

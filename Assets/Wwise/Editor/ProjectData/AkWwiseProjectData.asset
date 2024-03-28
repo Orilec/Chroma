@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 6553fe94774dd440995b5358fc7c4541
     GuidInternal: 
-    m_lastTime: -8584904928954775808
+    m_lastTime: -8584899844914775808
     List:
     - name: Ambiences
       guid: 9aed770b34c7894fa5859fcc5bca8d4a
@@ -277,7 +277,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 0598a0634b78464fb11aedcc6f51a8be
     GuidInternal: 
-    m_lastTime: -8584904928954775808
+    m_lastTime: -8584899759424775808
     List:
     - name: Level1
       guid: 56a7612e09612143b6dd0ab824a20381
@@ -494,7 +494,7 @@ MonoBehaviour:
     ParentPath: Events/Character
     guid: 96b39ac6e347a04fa0fe049a1b0cac29
     GuidInternal: 
-    m_lastTime: -8584904895164775808
+    m_lastTime: -8584904838974775808
     List:
     - name: Actions
       guid: aff7e5a482981c45879dee2fe659b017
@@ -570,9 +570,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: cf3c64599006ea4dbd26863059710305
       Path: Events/Character/Foley/CH_FLY_Jump
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 100
+      maxDuration: 2.8041458
+      minDuration: 2.8041458
     - name: CH_FLY_Landing
       guid: 71e0b3e4028a204eabaad5e622324af7
       id: 3137763326
@@ -590,9 +590,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 71e0b3e4028a204eabaad5e622324af7
       Path: Events/Character/Foley/CH_FLY_Landing
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 100
+      maxDuration: 2.562854
+      minDuration: 2.3615832
     - name: CH_FLY_LandingRoll
       guid: f4df5072d305144fbe918f19167bb1e1
       id: 1990085751
@@ -630,9 +630,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: d7ec41a4a4dd934cbbaa58d8722e4c65
       Path: Events/Character/Foley/CH_Footstep
-      maxAttenuation: 0
-      maxDuration: 2.562854
-      minDuration: 0.323
+      maxAttenuation: 100
+      maxDuration: 2.8025
+      minDuration: 2.3526876
     - name: Foley
       guid: add5815fbb9dbe46922e516365a2e332
       id: 247557814
@@ -674,7 +674,7 @@ MonoBehaviour:
     ParentPath: Events/Emitters
     guid: 18fa626f6bb5b744ad1044996f634a80
     GuidInternal: 
-    m_lastTime: -8584904928954775808
+    m_lastTime: -8584899745964775808
     List:
     - name: Bumper_Plant
       guid: 2476bd3d26062445ba0d10b5c2b87ff3
@@ -716,9 +716,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 8c278ec1338bae4796fe0d0acc463bf0
       Path: Events/Emitters/Plants/Bumper_Plant/EM_BMP_Bump
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 100
+      maxDuration: 3.245104
+      minDuration: 3.0947917
     - name: EM_BMP_Deploy
       guid: 54618735f70ab24a95bcafe6d03cb17a
       id: 2797792799
@@ -739,9 +739,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 54618735f70ab24a95bcafe6d03cb17a
       Path: Events/Emitters/Plants/Bumper_Plant/EM_BMP_Deploy
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 100
+      maxDuration: 3.75125
+      minDuration: 3.6577709
     - name: EM_MSM_HurtLoop
       guid: 2a66c7f425a20d4db3638ae968e36b01
       id: 2845185899
@@ -805,9 +805,29 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: EM_TRL_LightTrailLoop
+    - name: EM_PSTCARD_Loop
+      guid: 4ce88eb603b3d0449f72b115024c4068
+      id: 4291391310
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Emitters
+        ObjectType: 12
+        guid: 18fa626f6bb5b744ad1044996f634a80
+      - ElementName: Postcard
+        ObjectType: 4
+        guid: 6c18d134e410c54dad1542ddd0b517f9
+      - ElementName: EM_PSTCARD_Loop
+        ObjectType: 3
+        guid: 4ce88eb603b3d0449f72b115024c4068
+      Path: Events/Emitters/Postcard/EM_PSTCARD_Loop
+      maxAttenuation: 100
+      maxDuration: 30.391645
+      minDuration: 30.391645
+    - name: EM_TRL_LightTrailStart
       guid: fa4a8f36403ea54f876803ac71437ba4
-      id: 4284786933
+      id: 178350817
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -818,16 +838,16 @@ MonoBehaviour:
       - ElementName: Light_Trail
         ObjectType: 4
         guid: cf8e19341c680d4eaff913cc9c0dce72
-      - ElementName: EM_TRL_LightTrailLoop
+      - ElementName: EM_TRL_LightTrailStart
         ObjectType: 3
         guid: fa4a8f36403ea54f876803ac71437ba4
-      Path: Events/Emitters/Light_Trail/EM_TRL_LightTrailLoop
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: EM_TRL_LightTrailSpawn
+      Path: Events/Emitters/Light_Trail/EM_TRL_LightTrailStart
+      maxAttenuation: 100
+      maxDuration: -1
+      minDuration: -1
+    - name: EM_TRL_LightTrailStop
       guid: 24c67c2c17f3ef49954bed1da4edcfe6
-      id: 3355353940
+      id: 500637467
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -838,10 +858,10 @@ MonoBehaviour:
       - ElementName: Light_Trail
         ObjectType: 4
         guid: cf8e19341c680d4eaff913cc9c0dce72
-      - ElementName: EM_TRL_LightTrailSpawn
+      - ElementName: EM_TRL_LightTrailStop
         ObjectType: 3
         guid: 24c67c2c17f3ef49954bed1da4edcfe6
-      Path: Events/Emitters/Light_Trail/EM_TRL_LightTrailSpawn
+      Path: Events/Emitters/Light_Trail/EM_TRL_LightTrailStop
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -913,6 +933,23 @@ MonoBehaviour:
         ObjectType: 4
         guid: 1eddf2528d99954989e9d96022834193
       Path: Events/Emitters/Plants/Platform_Plant
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Postcard
+      guid: 6c18d134e410c54dad1542ddd0b517f9
+      id: 4254059873
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Emitters
+        ObjectType: 12
+        guid: 18fa626f6bb5b744ad1044996f634a80
+      - ElementName: Postcard
+        ObjectType: 4
+        guid: 6c18d134e410c54dad1542ddd0b517f9
+      Path: Events/Emitters/Postcard
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -1340,7 +1377,7 @@ MonoBehaviour:
     m_lastTime: -8584904928954775808
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 050000000d0000000e000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

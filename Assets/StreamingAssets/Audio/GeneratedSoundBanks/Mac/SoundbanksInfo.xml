@@ -9,10 +9,16 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{27CC8381-E64C-FDEB-F4D2-700FB9E29A88}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{5DDDE802-2234-CF42-6925-7BB2EFC3A994}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
+				<Custom>
+					<Plugin Id="155216825" Name="Have_U_Ever_Been_Outside (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+				<ShareSets>
+					<Plugin Id="136714882" Name="_500ms_Per_Hour" LibName="Wwise Stereo Delay" LibId="8847363"/>
+				</ShareSets>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
 					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
@@ -31,7 +37,16 @@
 				<Bus Id="3991942870" Name="Music"/>
 			</Busses>
 			<AuxBusses>
-				<AuxBus Id="3545700988" Name="Reverbs"/>
+				<AuxBus Id="3545700988" Name="Reverbs">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="155216825"/>
+						</Custom>
+						<ShareSets>
+							<PluginRef Id="136714882"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="3616015272" Name="VoiceReverbs"/>
 			</AuxBusses>
 			<SwitchGroups>
@@ -47,7 +62,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2111262965" Type="User" Language="SFX" Hash="{94570F9B-7A59-53D6-E0E5-2A20B97ED479}">
+		<SoundBank Id="2111262965" Type="User" Language="SFX" Hash="{1B038D92-3626-9E15-BEC4-C4143ECF226C}">
 			<ShortName>Permanent</ShortName>
 			<Path>Permanent.bnk</Path>
 			<Media>
@@ -102,6 +117,10 @@
 				<File Id="227018318" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>CH_FLY_Jump-003.wav</ShortName>
 					<CachePath>SFX/CH_FLY_Jump-003_818F3B66.wem</CachePath>
+				</File>
+				<File Id="237985962" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EM_TRL_LightTrailLoop.wav</ShortName>
+					<CachePath>SFX/EM_TRL_LightTrailLoop_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="247138474" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EM_FLY_Landing-004.wav</ShortName>
@@ -235,9 +254,17 @@
 					<ShortName>CH_FLY_Jump-004.wav</ShortName>
 					<CachePath>SFX/CH_FLY_Jump-004_818F3B66.wem</CachePath>
 				</File>
+				<File Id="957014604" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EM_PSTCRD_PostcardLoop.wav</ShortName>
+					<CachePath>SFX/EM_PSTCRD_PostcardLoop_818F3B66.wem</CachePath>
+				</File>
 				<File Id="969796070" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Hardwood_LeatherShoes_FullStep_04.wav</ShortName>
 					<CachePath>SFX/Hardwood_LeatherShoes_FullStep_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="978369299" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EM_TRL_LightTrailSpawn.wav</ShortName>
+					<CachePath>SFX/EM_TRL_LightTrailSpawn_818F3B66.wem</CachePath>
 				</File>
 				<File Id="1003050229" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EM_BMP_Deploy-002.wav</ShortName>
@@ -260,21 +287,27 @@
 				<Event Id="794477861" Name="AMB_EM_UrbanSounds" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="2086319611" Name="CH_AC_Shoot" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="472678545" Name="CH_AC_ShootImpact" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="2911453005" Name="CH_FLY_Jump" DurationType="OneShot" DurationMin="2.8041458" DurationMax="2.8041458">
+				<Event Id="2911453005" Name="CH_FLY_Jump" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.8041458" DurationMax="2.8041458">
 					<MediaRefs>
 						<MediaRef Id="125623206"/>
 						<MediaRef Id="227018318"/>
 						<MediaRef Id="848691148"/>
 						<MediaRef Id="952928370"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
 				</Event>
-				<Event Id="3137763326" Name="CH_FLY_Landing" DurationType="OneShot" DurationMin="2.3615832" DurationMax="2.562854">
+				<Event Id="3137763326" Name="CH_FLY_Landing" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.3615832" DurationMax="2.562854">
 					<MediaRefs>
 						<MediaRef Id="247138474"/>
 						<MediaRef Id="271522398"/>
 						<MediaRef Id="568699275"/>
 						<MediaRef Id="753737975"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
 					<SwitchContainers>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="2195636714"/>
@@ -347,7 +380,7 @@
 					</SwitchContainers>
 				</Event>
 				<Event Id="1990085751" Name="CH_FLY_LandingRoll" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="931755413" Name="CH_Footstep" DurationType="OneShot" DurationMin="2.3526876" DurationMax="2.8025">
+				<Event Id="931755413" Name="CH_Footstep" MaxAttenuation="100" DurationType="OneShot" DurationMin="2.3526876" DurationMax="2.8025">
 					<MediaRefs>
 						<MediaRef Id="115007641"/>
 						<MediaRef Id="355918411"/>
@@ -356,6 +389,9 @@
 						<MediaRef Id="656628766"/>
 						<MediaRef Id="938933926"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
 					<SwitchContainers>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1833605183" Id="2195636714"/>
@@ -427,25 +463,47 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="3078375082" Name="EM_BMP_Bump" DurationType="OneShot" DurationMin="3.0947917" DurationMax="3.245104">
+				<Event Id="3078375082" Name="EM_BMP_Bump" MaxAttenuation="100" DurationType="OneShot" DurationMin="3.0947917" DurationMax="3.245104">
 					<MediaRefs>
 						<MediaRef Id="110606027"/>
 						<MediaRef Id="431454404"/>
 						<MediaRef Id="735891528"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
 				</Event>
-				<Event Id="2797792799" Name="EM_BMP_Deploy" DurationType="OneShot" DurationMin="3.6577709" DurationMax="3.75125">
+				<Event Id="2797792799" Name="EM_BMP_Deploy" MaxAttenuation="100" DurationType="OneShot" DurationMin="3.6577709" DurationMax="3.75125">
 					<MediaRefs>
 						<MediaRef Id="263931604"/>
 						<MediaRef Id="788073094"/>
 						<MediaRef Id="1003050229"/>
 					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
 				</Event>
 				<Event Id="2845185899" Name="EM_MSM_HurtLoop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="2247977996" Name="EM_MSM_Loop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="2012424776" Name="EM_PLT_Deploy" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="4284786933" Name="EM_TRL_LightTrailLoop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3355353940" Name="EM_TRL_LightTrailSpawn" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4291391310" Name="EM_PSTCARD_Loop" MaxAttenuation="100" DurationType="OneShot" DurationMin="30.391645" DurationMax="30.391645">
+					<MediaRefs>
+						<MediaRef Id="957014604"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="178350817" Name="EM_TRL_LightTrailStart" MaxAttenuation="100" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="237985962"/>
+						<MediaRef Id="978369299"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="500637467" Name="EM_TRL_LightTrailStop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="540993415" Name="Start_Music" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="36428879" Name="UI_CLK_BigClick" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1502376508" Name="UI_CLK_MediumClick" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
@@ -480,5 +538,5 @@
 			<Path>Level1.bnk</Path>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{DF7F8A27-C3C4-2DAE-381F-F91FC8E314F5}</FileHash>
+	<FileHash>{30DD5221-304D-7672-D68C-4B13B2AEDEA8}</FileHash>
 </SoundBanksInfo>
