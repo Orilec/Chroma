@@ -11,7 +11,10 @@ public class ThrowSystem : MonoBehaviour
     [SerializeField] private ParticleSystem _untargetedTrajectoryEmission;
     [SerializeField] private ParticleSystem _retrieveTrajectoryEmission;
     [SerializeField] private Transform _sidekickThrowOrigin;
-    [SerializeField] private GameObject _sidekickGameObject;
+    [SerializeField] private SkinnedMeshRenderer _charaMeshRenderer;
+    [SerializeField] private Material _sidekickMat;
+    [SerializeField] private Material _transparentMat;
+    [SerializeField] private Material _noaMat;
 
     private TargetManager _targetManager;
     private InputReader _input;
@@ -48,7 +51,7 @@ public class ThrowSystem : MonoBehaviour
 
     private void ThrowSidekickOnTarget()
     {
-        _sidekickGameObject.SetActive(false);
+        _charaMeshRenderer.materials = new Material[2] {_noaMat, _transparentMat};
         _lockedTarget = _targetManager.currentTarget;
         _retrievePos.position = _lockedTarget.transform.position;
         _correctTrajectoryEmission.transform.position = _lockedTarget.transform.position;
@@ -60,7 +63,7 @@ public class ThrowSystem : MonoBehaviour
 
     private void ThrowSidekickUntargeted()
     {
-        _sidekickGameObject.SetActive(false);
+        _charaMeshRenderer.materials = new Material[2] {_noaMat, _transparentMat};
         _sidekickIsAvailable = false;
         _untargetedTrajectoryEmission.Play();
     }
@@ -81,7 +84,7 @@ public class ThrowSystem : MonoBehaviour
     {
         _isRetrieving = false;
         StartCoroutine(SidekickCooldown());
-        _sidekickGameObject.SetActive(true);
+        _charaMeshRenderer.materials = new Material[2] {_noaMat, _sidekickMat};
     }
 
     private IEnumerator SidekickCooldown()

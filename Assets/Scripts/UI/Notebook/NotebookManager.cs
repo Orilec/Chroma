@@ -61,7 +61,7 @@ public class NotebookManager : MonoBehaviour
     {
         if (_input.DisplayNotebook && !_displayedWasPressedLastFrame)
         {
-            if(_isDisplayed) HideNotebook();
+            if(_isDisplayed && !_notebook.IsFlipping) HideNotebook();
             else if(!_isDisplayed && !PauseControl.IsPaused) DisplayNotebook();
         }
         _displayedWasPressedLastFrame = _input.DisplayNotebook;
